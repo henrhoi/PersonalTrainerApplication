@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>tdt4140-gr18nn.app.core</artifactId>
+	<artifactId>tdt4140-gr1801.app.core</artifactId>
 
 	<parent>
-		<groupId>tdt4140-gr18nn</groupId>
-		<artifactId>tdt4140-gr18nn</artifactId>
+		<groupId>tdt4140-gr1801</groupId>
+		<artifactId>tdt4140-gr1801</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
