@@ -1,4 +1,4 @@
-package tdt4140.gr18nn.app.ui;
+package tdt4140.gr1801.app.ui;
 
 import org.junit.Test;
 import org.testfx.framework.junit.ApplicationTest;
