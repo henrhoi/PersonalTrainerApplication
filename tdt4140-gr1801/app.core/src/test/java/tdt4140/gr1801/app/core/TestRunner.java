@@ -5,7 +5,9 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-public class TestRunner {
+import junit.framework.TestCase;
+
+public class TestRunner extends TestCase{
 	
 	public static void main(String[] args) {
 		Result result = JUnitCore.runClasses(TestJunit.class);
