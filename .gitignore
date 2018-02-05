@@ -1,0 +1,14 @@
+// output folders
+// moved .gitignore one folder out, to remove the outer .DS_Store
+
+
+bin/
+target/
+.idea/
+.DS_Store
+
+// temporary generated files
+*.xtendbin
+*._trace
+
+node_modules/
