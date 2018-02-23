@@ -29,22 +29,22 @@ public class LoginController {
 	//Action on enter from passwordField
 	@FXML
 	public void loginAction() {
-		//TODO - Send to new Stage
-		System.out.println("loginAction");
+		//TODO - Check if username and password are OK
+		openNewFXML("FxMainView.fxml");
 	}
 	
 	
 	//Action on newUserButton
 	@FXML
 	public void newUserAction() {
-		Stage stage = (Stage)this.usernameField.getScene().getWindow();
-		startNewStage(stage);
+		openNewFXML("FxNewUser.fxml");
 	}
 	
-	public void startNewStage(Stage stage) {
+	public void openNewFXML(String fxmlName) {
 		Parent root;
+		Stage stage = (Stage)this.usernameField.getScene().getWindow();
 		try {
-			root = FXMLLoader.load(getClass().getResource("FxNewUser.fxml"));
+			root = FXMLLoader.load(getClass().getResource(fxmlName));
 			Scene scene = new Scene(root);
 	        stage.setScene(scene);
 	        stage.show();
