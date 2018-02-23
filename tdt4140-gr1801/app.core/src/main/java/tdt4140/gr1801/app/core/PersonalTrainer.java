@@ -16,6 +16,38 @@ public class PersonalTrainer {
 	
 	//private ArrayList<Client> clientList;
 	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
 	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, Date birthday) {
 		if(!checkUsername(username)) {
 			throw new IllegalStateException("Invalid username.");
@@ -67,9 +99,7 @@ public class PersonalTrainer {
 		correctness.add(checkLastName(fields.get(2).getText()));
 		correctness.add(checkPhoneNumber(fields.get(3).getText()));
 		correctness.add(checkEmail(fields.get(4).getText()));
-		return correctness;
-		
-		
+		return correctness;		
 	}
 	
 	
