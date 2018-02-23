@@ -13,10 +13,6 @@ import javafx.stage.Stage;
 
 public class LoginController {
 	
-	
-	@FXML
-	Pane ap;
-	
 	@FXML
 	TextField usernameField;
 	
@@ -33,15 +29,15 @@ public class LoginController {
 	//Action on enter from passwordField
 	@FXML
 	public void loginAction() {
+		//TODO - Send to new Stage
 		System.out.println("loginAction");
 	}
 	
 	
+	//Action on newUserButton
 	@FXML
 	public void newUserAction() {
 		Stage stage = (Stage)this.usernameField.getScene().getWindow();
-		System.out.println("\nHei");
-		
 		startNewStage(stage);
 	}
 	
@@ -53,7 +49,6 @@ public class LoginController {
 	        stage.setScene(scene);
 	        stage.show();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
