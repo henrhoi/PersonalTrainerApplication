@@ -68,31 +68,31 @@ public class PersonalTrainer {
 	}
 	
 	//Username cannot be longer than 15 characters
-	public boolean checkUsername(String username) {
+	public static boolean checkUsername(String username) {
 		return username.length() <= 15;
 	}
 	
 	
 	//First and last name must only consist of letters. Can allow symbols as well if we find it necessary.
-	public boolean checkFirstName(String firstName) {
+	public static boolean checkFirstName(String firstName) {
 		return (firstName.matches("[a-zA-Z]+"));
 	}
 	
-	public boolean checkLastName(String lastName) {
+	public static boolean checkLastName(String lastName) {
 		return (lastName.matches("[a-zA-Z]+"));
 	}
 	
 	
 	//Assumes all types of Norwegian phone numbers. Must contain 8 numbers.
-	public boolean checkPhoneNumber(String phoneNumber) {
+	public static boolean checkPhoneNumber(String phoneNumber) {
 		return (phoneNumber.length() == 8 && phoneNumber.matches("[0-9]+"));
 	}
 	
-	public boolean checkEmail(String email) {
+	public static boolean checkEmail(String email) {
 		return email.contains("@");
 	}
 	
-	public ArrayList<Boolean> checkAllFields(ArrayList<TextField> fields) {
+	public static ArrayList<Boolean> checkAllFields(ArrayList<TextField> fields) {
 		ArrayList<Boolean> correctness = new ArrayList<Boolean>();
 		correctness.add(checkUsername(fields.get(0).getText()));
 		correctness.add(checkFirstName(fields.get(1).getText()));
