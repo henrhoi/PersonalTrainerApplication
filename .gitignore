@@ -1,4 +1,7 @@
 // output folders
+// moved .gitignore one folder out, to remove the outer .DS_Store
+
+
 bin/
 target/
 .idea/
