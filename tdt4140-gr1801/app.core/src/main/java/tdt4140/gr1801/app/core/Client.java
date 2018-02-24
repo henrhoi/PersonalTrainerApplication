@@ -48,4 +48,5 @@ public class Client {
 			throw new IllegalArgumentException("Not valid weight, must be in range [0,400]");
 		}
 	}
+	// 
 }
