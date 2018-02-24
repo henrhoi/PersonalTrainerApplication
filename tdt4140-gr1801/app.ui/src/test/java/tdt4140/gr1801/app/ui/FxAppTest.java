@@ -32,6 +32,7 @@ public class FxAppTest extends ApplicationTest {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
     @Test
