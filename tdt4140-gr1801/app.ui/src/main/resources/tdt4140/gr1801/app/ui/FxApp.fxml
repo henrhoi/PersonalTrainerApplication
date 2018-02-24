@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="tdt4140.gr1801.app.ui.FxAppController"
-            prefHeight="750" prefWidth="1000">
+
+<Pane prefHeight="750" prefWidth="1000" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9">
 </Pane>
