@@ -25,7 +25,6 @@ public abstract class Training {
 	
 	public int getDuration() {
 		return duration;
-	
 	}
 	
 	
