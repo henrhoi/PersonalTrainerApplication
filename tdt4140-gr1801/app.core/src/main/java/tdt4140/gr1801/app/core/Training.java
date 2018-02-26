@@ -8,7 +8,7 @@ import java.util.Date;
 public abstract class Training {
 	
 	protected Date date;
-	protected int duration; // I minutter
+	protected int duration; // In minutes
 	
 	public Training(Date date, int duration) {
 		if (duration < 0) {
