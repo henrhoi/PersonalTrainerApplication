@@ -1,7 +1,7 @@
 package tdt4140.gr1801.app.core;
 
-public class Endurance extends Training{
+public class Endurance{
 	
-	// Legge til det som er særegent for Utholdenhetsøkter
+
 
 }
