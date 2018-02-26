@@ -15,7 +15,7 @@
       <TextField fx:id="emailField" layoutX="371.0" layoutY="146.0" promptText="Email" />
       <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="223.0" promptText="Password" />
       <PasswordField fx:id="confirmPasswordField" layoutX="117.0" layoutY="262.0" promptText="Confrim Password" />
-      <Button fx:id="createUserButton" layoutX="291.0" layoutY="326.0" mnemonicParsing="false" onAction="#createUser" text="Create User" />
+      <Button layoutX="291.0" layoutY="326.0" mnemonicParsing="false" onAction="#createUser" text="Create User" />
       <Label fx:id="infoLabel" layoutX="117.0" layoutY="53.0" text="Fill all information" />
    </children>
 </Pane>

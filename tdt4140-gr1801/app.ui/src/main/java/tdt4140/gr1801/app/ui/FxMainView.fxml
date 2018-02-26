@@ -4,10 +4,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1801.app.ui.MainViewController">
    <children>
-      <Label layoutX="211.0" layoutY="217.0" text="MAINVIEW">
+      <Label fx:id="mainview" layoutX="211.0" layoutY="217.0" text="MAINVIEW">
          <font>
             <Font size="55.0" />
          </font>

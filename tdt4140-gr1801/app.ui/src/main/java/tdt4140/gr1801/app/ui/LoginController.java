@@ -49,6 +49,7 @@ public class LoginController {
 	        stage.setScene(scene);
 	        stage.show();
 		} catch (IOException e) {
+			System.out.println("hei");
 			e.printStackTrace();
 		}
         
