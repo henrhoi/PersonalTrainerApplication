@@ -3,8 +3,7 @@ package tdt4140.gr1801.app.core;
 import java.util.Date;
 
 
-//Superklasse for Endurance og Strength. Vil inneholde alt som er felles for disse
-// Abstrakt da det ikke skal være mulig å instansiere rene Training-objekter
+
 
 public abstract class Training {
 	
@@ -18,6 +17,7 @@ public abstract class Training {
 		this.duration = duration;
 		this.date = date;
 	}
+
 	
 	public Date getDate() {
 		return date;
