@@ -8,12 +8,12 @@ public class Exercise {
 	private String name;
 	private double weight;
 	private List<Integer> repsPerSet = new ArrayList<>();
+
 	// Each index corresponds to one single set, while the value corresponds to number of reps in this set.  
 	// [  10  ,  8   ,  6  , ... ]
 	//   Set1   Set2   Set3  ...
 	// TODO: Better ways to do this?
 	// TODO: Weight is not always constant throughout all sets
-	
 	
 	
 	public Exercise(String name, double weight, List<Integer> repsPerSet) {
@@ -73,7 +73,8 @@ public class Exercise {
 		Exercise e = new Exercise("Benchpress", 80, Arrays.asList(10, 10, 7));
 		System.out.println("Success");
 	}
+		Exercise e = new Exercise("Benkpress", 80, Arrays.asList(10, 10, 7));
+		System.out.println("Success");
+	}
 	*/
-
-
 }
