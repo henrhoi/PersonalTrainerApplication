@@ -1,13 +1,15 @@
 package tdt4140.gr1801.app.core;
 
+
 import java.util.Date;
 
 public class Endurance extends Training{
-	
-	private double distance; // I km
-	private double averageSpeed; // I km/t
+
+
+	private double distance; // In km
+	private double averageSpeed; // In km/h
 	private int caloriesBurned;
-	
+
 	
 	public Endurance(Date date, int duration, double distance, int caloriesBurned) {
 		super(date, duration);
@@ -18,10 +20,10 @@ public class Endurance extends Training{
 			throw new IllegalArgumentException("Calories burned cannot be negative");
 		}
 		this.distance = distance;
-		this.averageSpeed = distance/(duration/60); // duration er i minutter, må deles på 60 for å få i timer
+		this.averageSpeed = distance/(duration/60);
 		this.caloriesBurned = caloriesBurned;
 		
-		// TODO: målinger av hjertefrekvens
+		// TODO: measurments of heartrate
 	}
 	
 	public double getDistance() {
@@ -36,8 +38,4 @@ public class Endurance extends Training{
 		return caloriesBurned;
 	}
 	
-	
-	
-	
-
 }
