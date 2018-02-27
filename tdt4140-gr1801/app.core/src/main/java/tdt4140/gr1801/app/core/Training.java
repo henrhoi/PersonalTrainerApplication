@@ -19,12 +19,10 @@ public abstract class Training {
 		this.date = date;
 	}
 
-	
 	public Date getDate() {
 		return date;
 	}
-	
-	
+
 	public int getDuration() {
 		return duration;
 	}
