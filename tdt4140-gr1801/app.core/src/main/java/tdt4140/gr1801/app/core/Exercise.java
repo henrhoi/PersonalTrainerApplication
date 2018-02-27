@@ -1,6 +1,7 @@
 package tdt4140.gr1801.app.core;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Exercise {
@@ -24,7 +25,7 @@ public class Exercise {
 	
 	
 	private void checkArguments(String name, double weight, List<Integer> repsPerSet) {
-		if (name.length() <= 0 || name.chars().anyMatch(c -> !Character.isLetter(c))) {
+		if (name.length() <= 0 || name.chars().anyMatch(c -> !Character.isLetter(c) && c != ' ')) {
 			throw new IllegalArgumentException("Name of exercise is not valid");
 		}
 		if (weight < 0) {
@@ -62,18 +63,13 @@ public class Exercise {
 		return total;
 	}
 	
-	public double getAverageReps() {
-		return getTotalReps()/getNumberOfSets();
-	}
 	
 	
 	/*
 	public static void main(String[] args) {
-		Exercise e = new Exercise("Benchpress", 80, Arrays.asList(10, 10, 7));
-		System.out.println("Success");
-	}
-		Exercise e = new Exercise("Benkpress", 80, Arrays.asList(10, 10, 7));
+		Exercise e = new Exercise("Benchpress on bench", 80, Arrays.asList(10, 10, 7));
 		System.out.println("Success");
 	}
 	*/
+	
 }
