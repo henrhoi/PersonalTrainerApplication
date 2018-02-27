@@ -15,7 +15,6 @@ public class Exercise {
 	// TODO: Better ways to do this?
 	// TODO: Weight is not always constant throughout all sets
 	
-	
 	public Exercise(String name, double weight, List<Integer> repsPerSet) {
 		checkArguments(name, weight, repsPerSet);
 		this.name = name;
