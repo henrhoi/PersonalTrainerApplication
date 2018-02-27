@@ -8,11 +8,11 @@ public class Exercise {
 	private String name;
 	private double weight;
 	private List<Integer> repsPerSet = new ArrayList<>();
-	// Tanken her er at hver indeks tilsvarer ett sett, mens verdien (tallet) på indeksplassen tilsvarer antall reps dette settet. 
+	// Each index corresponds to one single set, while the value corresponds to number of reps this set. 
 	// [  10  ,  8   ,  6  , ... ]
 	//   Set1   Set2   Set3  ...
-	// TODO: Bedre måter å gjøre dette på??
-	// TODO: Skal vi ta hensyn til at vekten ikke må være lik for hvert sett?
+	// TODO: Better ways to do this?
+	// TODO: Not always the same weight on each set
 	
 	
 	public Exercise(String name, double weight, List<Integer> repsPerSet) {
