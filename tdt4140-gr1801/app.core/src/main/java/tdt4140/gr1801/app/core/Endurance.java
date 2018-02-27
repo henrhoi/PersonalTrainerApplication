@@ -19,7 +19,7 @@ public class Endurance extends Training{
 			throw new IllegalArgumentException("Calories burned cannot be negative");
 		}
 		this.distance = distance;
-		this.averageSpeed = distance/(duration/60);
+		this.averageSpeed = distance/((double)(duration)/60);
 		this.caloriesBurned = caloriesBurned;
 		
 		// TODO: measurments of heartrate
