@@ -10,6 +10,9 @@ public class Strength extends Training {
 	
 	public Strength(Date date, int duration, List<Exercise> exercises) {
 		super(date, duration);
+		if (exercises.isEmpty()) {
+			throw new IllegalArgumentException("Workout needs at least one exercise");
+		}
 		this.exercises = exercises;
 	}
 	
