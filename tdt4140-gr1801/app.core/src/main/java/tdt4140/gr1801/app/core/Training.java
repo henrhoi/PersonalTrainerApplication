@@ -22,8 +22,7 @@ public abstract class Training {
 	public Date getDate() {
 		return date;
 	}
-	
-	
+
 	public int getDuration() {
 		return duration;
 	}
