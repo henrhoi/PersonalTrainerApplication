@@ -1,23 +1,28 @@
 package tdt4140.gr1801.app.core;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Strength extends Training {
-
-	public Strength(Date date, int duration) {
+	
+	private List<Exercise> exercises = new ArrayList<Exercise>();
+	
+	public Strength(Date date, int duration, List<Exercise> exercises) {
 		super(date, duration);
-		// TODO Auto-generated constructor stub
+		this.exercises = exercises;
 	}
 	
+	public List<Exercise> getExercises() {
+		return exercises;
+	}
 	
-			
-	
-	
-	
-	
-	
-	
-	
-	
-
+	public Exercise getSpecificExercise(String name) {	
+		for (Exercise exercise : exercises) {
+			if (exercise.getName().equals(name)) {
+				return exercise;
+			}
+		}
+		return null;
+	}
 }
