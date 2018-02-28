@@ -10,7 +10,6 @@ public class Client {
 	private HashMap<Date,Double> weight; // measured in float (kg) 
 	private HashMap<Date,Double> fat; // measured in float [0,1]
 	private PersonalTrainer pt;
-	// Må ha et personlig trener-objekt
 
 	public Client(String firstName, String lastName, int id, PersonalTrainer pt) {
 		this.firstName = firstName;
@@ -38,8 +37,6 @@ public class Client {
 		return pt.getUsername();
 	}
 	
-	//kan legge til metode for å endre pt for klient, må da legge til 
-	// metode i pt som fjerner klient fra pt også
 	
 	public void addWeight(Date date, double weight) {
 		if (weight>0 && weight<400) {

@@ -1,3 +1,4 @@
+
 package tdt4140.gr1801.app.ui;
 
 import org.junit.BeforeClass;
@@ -39,3 +40,4 @@ public class FxAppTest extends ApplicationTest {
     public void testFxApp() {
     }
 }
+
