@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.core;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Exercise {
@@ -63,13 +62,5 @@ public class Exercise {
 		return total;
 	}
 	
-	
-	
-	/*
-	public static void main(String[] args) {
-		Exercise e = new Exercise("Benchpress on bench", 80, Arrays.asList(10, 10, 7));
-		System.out.println("Success");
-	}
-	*/
 	
 }
