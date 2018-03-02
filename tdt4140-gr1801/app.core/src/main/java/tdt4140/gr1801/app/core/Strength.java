@@ -16,7 +16,7 @@ public class Strength extends Training {
 	public List<Exercise> getExercises() {
 		return exercises;
 	}
-	
+
 	public Exercise getSpecificExercise(String name) {	
 		for (Exercise exercise : exercises) {
 			if (exercise.getName().equals(name)) {
