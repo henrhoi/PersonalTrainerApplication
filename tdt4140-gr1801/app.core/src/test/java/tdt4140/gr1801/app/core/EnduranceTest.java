@@ -53,5 +53,4 @@ public class EnduranceTest extends TestCase{
 		}
 	}
 	
-	
 }
