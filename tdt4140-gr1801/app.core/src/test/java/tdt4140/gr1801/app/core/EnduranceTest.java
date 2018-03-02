@@ -29,7 +29,7 @@ public class EnduranceTest extends TestCase{
 	
 	public void testNegativeDistance() {
 		try {
-			new Endurance(new Date(27, 02, 2018), -10, 12, 685);
+			new Endurance(new Date(27, 02, 2018), 10, -12, 685);
 			fail(); // Not supposed to get here
 		}
 		catch (IllegalArgumentException iae) {
