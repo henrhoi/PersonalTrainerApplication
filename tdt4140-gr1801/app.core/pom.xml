@@ -4,7 +4,6 @@
 	<artifactId>tdt4140-gr1801.app.core</artifactId>
 
 	
-
 	<parent>
 		<groupId>tdt4140-gr1801</groupId>
 		<artifactId>tdt4140-gr1801</artifactId>
