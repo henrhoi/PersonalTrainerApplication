@@ -4,8 +4,8 @@ image: krissrex/docker-java8-maven-testfxmonocle:1.0
 
 # to get test coverage report
 job1:
-script: 
--"cat target/site/jacoco/index.html"
+    script: 
+    -"cat target/site/jacoco/index.html"
 
 # most of this taken from https://stackoverflow.com/questions/37785154/how-to-enable-maven-artifact-caching-for-gitlab-ci-runner
 
