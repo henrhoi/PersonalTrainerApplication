@@ -32,5 +32,12 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		
+         <dependency>
+             <groupId>tdt4140-gr1801</groupId>
+             <artifactId>tdt4140-gr1801.web.server</artifactId>
+             <version>0.0.1-SNAPSHOT</version>
+         </dependency>
+         
 	</dependencies>
 </project>
