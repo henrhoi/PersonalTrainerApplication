@@ -22,9 +22,27 @@ public class StrengthTest extends TestCase {
 	public void testGetExercises() {
 		assertEquals(Arrays.asList(e1, e2, e3, e4), strength.getExercises());
 	}
+	
+	public void testExerciseIsEmpty() {
+		try { 
+			new Strength(new Date(28, 02, 2018), 100, Arrays.asList());
+			fail();
+		}
+		catch (IllegalArgumentException IAE) {
+			
+		}
+	}
 
 	public void testGetSpecificExercise() {
 		assertEquals(e3, strength.getSpecificExercise("Squats"));
+		try {
+			strength.getSpecificExercise("abcdefghijklmnopqrstuvwxyz");
+		}
+		catch (IllegalArgumentException IAE) {
+			
+		}
 	}
+	
+	
 	
 }

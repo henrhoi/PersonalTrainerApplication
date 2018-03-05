@@ -26,6 +26,6 @@ public class Strength extends Training {
 				return exercise;
 			}
 		}
-		return null;
+		throw new IllegalArgumentException("Unvalid exercise");
 	}
 }
