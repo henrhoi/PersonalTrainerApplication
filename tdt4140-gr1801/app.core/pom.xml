@@ -8,6 +8,47 @@
 		<artifactId>tdt4140-gr1801</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>	
+        			<source>1.8</source>
+        			<target>1.8</target>
+        			<encoding>UTF-8</encoding>
+        		</configuration>
+			</plugin>
+			
+			<!-- Code Coverage report generation -->
+			<plugin>
+		    	<groupId>org.jacoco</groupId>
+		    	<artifactId>jacoco-maven-plugin</artifactId>
+		    	<version>0.8.0</version>
+		    	<executions>
+		    		<execution>
+		    			<id>pre-unit-test</id>
+		    		 	<goals>
+		    		 		<goal>prepare-agent</goal>
+		    		 	</goals>
+		    		</execution>
+	
+					<execution>
+					    <id>post-unit-test</id>
+					    <phase>test</phase>
+					    <goals>
+					        <goal>report</goal>
+					    </goals>
+					</execution>
+		    	 </executions>
+			</plugin>
+			
+		</plugins>
+	</build>
+	
+
 
 	<dependencies>
 		<dependency>
@@ -15,11 +56,13 @@
 			<artifactId>jackson-core</artifactId>
 			<version>2.9.3</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>2.9.3</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
@@ -40,4 +83,8 @@
          </dependency>
          
 	</dependencies>
+	
+	
+	
+	
 </project>
