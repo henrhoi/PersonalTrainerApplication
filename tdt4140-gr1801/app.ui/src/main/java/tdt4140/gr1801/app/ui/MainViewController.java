@@ -23,7 +23,7 @@ public class MainViewController {
 	Tab overviewTab, strengthTab, enduranceTab, healthTab, programTab;
 	
 	@FXML
-	Button logOffButton;
+	Button logOffButton, addClientButton;
 	
 	
 	public void initialize() {
@@ -54,6 +54,12 @@ public class MainViewController {
 	private void logOff() {
 		//TODO save changes
 		openNewFXML("FxLogin.fxml");
+	}
+	
+	@FXML
+	private void addClient() {
+		//TODO update database
+		System.out.println("Add Client");
 	}
 	
 	public void openNewFXML(String fxmlName) {

@@ -17,6 +17,7 @@
                <children>
                   <ImageView fx:id="picture" fitHeight="102.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
                   <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" text="logoff" />
+                  <Button fx:id="addClientButton" mnemonicParsing="false" onAction="#addClient" text="addClient" />
                </children>
             </HBox>
             <HBox prefHeight="533.0" prefWidth="700.0">
