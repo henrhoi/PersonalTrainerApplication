@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -12,7 +13,12 @@
    <children>
       <VBox prefHeight="500.0" prefWidth="700.0">
          <children>
-            <ImageView fx:id="picture" fitHeight="102.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="picture" fitHeight="102.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" text="logoff" />
+               </children>
+            </HBox>
             <HBox prefHeight="533.0" prefWidth="700.0">
                <children>
                   <ListView fx:id="liste" prefHeight="200.0" prefWidth="200.0" />
