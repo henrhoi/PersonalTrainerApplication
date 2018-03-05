@@ -1,15 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1801.app.ui.MainViewController">
    <children>
-      <Label fx:id="mainview" layoutX="211.0" layoutY="217.0" text="MAINVIEW">
-         <font>
-            <Font size="55.0" />
-         </font>
-      </Label>
+      <VBox prefHeight="500.0" prefWidth="700.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="picture" fitHeight="102.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" text="logoff" />
+               </children>
+            </HBox>
+            <HBox prefHeight="533.0" prefWidth="700.0">
+               <children>
+                  <ListView fx:id="liste" prefHeight="200.0" prefWidth="200.0" />
+                  <TabPane prefHeight="300.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                        <Tab fx:id="overviewTab" text="Overview" />
+                      <Tab fx:id="strengthTab" text="Strength" />
+                      <Tab fx:id="enduranceTab" text="Endurance" />
+                        <Tab fx:id="healthTab" text="Health" />
+                        <Tab fx:id="programTab" text="Program" />
+                    </tabs>
+                  </TabPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </Pane>
