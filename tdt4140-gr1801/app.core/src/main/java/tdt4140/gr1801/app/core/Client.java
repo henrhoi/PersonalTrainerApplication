@@ -5,32 +5,32 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Client {
-    private String name;
+	private String name;
     
-    private int id;
-    private int height;
-    private PersonalTrainer pt;
-    private HashMap<String,Double> weights; // measured in float (kg)
-    private HashMap<String,Double> fats; // measured in float [0,1]
-    private List<Nutrition> nutritions;
-    
-    
-    private List<Strength> strengthTraining;
-    private List<Endurance> enduranceTraining;
+	private int id;
+	private int height;
+	private PersonalTrainer pt;
+	private HashMap<String,Double> weights; // measured in float (kg)
+	private HashMap<String,Double> fats; // measured in float [0,1]
+	private List<Nutrition> nutritions;
     
     
-    public Client(int id, String name, int height, PersonalTrainer pt) {
-	    this.id = id;
-	    this.name = name;
-	    this.height = height;
-	    this.pt = pt;
+	private List<Strength> strengthTraining;
+	private List<Endurance> enduranceTraining;
+    
+    
+	public Client(int id, String name, int height, PersonalTrainer pt) {
+    		this.id = id;
+    		this.name = name;
+    		this.height = height;
+    		this.pt = pt;
 	    
-	    this.weights = new HashMap<String,Double>();
-	    this.fats = new HashMap<String,Double>();
-	    this.nutritions = new ArrayList<Nutrition>();
-	    this.strengthTraining = new ArrayList<Strength>();
-	    this.enduranceTraining = new ArrayList<Endurance>();
-    }
+    		this.weights = new HashMap<String,Double>();
+    		this.fats = new HashMap<String,Double>();
+    		this.nutritions = new ArrayList<Nutrition>();
+    		this.strengthTraining = new ArrayList<Strength>();
+    		this.enduranceTraining = new ArrayList<Endurance>();
+	}
     
     
     public int getId() {
@@ -94,7 +94,7 @@ public class Client {
     public void addFat(String date, Double fat) {
     		if (fat>0 && fat<1) {
     			this.fats.put(date,fat);
-    		}else {
+    		} else {
     			throw new IllegalArgumentException("Not valid fat percent, must be in range [0,1]");
     		}
     }
@@ -105,4 +105,11 @@ public class Client {
     public void addNutrition(Nutrition nutrition) {
     		this.nutritions.add(nutrition);
     }
+    
+    
+    public static void main(String[] args) {
+    		PersonalTrainer pt = new PersonalTrainer("Vilde97", "Halvor", "Nilsen", "Halvor@nilsen.com","90911287","20190106-1400");
+		Client c = new Client(1, "Vilde",  170,  pt);
+		System.out.println(c.getHeight());
+	}
 }
