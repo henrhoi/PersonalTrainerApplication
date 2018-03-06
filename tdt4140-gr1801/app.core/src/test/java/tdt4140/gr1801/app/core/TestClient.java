@@ -74,7 +74,7 @@ public class TestClient extends TestCase{
 	}
 
 	public void testGetWeight() {
-		assertEquals(56, client.getWeight(date1));
+		assertEquals(56.0, client.getWeight(date1));
 	}
 	
 	public void testExceptionsInGetWeight() {
