@@ -49,12 +49,7 @@ public class PersonalTrainer {
 	}
 
 	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, Date birthday) {
-		if(!checkUsername(username)) {
-			throw new IllegalStateException("Invalid username.");
-		}
-		//if(!checkNames(firstName, lastName)) {
-		//	throw new IllegalArgumentException("Invalid names. Only letters.");
-		//}
+		//All checks are done in the controller
 		this.username = username;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -69,7 +64,7 @@ public class PersonalTrainer {
 	
 	//Username cannot be longer than 15 characters
 	public static boolean checkUsername(String username) {
-		return username.length() <= 15;
+		return username.matches("[a-zA-Z0-9]+");
 	}
 	
 	
