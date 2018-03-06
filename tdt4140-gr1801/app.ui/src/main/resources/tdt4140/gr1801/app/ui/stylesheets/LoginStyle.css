@@ -1,0 +1,39 @@
+#pane {
+	-fx-background-image: url("../images/backgroun.jpg") no-repeat center center fixed;
+	-fx-background-size: cover;
+  	-fx-height: 100%;
+  	-fx-overflow: hidden;
+	
+}
+
+#h1 {
+	-fx-font-size: 70px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+.button{
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-radius: 0;
+    -fx-background-color: transparent;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+}
+
+.button:hover {
+    -fx-font-size: 16px;
+}
+
+
+.text-field {
+ 	-fx-text-box-border: black ;
+ 	-fx-focus-color: black ;
+}
+
+.text-field.error {
+ 	-fx-text-box-border: red ;
+ 	-fx-focus-color: red ;
+}
+

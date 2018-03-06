@@ -8,8 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
+//This Class was made only for making a static method to set scenes.
 public class SceneLoader {
-	
 	
 	public static void setScene(Stage stage, URL path, Controller controller) {
 		Parent root;

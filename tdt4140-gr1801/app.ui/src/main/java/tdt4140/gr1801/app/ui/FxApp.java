@@ -12,6 +12,7 @@ public class FxApp extends Application {
     		LoginController controller = new LoginController();
     		URL path = getClass().getResource("FxLogin.fxml");
     		SceneLoader.setScene(stage, path, controller);
+    		
     }
 
     public static void main(String[] args) {
