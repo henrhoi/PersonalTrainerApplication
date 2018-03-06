@@ -1,7 +1,7 @@
 package tdt4140.gr1801.app.core;
 
 import java.util.ArrayList;
-import java.util.Date;
+
 
 import javafx.scene.control.TextField;
 
@@ -12,7 +12,7 @@ public class PersonalTrainer {
 	private String lastName;
 	private String email;
 	private String phoneNumber;
-	private Date birthday;
+	private String birthday;
 	
 	//private ArrayList<Client> clientList;
 	
@@ -44,11 +44,11 @@ public class PersonalTrainer {
 		return lastName;
 	}
 
-	public Date getBirthday() {
+	public String getBirthday() {
 		return birthday;
 	}
 
-	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, Date birthday) {
+	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, String birthday) {
 		if(!checkUsername(username)) {
 			throw new IllegalStateException("Invalid username.");
 		}
