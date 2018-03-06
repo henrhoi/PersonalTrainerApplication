@@ -71,6 +71,7 @@ public class LoginController implements Controller{
 		Stage stage = (Stage)this.usernameField.getScene().getWindow();
 		URL path = getClass().getResource("FxNewUser.fxml");
 		SceneLoader.setScene(stage, path, controller);
+		
 	}
 	
 	

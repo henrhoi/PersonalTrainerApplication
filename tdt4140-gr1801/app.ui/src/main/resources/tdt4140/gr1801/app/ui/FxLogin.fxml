@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="pane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@stylesheets/LoginStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane id="pane" fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="700.0" prefHeight="500.0" prefWidth="700.0" stylesheets="@stylesheets/LoginStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="200.0" layoutY="100.0" prefHeight="230.0" prefWidth="323.0" AnchorPane.topAnchor="100.0">
          <children>
-            <Label id="h1" layoutX="230.0" layoutY="101.0" stylesheets="@stylesheets/LoginStyle.css" text="PT" textFill="WHITE">
+            <Label id="h1" prefHeight="86.0" prefWidth="99.0" stylesheets="@stylesheets/LoginStyle.css" text="PT" textFill="WHITE" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="46.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameField" layoutX="230.0" layoutY="186.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="200.0" promptText="Username" styleClass="text-field" stylesheets="@stylesheets/LoginStyle.css" />
-            <PasswordField fx:id="passwordField" layoutX="230.0" layoutY="245.0" onAction="#loginAction" prefHeight="30.0" prefWidth="200.0" promptText="Password" stylesheets="@stylesheets/LoginStyle.css" />
-            <Button layoutX="450.0" layoutY="187.0" mnemonicParsing="false" onAction="#newUserAction" stylesheets="@stylesheets/LoginStyle.css" text="+ New User" textAlignment="CENTER" />
-            <Label fx:id="loginInfo" layoutX="238.0" layoutY="287.0" text="Wrong username or password" textAlignment="CENTER" textFill="RED" visible="false" />
-            <Button layoutX="450.0" layoutY="236.0" mnemonicParsing="false" text="+ Login" />
+            <TextField fx:id="usernameField" layoutY="85.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="200.0" promptText="Username" styleClass="text-field" stylesheets="@stylesheets/LoginStyle.css" />
+            <PasswordField fx:id="passwordField" layoutY="144.0" onAction="#loginAction" prefHeight="30.0" prefWidth="200.0" promptText="Password" stylesheets="@stylesheets/LoginStyle.css" />
+            <Button layoutX="220.0" layoutY="86.0" mnemonicParsing="false" onAction="#newUserAction" stylesheets="@stylesheets/LoginStyle.css" text="+ New User" textAlignment="CENTER" />
+            <Label fx:id="loginInfo" layoutX="8.0" layoutY="186.0" text="Wrong username or password" textAlignment="CENTER" textFill="RED" visible="false" />
+            <Button layoutX="220.0" layoutY="135.0" mnemonicParsing="false" stylesheets="@stylesheets/LoginStyle.css" text="+ Login" />
          </children>
-      </Pane>
+      </AnchorPane>
    </children>
 </AnchorPane>

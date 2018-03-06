@@ -20,6 +20,8 @@ public class SceneLoader {
 			root = (Parent)loader.load();
 			Scene scene = new Scene(root);
 	        stage.setScene(scene);
+	        stage.setMinHeight(500);
+	        stage.setMinWidth(700);
 	        stage.show();
 	        System.out.println("Sucess");
 		} catch (IOException e) {
