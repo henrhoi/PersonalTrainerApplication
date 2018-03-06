@@ -18,7 +18,7 @@ public class TestClient extends TestCase{
 		date2 ="20180103-1400";
 		date3 ="20180104-1400";
 		date4 ="20180105-1400";
-		date5 ="20180106-1400";
+		date5 ="20190106-1400";
 		
 		n1 = new Nutrition(date1, 1887, 63, 94, 236, 1);
 		n2 = new Nutrition(date2, 1688, 62, 78, 203, 1);
@@ -62,15 +62,17 @@ public class TestClient extends TestCase{
 	public void testGetFat() {
 		assertEquals(0.22, client.getFat(this.date3));
 	}
-
+	
+	
 	public void testExceptionsInGetFat() {
 		try {
 			client.getFat(date5);
+			fail();
 		}
 		catch (IllegalArgumentException IAE) {
 		}
 	}
-	
+
 	public void testGetWeight() {
 		assertEquals(56, client.getWeight(date1));
 	}
@@ -78,6 +80,7 @@ public class TestClient extends TestCase{
 	public void testExceptionsInGetWeight() {
 		try {
 			client.getWeight(date5);
+			fail();
 		}
 		catch (IllegalArgumentException IAE) {
 		}
@@ -91,6 +94,7 @@ public class TestClient extends TestCase{
 	public void testExceptionsInGetNutrition() {
 		try {
 			client.getNutrition(date5);
+			fail();
 		}
 		catch (IllegalArgumentException IAE) {
 		}
