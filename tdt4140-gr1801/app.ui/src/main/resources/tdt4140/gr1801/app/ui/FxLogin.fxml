@@ -7,16 +7,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tdt4140.gr1801.app.ui.LoginController">
+<Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@LoginStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="227.0" layoutY="52.0" text="APPNAME">
          <font>
             <Font size="46.0" />
          </font>
       </Label>
-      <TextField fx:id="usernameField" layoutX="250.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" promptText="Username" />
-      <PasswordField fx:id="passwordField" layoutX="251.0" layoutY="255.0" onAction="#loginAction" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
+      <TextField fx:id="usernameField" layoutX="250.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" promptText="Username" styleClass="text-field" stylesheets="@LoginStyle.css" />
+      <PasswordField fx:id="passwordField" layoutX="251.0" layoutY="255.0" onAction="#loginAction" prefHeight="30.0" prefWidth="200.0" promptText="Password" stylesheets="@LoginStyle.css" />
       <Button layoutX="498.0" layoutY="202.0" mnemonicParsing="false" onAction="#newUserAction" text="New User" />
-      <Label fx:id="loginInfo" layoutX="259.0" layoutY="297.0" textAlignment="CENTER" textFill="RED" />
+      <Label fx:id="loginInfo" layoutX="259.0" layoutY="297.0" text="Wrong username or password" textAlignment="CENTER" textFill="RED" visible="false" />
    </children>
 </Pane>

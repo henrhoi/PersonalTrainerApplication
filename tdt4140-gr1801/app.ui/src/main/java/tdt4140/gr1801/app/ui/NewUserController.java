@@ -22,7 +22,7 @@ import tdt4140.gr1801.app.core.PersonalTrainer;
 
 
 
-public class NewUserController {
+public class NewUserController implements Controller{
 	
 	@FXML 
 	TextField usernameField, firstNameField, lastNameField, phoneNumberField, emailField;
@@ -32,6 +32,10 @@ public class NewUserController {
 	
 	@FXML
 	Label infoLabel;
+	
+	public NewUserController() {
+		
+	}
 	
 	
 	//Action on createUserButton
