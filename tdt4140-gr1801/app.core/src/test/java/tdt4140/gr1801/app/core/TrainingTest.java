@@ -22,5 +22,16 @@ public class TrainingTest extends TestCase{
 		assertEquals(90, endurance.getDuration());
 	}
 	
+	public void testNegativeDuration() {
+		try {
+			date = new Date(28, 02, 2018);
+			new Endurance(date, -100, 12, 555);
+			fail();
+		}
+		catch
+			(IllegalArgumentException iae) {
+		}
+	}
+	
 
 }
