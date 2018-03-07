@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>tdt4140-gr1801.web.server</artifactId>
+
+	<parent>
+		<groupId>tdt4140-gr1801</groupId>
+		<artifactId>tdt4140-gr1801</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+		     <groupId>org.eclipse.jetty</groupId>
+		     <artifactId>jetty-server</artifactId>
+		     <version>9.2.3.v20140905</version>
+		</dependency>
+
+
+		<dependency>
+		     <groupId>org.eclipse.jetty</groupId>
+		     <artifactId>jetty-servlet</artifactId>
+		     <version>9.2.3.v20140905</version>
+		 </dependency>
+		
+		
+		<dependency>
+		     <groupId>org.glassfish.jersey.core</groupId>
+		     <artifactId>jersey-server</artifactId>
+		     <version>2.7</version>
+		 </dependency>
+		
+		
+		<dependency>
+		     <groupId>org.glassfish.jersey.containers</groupId>
+		     <artifactId>jersey-container-servlet-core</artifactId>
+		     <version>2.7</version>
+		 </dependency>
+		
+		
+		<dependency>
+		 	<groupId>org.glassfish.jersey.containers</groupId>
+		    <artifactId>jersey-container-jetty-http</artifactId>
+		    <version>2.7</version>
+		 </dependency>
+		 
+		 <dependency>
+		    <groupId>org.apache.httpcomponents</groupId>
+		    <artifactId>httpclient</artifactId>
+		    <version>4.3.6</version>
+		 </dependency>
+		 
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.9-rc</version>
+		</dependency>
+		
+		<dependency>
+   		 	<groupId>org.json</groupId>
+   		 	<artifactId>json</artifactId>
+    			<version>20180130</version>
+		</dependency>
+				
+		<dependency>
+		    <groupId>commons-httpclient</groupId>
+		    <artifactId>commons-httpclient</artifactId>
+		    <version>3.1</version>
+		</dependency>
+		
+         <dependency>
+             <groupId>tdt4140-gr1801</groupId>
+             <artifactId>tdt4140-gr1801.app.core</artifactId>
+             <version>0.0.1-SNAPSHOT</version>
+         </dependency>
+		 
+	
+	</dependencies>
+	
+</project>
