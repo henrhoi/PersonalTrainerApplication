@@ -14,7 +14,6 @@ public class Client {
 	private HashMap<String,Double> fats; // measured in float [0,1]
 	private List<Nutrition> nutritions;
     
-    
 	private List<Strength> strengthTraining;
 	private List<Endurance> enduranceTraining;
     

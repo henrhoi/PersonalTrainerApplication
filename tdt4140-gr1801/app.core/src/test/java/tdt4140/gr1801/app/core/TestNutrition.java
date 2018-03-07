@@ -16,6 +16,7 @@ public class TestNutrition extends TestCase {
 		nutrition = new Nutrition(date1, 1887, 63, 94, 236, client.getId());
 	}
 	
+	
 	public void testGetDate() {
 		assertEquals(nutrition.getDate(),date1);
 	}

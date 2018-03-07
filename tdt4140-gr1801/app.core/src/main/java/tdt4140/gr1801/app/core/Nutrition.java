@@ -11,7 +11,6 @@ public class Nutrition {
 	private Integer protein; 
 	private Integer clientId;
 	
-	
 	public Nutrition(String date, int calories, int fat, int carbs, int protein, int clientId) {
 		// There are 4 calories per 1 gram carbs,
 		// There are 4 calories per 1 gram protein,

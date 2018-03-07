@@ -2,9 +2,6 @@ package tdt4140.gr1801.app.core;
 
 
 import junit.framework.TestCase;
-import tdt4140.gr1801.app.core.Client;
-import tdt4140.gr1801.app.core.Nutrition;
-import tdt4140.gr1801.app.core.PersonalTrainer;
 
 public class TestClient extends TestCase{
 	
@@ -64,7 +61,7 @@ public class TestClient extends TestCase{
 	public void testGetFat() {
 		assertEquals(0.22, client.getFat(this.date3));
 	}
-	
+
 	
 	public void testExceptionsInGetFat() {
 		try {
