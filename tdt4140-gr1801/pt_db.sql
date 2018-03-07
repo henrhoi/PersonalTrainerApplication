@@ -9,7 +9,6 @@ drop table if exists Klient;
 drop table if exists PT;
 
 
-INSERT INTO PT(PT_ID, Navn, Email, Birthday, Phonenr) VALUES ("henrhoi","Henrik Høiness", "henrik.hoiness@online.no", "1997-08-14", "48039233");
 
 CREATE TABLE PT(
 	PT_ID		VARCHAR(20) NOT NULL  PRIMARY KEY, -- username
