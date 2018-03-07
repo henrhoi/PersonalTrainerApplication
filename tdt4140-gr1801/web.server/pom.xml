@@ -84,8 +84,18 @@
    		 	<artifactId>json</artifactId>
     			<version>20180130</version>
 		</dependency>
+				
+		<dependency>
+		    <groupId>commons-httpclient</groupId>
+		    <artifactId>commons-httpclient</artifactId>
+		    <version>3.1</version>
+		</dependency>
 		
-
+         <dependency>
+             <groupId>tdt4140-gr1801</groupId>
+             <artifactId>tdt4140-gr1801.app.core</artifactId>
+             <version>0.0.1-SNAPSHOT</version>
+         </dependency>
 		 
 	
 	</dependencies>
