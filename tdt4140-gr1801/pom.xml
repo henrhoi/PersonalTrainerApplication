@@ -17,6 +17,7 @@
 		<module>web.server</module>
 	</modules>
 	
+	
 	<build> 
 		<plugins>
 			<!-- Code Coverage report generation -->
