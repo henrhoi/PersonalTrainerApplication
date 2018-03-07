@@ -17,5 +17,6 @@
       <TextField fx:id="usernameField" layoutX="250.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" promptText="Username" />
       <PasswordField fx:id="passwordField" layoutX="251.0" layoutY="255.0" onAction="#loginAction" prefHeight="30.0" prefWidth="200.0" promptText="Password" />
       <Button layoutX="498.0" layoutY="202.0" mnemonicParsing="false" onAction="#newUserAction" text="New User" />
+      <Label fx:id="loginInfo" layoutX="259.0" layoutY="297.0" textAlignment="CENTER" textFill="RED" />
    </children>
 </Pane>
