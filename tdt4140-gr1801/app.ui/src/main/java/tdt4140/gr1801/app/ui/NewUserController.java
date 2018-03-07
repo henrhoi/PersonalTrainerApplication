@@ -46,9 +46,8 @@ public class NewUserController implements Controller{
 		public void createUser() {
 			
 			//Check fields
-			ArrayList<TextField> fields = new ArrayList<TextField>(Arrays.asList(usernameField,firstNameField, lastNameField, phoneNumberField, emailField));
+			ArrayList<TextField> fields = new ArrayList<TextField>(Arrays.asList(usernameField,firstNameField, lastNameField,passwordField, phoneNumberField, emailField));
 			fields.stream().forEach(f -> check(f));
-			checkPassword();
 			checkBirthday();
 			
 			Pane pane = (Pane)usernameField.getParent();
@@ -62,9 +61,6 @@ public class NewUserController implements Controller{
 	    			URL path = getClass().getResource("FxLogin.fxml");
 	    			SceneLoader.setScene(stage, path, controller);
 	    			System.out.println("New User added");
-	    			
-	    			
-	    			
 			}
 			
 		}
@@ -81,25 +77,14 @@ public class NewUserController implements Controller{
 		case "lastNameField": bool = PersonalTrainer.checkLastName(field.getText());break;
 		case "emailField": bool = PersonalTrainer.checkEmail(field.getText());break;
 		case "phoneNumberField": bool = PersonalTrainer.checkPhoneNumber(field.getText());break;
+		case "passwordField": bool = field.getText().equals(confirmPasswordField.getText()) && field.getText().length() >= 4;break;
 		default: bool = true;break;
 		}
 		if (!bool) {
             style.add("error");
         }
-        else if (style.contains("error") ){
+        else if (style.contains("error") && bool){
         		style.remove("error");
-        }
-	}
-	
-	private void checkPassword() {
-		boolean bool = passwordField.getText().equals(confirmPasswordField.getText()) && passwordField.getText().length() >= 4;
-		if (!bool) {
-            passwordField.getStyleClass().add("error");
-            confirmPasswordField.getStyleClass().add("error");
-        }
-        else if (passwordField.getStyleClass().contains("error") ){
-        		passwordField.getStyleClass().remove("error");
-        		confirmPasswordField.getStyleClass().remove("error");
         }
 	}
 	

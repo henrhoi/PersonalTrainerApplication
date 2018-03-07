@@ -14,9 +14,9 @@
       <TextField fx:id="lastNameField" layoutX="117.0" layoutY="185.0" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
       <TextField fx:id="phoneNumberField" layoutX="371.0" layoutY="105.0" promptText="Phone number" stylesheets="@stylesheets/LoginStyle.css" />
       <TextField fx:id="emailField" layoutX="371.0" layoutY="146.0" promptText="Email" stylesheets="@stylesheets/LoginStyle.css" />
-      <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="223.0" promptText="Password" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="117.0" layoutY="262.0" promptText="Confrim Password" />
-      <Button layoutX="291.0" layoutY="326.0" mnemonicParsing="false" onAction="#createUser" text="+ Create User" />
+      <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="223.0" promptText="Password" stylesheets="@stylesheets/NewUserStyle.css" />
+      <PasswordField fx:id="confirmPasswordField" layoutX="117.0" layoutY="262.0" promptText="Confrim Password" stylesheets="@stylesheets/NewUserStyle.css" />
+      <Button layoutX="291.0" layoutY="326.0" mnemonicParsing="false" onAction="#createUser" stylesheets="@stylesheets/NewUserStyle.css" text="+ Create User" />
       <Label id="h2" fx:id="infoLabel" layoutX="117.0" layoutY="53.0" stylesheets="@stylesheets/LoginStyle.css" text="Fill all information" textFill="WHITE" />
       <DatePicker fx:id="birthdayField" layoutX="371.0" layoutY="187.0" prefHeight="27.0" prefWidth="167.0" promptText="Birthday" stylesheets="@stylesheets/NewUserStyle.css" />
    </children>
