@@ -83,7 +83,7 @@ public class Client {
     
     
     public void addWeight(String date, double weight) {
-    		if (weight>0 && weight<400) {
+    		if (weight>0.0 && weight<400.0) {
     			this.weights.put(date, weight);
     		}else {
     			throw new IllegalArgumentException("Not valid weight, must be in range [0,400]");
@@ -92,7 +92,7 @@ public class Client {
     
     
     public void addFat(String date, Double fat) {
-    		if (fat>0 && fat<1) {
+    		if (fat>0.0 && fat<1.0) {
     			this.fats.put(date,fat);
     		} else {
     			throw new IllegalArgumentException("Not valid fat percent, must be in range [0,1]");
@@ -107,9 +107,5 @@ public class Client {
     }
     
     
-    public static void main(String[] args) {
-    		PersonalTrainer pt = new PersonalTrainer("Vilde97", "Halvor", "Nilsen", "Halvor@nilsen.com","90911287","20190106-1400");
-		Client c = new Client(1, "Vilde",  170,  pt);
-		System.out.println(c.getHeight());
-	}
+
 }
