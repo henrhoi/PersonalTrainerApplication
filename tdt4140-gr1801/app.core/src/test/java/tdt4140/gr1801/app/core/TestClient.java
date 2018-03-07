@@ -100,5 +100,22 @@ public class TestClient extends TestCase{
 		}
 	}
 
+	public void testAddFat() {
+		try {
+			client.addFat(date1, -1.0);
+			fail();
+		}
+		catch (IllegalArgumentException IAE) {
+		}
+	}
+	
+	public void testAddWeight() {
+		try {
+			client.addWeight(date1, -20);
+			fail();
+		}
+		catch (IllegalArgumentException IAE) {
+		}
+	}
 }	
 
