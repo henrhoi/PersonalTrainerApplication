@@ -1,19 +1,15 @@
 package tdt4140.gr1801.app.ui;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
-
-import org.apache.http.client.ClientProtocolException;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import tdt4140.gr1801.web.server.LoginModule;
 
 public class LoginController {
 	
@@ -23,8 +19,6 @@ public class LoginController {
 	@FXML
 	PasswordField passwordField;
 	
-	@FXML
-	Label loginInfo;
 
 	
 	public void initialize() {
@@ -34,17 +28,9 @@ public class LoginController {
 	
 	//Action on enter from passwordField
 	@FXML
-	public void loginAction() throws NoSuchAlgorithmException, ClientProtocolException, IOException {
+	public void loginAction() {
 		//TODO - Check if username and password are OK
-		String username = usernameField.getText();
-		String password = passwordField.getText();
-		if(LoginModule.checkLogin(username, password)) {
-			openNewFXML("FxMainView.fxml");
-		}
-		else {
-			loginInfo.setText("Wrong username or password");
-		}
-		
+		openNewFXML("FxMainView.fxml");
 	}
 	
 	
