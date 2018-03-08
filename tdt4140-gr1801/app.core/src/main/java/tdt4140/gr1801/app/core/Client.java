@@ -23,6 +23,8 @@ public class Client {
     		this.name = name;
     		this.height = height;
     		this.pt = pt;
+    		pt.addClient(this);
+
 	    
     		this.weights = new HashMap<String,Double>();
     		this.fats = new HashMap<String,Double>();
@@ -105,6 +107,7 @@ public class Client {
     		this.nutritions.add(nutrition);
     }
     
+
     
 
 }
