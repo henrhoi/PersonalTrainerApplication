@@ -27,7 +27,7 @@ public class LoginModule {
 		// Hasher passordet
 		shaHashedPasswrd = hashSha256(password);
 		
-		String content = GetURL.getContent("/login/"+username);
+		String content = GetURL.getRequest("/login/"+username);
 		System.out.println(content);
 		
 	    // Returnerer om passordet som proeves aa logge inn med stemmer med passordet i databasen. 

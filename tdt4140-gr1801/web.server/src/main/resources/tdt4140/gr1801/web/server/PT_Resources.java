@@ -2,7 +2,9 @@ package tdt4140.gr1801.web.server;
 
 import java.sql.SQLException;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import java.io.IOException;
@@ -39,14 +41,22 @@ public class PT_Resources {
 		return json;
     }
 	
-    
+    @POST
+    @Path("/post")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createPT(String data) {
+
+        String result = "Data post: "+data;
+
+        return Response.status(201).entity(result).build(); 
+    }
 
     
  
    
     public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, ClientProtocolException, IOException {
     		//finner info om pt med pt_id = "henrhoi"
-    		String pt_info = GetURL.getContent("/pt/henrhoi");
+    		String pt_info = GetURL.getRequest("/pt/henrhoi");
     		System.out.println(pt_info);
 
 	}
