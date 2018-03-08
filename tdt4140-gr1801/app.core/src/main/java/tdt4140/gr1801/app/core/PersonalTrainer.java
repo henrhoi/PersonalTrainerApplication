@@ -12,9 +12,10 @@ public class PersonalTrainer {
 	private String lastName;
 	private String email;
 	private String phoneNumber;
+	private String password;
 	private String birthday;
 	
-	//private ArrayList<Client> clientList;
+	private ArrayList<Client> clientList = new ArrayList<>();
 	
 	public String getEmail() {
 		return email;
@@ -47,11 +48,9 @@ public class PersonalTrainer {
 	public String getBirthday() {
 		return birthday;
 	}
+	
 
-	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, String birthday) {
-		if(!checkUsername(username)) {
-			throw new IllegalStateException("Invalid username.");
-		}
+	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, String password, String birthday) {
 		//if(!checkNames(firstName, lastName)) {
 		//	throw new IllegalArgumentException("Invalid names. Only letters.");
 		//}
@@ -61,15 +60,15 @@ public class PersonalTrainer {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.birthday = birthday;
+		this.password = password;
 	}
 	
 	public PersonalTrainer() {
 		
 	}
 	
-	//Username cannot be longer than 15 characters
 	public static boolean checkUsername(String username) {
-		return username.length() <= 15;
+		return username.matches("[A-Za-z0-9]+");
 	}
 	
 	
@@ -102,7 +101,25 @@ public class PersonalTrainer {
 		return correctness;		
 	}
 	
+	public void addClient(Client client) throws IllegalArgumentException{
+		if(clientList.contains(client)) {
+			throw new IllegalArgumentException("Client already in client list");
+		}
+		clientList.add(client);
+	}
+
 	
+	public void removeClient(Client client) {
+		if(!clientList.contains(client)) {
+			throw new IllegalArgumentException("Client is not in client list");
+		}
+		clientList.add(client);
+	}
 	
-	
+	public Client getClient(Client client) throws IllegalArgumentException{
+		if(!clientList.contains(client)) {
+			throw new IllegalArgumentException("This client is not in client list");
+		}
+		return client;
+	}
 }

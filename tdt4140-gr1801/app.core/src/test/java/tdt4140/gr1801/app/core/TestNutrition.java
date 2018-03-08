@@ -10,7 +10,7 @@ public class TestNutrition extends TestCase {
 	String date1;
 	
 	protected void setUp() {
-		pt = new PersonalTrainer("Vilde123", "Halvor", "Nilsen", "Halvor@nilsen.com","90911287",date1);
+		pt = new PersonalTrainer("Vilde123", "Halvor", "Nilsen", "Halvor@nilsen.com","90911287","1234567890", date1);
 		client = new Client(1,"Vilde",170,pt);
 		date1 = "20180103-1400";
 		nutrition = new Nutrition(date1, 1887, 63, 94, 236, client.getId());

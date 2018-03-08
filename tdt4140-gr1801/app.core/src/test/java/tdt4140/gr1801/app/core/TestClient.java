@@ -24,7 +24,7 @@ public class TestClient extends TestCase{
 		n3 = new Nutrition(date3, 1887, 63, 94, 236, 1);  
 		n4 = new Nutrition(date4, 1688, 62, 78, 203, 1);
 		
-		pt = new PersonalTrainer("Vilde123", "Halvor", "Nilsen", "Halvor@nilsen.com","90911287",date);
+		pt = new PersonalTrainer("Vilde123", "Halvor", "Nilsen", "Halvor@nilsen.com","90911287", "1234567890", date);
 		client = new Client(1,"Vilde",170,pt);
 		client.addNutrition(n1);
 		client.addNutrition(n2);
