@@ -9,7 +9,7 @@
 		<artifactId>tdt4140-gr1801</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+		
 	<build>
 		<plugins>
 			<plugin>
@@ -78,7 +78,6 @@
 			<scope>test</scope>
 		</dependency>
 		
-         
 	</dependencies>
 	
 </project>
