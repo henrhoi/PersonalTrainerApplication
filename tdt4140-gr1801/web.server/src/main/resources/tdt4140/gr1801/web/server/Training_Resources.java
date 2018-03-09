@@ -15,7 +15,7 @@ public class Training_Resources {
 	
 	@GET
 	@Path("/hello")
-	@Produces(MediaType.TEXT_PLAIN)
+	@Produces("application/json")
 	public String helloWorld() {
 		return "Hello, world!";
 
