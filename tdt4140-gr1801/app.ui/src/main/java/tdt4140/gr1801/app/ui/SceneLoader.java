@@ -25,7 +25,7 @@ public class SceneLoader {
 	        stage.show();
 	        System.out.println("Sucess");
 		} catch (IOException e) {
-			System.out.println("En feil skjedde når du prøvde åpne fxmlfilen.");
+			System.out.println("En feil skjedde naar du provde aapne fxmlfilen.");
 			e.printStackTrace();
 		}
 	}
