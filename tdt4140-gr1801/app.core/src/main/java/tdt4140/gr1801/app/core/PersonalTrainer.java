@@ -72,6 +72,7 @@ public class PersonalTrainer {
 	}
 	
 	public static boolean checkUsername(String username) {
+		//TODO check if username is taken i database.
 		return username.matches("[A-Za-z0-9]+");
 	}
 	

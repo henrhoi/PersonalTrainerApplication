@@ -14,21 +14,21 @@ public final class QueryFactory {
 	public static PreparedStatement getPassword(String PT_ID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();		// Kobler seg til database
 		PreparedStatement stmt = conn.prepareStatement("SELECT Passwrd FROM PT WHERE PT_ID = ?");  	//Gjoer klar en spoerring
-		stmt.setString(1, PT_ID);	// Setter ? i Statementet til PT_ID. Er 1-indeksert
+		stmt.setString(1, PT_ID);	// Setter sporsmoltegn i Statementet til PT_ID. Er 1-indeksert
 		return stmt;
 	}
 
-	// Hente informasjon om én PT
+	// Hente informasjon om en PT
 	public static PreparedStatement getPT(String PT_ID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();		// Kobler seg til database
 		PreparedStatement stmt = conn.prepareStatement("SELECT PT_ID, Navn, Email, Birthday, Phonenr FROM PT WHERE PT_ID = ?");  	//Gjoer klar en spoerring
-		stmt.setString(1, PT_ID);		// Setter ? i Statementet til PT_ID. Er 1-indeksert
+		stmt.setString(1, PT_ID);		// Setter sporsmoltegn i Statementet til PT_ID. Er 1-indeksert
 		return stmt;
 	}
 	
 	
 	
-	// Hente informasjon om én klient
+	// Hente informasjon om en klient
 	public static PreparedStatement getClient(Integer ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Klient WHERE ClientID = ?");  

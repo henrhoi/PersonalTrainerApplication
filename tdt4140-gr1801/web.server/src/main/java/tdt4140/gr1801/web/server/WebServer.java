@@ -47,7 +47,7 @@ public class WebServer{
 		WebServer webserver = new WebServer(8080);
 		webserver.setup();
 		webserver.server.start();
-		//I TESTER HA .join PAA SLUTTEN - DEN VENTER PÅ AT THREADEN SKAL BLI FERDIG 
+		//I TESTER HA .join PAA SLUTTEN - DEN VENTER Paa AT THREADEN SKAL BLI FERDIG 
 		webserver.server.join();
 	}
 }
