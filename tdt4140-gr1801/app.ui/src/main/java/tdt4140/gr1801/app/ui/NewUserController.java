@@ -19,7 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.PersonalTrainer;
-import tdt4140.gr1801.web.server.Signup_Resources;
+
 
 
 

@@ -28,7 +28,7 @@ public final class QueryFactory {
 	
 	
 	
-	// Hente informasjon om én klient
+	// Hente informasjon om en klient
 	public static PreparedStatement getClient(Integer ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Klient WHERE ClientID = ?");  
