@@ -2,7 +2,6 @@ package tdt4140.gr1801.web.server;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -46,7 +45,25 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	// PreparedStatement for innsetting av PT i databasen
+	public static PreparedStatement insertPT(String PT_ID, String Passwrd, String Navn, String Email, String Birthday, String Phonenr) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("INSERT INTO PT(PT_ID, Passwrd, Navn, Email, Birthday, Phonenr) VALUES (?, ?, ?, ?, ?, ?)");  
+		stmt.setString(1, PT_ID);
+		stmt.setString(2, Passwrd);
+		stmt.setString(3, Navn);
+		stmt.setString(4, Email);
+		stmt.setString(5, Birthday);
+		stmt.setString(6, Phonenr);
+		return stmt;
+	}
 	
+	
+	
+	
+	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		PreparedStatement stmt = QueryFactory.insertPT("vildera","Vilde Arntzen", "vildera@stud.ntnu.no","90959409","5080db871da8cce0493c7929f4fdb87668518f075c157e4389b292976b6d48cf","19970603");
+	}
 	
 	
 	

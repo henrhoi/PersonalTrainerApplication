@@ -78,6 +78,18 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<dependency>
+   		 	<groupId>org.json</groupId>
+   		 	<artifactId>json</artifactId>
+    			<version>20180130</version>
+		</dependency>
+		
+         <dependency>
+             <groupId>tdt4140-gr1801</groupId>
+             <artifactId>tdt4140-gr1801.web.server</artifactId>
+             <version>0.0.1-SNAPSHOT</version>
+         </dependency>
+		
 	</dependencies>
 	
 </project>

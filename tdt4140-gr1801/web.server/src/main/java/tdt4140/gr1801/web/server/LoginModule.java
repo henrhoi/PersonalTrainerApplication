@@ -1,17 +1,10 @@
 package tdt4140.gr1801.web.server;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
+
 
 public class LoginModule {
 	
@@ -20,10 +13,9 @@ public class LoginModule {
 		String shaHashedPasswrd;
 		// Definerer et salt. Burde ha vaert en envirement variabel (setenv), men lar den ligge i koden
 		// for naa for enkelhetsskyld, slik at det skal vaere enklere for en utenforstaaende og kjoere funksjonen.
-		String salt = "QxLUF1bgIAdeQX";
 		
 		// Legger til salt, som burde ha vaert hemmelig. 
-		password += salt;
+
 		// Hasher passordet
 		shaHashedPasswrd = hashSha256(password);
 		
@@ -37,6 +29,12 @@ public class LoginModule {
 	
 	public static String hashSha256(String string) {
 		try{
+			// Definerer et salt. Burde ha vaert en envirement variabel (setenv), men lar den ligge i koden
+			// for naa for enkelhetsskyld, slik at det skal vaere enklere for en utenforstaaende og kjoere funksjonen.
+			String salt = "QxLUF1bgIAdeQX";
+
+			// Legger til salt, som burde ha vaert hemmelig. 
+			string += salt;
 	        MessageDigest digest = MessageDigest.getInstance("SHA-256");
 	        byte[] hash = digest.digest(string.getBytes("UTF-8"));
 	        StringBuffer hexString = new StringBuffer();

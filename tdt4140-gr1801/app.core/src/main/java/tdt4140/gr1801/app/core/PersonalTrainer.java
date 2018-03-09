@@ -1,9 +1,13 @@
 package tdt4140.gr1801.app.core;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import org.json.JSONObject;
 
 import javafx.scene.control.TextField;
+import tdt4140.gr1801.web.server.GetURL;
+import tdt4140.gr1801.web.server.LoginModule;
 
 public class PersonalTrainer {
 	
@@ -108,7 +112,7 @@ public class PersonalTrainer {
 		clientList.add(client);
 	}
 
-	
+	 
 	public void removeClient(Client client) {
 		if(!clientList.contains(client)) {
 			throw new IllegalArgumentException("Client is not in client list");
@@ -121,5 +125,29 @@ public class PersonalTrainer {
 			throw new IllegalArgumentException("This client is not in client list");
 		}
 		return client;
+	}
+	
+	// OPPRETTELSE AV PT I DB:
+	//Metode som setter inn en PT i databasen - skal denne legges inn i konstruktoeren til PT. 
+	public void createPT(String passwrd) throws IOException {
+		JSONObject json = new JSONObject();
+		json.put("PT_ID", this.username);
+		//Hasher passord. Kan kanskje gjoeres et annet sted.
+		json.put("Passwrd", LoginModule.hashSha256(passwrd));
+		json.put("Navn", this.firstName+" "+this.lastName);
+		json.put("Email", this.email);
+		json.put("Birthday", this.birthday);
+		json.put("Phonenr", this.phoneNumber);
+		System.out.println(json);
+		String respons = GetURL.postRequest("/signup/pt", json);
+		System.out.println(respons);
+	}
+	
+	
+	
+	public static void main(String[] args) throws IOException {
+		PersonalTrainer pt = new PersonalTrainer("vildera","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","henrikerkul","19970603");
+		System.out.println(pt.password);
+		pt.createPT("henrikerkul");
 	}
 }

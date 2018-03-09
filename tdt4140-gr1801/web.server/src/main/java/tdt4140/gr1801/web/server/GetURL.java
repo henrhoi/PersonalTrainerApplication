@@ -9,9 +9,13 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
 public class GetURL {
 	
@@ -31,23 +35,33 @@ public class GetURL {
 	
 	// Denne funksjonen legger 
 	
-	public static String postRequest(String URL, NameValuePair[] data) throws IOException {
-		PostMethod post = new PostMethod(URL);
-		post.setRequestBody(data);
-		// execute method and handle any error responses.
+	public static String postRequest(String URL, JSONObject json) throws IOException { 
 
-		InputStream in = post.getResponseBodyAsStream();
-		
-		
-		return URL;
-		
-		// handle response.
-		
-		// Do something with http.getInputStream()
+		CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+
+		try {
+		    HttpPost request = new HttpPost("http://localhost:8080"+URL);
+		    StringEntity params = new StringEntity(json.toString());
+		    request.addHeader("content-type", "application/json");
+		    request.setEntity(params);
+		    HttpResponse response = httpClient.execute(request);
+		// handle response here...
+			HttpEntity entity = response.getEntity();
+		    String content = EntityUtils.toString(entity);
+		    return content;
+		} catch (Exception ex) {
+		    // handle exception here
+		} finally {
+		    httpClient.close();
+		}
+		return "";
 	}
 	
 	
 }
+
+
+
 //HELLO
 
 
