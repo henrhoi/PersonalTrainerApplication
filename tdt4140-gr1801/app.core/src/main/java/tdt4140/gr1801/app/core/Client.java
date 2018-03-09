@@ -1,8 +1,14 @@
 package tdt4140.gr1801.app.core;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.json.JSONObject;
+
+import tdt4140.gr1801.web.server.GetURL;
+import tdt4140.gr1801.web.server.LoginModule;
 
 public class Client {
 	private String name;
@@ -107,7 +113,22 @@ public class Client {
     		this.nutritions.add(nutrition);
     }
     
-
+    // Funksjon som legger Client til i Klient-tablen i DB. Kan kanskje gjøres statisk og ta inn Client som input og gjøres statisk.
+    public void createClient() throws IOException {
+		JSONObject json = new JSONObject();
+		json.put("Navn", this.name);
+		json.put("Height", this.height);
+		json.put("PT_ID", this.pt.getUsername());
+		System.out.println(json);
+		String respons = GetURL.postRequest("/signup/client", json);
+		System.out.println(respons);
+    }
     
+    // Tester at innsetting av Client fungerer. 
+    public static void main(String[] args) throws IOException {
+    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","henrikerkul","19970603");
+    		Client client = new Client(1,"Vilde Arntzen",160, pt);
+    		client.createClient();
+	}
 
 }

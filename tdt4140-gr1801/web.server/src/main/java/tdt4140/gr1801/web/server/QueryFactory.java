@@ -58,11 +58,25 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	// PreparedStatement for innsetting av Client i databasen
+	public static PreparedStatement insertClient(String Navn, int Height, String PT_ID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Klient(Navn, Height, PT_ID)  VALUES (?, ?, ?)");  
+		stmt.setString(1, Navn);
+		stmt.setInt(2, Height);
+		stmt.setString(3, PT_ID);
+		return stmt;
+	}
+	
+	
+	
+	
 	
 	
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		PreparedStatement stmt = QueryFactory.insertPT("vildera","Vilde Arntzen", "vildera@stud.ntnu.no","90959409","5080db871da8cce0493c7929f4fdb87668518f075c157e4389b292976b6d48cf","19970603");
+		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
+		stmt.execute();
 	}
 	
 	

@@ -43,9 +43,16 @@ public class Signup_Resources {
     @Path("/client")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createClient(String data) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-        
+    		JSONObject json = new JSONObject(data);
+        String Navn = json.getString("Navn");
+        int Height = json.getInt("Height");
+        String PT_ID = json.getString("PT_ID");
+
+        PreparedStatement stmt = QueryFactory.insertClient(Navn, Height, PT_ID);
+        stmt.execute();
         return Response.status(201).entity("Navn" + " added to Klient-table in database if all input were correct").build(); 
     }
+    
     
 
 
