@@ -113,6 +113,15 @@ public class Client {
     		this.nutritions.add(nutrition);
     }
     
+    // TODO - Må legge inn tester i TestClient-klassen 
+    public void addStrengthTraining(Strength training) {
+    		this.strengthTraining.add(training);
+    }
+    
+    public void addEnduranceTraining(Endurance training) {
+    		this.enduranceTraining.add(training);
+    }
+    
     // Funksjon som legger Client til i Klient-tablen i DB. Kan kanskje gjøres statisk og ta inn Client som input og gjøres statisk.
     public void createClient() throws IOException {
 		JSONObject json = new JSONObject();
