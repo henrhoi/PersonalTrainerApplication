@@ -1,6 +1,7 @@
 package tdt4140.gr1801.app.ui;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.PersonalTrainer;
+import tdt4140.gr1801.web.server.Signup_Resources;
 
 
 
@@ -45,6 +47,8 @@ public class NewUserController implements Controller{
 		@FXML
 		public void createUser() {
 			
+			
+			
 			//Check fields
 			ArrayList<TextField> fields = new ArrayList<TextField>(Arrays.asList(usernameField,firstNameField, lastNameField,passwordField, phoneNumberField, emailField));
 			fields.stream().forEach(f -> check(f));
@@ -55,7 +59,17 @@ public class NewUserController implements Controller{
 			
 			
 			if(errors.size() == 0) {
-				//TODO add new user to database and check that usernames not is used in database
+				//Add new PT to database
+				try {
+					//First and lastname should just be Name
+					PersonalTrainer pt = new PersonalTrainer(usernameField.getText(),firstNameField.getText(),
+							lastNameField.getText(),emailField.getText(),phoneNumberField.getText(),
+							passwordField.getText(),getDateString(birthdayField.getValue()));
+					pt.createPT(passwordField.getText());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				
 				Stage stage = (Stage)usernameField.getScene().getWindow();
 				LoginController controller = new LoginController();
 	    			URL path = getClass().getResource("FxLogin.fxml");
@@ -97,6 +111,15 @@ public class NewUserController implements Controller{
         else if (style.contains("error") ){
         		style.remove("error");
         }
+	}
+	
+	private String getDateString(LocalDate date) {
+		String year = date.getYear()+"";
+		String month = date.getMonthValue() + "";
+		month = month.length() == 1 ? "0"+ month:month;
+		String day = date.getDayOfMonth() + "";
+		day = day.length() == 1 ? "0" + day : day;
+		return  year + month + day +  "-1400"; 
 	}
 	
 	
