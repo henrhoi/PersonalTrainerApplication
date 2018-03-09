@@ -1,10 +1,6 @@
 package tdt4140.gr1801.web.server;
 
 import java.io.IOException; 
-import java.io.InputStream;
-
-import org.apache.commons.httpclient.NameValuePair;
-import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
