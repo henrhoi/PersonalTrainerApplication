@@ -38,7 +38,7 @@ public class Signup_Resources {
     
     
     
-    // Denne må lages i issuen om opprettelse av Klient i database
+    // Denne maa lages i issuen om opprettelse av Klient i database
     @POST
     @Path("/client")
     @Consumes(MediaType.APPLICATION_JSON)
