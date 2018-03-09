@@ -7,7 +7,10 @@ INSERT INTO PT(PT_ID, Passwrd, Navn, Email, Birthday, Phonenr) VALUES
 ("chestbrah", "3d9c5ea90f1e7080af1cdc2e0dcc2298b2e3788550c3709d0c5324c4b3c71d99", "William Kvaale", "williamandaslaug@mail.no", "1983-03-12", "77889900"), -- pw: mcboyerud69
 ("kristogj", "8595d3d0b452adfe119c0f2dddcf775f9abd9a48713a9e5d8ead32e1efc357a9", "TEST Kvaale", "williamandasug@mail.no", "1983-03-12", "77889920"); -- pw: fortnite123
 
-SELECT * FROM Klient WHERE PT_ID = "henrhoi";
+SELECT * FROM PT;
+SELECT * FROM Klient;
+
+DELETE FROM PT WHERE PT_ID="vildera";
 
 INSERT INTO KLIENT(Navn, Height, PT_ID) VALUES
 ("Toralf Frich", 203, "axeloh"),
