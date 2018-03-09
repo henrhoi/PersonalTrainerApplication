@@ -3,6 +3,8 @@ package tdt4140.gr1801.app.core;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javafx.scene.control.TextField;
@@ -142,6 +144,25 @@ public class PersonalTrainer {
 		System.out.println(json);
 		String respons = GetURL.postRequest("/signup/pt", json);
 		System.out.println(respons);
+	}
+	
+	
+	// TODO - må teste denne
+	public void getPTClients() throws ClientProtocolException, IOException {
+		String data = GetURL.getRequest("/client/all/"+this.username);
+		JSONArray json = new JSONArray(data);
+		for (int n = 0; n < json.length(); n++) {
+			JSONObject object = json.getJSONObject(n);
+			String navn = object.getString("Navn");
+			int id = object.getInt("ClientID");
+			int height = object.getInt("Height");
+
+			
+			Client newClient = new Client(id, navn, height, this);
+			
+			
+			
+		}
 	}
 	
 	

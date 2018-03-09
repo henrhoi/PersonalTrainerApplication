@@ -4,6 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path("/nutrition")
 public class Nutrition_Resources {
@@ -13,7 +14,7 @@ public class Nutrition_Resources {
 	
 	@GET
 	@Path("/{clientID}")
-    @Produces("application/json")
+	@Produces("application/json")
     public String getAllNutrition(@PathParam("clientID") String clientID) {
 		// Returner all registrert data over mat til en klient
 		
@@ -21,15 +22,5 @@ public class Nutrition_Resources {
 
 	}
 	
-	@GET
-	@Path("/date/{date}/{clientID}")
-    @Produces("application/json")
-    public String getNutritionByDate(@PathParam("date") String date, @PathParam("clientID") String clientID) {
-		// Returner data om mat for en dag for en klient
-		
-		return "";
-
-	}
 
 }
-// JSON respons
