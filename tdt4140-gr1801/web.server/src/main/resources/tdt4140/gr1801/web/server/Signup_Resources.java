@@ -24,12 +24,14 @@ public class Signup_Resources {
         String PT_ID = json.getString("PT_ID");
         System.out.println(PT_ID);
         String Passwrd = json.getString("Passwrd");
+        String Salt = json.getString("Salt");
         String Navn = json.getString("Navn");
         String Email = json.getString("Email");
         String Birthday = json.getString("Birthday");
         String Phonenr = json.getString("Phonenr");
+
         
-        PreparedStatement stmt = QueryFactory.insertPT(PT_ID, Passwrd, Navn, Email, Birthday, Phonenr);
+        PreparedStatement stmt = QueryFactory.insertPT(PT_ID, Passwrd, Salt, Navn, Email, Birthday, Phonenr);
         stmt.execute();
         
         return Response.status(201).entity(Navn + " added to PT-table in database if all input were correct").build(); 

@@ -147,9 +147,11 @@ public class PersonalTrainer {
 	//Metode som setter inn en PT i databasen - skal denne legges inn i konstruktoeren til PT. 
 	public void createPT(String passwrd) throws IOException  {
 		JSONObject json = new JSONObject();
+		String salt = LoginModule.generateSalt();
 		json.put("PT_ID", this.username);
 		//Hasher passord. Kan kanskje gjoeres et annet sted.
-		json.put("Passwrd", LoginModule.hashSha256(passwrd));
+		json.put("Passwrd", LoginModule.hashSha256(passwrd, salt));
+		json.put("Salt", salt);
 		json.put("Navn", this.firstName+" "+this.lastName);
 		json.put("Email", this.email);
 		json.put("Birthday", this.birthday);
