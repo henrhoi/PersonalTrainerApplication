@@ -15,7 +15,8 @@ CREATE TABLE PT(
     Navn		VARCHAR(40),
     Email		VARCHAR(30),
     Birthday	VARCHAR(13),
-    Phonenr	VARCHAR(12) -- hvor mange siffer (USA?)
+    Phonenr	VARCHAR(12), -- hvor mange siffer (USA?)
+	Salt			VARCHAR(100)
 );
 
 

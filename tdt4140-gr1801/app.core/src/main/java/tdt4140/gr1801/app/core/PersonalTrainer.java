@@ -73,6 +73,19 @@ public class PersonalTrainer {
 		
 	}
 	
+	// Konstruktør som tar inn PT_ID som input, returnerer et PT-objekt fra DB, dersom brukernavnet er gyldig
+	public PersonalTrainer(String username) throws ClientProtocolException, IOException {
+		String data = GetURL.getRequest("/pt/"+username);
+		JSONObject json = new JSONArray(data).getJSONObject(0);
+		this.username = username;
+		this.firstName = json.getString("Navn").split("\\s+")[0];
+		this.lastName = json.getString("Navn").split("\\s+")[1];
+		this.email = json.getString("Email");
+		this.phoneNumber = json.getString("Phonenr");
+		this.birthday = json.getString("Birthday");
+		
+	}
+	
 	public static boolean checkUsername(String username) {
 		//TODO check if username is taken i database.
 		return username.matches("[A-Za-z0-9]+");
@@ -134,9 +147,11 @@ public class PersonalTrainer {
 	//Metode som setter inn en PT i databasen - skal denne legges inn i konstruktoeren til PT. 
 	public void createPT(String passwrd) throws IOException  {
 		JSONObject json = new JSONObject();
+		String salt = LoginModule.generateSalt();
 		json.put("PT_ID", this.username);
 		//Hasher passord. Kan kanskje gjoeres et annet sted.
-		json.put("Passwrd", LoginModule.hashSha256(passwrd));
+		json.put("Passwrd", LoginModule.hashSha256(passwrd, salt));
+		json.put("Salt", salt);
 		json.put("Navn", this.firstName+" "+this.lastName);
 		json.put("Email", this.email);
 		json.put("Birthday", this.birthday);
@@ -157,16 +172,20 @@ public class PersonalTrainer {
 			int id = object.getInt("ClientID");
 			int height = object.getInt("Height");
 
-			
 			Client newClient = new Client(id, navn, height, this);
 		}
 	}
 	
 	
-	
+	// Main som tester at PT får sine klienter.
 	public static void main(String[] args) throws IOException {
-		PersonalTrainer pt = new PersonalTrainer("vildera","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","henrikerkul","19970603");
-		System.out.println(pt.password);
-		pt.createPT("henrikerkul");
+		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","henrikerkul","19970603");
+		pt.getPTClients();
+		for (Client client : pt.clientList) {
+			System.out.println(client.getName());
+		}
+		
+		PersonalTrainer pt1 = new PersonalTrainer("henrhoi");
+		System.out.println(pt1.birthday);
 	}
 }
