@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONObject;
 
 import tdt4140.gr1801.web.server.GetURL;
@@ -132,6 +133,12 @@ public class Client {
 		String respons = GetURL.postRequest("/signup/client", json);
 		System.out.println(respons);
     }
+    
+    public void getStrengthTrainings() throws ClientProtocolException, IOException {
+    	String data = GetURL.getRequest("/client/all");
+    }
+    
+    
     
     // Tester at innsetting av Client fungerer. 
     public static void main(String[] args) throws IOException {

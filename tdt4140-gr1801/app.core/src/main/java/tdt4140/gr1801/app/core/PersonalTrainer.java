@@ -159,9 +159,6 @@ public class PersonalTrainer {
 
 			
 			Client newClient = new Client(id, navn, height, this);
-			
-			
-			
 		}
 	}
 	
