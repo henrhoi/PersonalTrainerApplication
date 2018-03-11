@@ -3,6 +3,7 @@ package tdt4140.gr1801.app.core;
 
 public class Nutrition {
 	
+	//Date format "yyyymmdd-xxxx"
 	private String date; 
 	//everything measured in grams: 
 	private Integer calories; 

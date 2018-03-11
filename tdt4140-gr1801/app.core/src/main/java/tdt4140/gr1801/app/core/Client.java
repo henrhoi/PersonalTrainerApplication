@@ -177,7 +177,7 @@ public class Client {
     
     // Tester at innsetting av Client fungerer. 
     public static void main(String[] args) throws IOException {
-    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","henrikerkul","19970603");
+    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
     		Client client = new Client(1,"Vilde Arntzen",160, pt);
     		client.createClient();
 	}
