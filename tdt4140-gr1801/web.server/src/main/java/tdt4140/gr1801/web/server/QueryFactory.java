@@ -45,6 +45,24 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	// må testes
+	public static PreparedStatement getAllNutritions(Integer ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Nutrition WHERE ClientID = ?");
+		stmt.setInt(1,ClientID);
+		return stmt;
+	}
+	
+	
+	// må testes
+	public static PreparedStatement getAllEndurance(Integer ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Endurance WHERE ClientID = ?");
+		stmt.setInt(1, ClientID);
+		return stmt;
+	}
+	
+	
 	// PreparedStatement for innsetting av PT i databasen
 	public static PreparedStatement insertPT(String PT_ID, String Passwrd, String Navn, String Email, String Birthday, String Phonenr) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();
@@ -67,7 +85,6 @@ public final class QueryFactory {
 		stmt.setString(3, PT_ID);
 		return stmt;
 	}
-	
 	
 	
 	

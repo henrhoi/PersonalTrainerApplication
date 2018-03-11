@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.client.ClientProtocolException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import tdt4140.gr1801.web.server.GetURL;
@@ -131,6 +133,35 @@ public class Client {
 		System.out.println(json);
 		String respons = GetURL.postRequest("/signup/client", json);
 		System.out.println(respons);
+    }
+    
+    // ikke testet 
+    public void getClientNutrition() throws ClientProtocolException, IOException {
+    		String data = GetURL.getRequest("/nutrition/"+this.id);
+    		JSONArray json = new JSONArray(data);
+    		for (int n = 0; n < json.length(); n++) {
+    			JSONObject object = json.getJSONObject(n);
+    			String date = object.getString("Dato");
+    			int cals = object.getInt("Calories");
+    			int fat = object.getInt("Fat");
+    			int carbs = object.getInt("Carbs");
+    			int protein = object.getInt("Protein");
+    			
+    			Nutrition nutrition = new Nutrition(date, cals, fat, carbs, protein, this.id);
+    			this.nutritions.add(nutrition);
+    		}
+    }
+    
+    // IKKE FERDIG!
+    // ikke testet 
+    public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
+    		String data = GetURL.getRequest("training/endurance/"+this.id);
+    		JSONArray json = new JSONArray(data);
+    		for (int n = 0; n < json.length(); n++) {
+    			JSONObject object = json.getJSONObject(n);
+    			
+    			
+    		}
     }
     
     // Tester at innsetting av Client fungerer. 
