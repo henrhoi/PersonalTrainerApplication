@@ -9,6 +9,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 @Path("/login")
 public class Login_Resource {
 	
@@ -16,16 +19,15 @@ public class Login_Resource {
 	@GET
     @Path("/{param}")
     public Response getPassword(@PathParam("param") String username) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		String hashedpasswrd = "";
 		PreparedStatement stmt = QueryFactory.getPassword(username);
 		ResultSet rs = stmt.executeQuery();
+		JSONArray jsonarray = RSJSONConverter.ResultSetToJSON(rs);
 		
-		// Henter foerste, og i dette tilfelle, eneste paramenter i rs
-		while (rs.next()){
-			hashedpasswrd = rs.getString("Passwrd"); 
-		}
 		
-		return Response.status(200).entity(hashedpasswrd).build();
+		JSONObject json = jsonarray.getJSONObject(0);
+		System.out.println(json);
+		
+		return Response.status(200).entity(json.toString()).build();
 	}
-
+	
 }

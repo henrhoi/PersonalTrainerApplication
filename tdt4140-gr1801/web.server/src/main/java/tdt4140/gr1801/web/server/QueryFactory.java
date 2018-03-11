@@ -13,7 +13,7 @@ public final class QueryFactory {
 	// Hente SHA-256-hashet passord fra databasen
 	public static PreparedStatement getPassword(String PT_ID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();		// Kobler seg til database
-		PreparedStatement stmt = conn.prepareStatement("SELECT Passwrd FROM PT WHERE PT_ID = ?");  	//Gjoer klar en spoerring
+		PreparedStatement stmt = conn.prepareStatement("SELECT Passwrd, Salt FROM PT WHERE PT_ID = ?");  	//Gjoer klar en spoerring
 		stmt.setString(1, PT_ID);	// Setter sporsmoltegn i Statementet til PT_ID. Er 1-indeksert
 		return stmt;
 	}
@@ -64,15 +64,16 @@ public final class QueryFactory {
 	
 	
 	// PreparedStatement for innsetting av PT i databasen
-	public static PreparedStatement insertPT(String PT_ID, String Passwrd, String Navn, String Email, String Birthday, String Phonenr) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public static PreparedStatement insertPT(String PT_ID, String Passwrd, String Salt, String Navn, String Email, String Birthday, String Phonenr) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();
-		PreparedStatement stmt = conn.prepareStatement("INSERT INTO PT(PT_ID, Passwrd, Navn, Email, Birthday, Phonenr) VALUES (?, ?, ?, ?, ?, ?)");  
+		PreparedStatement stmt = conn.prepareStatement("INSERT INTO PT(PT_ID, Passwrd, Navn, Email, Birthday, Phonenr, Salt) VALUES (?, ?, ?, ?, ?, ?, ?)");  
 		stmt.setString(1, PT_ID);
 		stmt.setString(2, Passwrd);
 		stmt.setString(3, Navn);
 		stmt.setString(4, Email);
 		stmt.setString(5, Birthday);
 		stmt.setString(6, Phonenr);
+		stmt.setString(7, Salt);
 		return stmt;
 	}
 	
