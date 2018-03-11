@@ -141,28 +141,33 @@ public class Client {
     
     //KISSA
     public void getStrengthTrainings() throws ClientProtocolException, IOException {
+    	//Get all strength training
     	String strengthData = GetURL.getRequest("/training/strength/"+ this.id);
     	JSONArray strengthJson = new JSONArray(strengthData);
     	for (int n = 0 ; n < strengthJson.length() ; n++ ) {
     		JSONObject strengthObject  = strengthJson.getJSONObject(n);
     		int strengthID = strengthObject.getInt("StrengthID");
     		String date = strengthObject.getString("Dato");
-    		int duration = strengthObject.getInt("Duration");
+    		int duration = strengthObject.getInt("Duration");    		
     		
+    		//Get all exercies for every strength training, we do not need sets, because that would be the length of repsList anyway
     		List<Exercise> exerciseList = new ArrayList<Exercise>();
     		String exData = GetURL.getRequest("/training/exercise/"+strengthID);
     		JSONArray exJson = new JSONArray(exData);
     		for (int m = 0 ; m < exJson.length() ; m++) {
     			JSONObject exObject = exJson.getJSONObject(m);
     			String navn = exObject.getString("Navn");
-    			int weight = exObject.getInt("Weight");
-    			int sets = exObject.getInt("Sets");
-    			
+    			double weight = exObject.getDouble("Weight");
+    			//Need to split the reps in to a list of integers. String format "d-d-d-d...." where d  is how many reps that set
     			String reps = exObject.getString("Reps");
-    			List<String> repsList = Arrays.asList(reps.split("-"));
-    			List<Integer> repsList2 = repsList.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
-    			
+    			List<Integer> repsList = Arrays.asList(reps.split("-")).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+    			//Make a new Exercise object that is going to be added to exerciseList.
+    			exerciseList.add(new Exercise(navn, weight, repsList));
     		}
+    		
+    		//For every Strength training we need to make a new Strength object that is going to be added this objects StrengthTraining list
+    		//Strength strength  = new Strength(date, duration, exerciseList); //Currently wrong because there have to be changes in Training for the Date to be a string
+    		//addStrengthTraining(strength);
     	}
     }
     //KISSA
