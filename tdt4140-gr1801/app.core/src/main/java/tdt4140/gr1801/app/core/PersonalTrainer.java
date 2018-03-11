@@ -134,6 +134,12 @@ public class PersonalTrainer {
 		return client;
 	}
 	
+	public ArrayList<Client> getClientList(){
+		return this.clientList;
+	}
+	
+	
+	
 	// OPPRETTELSE AV PT I DB:
 	//Metode som setter inn en PT i databasen - skal denne legges inn i konstruktoeren til PT. 
 	public void createPT(String passwrd) throws IOException  {
@@ -162,8 +168,8 @@ public class PersonalTrainer {
 			String navn = object.getString("Navn");
 			int id = object.getInt("ClientID");
 			int height = object.getInt("Height");
-
-			Client newClient = new Client(id, navn, height, this);
+			
+			Client client = new Client(id, navn, height, this);
 		}
 	}
 	

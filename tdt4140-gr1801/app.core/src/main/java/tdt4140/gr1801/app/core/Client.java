@@ -70,6 +70,10 @@ public class Client {
     		}
     }
     
+    public List<Strength> getStrengthList(){
+    		return this.strengthTraining;
+    }
+    
     
     public Double getFat(String date){
     		if (this.fats.containsKey(date)) {

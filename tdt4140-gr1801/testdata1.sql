@@ -17,7 +17,7 @@ INSERT INTO KLIENT(Navn, Height, PT_ID) VALUES
 ("Emilie Dahl", 149, "zyzz"),
 ("Erling Kjevik", 155, "henrhoi"),
 ("Eirik Dahlen", 192, "chestbrah"),
-("Martin Johansen", 189, "henrhoi");
+("Martin Johansen", 189, "kristogj");
 
 
 
@@ -31,7 +31,7 @@ INSERT INTO NUTRITION(Dato, Calories, Fat, Carbs, Protein, ClientID) VALUES
 
 
 INSERT INTO STRENGTH(Dato, Duration, ClientID) VALUES
-("2018-01-13", 90, 1),
+("2018-01-13", 90, 5),
 ("2018-01-05", 60, 2),
 ("2018-01-23", 100, 3),
 ("2018-02-01", 120, 4),
