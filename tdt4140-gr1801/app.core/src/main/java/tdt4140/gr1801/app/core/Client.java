@@ -2,14 +2,19 @@ package tdt4140.gr1801.app.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.apache.http.client.ClientProtocolException;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.mysql.cj.xdevapi.JsonArray;
+
 import tdt4140.gr1801.web.server.GetURL;
-import tdt4140.gr1801.web.server.LoginModule;
 
 public class Client {
 	private String name;
@@ -134,9 +139,34 @@ public class Client {
 		System.out.println(respons);
     }
     
+    //KISSA
     public void getStrengthTrainings() throws ClientProtocolException, IOException {
-    	String data = GetURL.getRequest("/client/all");
+    	String strengthData = GetURL.getRequest("/training/strength/"+ this.id);
+    	JSONArray strengthJson = new JSONArray(strengthData);
+    	for (int n = 0 ; n < strengthJson.length() ; n++ ) {
+    		JSONObject strengthObject  = strengthJson.getJSONObject(n);
+    		int strengthID = strengthObject.getInt("StrengthID");
+    		String date = strengthObject.getString("Dato");
+    		int duration = strengthObject.getInt("Duration");
+    		
+    		List<Exercise> exerciseList = new ArrayList<Exercise>();
+    		String exData = GetURL.getRequest("/training/exercise/"+strengthID);
+    		JSONArray exJson = new JSONArray(exData);
+    		for (int m = 0 ; m < exJson.length() ; m++) {
+    			JSONObject exObject = exJson.getJSONObject(m);
+    			String navn = exObject.getString("Navn");
+    			int weight = exObject.getInt("Weight");
+    			int sets = exObject.getInt("Sets");
+    			
+    			String reps = exObject.getString("Reps");
+    			List<String> repsList = Arrays.asList(reps.split("-"));
+    			List<Integer> repsList2 = repsList.stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+    			
+    		}
+    	}
     }
+    //KISSA
+    
     
     
     
