@@ -166,8 +166,8 @@ public class Client {
     		}
     		
     		//For every Strength training we need to make a new Strength object that is going to be added this objects StrengthTraining list
-    		//Strength strength  = new Strength(date, duration, exerciseList); //Currently wrong because there have to be changes in Training for the Date to be a string
-    		//addStrengthTraining(strength);
+    		Strength strength  = new Strength(date, duration, exerciseList); 
+    		addStrengthTraining(strength);
     	}
     }
     //KISSA
