@@ -10,7 +10,7 @@ public class PersonalTrainerTest extends TestCase{
 	
 	protected void setUp() {
 		pt = new PersonalTrainer();
-		pt1 = new PersonalTrainer("martin", "Martin", "Johansen", "martin@johansen.no", "47638632", "heihei", "19950517-1400");
+		pt1 = new PersonalTrainer("martin", "Martin", "Johansen", "martin@johansen.no", "47638632", "19950517-1400");
 		
 		c1 = new Client(1, "Heisann Sveisann", 175, pt1);
 		c2 = new Client(2, "Gjortleif Sveisen", 160, pt1);
@@ -23,12 +23,12 @@ public class PersonalTrainerTest extends TestCase{
 	}
 	
 	public void testFirstName() {
-		assertEquals(PersonalTrainer.checkFirstName(pt1.getFirstName()), true);
+		assertEquals(PersonalTrainer.checkFirstName(pt1.getName().split(" ")[0]), true);
 		assertEquals(PersonalTrainer.checkFirstName("1234SS"), false);
 	}
 	
 	public void testLastName() {
-		assertEquals(PersonalTrainer.checkLastName(pt1.getLastName()), true);
+		assertEquals(PersonalTrainer.checkLastName(pt1.getName().split(" ")[1]), true);
 		assertEquals(PersonalTrainer.checkLastName("1234gg"), false);
 	}
 	
