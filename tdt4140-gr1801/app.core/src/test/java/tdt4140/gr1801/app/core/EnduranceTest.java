@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.core;
 
 
-import java.util.Date;
 import junit.framework.TestCase;
 
 
@@ -10,9 +9,8 @@ public class EnduranceTest extends TestCase{
 	
 	Endurance endurance;
 	
-	@SuppressWarnings("deprecation")
 	protected void setUp() {
-		endurance = new Endurance(new Date(27, 02, 2018), 90, 12, 685);
+		endurance = new Endurance("20180215-1400", 90, 12, 685);
 	}
 	
 	public void testGetDistance() {
@@ -29,7 +27,7 @@ public class EnduranceTest extends TestCase{
 	
 	public void testNegativeDistance() {
 		try {
-			new Endurance(new Date(27, 02, 2018), 10, -12, 685);
+			new Endurance("20180215-1400", 10, -12, 685);
 			fail(); // Not supposed to get here
 		}
 		catch (IllegalArgumentException iae) {
@@ -42,7 +40,7 @@ public class EnduranceTest extends TestCase{
 	
 	public void testNegativeCaloriesBurned() {
 		try {
-			new Endurance(new Date(27, 02, 2018), 10, 12, -500);
+			new Endurance("20180215-1400", 10, 12, -500);
 			fail(); // Not supposed to get here
 		}
 		catch (IllegalArgumentException iae) {

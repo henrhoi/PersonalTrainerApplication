@@ -1,16 +1,15 @@
 package tdt4140.gr1801.app.core;
 
-import java.util.Date;
 
 import junit.framework.TestCase;
 
 public class TrainingTest extends TestCase{
 	
 	Training endurance;
-	Date date;
+	String date;
 	
 	public void setUp() {
-		date = new Date(28, 02, 2018);
+		date = "20180215-1400";
 		endurance = new Endurance(date, 90, 12, 555);
 	}
 	
@@ -24,8 +23,7 @@ public class TrainingTest extends TestCase{
 	
 	public void testNegativeDuration() {
 		try {
-			date = new Date(28, 02, 2018);
-			new Endurance(date, -100, 12, 555);
+			new Endurance("20180215-1400", -100, 12, 555);
 			fail();
 		}
 		catch
