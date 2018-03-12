@@ -19,5 +19,6 @@
       <Button layoutX="291.0" layoutY="326.0" mnemonicParsing="false" onAction="#createUser" stylesheets="@stylesheets/NewUserStyle.css" text="+ Create User" />
       <Label id="h2" fx:id="infoLabel" layoutX="117.0" layoutY="53.0" stylesheets="@stylesheets/LoginStyle.css" text="Fill all information" textFill="WHITE" />
       <DatePicker fx:id="birthdayField" layoutX="371.0" layoutY="187.0" prefHeight="27.0" prefWidth="167.0" promptText="Birthday" stylesheets="@stylesheets/NewUserStyle.css" />
+      <Button fx:id="backToLoginButton" layoutX="117.0" layoutY="326.0" mnemonicParsing="false" onAction="#backToLogin" text="Back to login" />
    </children>
 </Pane>
