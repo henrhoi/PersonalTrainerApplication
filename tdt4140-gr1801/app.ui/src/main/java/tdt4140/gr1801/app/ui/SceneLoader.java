@@ -23,7 +23,7 @@ public class SceneLoader {
 	        stage.setMinHeight(500);
 	        stage.setMinWidth(700);
 	        stage.show();
-	        System.out.println("Sucess");
+	        System.out.println("Success");
 		} catch (IOException e) {
 			System.out.println("En feil skjedde naar du provde aapne fxmlfilen.");
 			e.printStackTrace();
