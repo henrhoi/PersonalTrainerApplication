@@ -7,17 +7,15 @@ INSERT INTO PT(PT_ID, Passwrd, Navn, Email, Birthday, Phonenr, Salt) VALUES
 ("chestbrah", "eaef65e67b1336b570d11efb84688ddffe3ee4effe1e05314f1876c0a177793a", "William Kvaale", "williamandaslaug@mail.no", "1983-03-12", "77889900","YctYzo106LBo+OWal/57khuT7E0="), -- pw: mcboyerud69
 ("kristogj", "2e088ade9e95820d4d1dd6027b40a3993183bdd2699f3189620614ddcf2c3819", "TEST Kvaale", "williamandasug@mail.no", "1983-03-12", "77889920","mLTYw6QIg7AeCw4vA2uN+Fxcm3g="); -- pw: fortnite123
 
-SELECT * FROM PT;
-SELECT * FROM Klient;
-
-DELETE FROM PT WHERE PT_ID="vildera";
 
 INSERT INTO KLIENT(Navn, Height, PT_ID) VALUES
 ("Toralf Frich", 203, "axeloh"),
 ("Emilie Dahl", 149, "zyzz"),
 ("Erling Kjevik", 155, "henrhoi"),
 ("Eirik Dahlen", 192, "chestbrah"),
-("Martin Johansen", 189, "kristogj");
+("Martin Johansen", 189, "kristogj"),
+("Sebastian Øveraas", 187, "henrhoi");
+
 
 
 
