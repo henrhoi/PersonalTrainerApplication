@@ -8,7 +8,7 @@ public class Strength extends Training {
 	
 	private List<Exercise> exercises = new ArrayList<Exercise>();
 	
-	public Strength(Date date, int duration, List<Exercise> exercises) {
+	public Strength(String date, int duration, List<Exercise> exercises) {
 		super(date, duration);
 		if (exercises.isEmpty()) {
 			throw new IllegalArgumentException("Workout needs at least one exercise");

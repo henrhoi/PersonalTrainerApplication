@@ -2,15 +2,19 @@ package tdt4140.gr1801.app.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.mysql.cj.xdevapi.JsonArray;
+
 import tdt4140.gr1801.web.server.GetURL;
-import tdt4140.gr1801.web.server.LoginModule;
 
 public class Client {
 	private String name;
@@ -64,6 +68,10 @@ public class Client {
     		} else {
     			throw new IllegalArgumentException("No weight registered for this date");
     		}
+    }
+    
+    public List<Strength> getStrengthList(){
+    		return this.strengthTraining;
     }
     
     
@@ -135,6 +143,7 @@ public class Client {
 		System.out.println(respons);
     }
     
+
     // ikke testet 
     public void getClientNutrition() throws ClientProtocolException, IOException {
     		String data = GetURL.getRequest("/nutrition/"+this.id);
@@ -164,9 +173,46 @@ public class Client {
     		}
     }
     
+    
+    //KISSA
+    public void getStrengthTrainings() throws ClientProtocolException, IOException {
+    	//Get all strength training
+    	String strengthData = GetURL.getRequest("/training/strength/"+ this.id);
+    	JSONArray strengthJson = new JSONArray(strengthData);
+    	for (int n = 0 ; n < strengthJson.length() ; n++ ) {
+    		JSONObject strengthObject  = strengthJson.getJSONObject(n);
+    		int strengthID = strengthObject.getInt("StrengthID");
+    		String date = strengthObject.getString("Dato");
+    		int duration = strengthObject.getInt("Duration");    		
+    		
+    		//Get all exercies for every strength training, we do not need sets, because that would be the length of repsList anyway
+    		List<Exercise> exerciseList = new ArrayList<Exercise>();
+    		String exData = GetURL.getRequest("/training/exercise/"+strengthID);
+    		JSONArray exJson = new JSONArray(exData);
+    		for (int m = 0 ; m < exJson.length() ; m++) {
+    			JSONObject exObject = exJson.getJSONObject(m);
+    			String navn = exObject.getString("Navn");
+    			double weight = exObject.getDouble("Weight");
+    			//Need to split the reps in to a list of integers. String format "d-d-d-d...." where d  is how many reps that set
+    			String reps = exObject.getString("Reps");
+    			List<Integer> repsList = Arrays.asList(reps.split("-")).stream().map(s -> Integer.parseInt(s)).collect(Collectors.toList());
+    			//Make a new Exercise object that is going to be added to exerciseList.
+    			exerciseList.add(new Exercise(navn, weight, repsList));
+    		}
+    		
+    		//For every Strength training we need to make a new Strength object that is going to be added this objects StrengthTraining list
+    		Strength strength  = new Strength(date, duration, exerciseList); 
+    		addStrengthTraining(strength);
+    	}
+    }
+    //KISSA
+    
+    
+    
+
     // Tester at innsetting av Client fungerer. 
     public static void main(String[] args) throws IOException {
-    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","henrikerkul","19970603");
+    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
     		Client client = new Client(1,"Vilde Arntzen",160, pt);
     		client.createClient();
 	}

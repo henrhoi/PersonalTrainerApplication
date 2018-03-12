@@ -88,6 +88,23 @@ public final class QueryFactory {
 	}
 	
 	
+	//Kissa
+	// PreparedStatement for getting information about a clients strengthTrainings
+	public static PreparedStatement getStrengthTraningsFromClient(String ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Strength WHERE ClientID = ?");
+		stmt.setString(1, ClientID);
+		return stmt;
+	}
+	
+	//PreparedStatement for getting information about a StrengthTrainings exercises.
+	public static PreparedStatement getExercisesFromStrengthTraining(String StrengthID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Exercise WHERE StrengthID = ?");
+		stmt.setString(1, StrengthID);
+		return stmt;
+	}
+	//Kissa
 	
 	
 	

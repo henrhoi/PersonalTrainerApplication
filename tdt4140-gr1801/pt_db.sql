@@ -1,4 +1,3 @@
-drop table if exists ExerciseInStrength;
 drop table if exists ClientWeight;
 drop table if exists ClientFat;
 drop table if exists Exercise;

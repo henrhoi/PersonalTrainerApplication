@@ -64,7 +64,7 @@ public class NewUserController implements Controller{
 					//First and lastname should just be Name
 					PersonalTrainer pt = new PersonalTrainer(usernameField.getText(),firstNameField.getText(),
 							lastNameField.getText(),emailField.getText(),phoneNumberField.getText(),
-							passwordField.getText(),getDateString(birthdayField.getValue()));
+							getDateString(birthdayField.getValue()));
 					pt.createPT(passwordField.getText());
 				} catch (IOException e) {
 					e.printStackTrace();

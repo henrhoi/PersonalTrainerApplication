@@ -1,7 +1,7 @@
 package tdt4140.gr1801.app.core;
 
 
-import java.util.Date;
+
 
 public class Endurance extends Training{
 
@@ -10,7 +10,7 @@ public class Endurance extends Training{
 	private double averageSpeed; // In km/h
 	private int caloriesBurned;
 
-	public Endurance(Date date, int duration, double distance, int caloriesBurned) {
+	public Endurance(String date, int duration, double distance, int caloriesBurned) {
 		super(date, duration);
 		if (distance < 0) {
 			throw new IllegalArgumentException("Distance cannot be negative");
