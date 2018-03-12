@@ -208,6 +208,11 @@ public class Client {
     //KISSA
     
     
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return this.name;
+    }
     
 
     // Tester at innsetting av Client fungerer. 
