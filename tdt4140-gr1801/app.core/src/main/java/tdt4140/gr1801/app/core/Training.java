@@ -5,7 +5,9 @@ package tdt4140.gr1801.app.core;
 //Is abstract since it should not be possible to instantiate a Training-object on its own.
 
 public abstract class Training {
-	
+
+	//Date format "yyyymmdd-xxxx"
+
 	protected String date;
 	protected int duration; // In minutes
 	

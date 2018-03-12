@@ -9,7 +9,7 @@ public class TrainingTest extends TestCase{
 	String date;
 	
 	public void setUp() {
-		date = "20180215-1400";
+		date = "20180227-xxxx";
 		endurance = new Endurance(date, 90, 12, 555);
 	}
 	
@@ -21,15 +21,16 @@ public class TrainingTest extends TestCase{
 		assertEquals(90, endurance.getDuration());
 	}
 	
+	
 	public void testNegativeDuration() {
 		try {
-			new Endurance("20180215-1400", -100, 12, 555);
+			date = "20180227-xxxx";
+			new Endurance(date, -100, 12, 555);
 			fail();
 		}
 		catch
 			(IllegalArgumentException iae) {
 		}
 	}
-	
 
 }

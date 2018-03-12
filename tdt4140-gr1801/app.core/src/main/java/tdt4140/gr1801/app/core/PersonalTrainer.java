@@ -14,11 +14,9 @@ import tdt4140.gr1801.web.server.LoginModule;
 public class PersonalTrainer {
 	
 	private String username;
-	private String firstName;
-	private String lastName;
+	private String name;
 	private String email;
 	private String phoneNumber;
-	private String password;
 	private String birthday;
 	
 	private ArrayList<Client> clientList = new ArrayList<>();
@@ -43,12 +41,8 @@ public class PersonalTrainer {
 		return username;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
+	public String getName() {
+		return this.name;
 	}
 
 	public String getBirthday() {
@@ -56,20 +50,30 @@ public class PersonalTrainer {
 	}
 	
 
-	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, String password, String birthday) {
+	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, String birthday) {
 		//if(!checkNames(firstName, lastName)) {
 		//	throw new IllegalArgumentException("Invalid names. Only letters.");
 		//}
 		this.username = username;
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.name = firstName + " " + lastName;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.birthday = birthday;
-		this.password = password;
 	}
 	
 	public PersonalTrainer() {
+		
+	}
+	
+	// Konstruktør som tar inn PT_ID som input, returnerer et PT-objekt fra DB, dersom brukernavnet er gyldig
+	public PersonalTrainer(String username) throws ClientProtocolException, IOException {
+		String data = GetURL.getRequest("/pt/"+username);
+		JSONObject json = new JSONArray(data).getJSONObject(0);
+		this.username = username;
+		this.name = json.getString("Navn");
+		this.email = json.getString("Email");
+		this.phoneNumber = json.getString("Phonenr");
+		this.birthday = json.getString("Birthday");
 		
 	}
 	
@@ -130,14 +134,22 @@ public class PersonalTrainer {
 		return client;
 	}
 	
+	public ArrayList<Client> getClientList(){
+		return this.clientList;
+	}
+	
+	
+	
 	// OPPRETTELSE AV PT I DB:
 	//Metode som setter inn en PT i databasen - skal denne legges inn i konstruktoeren til PT. 
 	public void createPT(String passwrd) throws IOException  {
 		JSONObject json = new JSONObject();
+		String salt = LoginModule.generateSalt();
 		json.put("PT_ID", this.username);
 		//Hasher passord. Kan kanskje gjoeres et annet sted.
-		json.put("Passwrd", LoginModule.hashSha256(passwrd));
-		json.put("Navn", this.firstName+" "+this.lastName);
+		json.put("Passwrd", LoginModule.hashSha256(passwrd, salt));
+		json.put("Salt", salt);
+		json.put("Navn", this.name);
 		json.put("Email", this.email);
 		json.put("Birthday", this.birthday);
 		json.put("Phonenr", this.phoneNumber);
@@ -156,20 +168,21 @@ public class PersonalTrainer {
 			String navn = object.getString("Navn");
 			int id = object.getInt("ClientID");
 			int height = object.getInt("Height");
-
 			
-			Client newClient = new Client(id, navn, height, this);
-			
-			
-			
+			Client client = new Client(id, navn, height, this);
 		}
 	}
 	
 	
-	
+	// Main som tester at PT får sine klienter.
 	public static void main(String[] args) throws IOException {
-		PersonalTrainer pt = new PersonalTrainer("vildera","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","henrikerkul","19970603");
-		System.out.println(pt.password);
-		pt.createPT("henrikerkul");
+		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
+		pt.getPTClients();
+		for (Client client : pt.clientList) {
+			System.out.println(client.getName());
+		}
+		
+		PersonalTrainer pt1 = new PersonalTrainer("henrhoi");
+		System.out.println(pt1.birthday);
 	}
 }

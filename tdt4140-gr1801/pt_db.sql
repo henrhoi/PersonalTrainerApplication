@@ -1,4 +1,3 @@
-drop table if exists ExerciseInStrength;
 drop table if exists ClientWeight;
 drop table if exists ClientFat;
 drop table if exists Exercise;
@@ -9,14 +8,14 @@ drop table if exists Klient;
 drop table if exists PT;
 
 
-
 CREATE TABLE PT(
 	PT_ID		VARCHAR(20) NOT NULL  PRIMARY KEY, -- username
     Passwrd	VARCHAR(256) NOT NULL,
     Navn		VARCHAR(40),
     Email		VARCHAR(30),
-    Birthday	CHAR(10),
-    Phonenr	VARCHAR(12) -- hvor mange siffer (USA?)
+    Birthday	VARCHAR(13),
+    Phonenr	VARCHAR(12), -- hvor mange siffer (USA?)
+	Salt			VARCHAR(100)
 );
 
 
@@ -34,7 +33,7 @@ CREATE TABLE Klient(
 
 CREATE TABLE Nutrition(
 	NutritionID	INTEGER NOT NULL PRIMARY KEY auto_increment,
-    Dato 			CHAR(10) NOT NULL,
+    Dato 			VARCHAR(13) NOT NULL,
     Calories		INTEGER DEFAULT 0,
     Fat				INTEGER DEFAULT 0,
     Carbs			INTEGER DEFAULT 0,    
@@ -45,20 +44,9 @@ CREATE TABLE Nutrition(
 );
 
 
-
-CREATE TABLE Exercise(
-	ExerciseID	INTEGER NOT NULL	 primary key KEY AUTO_INCREMENT,
-	Navn		VARCHAR(30),
-    Reps		VARCHAR(30), -- 15-10-..-5
-    Weight		INTEGER,
-    Sets 		INTEGER
-);
-
-
-
 CREATE TABLE Strength( -- TRAINING-SUBKLASSE
 	StrengthID	INTEGER NOT NULL	 primary key KEY AUTO_INCREMENT,
-	Dato 			CHAR(10),
+	Dato 			VARCHAR(13),
     Duration		INTEGER,
     ClientID		INTEGER NOT NULL,
     
@@ -67,23 +55,26 @@ CREATE TABLE Strength( -- TRAINING-SUBKLASSE
 );
 
 
-CREATE TABLE ExerciseInStrength(
-	ExerciseID INTEGER NOT NULL,
-    StrengthID INTEGER NOT NULL,
-    
-    primary key (ExerciseID, StrengthID),
-    foreign key (ExerciseID) REFERENCES Exercise(ExerciseID),
+CREATE TABLE Exercise(
+	ExerciseID	INTEGER NOT NULL	 primary key KEY AUTO_INCREMENT,
+	Navn		VARCHAR(30),
+    Weight		INTEGER,
+	Sets 		INTEGER,
+    Reps		VARCHAR(30), -- 15-10-..-5
+	StrengthID	INTEGER NOT NULL,
     foreign key (StrengthID) REFERENCES Strength(StrengthID)
-    );
+);
+
+
     
     
 CREATE TABLE Endurance( -- ENDURANCE-SUBKLASSE
 	EnduranceID		INTEGER NOT NULL auto_increment,
-	Dato 					CHAR(10),
+	Dato 					VARCHAR(13),
     Duration				INTEGER, -- in minutes
+	ClientID				INTEGER NOT NULL,
     Distance 				DOUBLE,  -- in km?
     CaloriesBurned	INTEGER, 
-    ClientID				INTEGER NOT NULL,
     
     PRIMARY KEY (EnduranceID),
 	FOREIGN KEY(ClientID) REFERENCES Klient(ClientID)
@@ -93,18 +84,10 @@ CREATE TABLE Endurance( -- ENDURANCE-SUBKLASSE
 
 CREATE TABLE ClientWeight(
 	ClientID	INTEGER NOT NULL,
+	Dato 		VARCHAR(13) NOT NULL,  -- "2017-06-15"
     Weight		INTEGER,
-    Dato 		CHAR(10) NOT NULL,  -- "2017-06-15"
-    
-    
-PRIMARY KEY (ClientID, Dato),
-FOREIGN KEY(ClientID) REFERENCES Klient(ClientID));
+    Fat			INTEGER,
 
-
-CREATE TABLE ClientFat(
-	ClientID	INTEGER NOT NULL,
-    Fat		INTEGER,
-    Dato 		CHAR(10) NOT NULL,  -- "2017-06-15"
     
     
 PRIMARY KEY (ClientID, Dato),
