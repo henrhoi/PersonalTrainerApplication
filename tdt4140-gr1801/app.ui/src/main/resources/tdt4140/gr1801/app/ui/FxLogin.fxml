@@ -22,7 +22,7 @@
                   <Button defaultButton="true" layoutX="238.0" layoutY="157.0" mnemonicParsing="false" stylesheets="@stylesheets/LoginStyle.css" text="Login" />
                </children>
             </AnchorPane>
-            <Button layoutX="574.0" layoutY="457.0" mnemonicParsing="false" onAction="#newUserAction" onMouseEntered="#hoverButton" stylesheets="@stylesheets/LoginStyle.css" text="New User" />
+            <Button layoutX="574.0" layoutY="457.0" mnemonicParsing="false" onAction="#newUserAction" stylesheets="@stylesheets/LoginStyle.css" text="New User" />
          </children></Pane>
    </children>
 </AnchorPane>
