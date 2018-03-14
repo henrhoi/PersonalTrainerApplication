@@ -54,6 +54,8 @@ public class MainViewController implements Controller{
 		//For each client get all the clients StrengthTraings etc
 		for (Client client : pt.getClientList()) {
 			client.getStrengthTrainings();
+			client.getClientEnduranceTraining();
+			client.getClientNutrition();
 			//TODO update endurance nutrition etc
 		}
 	}
@@ -100,6 +102,11 @@ public class MainViewController implements Controller{
 		setTab("FxEndurance.fxml", enduranceTab);
 		setTab("FxHealth.fxml", healthTab);
 		setTab("FxProgram.fxml", programTab);
+		
+		for(Client client : pt.getClientList()) {
+			System.out.println(client.getEnduranceList().toString());
+		}
+		
 	}
 	
 	

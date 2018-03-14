@@ -22,8 +22,8 @@ public class Client {
 	private int id;
 	private int height;
 	private PersonalTrainer pt;
-	private HashMap<String,Double> weights; // String = date, Double measured in float (kg)
-	private HashMap<String,Double> fats; // String = date, Double measured in float [0,1]
+	private HashMap<String,Double> weights; // measured in float (kg)
+	private HashMap<String,Double> fats; // measured in float [0,1]
 	private List<Nutrition> nutritions;
     
 	private List<Strength> strengthTraining;
@@ -72,6 +72,14 @@ public class Client {
     
     public List<Strength> getStrengthList(){
     		return this.strengthTraining;
+    }
+    
+    public List<Endurance> getEnduranceList(){
+    		return this.enduranceTraining;
+    }
+    
+    public List<Nutrition> getNutritionList(){
+    		return this.nutritions;
     }
     
     
@@ -161,14 +169,19 @@ public class Client {
     		}
     }
     
-    // IKKE FERDIG!
+
     // ikke testet 
     public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
-    		String data = GetURL.getRequest("training/endurance/"+this.id);
+    		String data = GetURL.getRequest("/training/endurance/"+this.id);
     		JSONArray json = new JSONArray(data);
     		for (int n = 0; n < json.length(); n++) {
     			JSONObject object = json.getJSONObject(n);
-    			
+    			String date = object.getString("Dato");
+    			int duration = object.getInt("Duration");
+    			double distance = object.getDouble("Distance");
+    			int calories = object.getInt("CaloriesBurned");
+    			Endurance e = new Endurance(date, duration, distance, calories);
+    			this.enduranceTraining.add(e);
     			
     		}
     }
@@ -208,11 +221,6 @@ public class Client {
     //KISSA
     
     
-    @Override
-    public String toString() {
-    	// TODO Auto-generated method stub
-    	return this.name;
-    }
     
 
     // Tester at innsetting av Client fungerer. 
