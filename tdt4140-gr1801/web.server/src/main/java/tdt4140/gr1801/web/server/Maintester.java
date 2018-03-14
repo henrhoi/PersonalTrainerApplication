@@ -13,8 +13,6 @@ public class Maintester {
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		
 		Connection conn = DBConnection.getDBConnection();
-
-		
 		PreparedStatement stmt = conn.prepareStatement("SELECT Passwrd FROM PT WHERE PT_ID = ?");  
 		
 		stmt.setString(1, "henrhoi");

@@ -7,11 +7,14 @@ import java.net.URL;
 
 import org.apache.http.client.ClientProtocolException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -31,6 +34,9 @@ public class MainViewController implements Controller{
 	
 	@FXML
 	Label label;
+	
+	@FXML
+	ListView<Client> liste;
 	
 	
 	private PersonalTrainer pt;
@@ -84,6 +90,14 @@ public class MainViewController implements Controller{
 		//User this.username to update all the information
 		System.out.println("Update information for " + this.pt.getUsername());
 		label.setText(this.pt.getUsername());
+		
+		//MidSoulution just to show that a pt has clients.
+		ObservableList<Client> items =FXCollections.observableArrayList ();
+		for(Client client : this.pt.getClientList()) {
+			items.add(client);
+		}
+		liste.setItems(items);
+		
 		setTab("FxStrength.fxml", strengthTab);
 		setTab("FxEndurance.fxml", enduranceTab);
 		setTab("FxHealth.fxml", healthTab);

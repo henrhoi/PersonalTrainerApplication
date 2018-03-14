@@ -22,8 +22,8 @@ public class Client {
 	private int id;
 	private int height;
 	private PersonalTrainer pt;
-	private HashMap<String,Double> weights; // measured in float (kg)
-	private HashMap<String,Double> fats; // measured in float [0,1]
+	private HashMap<String,Double> weights; // String = date, Double measured in float (kg)
+	private HashMap<String,Double> fats; // String = date, Double measured in float [0,1]
 	private List<Nutrition> nutritions;
     
 	private List<Strength> strengthTraining;
@@ -216,6 +216,11 @@ public class Client {
     //KISSA
     
     
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return this.name;
+    }
     
 
     // Tester at innsetting av Client fungerer. 

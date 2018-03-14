@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.core;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Strength extends Training {

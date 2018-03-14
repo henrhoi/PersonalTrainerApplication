@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.core;
 
 import java.util.Arrays;
-import java.util.Date;
 
 import junit.framework.TestCase;
 
@@ -10,7 +9,6 @@ public class StrengthTest extends TestCase {
 	Strength strength;
 	Exercise e1, e2, e3, e4;
 
-	@SuppressWarnings("deprecation")
 	protected void setUp() {
 		e1 = new Exercise("Benchpress", 80, Arrays.asList(15, 12, 10));
 		e2 = new Exercise("DeadLift", 60, Arrays.asList(8, 6, 5));

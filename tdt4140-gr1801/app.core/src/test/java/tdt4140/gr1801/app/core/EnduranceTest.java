@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.core;
 
 
-import java.util.Date;
 import junit.framework.TestCase;
 
 
@@ -10,7 +9,6 @@ public class EnduranceTest extends TestCase{
 	
 	Endurance endurance;
 	
-	@SuppressWarnings("deprecation")
 	protected void setUp() {
 		endurance = new Endurance("20180227-xxxx", 90, 12, 685);
 	}
@@ -43,6 +41,7 @@ public class EnduranceTest extends TestCase{
 	public void testNegativeCaloriesBurned() {
 		try {
 			new Endurance("20180227-xxxx", 10, 12, -500);
+
 			fail(); // Not supposed to get here
 		}
 		catch (IllegalArgumentException iae) {

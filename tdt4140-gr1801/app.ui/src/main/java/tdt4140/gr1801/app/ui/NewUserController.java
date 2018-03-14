@@ -39,6 +39,8 @@ public class NewUserController implements Controller{
 	@FXML
 	DatePicker birthdayField;
 	
+
+	
 	public NewUserController() {
 		
 	}
@@ -79,6 +81,14 @@ public class NewUserController implements Controller{
 			
 		}
 	
+		
+	public void backToLogin() {
+		Stage stage = (Stage)usernameField.getScene().getWindow();
+		LoginController controller = new LoginController();
+		URL path = getClass().getResource("FxLogin.fxml");
+		SceneLoader.setScene(stage, path, controller);
+		System.out.println("Back to login.");
+	}
 	
 	///////////////////////////////////////////////////////Private methods////////////////////////////////////////////////////////////////////////
 		
@@ -120,9 +130,5 @@ public class NewUserController implements Controller{
 		String day = date.getDayOfMonth() + "";
 		day = day.length() == 1 ? "0" + day : day;
 		return  year + month + day +  "-1400"; 
-	}
-	
-	
-	
-	
+	}	
 }

@@ -1,6 +1,5 @@
 package tdt4140.gr1801.app.core;
 
-import java.util.Date;
 
 import junit.framework.TestCase;
 
@@ -22,6 +21,7 @@ public class TrainingTest extends TestCase{
 		assertEquals(90, endurance.getDuration());
 	}
 	
+	
 	public void testNegativeDuration() {
 		try {
 			date = "20180227-xxxx";
@@ -32,6 +32,5 @@ public class TrainingTest extends TestCase{
 			(IllegalArgumentException iae) {
 		}
 	}
-	
 
 }
