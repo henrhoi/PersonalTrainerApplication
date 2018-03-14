@@ -1,1 +1,12 @@
-/*Should be used on FxMainView*/
+/*Should be used on FxNewUser*/
+
+#pane {
+	-fx-background-image: url("../images/Gray-Background.png") center center;
+	-fx-background-repeat: no-repeat;
+	 background-attachment: fixed;
+	-fx-background-color: black;
+	-fx-background-size: cover;
+  	-fx-height: 100%;
+  	-fx-overflow: hidden;
+  	-fx-opacity: 0.9;
+}
