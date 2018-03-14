@@ -74,6 +74,14 @@ public class Client {
     		return this.strengthTraining;
     }
     
+    public List<Endurance> getEnduranceList(){
+    		return this.enduranceTraining;
+    }
+    
+    public List<Nutrition> getNutritionList(){
+    		return this.nutritions;
+    }
+    
     
     public Double getFat(String date){
     		if (this.fats.containsKey(date)) {
