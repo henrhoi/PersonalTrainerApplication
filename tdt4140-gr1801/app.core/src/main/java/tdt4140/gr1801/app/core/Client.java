@@ -172,7 +172,7 @@ public class Client {
 
     // ikke testet 
     public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
-    		String data = GetURL.getRequest("training/endurance/"+this.id);
+    		String data = GetURL.getRequest("/training/endurance/"+this.id);
     		JSONArray json = new JSONArray(data);
     		for (int n = 0; n < json.length(); n++) {
     			JSONObject object = json.getJSONObject(n);
