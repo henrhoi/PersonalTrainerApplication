@@ -131,7 +131,7 @@ public class Client {
     		this.nutritions.add(nutrition);
     }
     
-    // TODO - Må legge inn tester i TestClient-klassen 
+    // TODO - M legge inn tester i TestClient-klassen 
     public void addStrengthTraining(Strength training) {
     		this.strengthTraining.add(training);
     }
