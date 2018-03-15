@@ -14,6 +14,7 @@ public class RSJSONConverter {
 	
 	// Denne funksjonen konverterer resultatet fra en SQL-spoerring (ResultSet) om til JSON-format.
 	public static JSONArray ResultSetToJSON(ResultSet rs ) throws SQLException, JSONException{
+
 		JSONArray json = new JSONArray();
 		ResultSetMetaData rsmd = rs.getMetaData();
 
