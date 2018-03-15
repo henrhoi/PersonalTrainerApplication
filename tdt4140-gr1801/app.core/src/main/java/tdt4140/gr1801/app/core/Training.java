@@ -1,5 +1,6 @@
 package tdt4140.gr1801.app.core;
 
+import java.util.Date;
 
 //Superclass for Endurance and Strength. Will contain everything that is common for those two. 
 //Is abstract since it should not be possible to instantiate a Training-object on its own.
@@ -27,6 +28,7 @@ public abstract class Training {
 		return duration;
 	}
 	
+
 	
 
 }
