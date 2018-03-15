@@ -34,4 +34,10 @@ public class Endurance extends Training{
 		return caloriesBurned;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Endurance: " + this.distance;
+	}
+	
 }

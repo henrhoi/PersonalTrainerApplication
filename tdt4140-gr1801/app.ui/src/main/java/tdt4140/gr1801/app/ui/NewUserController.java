@@ -18,6 +18,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
 
@@ -131,4 +132,9 @@ public class NewUserController implements Controller{
 		day = day.length() == 1 ? "0" + day : day;
 		return  year + month + day +  "-1400"; 
 	}	
+	
+	@Override
+	public void setClient(Client client) {
+		//Will not be used
+	}
 }

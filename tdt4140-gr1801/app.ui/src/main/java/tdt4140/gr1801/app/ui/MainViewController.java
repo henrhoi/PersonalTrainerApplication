@@ -4,6 +4,8 @@ package tdt4140.gr1801.app.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.http.client.ClientProtocolException;
 
@@ -35,16 +37,15 @@ public class MainViewController implements Controller{
 	@FXML
 	Label label;
 	
-	@FXML
-	ListView<Client> liste;
 	
 	
 	private PersonalTrainer pt;
+	//This set should contain controllers for all the tabs
+	private Set<Controller> tabControllers;
 	
-
-	
-	public void initialize() {
-	}
+	//TODO - idea.. instead of making a new controller everytime we change controller.
+	//We make a list of all the controllers that is made on updateinfo
+	//when then make methods for changeClient(client) for controllers like EnduraceController etc
 	
 	public MainViewController(String username) throws ClientProtocolException, IOException {
 		//Make corresponding PT object
@@ -54,15 +55,36 @@ public class MainViewController implements Controller{
 		//For each client get all the clients StrengthTraings etc
 		for (Client client : pt.getClientList()) {
 			client.getStrengthTrainings();
+			client.getClientEnduranceTraining();
+			client.getClientNutrition();
 			//TODO update endurance nutrition etc
 		}
+		tabControllers = new HashSet<Controller>();
 	}
 	
 	//Used in initialize for setting which fxml-file to open in which tab
 	private void setTab(String fxml, Tab tab) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource(fxml));
+			Controller controller;
+			//Temp - if there is a client, send the first client in the list.
+			//Will be taken care of in a later issue
+			Client client = pt.getClientList().isEmpty() ? null : pt.getClientList().get(0);
+			//Choose correct controller
+			switch (fxml) {
+			case "FxStrength.fxml": controller = new StrengthController(client);break;
+			case "FxEndurance.fxml": controller = new EnduranceController(client);break;
+			case "FxHealth.fxml": controller = new HealthController(client);break;
+			case "FxProgram.fxml": controller = new ProgramController(client);break;
+			default:controller = null;break;//Would crash
+			}
+			//Add to tabControllers
+			tabControllers.add(controller);
+			//Load the fxml and add controller. Set tab content.
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+			loader.setController(controller);
+			Parent root = (Parent)loader.load();
 			tab.setContent(root);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -82,6 +104,13 @@ public class MainViewController implements Controller{
 		System.out.println("Add Client");
 	}
 	
+	//This method should be used when we add functionallity for choosing clients inn a menu
+	public void changeClientInTabs(Client client) {
+		for(Controller c : tabControllers) {
+			c.setClient(client);
+		}
+	}
+	
 	
 	//You could say that this method is the same as init
 	public void updateInfo() {
@@ -89,21 +118,18 @@ public class MainViewController implements Controller{
 		System.out.println("Update information for " + this.pt.getUsername());
 		label.setText(this.pt.getUsername());
 		
-		//MidSoulution just to show that a pt has clients.
-		ObservableList<Client> items =FXCollections.observableArrayList ();
-		for(Client client : this.pt.getClientList()) {
-			items.add(client);
-		}
-		liste.setItems(items);
-		
 		setTab("FxStrength.fxml", strengthTab);
 		setTab("FxEndurance.fxml", enduranceTab);
 		setTab("FxHealth.fxml", healthTab);
 		setTab("FxProgram.fxml", programTab);
+	
 	}
 	
 	
-     
+     @Override
+    public void setClient(Client client) {
+    	 	//Will not be used(?)
+    }
 	
 	
 
