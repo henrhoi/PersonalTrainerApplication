@@ -106,6 +106,13 @@ public final class QueryFactory {
 	}
 	//Kissa
 	
+	public static PreparedStatement getWeigthFatFromClient(String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ClientWeight WHERE ClientID = ?");
+		stmt.setInt(1, Integer.parseInt(ClientID));
+		return stmt;
+	}
+	
 	
 	
 	

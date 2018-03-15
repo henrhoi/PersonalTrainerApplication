@@ -24,6 +24,9 @@ public class Login_Resource {
 		JSONArray jsonarray = RSJSONConverter.ResultSetToJSON(rs);
 		
 		
+		if (jsonarray.toString().equals("[]")) {
+			return Response.status(200).entity(jsonarray.toString()).build();
+		} 
 		JSONObject json = jsonarray.getJSONObject(0);
 		System.out.println(json);
 		

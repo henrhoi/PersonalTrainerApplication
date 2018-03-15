@@ -57,6 +57,7 @@ public class MainViewController implements Controller{
 			client.getStrengthTrainings();
 			client.getClientEnduranceTraining();
 			client.getClientNutrition();
+			client.getClientWeightFat();
 			//TODO update endurance nutrition etc
 		}
 		tabControllers = new HashSet<Controller>();
