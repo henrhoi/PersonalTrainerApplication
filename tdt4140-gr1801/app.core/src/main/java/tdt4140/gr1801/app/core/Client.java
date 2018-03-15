@@ -125,9 +125,6 @@ public class Client {
     }
     
     
-    public List<Nutrition> getNutrition(){
-    		return this.nutritions;
-    }
     
     // Burde mulig ha en sjekk her for om datoen allerede eksisterer?
     // for-løkke?

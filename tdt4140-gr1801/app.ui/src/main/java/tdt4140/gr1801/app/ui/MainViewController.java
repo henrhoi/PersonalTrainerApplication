@@ -37,8 +37,10 @@ public class MainViewController implements Controller{
 	@FXML
 	Label label;
 	
+	@FXML
+	ListView<String> clients;
 	
-	
+
 	private PersonalTrainer pt;
 	//This set should contain controllers for all the tabs
 	private Set<Controller> tabControllers;
@@ -79,6 +81,7 @@ public class MainViewController implements Controller{
 			}
 			//Add to tabControllers
 			tabControllers.add(controller);
+			controller.setClient(client);
 			//Load the fxml and add controller. Set tab content.
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 			loader.setController(controller);
@@ -117,6 +120,13 @@ public class MainViewController implements Controller{
 		//User this.username to update all the information
 		System.out.println("Update information for " + this.pt.getUsername());
 		label.setText(this.pt.getUsername());
+		
+		//Create list view of Clients.
+		ObservableList<String> c = FXCollections.observableArrayList ();
+		for(Client client : pt.getClientList()) {
+			c.add(client.getName());
+		}
+		clients.setItems(c);
 		
 		setTab("FxStrength.fxml", strengthTab);
 		setTab("FxEndurance.fxml", enduranceTab);
