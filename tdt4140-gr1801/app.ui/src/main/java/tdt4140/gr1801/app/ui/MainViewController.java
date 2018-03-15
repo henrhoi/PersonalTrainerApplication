@@ -103,9 +103,7 @@ public class MainViewController implements Controller{
 		setTab("FxHealth.fxml", healthTab);
 		setTab("FxProgram.fxml", programTab);
 		
-		for(Client client : pt.getClientList()) {
-			System.out.println(client.getEnduranceList().toString());
-		}
+		
 		
 	}
 	
