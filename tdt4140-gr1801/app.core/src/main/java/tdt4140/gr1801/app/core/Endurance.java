@@ -42,7 +42,7 @@ public class Endurance extends Training implements Comparable<Endurance>{
 
 	@Override
 	public int compareTo(Endurance o) {
-		return this.getDate().compareTo(o.getDate());
+		return -this.getDate().compareTo(o.getDate()); // "-" To get new trainings first
 	}
 	
 }

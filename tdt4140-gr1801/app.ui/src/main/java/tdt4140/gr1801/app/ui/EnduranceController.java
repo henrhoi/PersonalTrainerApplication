@@ -1,6 +1,7 @@
 package tdt4140.gr1801.app.ui;
 
 
+import java.util.Collections;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -9,6 +10,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import jersey.repackaged.com.google.common.collect.Lists;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Endurance;
 
@@ -23,7 +25,6 @@ public class EnduranceController extends ListCell<Endurance> implements TabContr
 	ListView<Endurance> endurance_list;
 	
 	Client client;
-
 	
 	public EnduranceController(Client client) {
 		setClient(client);
@@ -38,7 +39,8 @@ public class EnduranceController extends ListCell<Endurance> implements TabContr
 	public void updateInfo() {
 		// Adding the client's endurance-trainings to the listview
 		ObservableList<Endurance> items = FXCollections.observableArrayList ();
-		for (Endurance endurance : client.getEnduranceList()) {
+		Collections.sort(client.getEnduranceList()); // Sorting after date
+		for (Endurance endurance : Lists.reverse(client.getEnduranceList())) {
 			items.add(endurance);
 		}
 		endurance_list.setItems(items);
@@ -63,6 +65,9 @@ public class EnduranceController extends ListCell<Endurance> implements TabContr
 			cal_burned_field.setText(String.valueOf(e.getCaloriesBurned()));
 		}
 	}
+
+	
+	
 	
 	
 
