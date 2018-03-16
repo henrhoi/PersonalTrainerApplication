@@ -11,7 +11,7 @@
 <Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@stylesheets/NewUserStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button defaultButton="true" layoutX="586.0" layoutY="459.0" mnemonicParsing="false" onAction="#createUser" stylesheets="@stylesheets/NewUserStyle.css" text="Create User" textFill="#141414" />
-      <Label id="h2" fx:id="infoLabel" layoutX="203.0" layoutY="29.0" stylesheets="@stylesheets/LoginStyle.css" text="Create account" textFill="WHITE" />
+      <Label id="h2" fx:id="infoLabel" layoutX="203.0" layoutY="29.0" stylesheets="@stylesheets/NewUserStyle.css" text="Create account" textFill="WHITE" />
       <Pane id="form_background" layoutX="258.0" layoutY="107.0" prefHeight="352.0" prefWidth="188.0">
          <children>
             <TextField fx:id="usernameField" layoutX="11.0" layoutY="83.0" promptText="Username" stylesheets="@stylesheets/LoginStyle.css" />

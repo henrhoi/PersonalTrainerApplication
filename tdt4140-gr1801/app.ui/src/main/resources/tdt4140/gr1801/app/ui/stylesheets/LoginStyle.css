@@ -16,15 +16,9 @@
     fx-letter-spacing: 5px; /* No effect */
 }
 
-#h2 {
-	-fx-font-size: 40px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
-}
-
 .button{
 	-fx-background-color: darkgrey;
-	-fx-padding: 4px 24px;
+	-fx-padding: 4px 15px;
 	-fx-font-size: 15px;  
 	-fx-cursor: hand;
 }
