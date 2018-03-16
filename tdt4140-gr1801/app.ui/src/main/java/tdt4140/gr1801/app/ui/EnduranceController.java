@@ -22,7 +22,6 @@ public class EnduranceController extends ListCell<Endurance> implements TabContr
 	@FXML
 	ListView<Endurance> endurance_list;
 	
-	
 	Client client;
 
 	
