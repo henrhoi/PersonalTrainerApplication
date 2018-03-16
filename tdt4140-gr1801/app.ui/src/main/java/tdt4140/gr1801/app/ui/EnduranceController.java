@@ -1,6 +1,5 @@
 package tdt4140.gr1801.app.ui;
 
-import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,8 +10,7 @@ import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Endurance;
 
 
-
-public class EnduranceController implements Controller{
+public class EnduranceController implements TabController {
 	
 	
 	@FXML
@@ -34,6 +32,7 @@ public class EnduranceController implements Controller{
 		
 	}
 	
+	@Override
 	public void updateInfo() {
 		// Adding the client's endurance-trainings in the listview
 		ObservableList<Endurance> items = FXCollections.observableArrayList ();
