@@ -1,6 +1,6 @@
 package tdt4140.gr1801.app.core;
 
-public class Endurance extends Training{
+public class Endurance extends Training implements Comparable<Endurance>{
 
 
 	private double distance; // In km
@@ -38,6 +38,11 @@ public class Endurance extends Training{
 	public String toString() {
 		// TODO Auto-generated method stub
 		return date;
+	}
+
+	@Override
+	public int compareTo(Endurance o) {
+		return this.getDate().compareTo(o.getDate());
 	}
 	
 }
