@@ -6,7 +6,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -15,7 +14,7 @@ import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Endurance;
 
 
-public class EnduranceController extends ListCell<Endurance> implements TabController {
+public class EnduranceController implements TabController {
 	
 	
 	@FXML
