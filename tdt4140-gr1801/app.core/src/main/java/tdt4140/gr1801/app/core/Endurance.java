@@ -37,7 +37,7 @@ public class Endurance extends Training{
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Endurance: " + this.distance;
+		return date;
 	}
 	
 }

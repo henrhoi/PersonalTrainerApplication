@@ -1,15 +1,19 @@
 package tdt4140.gr1801.app.ui;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Endurance;
 
 
-public class EnduranceController implements TabController {
+public class EnduranceController extends ListCell<Endurance> implements TabController {
 	
 	
 	@FXML
@@ -18,8 +22,9 @@ public class EnduranceController implements TabController {
 	@FXML
 	ListView<Endurance> endurance_list;
 	
-	Client client;
 	
+	Client client;
+
 	
 	public EnduranceController(Client client) {
 		setClient(client);
@@ -28,26 +33,36 @@ public class EnduranceController implements TabController {
 	@Override
 	public void setClient(Client client) {
 		this.client = client;
-		
 	}
 	
 	@Override
 	public void updateInfo() {
-		// Adding the client's endurance-trainings in the listview
+		// Adding the client's endurance-trainings to the listview
 		ObservableList<Endurance> items = FXCollections.observableArrayList ();
 		for (Endurance endurance : client.getEnduranceList()) {
 			items.add(endurance);
 		}
 		endurance_list.setItems(items);
 		
-		// Setting the other fields in the UI
-		Endurance e = client.getEnduranceList().get(0);
-		System.out.println(distance_field);
-		distance_field.setText(String.valueOf(e.getDistance()));
-		duration_field.setText(String.valueOf(e.getDuration()));
-		avg_speed_field.setText(String.valueOf(e.getAverageSpeed()));
-		cal_burned_field.setText(String.valueOf(e.getCaloriesBurned()));
-		
+		// Adding logic for updating view when different trainings are selected.
+		endurance_list.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				// Getting the selected endurance training
+				Endurance selected = endurance_list.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				updateView(selected);
+			}
+		});
+	}
+	
+	public void updateView(Endurance e) {
+		if (e != null) {
+			distance_field.setText(String.valueOf(e.getDistance()));
+			duration_field.setText(String.valueOf(e.getDuration()));
+			avg_speed_field.setText(String.valueOf(e.getAverageSpeed()));
+			cal_burned_field.setText(String.valueOf(e.getCaloriesBurned()));
+		}
 	}
 	
 	
