@@ -32,7 +32,7 @@ public class StrengthController implements TabController {
     TableView<Exercise> tableview;
     
     @FXML
-    TableColumn<Exercise, String> colName, colSets, colReps;
+    TableColumn<Exercise, String> colName, colWeight, colSets, colReps;
 
 	Client client;
 	
