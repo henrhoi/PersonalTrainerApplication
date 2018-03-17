@@ -1,24 +1,24 @@
 package tdt4140.gr1801.app.ui;
 
 
-import java.util.List;
+import java.util.Collections;
 
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Strength;
 import tdt4140.gr1801.app.core.Exercise;
 
-// Date
-// Duration
-// Name, Set, Reps
 
 public class StrengthController implements TabController {
 	
@@ -26,21 +26,13 @@ public class StrengthController implements TabController {
 	TextField duration_field;
 	
 	@FXML
-	ListView<Strength> strength_list;
+	ListView<Strength> listview;
 	
-	
     @FXML
-    TableView<Exercise> table_view;
+    TableView<Exercise> tableview;
     
     @FXML
-    TableColumn<Exercise, String> colName;
-    
-    @FXML
-    TableColumn<Exercise, String> colSets;
-    
-    @FXML
-    TableColumn<Exercise, String> colReps;
-
+    TableColumn<Exercise, String> colName, colSets, colReps;
 
 	Client client;
 	
@@ -48,62 +40,68 @@ public class StrengthController implements TabController {
 		this.client = client;
 	}
 	
-	public void initialize() {
-		
-	}
-
-	
 	public void setClient(Client client) {
 		this.client = client;
 	}
 	
-	
 	public void updateInfo() {
+		fillListview();
+		setNavigationLogic();
+		
+		// Connecting the columns of the tableview to attributes in Exercise
+		this.colName.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Name"));
+		this.colSets.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Weight"));
+		
+		// Sets and reps are not excplicit defined as attributes in Exercise, so they must be calculated
+		this.colSets.setCellValueFactory(s -> new SimpleStringProperty(Integer.toString(s.getValue().getNumberOfSets())));
+		this.colReps.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getReps()));
+		
+	}
+	
+	public void fillListview() {
 		// Adding the client's endurance-trainings in the listview
 		ObservableList<Strength> strengthItems = FXCollections.observableArrayList ();
+		Collections.sort(client.getStrengthList()); // Sorting after date
 		for (Strength strength : client.getStrengthList()) {
 			strengthItems.add(strength);
 		}
-		strength_list.setItems(strengthItems);
-		
-		// Setting the other fields in the UI
-		Strength e = client.getStrengthList().get(0);
-		duration_field.setText(String.valueOf(e.getDuration()));
-		
-		ObservableList<Exercise> exItems = FXCollections.observableArrayList ();
-		for (Exercise exercise : e.getExercises()) {
-			exItems.add(exercise);
-		}
-		table_view.setItems(exItems);
-		
-		
-		this.table_view.setItems(exItems);
-		
-		this.colName = new TableColumn<Exercise, String>("Name");
-		this.colName.setCellValueFactory(new PropertyValueFactory("Name"));
-		
-		this.colSets = new TableColumn<Exercise, String>("Sets");
-		this.colSets.setCellValueFactory(new PropertyValueFactory("Sets"));
-		
-		this.colReps = new TableColumn<Exercise, String>("Sets");
-		this.colReps.setCellValueFactory(new PropertyValueFactory("Sets"));
-		
-		this.table_view.getColumns().setAll(this.colName, this.colSets, this.colReps);
-		
-		
-		
-		
-		/*
-		 ObservableList<Person> teamMembers = ...;
-		 table.setItems(teamMembers);
-	
-		 TableColumn<Person,String> firstNameCol = new TableColumn<Person,String>("First Name");
-		 firstNameCol.setCellValueFactory(new PropertyValueFactory("firstName"));
-		 TableColumn<Person,String> lastNameCol = new TableColumn<Person,String>("Last Name");
-		 lastNameCol.setCellValueFactory(new PropertyValueFactory("lastName"));
-	
-		 table.getColumns().setAll(firstNameCol, lastNameCol);
-		*/
+		listview.setItems(strengthItems);
 	}
+	
+	public void setNavigationLogic() {
+		// Adding logic for updating view when different trainings gets selected.
+		// Mouseclick
+		listview.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				// Getting the selected endurance training
+				Strength selected = listview.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				updateView(selected);
+			}
+		});
 
+		// Keyboard (up- and down-arrows)
+		listview.setOnKeyReleased(new EventHandler<Event>() {
+			@Override
+			public void handle(Event event) {
+				// Getting the selected endurance training
+				Strength selected = listview.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				updateView(selected);
+			}
+		});
+
+	}
+	
+	public void updateView(Strength s) {
+		if (s != null) {
+			duration_field.setText(String.valueOf(s.getDuration()));
+			ObservableList<Exercise> exItems = FXCollections.observableArrayList ();
+			for (Exercise exercise : s.getExercises()) {
+				exItems.add(exercise);
+			}
+			tableview.setItems(exItems);
+		}
+	}
 }
