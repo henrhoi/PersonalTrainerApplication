@@ -38,7 +38,7 @@ public class EnduranceController implements TabController {
 	@Override
 	public void updateInfo() {
 		fillListview();
-		setOnMethods();
+		setNavigationLogic();
 	}
 	
 	public void fillListview() {
@@ -51,7 +51,7 @@ public class EnduranceController implements TabController {
 				listview.setItems(items);
 	}
 	
-	public void setOnMethods() {
+	public void setNavigationLogic() {
 		// Adding logic for updating view when different trainings gets selected.
 		// Mouseclick
 		listview.setOnMouseClicked(new EventHandler<MouseEvent>() {
