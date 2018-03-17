@@ -4,6 +4,7 @@ package tdt4140.gr1801.app.ui;
 import java.util.Collections;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
@@ -21,7 +22,7 @@ public class EnduranceController implements TabController {
 	TextField distance_field, duration_field, avg_speed_field, cal_burned_field;
 	
 	@FXML
-	ListView<Endurance> endurance_list;
+	ListView<Endurance> listview;
 	
 	Client client;
 	
@@ -42,14 +43,26 @@ public class EnduranceController implements TabController {
 		for (Endurance endurance : Lists.reverse(client.getEnduranceList())) {
 			items.add(endurance);
 		}
-		endurance_list.setItems(items);
+		listview.setItems(items);
 		
-		// Adding logic for updating view when different trainings are selected.
-		endurance_list.setOnMouseClicked(new EventHandler<MouseEvent>() {
+		// Adding logic for updating view when different trainings gets selected.
+		// Mouseclick
+		listview.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
 				// Getting the selected endurance training
-				Endurance selected = endurance_list.getSelectionModel().getSelectedItem();
+				Endurance selected = listview.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				updateView(selected);
+			}
+		});
+
+		// Keyboard (up- and down-arrows)
+		listview.setOnKeyReleased(new EventHandler<Event>() {
+			@Override
+			public void handle(Event event) {
+				// Getting the selected endurance training
+				Endurance selected = listview.getSelectionModel().getSelectedItem();
 				// Setting data in the view thereafter
 				updateView(selected);
 			}
