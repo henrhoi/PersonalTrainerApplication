@@ -50,7 +50,7 @@ public class StrengthController implements TabController {
 		
 		// Connecting the columns of the tableview to attributes in Exercise
 		this.colName.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Name"));
-		this.colSets.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Weight"));
+		this.colWeight.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Weight"));
 		
 		// Sets and reps are not excplicit defined as attributes in Exercise, so they must be calculated
 		this.colSets.setCellValueFactory(s -> new SimpleStringProperty(Integer.toString(s.getValue().getNumberOfSets())));
