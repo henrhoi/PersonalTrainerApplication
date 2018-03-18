@@ -109,7 +109,7 @@ public class MainViewController implements Controller{
 		SceneLoader.setScene(stage, path, controller);
 	}
 	
-	//This method should be used when we add functionallity for choosing clients inn a menu
+	//This method should be used when we add functionality for choosing clients inn a menu
 	public void changeClientInTabs(Client client) {
 		for(TabController c : tabControllers) {
 			c.setClient(client);
