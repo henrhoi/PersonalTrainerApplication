@@ -83,7 +83,6 @@ public class MainViewController implements Controller{
 			
 			//Add to tabControllers
 			tabControllers.add(controller);
-			controller.setClient(client);
 			//Load the fxml and add controller. Set tab content.
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
 			loader.setController(controller);

@@ -51,6 +51,10 @@ public class Nutrition {
 	public int getClientId() {
 		return clientId;
 	}
+	
+	public String toString() {
+		return date;
+	}
 
 
 }
