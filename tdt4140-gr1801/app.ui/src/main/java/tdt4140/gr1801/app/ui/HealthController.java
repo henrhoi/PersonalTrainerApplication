@@ -8,7 +8,7 @@ import javafx.scene.control.ListView;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Nutrition;
 
-public class HealthController implements Controller {
+public class HealthController implements TabController {
 	
 	@FXML
 	PieChart NutritionPieChart;
