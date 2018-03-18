@@ -103,8 +103,10 @@ public class MainViewController implements Controller{
 	
 	@FXML
 	public void addClient() {
-		//TODO update database
-		System.out.println("Add Client");
+		Stage stage = (Stage) addClientButton.getScene().getWindow();
+		Controller controller = new AddClientController(pt);
+		URL path = getClass().getResource("FxAddClient.fxml");
+		SceneLoader.setScene(stage, path, controller);
 	}
 	
 	//This method should be used when we add functionallity for choosing clients inn a menu
