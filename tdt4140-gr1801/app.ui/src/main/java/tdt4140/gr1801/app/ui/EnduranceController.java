@@ -43,12 +43,12 @@ public class EnduranceController implements TabController {
 	
 	public void fillListview() {
 		// Adding the client's endurance-trainings to the listview
-				ObservableList<Endurance> items = FXCollections.observableArrayList ();
-				Collections.sort(client.getEnduranceList()); // Sorting after date
-				for (Endurance endurance : Lists.reverse(client.getEnduranceList())) {
-					items.add(endurance);
-				}
-				listview.setItems(items);
+		ObservableList<Endurance> items = FXCollections.observableArrayList ();
+		Collections.sort(client.getEnduranceList()); // Sorting after date
+		for (Endurance endurance : Lists.reverse(client.getEnduranceList())) {
+			items.add(endurance);
+		}
+		listview.setItems(items);
 	}
 	
 	public void setNavigationLogic() {

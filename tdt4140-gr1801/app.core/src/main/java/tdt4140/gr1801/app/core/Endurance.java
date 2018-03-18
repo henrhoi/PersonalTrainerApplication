@@ -36,13 +36,12 @@ public class Endurance extends Training implements Comparable<Endurance>{
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return date;
 	}
 
 	@Override
 	public int compareTo(Endurance o) {
-		return -this.getDate().compareTo(o.getDate()); // "-" To get new trainings first
+		return getDate().compareTo(o.getDate());
 	}
 	
 }
