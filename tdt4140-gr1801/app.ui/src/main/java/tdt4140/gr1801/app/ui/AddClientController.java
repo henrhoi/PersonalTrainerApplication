@@ -69,9 +69,9 @@ public class AddClientController implements Controller {
 		ObservableList<String> style = field.getStyleClass();
 		switch (field.getId()) {
 		// Client should have own check methods
-		case "first_name_field": bool = PersonalTrainer.checkFirstName(field.getText()); break;
-		case "last_name_field": bool = PersonalTrainer.checkLastName(field.getText()); break;
-		case "height": bool = checkHeight(Integer.parseInt(field.getText())); break;
+		case "first_name_field": bool = Client.checkFirstName(field.getText()); break;
+		case "last_name_field": bool = Client.checkLastName(field.getText()); break;
+		case "height": bool = Client.checkHeight((Integer.parseInt(field.getText()))); break;
 		default: bool = true; break;
 		}
 		
@@ -84,9 +84,6 @@ public class AddClientController implements Controller {
 		
 	}
 	
-	// This method should be in Client
-	private static boolean checkHeight(int height) {
-		return height < 272 && height > 130;
-	}
+	
 
 }
