@@ -1,6 +1,7 @@
 package tdt4140.gr1801.app.ui;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
@@ -25,9 +27,11 @@ public class AddClientController implements Controller {
 	
 	PersonalTrainer pt;
 	Client client;
+	Controller mainviewController;
 	
-	public AddClientController(PersonalTrainer pt) {
+	public AddClientController(PersonalTrainer pt, Controller mainviewController) {
 		this.pt = pt;
+		this.mainviewController = mainviewController;
 		
 	}
 	
@@ -46,6 +50,7 @@ public class AddClientController implements Controller {
 		if (errors.size() == 0) {
 			addClientToDatabase();
 			System.out.println("Success");
+			
 		}
 		else {
 			System.err.println(errors.size() + " felter er ugyldige");
@@ -62,6 +67,14 @@ public class AddClientController implements Controller {
 		} catch( IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void backToMainview() {
+		Stage stage = (Stage)first_name_field.getScene().getWindow();
+		URL path = getClass().getResource("FxMainView.fxml");
+		SceneLoader.setScene(stage, path, mainviewController);
+		System.out.println("Back to mainview.");
 	}
 	
 	private void check(TextField field) {

@@ -18,5 +18,6 @@
             <Font size="22.0" />
          </font>
       </Text>
+      <Button fx:id="back_button" layoutX="23.0" layoutY="301.0" mnemonicParsing="false" onAction="#backToMainview" text="Back" />
    </children>
 </AnchorPane>

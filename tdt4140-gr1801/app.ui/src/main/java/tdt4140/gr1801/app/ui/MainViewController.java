@@ -104,7 +104,7 @@ public class MainViewController implements Controller{
 	@FXML
 	public void addClient() {
 		Stage stage = (Stage) addClientButton.getScene().getWindow();
-		Controller controller = new AddClientController(pt);
+		Controller controller = new AddClientController(pt, this);
 		URL path = getClass().getResource("FxAddClient.fxml");
 		SceneLoader.setScene(stage, path, controller);
 	}
