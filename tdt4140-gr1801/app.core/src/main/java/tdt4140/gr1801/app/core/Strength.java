@@ -31,6 +31,7 @@ public class Strength extends Training implements Comparable<Strength> {
 	@Override
 	public int compareTo(Strength o) {
 		return this.getDate().compareTo(o.getDate());
+
 	}
 	
 	public String toString() {
