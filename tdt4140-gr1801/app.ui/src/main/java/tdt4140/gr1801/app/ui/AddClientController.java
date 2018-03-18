@@ -69,6 +69,8 @@ public class AddClientController implements Controller {
 		}
 	}
 	
+	
+	// Doesn't get back to the same mainview as before
 	@FXML
 	public void backToMainview() {
 		Stage stage = (Stage)first_name_field.getScene().getWindow();
