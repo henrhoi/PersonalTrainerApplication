@@ -27,9 +27,9 @@ public class AddClientController implements Controller {
 	
 	PersonalTrainer pt;
 	Client client;
-	Controller mainviewController;
+	MainViewController mainviewController;
 	
-	public AddClientController(PersonalTrainer pt, Controller mainviewController) {
+	public AddClientController(PersonalTrainer pt, MainViewController mainviewController) {
 		this.pt = pt;
 		this.mainviewController = mainviewController;
 		
@@ -64,6 +64,8 @@ public class AddClientController implements Controller {
 			int height = Integer.parseInt(height_field.getText());
 			client = new Client(0, name, height, pt);
 			client.createClient();
+			
+			
 		} catch( IOException e) {
 			e.printStackTrace();
 		}
@@ -76,7 +78,11 @@ public class AddClientController implements Controller {
 		Stage stage = (Stage)first_name_field.getScene().getWindow();
 		URL path = getClass().getResource("FxMainView.fxml");
 		SceneLoader.setScene(stage, path, mainviewController);
+		mainviewController.updateInfo();
+		System.out.println(pt.getName());
+		pt.getClientList().stream().forEach(c -> System.out.println(c.getName()));
 		System.out.println("Back to mainview.");
+		
 	}
 	
 	private void check(TextField field) {
