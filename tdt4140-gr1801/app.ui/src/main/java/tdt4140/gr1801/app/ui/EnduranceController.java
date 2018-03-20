@@ -33,6 +33,7 @@ public class EnduranceController implements TabController {
 	@Override
 	public void setClient(Client client) {
 		this.client = client;
+		
 	}
 	
 	@Override
@@ -84,10 +85,6 @@ public class EnduranceController implements TabController {
 			cal_burned_field.setText(String.valueOf(e.getCaloriesBurned()));
 		}
 	}
-
-	
-	
-	
 	
 
 }

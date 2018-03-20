@@ -82,6 +82,14 @@ public class Client {
     		return this.nutritions;
     }
     
+    public HashMap<String,Double> getWeightMap(){
+    		return this.weights;
+    }
+    
+    public HashMap<String,Double> getFatMap(){
+    		return this.fats;
+    }
+    
     
     public Double getFat(String date){
     		if (this.fats.containsKey(date)) {
