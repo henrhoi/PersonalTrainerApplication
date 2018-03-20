@@ -79,8 +79,6 @@ public class AddClientController implements Controller {
 		URL path = getClass().getResource("FxMainView.fxml");
 		SceneLoader.setScene(stage, path, mainviewController);
 		mainviewController.updateInfo();
-		System.out.println(pt.getName());
-		pt.getClientList().stream().forEach(c -> System.out.println(c.getName()));
 		System.out.println("Back to mainview.");
 		
 	}

@@ -42,10 +42,12 @@ public class MainViewController implements Controller{
 	@FXML
 	ListView<Client> clients;
 	
+	
 
 	private PersonalTrainer pt;
 	//This set should contain controllers for all the tabs
 	private Set<TabController> tabControllers;
+	
 	
 	//TODO - idea.. instead of making a new controller everytime we change controller.
 	//We make a list of all the controllers that is made on updateinfo
@@ -156,12 +158,12 @@ public class MainViewController implements Controller{
 		label.setText(this.pt.getUsername());
 		
 		//Create list view of Clients.
-		ObservableList<Client> c = FXCollections.observableArrayList ();
+		ObservableList<Client> observableClients = FXCollections.observableArrayList ();
 		for(Client client : pt.getClientList()) {
-			c.add(client);
+			observableClients.add(client);
 		}
-		clients.setItems(c);
-		if (!c.isEmpty()) {
+		clients.setItems(observableClients);
+		if (!observableClients.isEmpty()) {
 			setTab("FxStrength.fxml", strengthTab);
 			setTab("FxEndurance.fxml", enduranceTab);
 			setTab("FxHealth.fxml", healthTab);
@@ -169,10 +171,8 @@ public class MainViewController implements Controller{
 			setTab("FxOverview.fxml", overviewTab);
 			setClientListviewNavigationLogic();
 		}
-		
-
-	
 	}
+
 	
 	
   
