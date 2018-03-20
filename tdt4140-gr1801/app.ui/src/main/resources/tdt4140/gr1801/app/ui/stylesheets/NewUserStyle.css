@@ -10,3 +10,9 @@
   	-fx-overflow: hidden;
   	-fx-opacity: 0.9;
 }
+
+#h2 {
+	-fx-font-size: 45px;
+    -fx-text-fill: #ffffff;
+    fx-letter-spacing: 5px; /* No effect */
+}
