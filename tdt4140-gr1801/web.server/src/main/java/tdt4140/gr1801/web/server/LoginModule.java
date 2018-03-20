@@ -19,6 +19,10 @@ public class LoginModule {
 		
 		// Legger til salt, som burde ha vaert hemmelig. 
 		String content = GetURL.getRequest("/login/"+username);
+		
+		// No PT with that username
+		if (content.equals("[]")) {return false;}
+		
 		JSONObject json = new JSONObject(content);
 		String salt = json.getString("Salt");
 		String passwrd = json.getString("Passwrd");

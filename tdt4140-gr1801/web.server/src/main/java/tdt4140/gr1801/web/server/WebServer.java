@@ -49,5 +49,7 @@ public class WebServer{
 		webserver.server.start();
 		//I TESTER HA .join PAA SLUTTEN - DEN VENTER Paa AT THREADEN SKAL BLI FERDIG 
 		webserver.server.join();
+		
+	
 	}
 }

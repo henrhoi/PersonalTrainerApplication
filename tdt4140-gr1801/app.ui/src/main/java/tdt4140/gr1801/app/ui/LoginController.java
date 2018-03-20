@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.web.server.LoginModule;
 
 public class LoginController implements Controller{
@@ -73,6 +74,7 @@ public class LoginController implements Controller{
 		SceneLoader.setScene(stage, path, controller);
 		
 	}
+	
 	
 	
 

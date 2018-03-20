@@ -74,6 +74,22 @@ public class Client {
     		return this.strengthTraining;
     }
     
+    public List<Endurance> getEnduranceList(){
+    		return this.enduranceTraining;
+    }
+    
+    public List<Nutrition> getNutritionList(){
+    		return this.nutritions;
+    }
+    
+    public HashMap<String,Double> getWeightMap(){
+    		return this.weights;
+    }
+    
+    public HashMap<String,Double> getFatMap(){
+    		return this.fats;
+    }
+    
     
     public Double getFat(String date){
     		if (this.fats.containsKey(date)) {
@@ -109,10 +125,10 @@ public class Client {
     
     
     public void addFat(String date, Double fat) {
-    		if (fat>0.0 && fat<1.0) {
+    		if (fat>0.0 && fat<100) {
     			this.fats.put(date,fat);
     		} else {
-    			throw new IllegalArgumentException("Not valid fat percent, must be in range [0,1]");
+    			throw new IllegalArgumentException("Not valid fat percent, must be in range [0,100]");
     		}
     }
     
@@ -123,7 +139,7 @@ public class Client {
     		this.nutritions.add(nutrition);
     }
     
-    // TODO - Må legge inn tester i TestClient-klassen 
+    // TODO - M legge inn tester i TestClient-klassen 
     public void addStrengthTraining(Strength training) {
     		this.strengthTraining.add(training);
     }
@@ -161,14 +177,19 @@ public class Client {
     		}
     }
     
-    // IKKE FERDIG!
+
     // ikke testet 
     public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
-    		String data = GetURL.getRequest("training/endurance/"+this.id);
+    		String data = GetURL.getRequest("/training/endurance/"+this.id);
     		JSONArray json = new JSONArray(data);
     		for (int n = 0; n < json.length(); n++) {
     			JSONObject object = json.getJSONObject(n);
-    			
+    			String date = object.getString("Dato");
+    			int duration = object.getInt("Duration");
+    			double distance = object.getDouble("Distance");
+    			int calories = object.getInt("CaloriesBurned");
+    			Endurance e = new Endurance(date, duration, distance, calories);
+    			this.enduranceTraining.add(e);
     			
     		}
     }
@@ -207,19 +228,30 @@ public class Client {
     }
     //KISSA
     
-    
-    @Override
-    public String toString() {
-    	// TODO Auto-generated method stub
-    	return this.name;
+    //Fungerer
+    public void getClientWeightFat() throws ClientProtocolException, IOException {
+    		String data = GetURL.getRequest("/client/weightfat/"+this.id);
+    		if (!data.equals("[]")) {
+    			JSONArray json = new JSONArray(data);
+    			for (int i = 0; i < json.length() ; i++ ) {
+    				JSONObject jsonObj = json.getJSONObject(i);
+    				String date = jsonObj.getString("Dato");
+    				Double weight = jsonObj.getDouble("Weight");
+    				Double fat = jsonObj.getDouble("Fat");
+    				this.addWeight(date, weight);
+    				this.addFat(date, fat);
+    			}
+    		}
     }
+    
     
 
     // Tester at innsetting av Client fungerer. 
     public static void main(String[] args) throws IOException {
     		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
     		Client client = new Client(1,"Vilde Arntzen",160, pt);
-    		client.createClient();
+    		client.getClientWeightFat();
+    		System.out.println(client.weights);
 	}
 
 }

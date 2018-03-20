@@ -1,5 +1,7 @@
 package tdt4140.gr1801.web.server;
 
+import java.io.IOException;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,7 +10,10 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+
+import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
+
 
 // TODO - Faa alle styrkeoektene - samt oevelser(?) til en client
 
@@ -49,6 +54,13 @@ public class Training_Resources {
 		ResultSet rs = stmt.executeQuery();
 		String json  = RSJSONConverter.ResultSetToJSON(rs).toString();
 		return json;
+	}
+	
+	public static void main(String[] args) throws ClientProtocolException, IOException {
+		String trainingInfo = GetURL.getRequest("/exercise/1");
+		System.out.println(trainingInfo);
+		
+		
 	}
 	
 }
