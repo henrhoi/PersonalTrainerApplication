@@ -11,5 +11,7 @@ public interface TabController extends Controller{
 	//This method should update the view in the fxml
 	//The data can be found in the Client object
 	public void updateInfo();
+	
+	public void startup();
 
 }

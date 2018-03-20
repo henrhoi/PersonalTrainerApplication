@@ -9,7 +9,7 @@
    <children>
       <Pane fx:id="root" prefHeight="385.0" prefWidth="493.0">
          <children>
-            <VBox layoutX="20.0" layoutY="20.0" prefHeight="365.0" prefWidth="158.0" spacing="10.0">
+            <VBox layoutX="20.0" layoutY="20.0" prefHeight="365.0" prefWidth="230.0" spacing="10.0">
                <children>
                   <Label fx:id="idLabel" text="ClientID: " />
                   <Label fx:id="nameLabel" text="Name: " />

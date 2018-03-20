@@ -133,6 +133,7 @@ public class Client {
     }
     
     
+    
     // Burde mulig ha en sjekk her for om datoen allerede eksisterer?
     // for-løkke?
     public void addNutrition(Nutrition nutrition) {
@@ -147,6 +148,19 @@ public class Client {
     public void addEnduranceTraining(Endurance training) {
     		this.enduranceTraining.add(training);
     }
+    
+    public static boolean checkFirstName(String firstName) {
+		return (firstName.matches("[a-zA-Z]+"));
+	}
+	
+	public static boolean checkLastName(String lastName) {
+		return (lastName.matches("[a-zA-Z]+"));
+	}
+	
+	public static boolean checkHeight(int height) {
+		return height < 272 && height > 130;
+	}
+    
     
     // Funksjon som legger Client til i Klient-tablen i DB. Kan kanskje gjøres statisk og ta inn Client som input og gjøres statisk.
     public void createClient() throws IOException {
@@ -242,6 +256,10 @@ public class Client {
     				this.addFat(date, fat);
     			}
     		}
+    }
+    
+    public String toString() {
+    	return name;
     }
     
     

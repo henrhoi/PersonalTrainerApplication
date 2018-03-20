@@ -24,7 +24,6 @@ public class Client_Resources {
     		PreparedStatement stmt = QueryFactory.getClient(Integer.parseInt(clientID));
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
-
     		return json;
 
 	}
@@ -40,7 +39,6 @@ public class Client_Resources {
         		ResultSet rs = stmt.executeQuery();
         		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
         		return json;
-
 	}
     
     

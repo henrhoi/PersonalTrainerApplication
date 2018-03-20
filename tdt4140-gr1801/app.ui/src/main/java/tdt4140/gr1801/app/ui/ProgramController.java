@@ -21,4 +21,10 @@ public class ProgramController implements TabController {
 		
 	}
 
+	@Override
+	public void startup() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

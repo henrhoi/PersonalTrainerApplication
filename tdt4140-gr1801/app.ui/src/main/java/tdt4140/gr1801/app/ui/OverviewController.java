@@ -6,10 +6,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -37,8 +40,6 @@ public class OverviewController implements TabController {
 	@Override
 	public void setClient(Client client) {
 		this.client = client;
-		updateInfo();
-
 	}
 
 	@Override
@@ -67,9 +68,11 @@ public class OverviewController implements TabController {
         lineChart.setTitle("Weight and Fat measurements");
         lineChart.setMaxSize(300, 300);
         //Set the position
-        lineChart.setLayoutX(200);
+        lineChart.setLayoutX(300);
         lineChart.setLayoutY(10);
         
+        //Remove other LineCharts
+        root.getChildren().setAll((root.getChildren().stream().filter(n -> !(n instanceof LineChart)).collect(Collectors.toList())));
         //Add the LineChart to the view
         root.getChildren().add(lineChart);
         
@@ -92,6 +95,13 @@ public class OverviewController implements TabController {
 		
 		//Add the series of datapoints to the LineChart
 		lineChart.getData().addAll(serie1,serie2);	
+	}
+
+
+	@Override
+	public void startup() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -20,6 +20,6 @@
       <TextField fx:id="cal_burned_field" disable="true" layoutX="385.0" layoutY="225.0" prefHeight="25.0" prefWidth="48.0" />
       <Text layoutX="374.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAL BURNED" />
       <TextField fx:id="duration_field" disable="true" layoutX="163.0" layoutY="225.0" prefHeight="25.0" prefWidth="48.0" />
-      <ListView fx:id="endurance_list" disable="true" layoutY="36.0" prefHeight="335.0" prefWidth="95.0" />
+      <ListView fx:id="listview" layoutY="36.0" prefHeight="335.0" prefWidth="95.0" />
    </children>
 </Pane>
