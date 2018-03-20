@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.ui;
 
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
@@ -11,6 +10,8 @@ import org.apache.http.client.ClientProtocolException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
@@ -38,7 +40,7 @@ public class MainViewController implements Controller{
 	Label label;
 	
 	@FXML
-	ListView<String> clients;
+	ListView<Client> clients;
 	
 
 	private PersonalTrainer pt;
@@ -115,7 +117,34 @@ public class MainViewController implements Controller{
 	public void changeClientInTabs(Client client) {
 		for(TabController c : tabControllers) {
 			c.setClient(client);
+			c.updateInfo();
 		}
+	}
+	
+	public void setClientListviewNavigationLogic(){
+		// Adding logic for updating view when different trainings gets selected.
+		// Mouseclick
+		clients.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				// Getting the selected endurance training
+				Client selected = clients.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				changeClientInTabs(selected);
+			}
+		});
+
+		// Keyboard (up- and down-arrows)
+		clients.setOnKeyReleased(new EventHandler<Event>() {
+			@Override
+			public void handle(Event event) {
+				// Getting the selected endurance training
+				Client selected = clients.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				changeClientInTabs(selected);
+			}
+		});
+
 	}
 	
 	
@@ -126,9 +155,9 @@ public class MainViewController implements Controller{
 		label.setText(this.pt.getUsername());
 		
 		//Create list view of Clients.
-		ObservableList<String> c = FXCollections.observableArrayList ();
+		ObservableList<Client> c = FXCollections.observableArrayList ();
 		for(Client client : pt.getClientList()) {
-			c.add(client.getName());
+			c.add(client);
 		}
 		clients.setItems(c);
 		
@@ -136,6 +165,8 @@ public class MainViewController implements Controller{
 		setTab("FxEndurance.fxml", enduranceTab);
 		setTab("FxHealth.fxml", healthTab);
 		setTab("FxProgram.fxml", programTab);
+		
+		setClientListviewNavigationLogic();
 	
 	}
 	

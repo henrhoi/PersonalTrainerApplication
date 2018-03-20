@@ -250,6 +250,10 @@ public class Client {
     		}
     }
     
+    public String toString() {
+    	return name;
+    }
+    
     
 
     // Tester at innsetting av Client fungerer. 
