@@ -92,6 +92,16 @@ Her er en oversikt over hva som skal til for å få applikasjonen til å kjøre 
 
 
 
+Det finnes en **DEMO-bruker** med fiktiv data, for å få en innsikt av hvordan applikasjonen fungerer i praksis:
+
+````
+username: demo
+password: puerbest
+```
+
+
+
+
 <br></br>
 ## Utviklet med
 
