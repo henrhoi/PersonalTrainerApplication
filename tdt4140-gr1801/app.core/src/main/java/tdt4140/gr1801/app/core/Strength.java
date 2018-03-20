@@ -3,7 +3,7 @@ package tdt4140.gr1801.app.core;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Strength extends Training {
+public class Strength extends Training implements Comparable<Strength> {
 	
 	private List<Exercise> exercises = new ArrayList<Exercise>();
 	
@@ -27,6 +27,15 @@ public class Strength extends Training {
 		}
 		throw new IllegalArgumentException("Unvalid exercise");
 	}
+
+	@Override
+	public int compareTo(Strength o) {
+		return this.getDate().compareTo(o.getDate());
+
+	}
 	
+	public String toString() {
+		return date;
+	}
 	
 }
