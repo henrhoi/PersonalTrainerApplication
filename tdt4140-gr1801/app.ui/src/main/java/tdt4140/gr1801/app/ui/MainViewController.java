@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.ui;
 
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
@@ -11,6 +10,8 @@ import org.apache.http.client.ClientProtocolException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
@@ -37,8 +39,10 @@ public class MainViewController implements Controller{
 	@FXML
 	Label label;
 	
+	@FXML
+	ListView<Client> clients;
 	
-	
+
 	private PersonalTrainer pt;
 	//This set should contain controllers for all the tabs
 	private Set<TabController> tabControllers;
@@ -104,15 +108,44 @@ public class MainViewController implements Controller{
 	
 	@FXML
 	public void addClient() {
-		//TODO update database
-		System.out.println("Add Client");
+		Stage stage = (Stage) addClientButton.getScene().getWindow();
+		Controller controller = new AddClientController(pt, this);
+		URL path = getClass().getResource("FxAddClient.fxml");
+		SceneLoader.setScene(stage, path, controller);
 	}
 	
-	//This method should be used when we add functionallity for choosing clients inn a menu
+	//This method should be used when we add functionality for choosing clients inn a menu
 	public void changeClientInTabs(Client client) {
 		for(TabController c : tabControllers) {
 			c.setClient(client);
+			c.updateInfo();
 		}
+	}
+	
+	public void setClientListviewNavigationLogic(){
+		// Adding logic for updating view when different trainings gets selected.
+		// Mouseclick
+		clients.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent event) {
+				// Getting the selected endurance training
+				Client selected = clients.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				changeClientInTabs(selected);
+			}
+		});
+
+		// Keyboard (up- and down-arrows)
+		clients.setOnKeyReleased(new EventHandler<Event>() {
+			@Override
+			public void handle(Event event) {
+				// Getting the selected endurance training
+				Client selected = clients.getSelectionModel().getSelectedItem();
+				// Setting data in the view thereafter
+				changeClientInTabs(selected);
+			}
+		});
+
 	}
 	
 	
@@ -122,11 +155,21 @@ public class MainViewController implements Controller{
 		System.out.println("Update information for " + this.pt.getUsername());
 		label.setText(this.pt.getUsername());
 		
-		setTab("FxStrength.fxml", strengthTab);
-		setTab("FxEndurance.fxml", enduranceTab);
-		setTab("FxHealth.fxml", healthTab);
-		setTab("FxProgram.fxml", programTab);
-		setTab("FxOverview.fxml",overviewTab);
+		//Create list view of Clients.
+		ObservableList<Client> c = FXCollections.observableArrayList ();
+		for(Client client : pt.getClientList()) {
+			c.add(client);
+		}
+		clients.setItems(c);
+		if (!c.isEmpty()) {
+			setTab("FxStrength.fxml", strengthTab);
+			setTab("FxEndurance.fxml", enduranceTab);
+			setTab("FxHealth.fxml", healthTab);
+			setTab("FxProgram.fxml", programTab);
+			setClientListviewNavigationLogic();
+		}
+		
+
 	
 	}
 	
