@@ -166,6 +166,7 @@ public class MainViewController implements Controller{
 			setTab("FxEndurance.fxml", enduranceTab);
 			setTab("FxHealth.fxml", healthTab);
 			setTab("FxProgram.fxml", programTab);
+			setTab("FxOverview.fxml", overviewTab);
 			setClientListviewNavigationLogic();
 		}
 		
