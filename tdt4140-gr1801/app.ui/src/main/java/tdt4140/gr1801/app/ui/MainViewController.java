@@ -160,13 +160,14 @@ public class MainViewController implements Controller{
 			c.add(client);
 		}
 		clients.setItems(c);
+		if (!c.isEmpty()) {
+			setTab("FxStrength.fxml", strengthTab);
+			setTab("FxEndurance.fxml", enduranceTab);
+			setTab("FxHealth.fxml", healthTab);
+			setTab("FxProgram.fxml", programTab);
+			setClientListviewNavigationLogic();
+		}
 		
-		setTab("FxStrength.fxml", strengthTab);
-		setTab("FxEndurance.fxml", enduranceTab);
-		setTab("FxHealth.fxml", healthTab);
-		setTab("FxProgram.fxml", programTab);
-		
-		setClientListviewNavigationLogic();
 	
 	}
 	
