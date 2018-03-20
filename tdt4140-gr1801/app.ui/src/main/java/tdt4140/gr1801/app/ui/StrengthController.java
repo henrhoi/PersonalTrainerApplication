@@ -97,6 +97,7 @@ public class StrengthController implements TabController {
 			tableview.setItems(exItems);
 		}
 		else {
+			duration_field.setText("");
 			tableview.setItems(null);
 		}
 	}
