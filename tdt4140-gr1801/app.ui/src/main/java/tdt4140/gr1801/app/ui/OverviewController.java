@@ -94,4 +94,11 @@ public class OverviewController implements TabController {
 		lineChart.getData().addAll(serie1,serie2);	
 	}
 
+
+	@Override
+	public void startup() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

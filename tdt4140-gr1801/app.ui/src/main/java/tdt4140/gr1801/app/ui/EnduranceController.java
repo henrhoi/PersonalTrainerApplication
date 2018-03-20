@@ -39,7 +39,8 @@ public class EnduranceController implements TabController {
 	@Override
 	public void updateInfo() {
 		fillListview();
-		setNavigationLogic();
+		updateView(null);
+		
 	}
 	
 	public void fillListview() {
@@ -84,6 +85,19 @@ public class EnduranceController implements TabController {
 			avg_speed_field.setText(String.valueOf(e.getAverageSpeed()));
 			cal_burned_field.setText(String.valueOf(e.getCaloriesBurned()));
 		}
+		else {
+			distance_field.setText("");
+			duration_field.setText("");
+			avg_speed_field.setText("");
+			cal_burned_field.setText("");
+		}
+	}
+
+	@Override
+	public void startup() {
+		setNavigationLogic();
+		updateView(null);
+		
 	}
 	
 

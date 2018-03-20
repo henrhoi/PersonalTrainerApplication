@@ -46,17 +46,10 @@ public class StrengthController implements TabController {
 	
 	public void updateInfo() {
 		fillListview();
-		setNavigationLogic();
-		
-		// Connecting the columns of the tableview to attributes in Exercise
-		this.colName.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Name"));
-		this.colWeight.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Weight"));
-		
-		// Sets and reps are not excplicit defined as attributes in Exercise, so they must be calculated
-		this.colSets.setCellValueFactory(s -> new SimpleStringProperty(Integer.toString(s.getValue().getNumberOfSets())));
-		this.colReps.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getReps()));
+		updateView(null);
 		
 	}
+	
 	
 	public void fillListview() {
 		// Adding the client's endurance-trainings in the listview
@@ -103,5 +96,23 @@ public class StrengthController implements TabController {
 			}
 			tableview.setItems(exItems);
 		}
+		else {
+			tableview.setItems(null);
+		}
 	}
+
+	@Override
+	public void startup() {
+
+		// Connecting the columns of the tableview to attributes in Exercise
+		this.colName.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Name"));
+		this.colWeight.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Weight"));
+		
+		// Sets and reps are not excplicit defined as attributes in Exercise, so they must be calculated
+		this.colSets.setCellValueFactory(s -> new SimpleStringProperty(Integer.toString(s.getValue().getNumberOfSets())));
+		this.colReps.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getReps()));
+		setNavigationLogic();
+		updateView(null);
+	}
+		
 }

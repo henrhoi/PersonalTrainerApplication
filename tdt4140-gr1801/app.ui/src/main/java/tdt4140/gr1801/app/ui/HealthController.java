@@ -36,9 +36,7 @@ public class HealthController implements TabController {
 	@FXML
 	public void updateInfo() {
 		fillListview();
-		setNavigationLogic();
-		NutritionPieChart.setTitle("OVERSKRIFT");
-		
+		updateView(null);
 		
 	}
 	
@@ -77,13 +75,19 @@ public class HealthController implements TabController {
 	}
 	
 	public void updateView(Nutrition n) {
-		ObservableList<Data> pieChartData = FXCollections.observableArrayList(
-				new Data("Fat", n.getFat()),
-				new Data("Calories", n.getCalories()),
-				new Data("Protein", n.getProtein()),
-				new Data("Carbs", n.getCarbs())
-			);
-		NutritionPieChart.setData(pieChartData);
+		if (n != null) {
+			ObservableList<Data> pieChartData = FXCollections.observableArrayList(
+					new Data("Fat", n.getFat()),
+					new Data("Calories", n.getCalories()),
+					new Data("Protein", n.getProtein()),
+					new Data("Carbs", n.getCarbs())
+				);
+			NutritionPieChart.setData(pieChartData);
+		}
+		else {
+			NutritionPieChart.setData(FXCollections.observableArrayList());
+		}
+		
 		
 		/*
 		 Below is an attempt to not make new data-objects everytime, but to just update them instead. 
@@ -103,6 +107,13 @@ public class HealthController implements TabController {
 //		}
 //		NutritionPieChart.setData(pieChartData);
 
+	}
+
+	@Override
+	public void startup() {
+		setNavigationLogic();
+		NutritionPieChart.setTitle("OVERSKRIFT");
+		
 	}
 
 }

@@ -91,7 +91,7 @@ public class MainViewController implements Controller{
 			loader.setController(controller);
 			Parent root = (Parent)loader.load();
 			tab.setContent(root);
-			controller.updateInfo();
+			controller.startup();
 			
 		} catch (IOException e) {
 			e.printStackTrace();
