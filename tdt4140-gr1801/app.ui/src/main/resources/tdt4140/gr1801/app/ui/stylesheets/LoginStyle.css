@@ -1,39 +1,34 @@
+/*Should be used on FxNewUser*/
 #pane {
-	-fx-background-image: url("../images/backgroun.jpg") no-repeat center center fixed;
+	-fx-background-image: url("../images/background.png") center center;
+	-fx-background-repeat: no-repeat;
+	 background-attachment: fixed;
+	-fx-background-color: black;
 	-fx-background-size: cover;
   	-fx-height: 100%;
   	-fx-overflow: hidden;
-	
+  	-fx-opacity: 0.9;
 }
 
 #h1 {
 	-fx-font-size: 70px;
-    -fx-font-weight: bold;
     -fx-text-fill: #ffffff;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
-}
-
-#h2 {
-	-fx-font-size: 40px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #ffffff;
-    -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    fx-letter-spacing: 5px; /* No effect */
 }
 
 .button{
-    -fx-border-color: transparent;
-    -fx-border-width: 0;
-    -fx-background-radius: 0;
-    -fx-background-color: transparent;
-    -fx-text-fill: #ffffff;
-    -fx-font-size: 15px;
+	-fx-background-color: darkgrey;
+	-fx-padding: 4px 15px;
+	-fx-font-size: 15px;  
+	-fx-cursor: hand;
 }
 
 .button:hover {
-    -fx-font-size: 16px;
+	-fx-background-color: #606060;
+	-fx-color: #383838; /* Button text becomes white... */
+	/*-fx-effect: dropshadow( one-pass-box, black , 1px , 1px , 1px , 1px);*/
 }
-
-
+ 
 .text-field {
  	-fx-text-box-border: black ;
  	-fx-focus-color: black ;
