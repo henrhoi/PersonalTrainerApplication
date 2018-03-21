@@ -5,10 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Side;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Nutrition;
 
@@ -20,8 +24,10 @@ public class HealthController implements TabController {
 	@FXML
 	ListView<Nutrition> listview;
 	
+	@FXML
+	Label PieChartDataLabel;
+		
 	private Client client;
-	
 	
 	
 	public HealthController(Client client) {
@@ -69,9 +75,9 @@ public class HealthController implements TabController {
 				Nutrition selected = listview.getSelectionModel().getSelectedItem();
 				// Setting data in the view thereafter
 				updateView(selected);
+				System.out.println("moved");
 			}
 		});
-
 	}
 	
 	public void updateView(Nutrition n) {
@@ -80,10 +86,26 @@ public class HealthController implements TabController {
 					new Data("Fat", n.getFat()),
 					new Data("Calories", n.getCalories()),
 					new Data("Protein", n.getProtein()),
-					new Data("Carbs", n.getCarbs())
+					new Data("Carbs" , n.getCarbs())
 				);
+			
+			//Setting the title of the chart + placing the legend on the left side of the chart.
+			NutritionPieChart.setTitle("Nutrition of " + n.getDate());
 			NutritionPieChart.setData(pieChartData);
+			NutritionPieChart.setLegendSide(Side.LEFT);
+			
+			// Changes the colors of the Pie chart so that they are the same every time
+			applyCustomColorSequence(
+				      pieChartData, 
+				      "bisque", 
+				      "chocolate", 
+				      "coral", 
+				      "crimson"
+				    );
+			NutritionPieChart.setLegendVisible(false);	
+			addEventHandlerPieChart();
 		}
+
 		else {
 			NutritionPieChart.setData(FXCollections.observableArrayList());
 		}
@@ -112,8 +134,31 @@ public class HealthController implements TabController {
 	@Override
 	public void startup() {
 		setNavigationLogic();
-		NutritionPieChart.setTitle("OVERSKRIFT");
+		//NutritionPieChart.setTitle("OVERSKRIFT");
 		
 	}
+	
+	
+	//Creates an event handler every time you change the date for that date's data.
 
+	public void addEventHandlerPieChart() {
+		for(PieChart.Data data : NutritionPieChart.getData()) {
+			data.getNode().addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
+				@Override
+				public void handle(MouseEvent event) {
+					PieChartDataLabel.setText(data.getName() + " - " + data.getPieValue() + "grams");
+				}
+			});
+		}
+	}
+	
+	//Creating custom colors for all the pies
+	private void applyCustomColorSequence(ObservableList<PieChart.Data> pieChartData, String... pieColors) {
+	    int i = 0;
+	    for (PieChart.Data data : pieChartData) {
+	      data.getNode().setStyle("-fx-pie-color: " + pieColors[i % pieColors.length] + ";");
+	      i++;
+	    }
+	  }
+	
 }
