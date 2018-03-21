@@ -32,7 +32,6 @@ public class HealthController implements TabController {
 	
 	public HealthController(Client client) {
 		this.client = client;
-		System.out.println(listview);
 	}
 	
 	public void setClient(Client client) {

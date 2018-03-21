@@ -143,6 +143,9 @@ public class MainViewController implements Controller{
 			public void handle(Event event) {
 				// Getting the selected endurance training
 				Client selected = clients.getSelectionModel().getSelectedItem();
+				if(selected == null) {
+					selected = pt.getClientList().get(0);
+				}
 				// Setting data in the view thereafter
 				changeClientInTabs(selected);
 			}
