@@ -133,8 +133,5 @@ public class NewUserController implements Controller{
 		return  year + month + day +  "-1400"; 
 	}	
 	
-	@Override
-	public void setClient(Client client) {
-		//Will not be used
-	}
+	
 }

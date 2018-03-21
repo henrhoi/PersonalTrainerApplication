@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="114.0" layoutY="125.0" text="Health" />
-      <Line endX="500.0" endY="385.0" strokeWidth="4.0" />
+      <PieChart fx:id="NutritionPieChart" layoutX="135.0" layoutY="7.0" prefHeight="365.0" prefWidth="361.0" />
+      <ListView fx:id="listview" layoutX="6.0" layoutY="23.0" prefHeight="335.0" prefWidth="115.0" />
+      <Label fx:id="PieChartDataLabel" layoutX="242.0" layoutY="60.0" text="Hover Pie Chart For Info" />
    </children>
 </Pane>

@@ -24,7 +24,6 @@ public class Client_Resources {
     		PreparedStatement stmt = QueryFactory.getClient(Integer.parseInt(clientID));
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
-
     		return json;
 
 	}
@@ -36,13 +35,24 @@ public class Client_Resources {
     @Path("/all/{pt}")
     @Produces("application/json")
     public static String getClients(@PathParam("pt") String PT_ID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-        		System.out.println(PT_ID);
     			PreparedStatement stmt = QueryFactory.getAllClients(PT_ID);
         		ResultSet rs = stmt.executeQuery();
         		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
         		return json;
-
 	}
+    
+    
+    
+    @GET
+    @Path("/weightfat/{clientid}")
+    @Produces("application/json")
+    public String getWeigthFatFromClient(@PathParam("clientid") String ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    		PreparedStatement stmt = QueryFactory.getWeigthFatFromClient(ClientID);
+    		ResultSet rs = stmt.executeQuery();
+    		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+    		return json;
+    	
+    }
     
     
     

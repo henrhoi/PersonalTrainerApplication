@@ -6,19 +6,27 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 
-<Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@stylesheets/NewUserStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField fx:id="usernameField" layoutX="117.0" layoutY="105.0" promptText="Username" stylesheets="@stylesheets/LoginStyle.css" />
-      <TextField fx:id="firstNameField" layoutX="117.0" layoutY="146.0" promptText="First name" stylesheets="@stylesheets/LoginStyle.css" />
-      <TextField fx:id="lastNameField" layoutX="117.0" layoutY="185.0" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
-      <TextField fx:id="phoneNumberField" layoutX="371.0" layoutY="105.0" promptText="Phone number" stylesheets="@stylesheets/LoginStyle.css" />
-      <TextField fx:id="emailField" layoutX="371.0" layoutY="146.0" promptText="Email" stylesheets="@stylesheets/LoginStyle.css" />
-      <PasswordField fx:id="passwordField" layoutX="117.0" layoutY="223.0" promptText="Password" stylesheets="@stylesheets/NewUserStyle.css" />
-      <PasswordField fx:id="confirmPasswordField" layoutX="117.0" layoutY="262.0" promptText="Confrim Password" stylesheets="@stylesheets/NewUserStyle.css" />
-      <Button layoutX="291.0" layoutY="326.0" mnemonicParsing="false" onAction="#createUser" stylesheets="@stylesheets/NewUserStyle.css" text="+ Create User" />
-      <Label id="h2" fx:id="infoLabel" layoutX="117.0" layoutY="53.0" stylesheets="@stylesheets/LoginStyle.css" text="Fill all information" textFill="WHITE" />
-      <DatePicker fx:id="birthdayField" layoutX="371.0" layoutY="187.0" prefHeight="27.0" prefWidth="167.0" promptText="Birthday" stylesheets="@stylesheets/NewUserStyle.css" />
-      <Button fx:id="backToLoginButton" layoutX="117.0" layoutY="326.0" mnemonicParsing="false" onAction="#backToLogin" text="Back to login" />
+      <Button defaultButton="true" layoutX="566.0" layoutY="459.0" mnemonicParsing="false" onAction="#createUser" stylesheets="@stylesheets/LoginStyle.css" text="Create User" textFill="#141414" />
+      <Label id="h2" fx:id="infoLabel" layoutX="187.0" layoutY="31.0" stylesheets="@stylesheets/NewUserStyle.css" text="Create account" textFill="WHITE" />
+      <VBox layoutX="257.0" layoutY="122.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+         <children>
+            <TextField fx:id="firstNameField" promptText="First name" stylesheets="@stylesheets/LoginStyle.css" />
+            <TextField fx:id="lastNameField" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
+            <TextField fx:id="usernameField" promptText="Username" stylesheets="@stylesheets/LoginStyle.css" />
+            <Line id="line" endX="92.0" startX="-92.0" stroke="LIGHTGRAY" strokeType="OUTSIDE" />
+            <PasswordField fx:id="passwordField" promptText="Password" stylesheets="@stylesheets/LoginStyle.css" />
+            <PasswordField fx:id="confirmPasswordField" promptText="Confrim Password" stylesheets="@stylesheets/LoginStyle.css" />
+            <Line id="line" endX="92.0" startX="-92.0" stroke="LIGHTGRAY" strokeType="OUTSIDE" />
+            <TextField fx:id="emailField" promptText="Email" stylesheets="@stylesheets/LoginStyle.css" />
+            <TextField fx:id="phoneNumberField" promptText="Phone number" stylesheets="@stylesheets/LoginStyle.css" />
+            <DatePicker fx:id="birthdayField" prefHeight="27.0" prefWidth="188.0" promptText="Birthday" stylesheets="@stylesheets/LoginStyle.css" />
+         </children>
+      </VBox>
+      <Button defaultButton="true" layoutX="20.0" layoutY="459.0" mnemonicParsing="false" onAction="#backToLogin" stylesheets="@stylesheets/LoginStyle.css" text="Back" textFill="#141414" />
    </children>
 </Pane>

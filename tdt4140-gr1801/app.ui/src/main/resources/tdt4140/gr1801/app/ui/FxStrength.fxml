@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="114.0" layoutY="125.0" text="Strengt" />
-      <Line endX="500.0" endY="385.0" strokeWidth="4.0" />
+      <Text layoutX="124.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+      <TextField fx:id="duration_field" disable="true" editable="false" layoutX="185.0" layoutY="311.0" prefHeight="25.0" prefWidth="48.0" />
+      <ListView fx:id="listview" layoutY="14.0" prefHeight="335.0" prefWidth="115.0" />
+      <TableView fx:id="tableview" layoutX="114.0" layoutY="25.0" prefHeight="284.0" prefWidth="548.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="172.41842651367188" text="Name" />
+            <TableColumn fx:id="colWeight" prefWidth="102.58161926269531" text="Weight (kg)" />
+          <TableColumn fx:id="colSets" prefWidth="142.36224365234375" text="Sets" />
+            <TableColumn fx:id="colReps" prefWidth="136.63775634765625" text="Repetitions" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
    </children>
 </Pane>

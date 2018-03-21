@@ -3,8 +3,10 @@ package tdt4140.gr1801.app.core;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class Exercise {
-	
+
 	private String name;
 	private double weight;
 	private List<Integer> repsPerSet = new ArrayList<>();
@@ -52,6 +54,14 @@ public class Exercise {
 	
 	public int getNumberOfSets() {
 		return repsPerSet.size();
+	}
+	
+	public String getReps() {
+		String r = "";
+		for (int rep : repsPerSet) {
+			r += rep + "-"; 
+		}
+		return r.substring(0, r.length()-1);
 	}
 	
 	public int getTotalReps() {

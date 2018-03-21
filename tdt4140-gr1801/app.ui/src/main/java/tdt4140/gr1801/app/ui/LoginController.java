@@ -75,10 +75,6 @@ public class LoginController implements Controller{
 		
 	}
 	
-	@Override
-	public void setClient(Client client) {
-		//Will not be used
-	}
 	
 	
 
