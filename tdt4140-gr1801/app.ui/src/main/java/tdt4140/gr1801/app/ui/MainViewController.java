@@ -155,7 +155,7 @@ public class MainViewController implements Controller{
 	public void updateInfo() {
 		//User this.username to update all the information
 		System.out.println("Update information for " + this.pt.getUsername());
-		label.setText(this.pt.getName());
+		label.setText(this.pt.getName().split(" ")[0]);
 		
 		//Create list view of Clients.
 		ObservableList<Client> observableClients = FXCollections.observableArrayList ();
