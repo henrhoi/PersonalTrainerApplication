@@ -5,18 +5,18 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="385.0" prefWidth="685.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="root" prefHeight="385.0" prefWidth="493.0">
+      <Pane fx:id="root" prefHeight="385.0" prefWidth="684.0">
          <children>
-            <VBox layoutX="20.0" layoutY="20.0" prefHeight="365.0" prefWidth="230.0" spacing="10.0">
+            <VBox layoutX="17.0" layoutY="82.0" prefHeight="173.0" prefWidth="168.0" spacing="10.0">
                <children>
                   <Label fx:id="idLabel" text="ClientID: " />
                   <Label fx:id="nameLabel" text="Name: " />
                   <Label fx:id="heightLabel" text="Height: " />
-                  <Label fx:id="strengthLabel" text="StrengthTrainings: " />
-                  <Label fx:id="enduranceLabel" text="EnduranceTrainings: " />
-                  <Label fx:id="nutritionLabel" text="NutritionRegistered: " />
+                  <Label fx:id="strengthLabel" text="No. of Strengths:" />
+                  <Label fx:id="enduranceLabel" text="No. of Endurances:" />
+                  <Label fx:id="nutritionLabel" text="No. of Nutritions:" />
                </children>
             </VBox>
          </children></Pane>

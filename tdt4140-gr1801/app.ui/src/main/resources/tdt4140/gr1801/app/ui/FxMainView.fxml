@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -9,18 +11,47 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="500.0" prefWidth="700.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="90.0" prefWidth="700.0">
                <children>
-                  <ImageView fx:id="picture" fitHeight="102.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" text="logoff" />
-                  <Button fx:id="addClientButton" mnemonicParsing="false" onAction="#addClient" text="addClient" />
-                  <Label fx:id="label" text="Label" />
-                  <ListView fx:id="clients" prefHeight="102.0" prefWidth="237.0" />
+                  <ListView fx:id="clients" prefHeight="102.0" prefWidth="241.0" />
+                  <VBox prefHeight="63.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="addClientButton" defaultButton="true" mnemonicParsing="false" onAction="#addClient" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 50px; -fx-font-size: 20; -fx-background-color: PALEGREEN; border: BLACK; -fx-border-radius: 50px; -fx-border-color: DARKGREEN;" text="+">
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Button>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Client" wrappingWidth="64.21875">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets left="20.0" top="20.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <ImageView fx:id="picture" fitHeight="102.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="picture1" fitHeight="102.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" />
+                  <VBox prefHeight="102.0" prefWidth="83.0">
+                     <children>
+                        <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="27.0" prefWidth="86.0" text="Sign out" />
+                        <Label fx:id="label" prefHeight="66.0" prefWidth="128.0" style="-fx-font-weight: bold;" text="Label" textAlignment="CENTER" />
+                     </children>
+                  </VBox>
                </children>
             </HBox>
             <HBox prefHeight="533.0" prefWidth="700.0">
