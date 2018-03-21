@@ -52,9 +52,9 @@ public class OverviewController implements TabController {
 		this.idLabel.setText(String.format("ClientID: %s", this.client.getId()));
 		this.nameLabel.setText(String.format("Name: %s", this.client.getName()));
 		this.heightLabel.setText(String.format("Height: %s", this.client.getHeight()));
-		this.strengthLabel.setText(String.format("StrengthTrainings: %s", this.client.getStrengthList().size()));
-		this.enduranceLabel.setText(String.format("EnduranceTrainings: %s", this.client.getEnduranceList().size()));
-		this.nutritionLabel.setText(String.format("NutritionRegistered: %s", this.client.getNutritionList().size()));
+		this.strengthLabel.setText(String.format("No. of Strengths: %s", this.client.getStrengthList().size()));
+		this.enduranceLabel.setText(String.format("No. of Endurances: %s", this.client.getEnduranceList().size()));
+		this.nutritionLabel.setText(String.format("No. of Nutritions: %s", this.client.getNutritionList().size()));
 	}
 	
 	private void updateWeightAndFatChart() {
@@ -65,10 +65,10 @@ public class OverviewController implements TabController {
         //Add the axis to the lineChart
         final LineChart<String,Number> lineChart = new LineChart<String,Number>(xAxis,yAxis);
         //Set the title and change the size
-        lineChart.setTitle("Weight and Fat measurements");
-        lineChart.setMaxSize(300, 300);
+        lineChart.setTitle("Client's weigth and fat measurements");
+        lineChart.setMaxSize(450, 340);
         //Set the position
-        lineChart.setLayoutX(300);
+        lineChart.setLayoutX(200);
         lineChart.setLayoutY(10);
         
         //Remove other LineCharts
@@ -80,7 +80,7 @@ public class OverviewController implements TabController {
         List<String> dates;
         
 		XYChart.Series<String,Number> serie1 = new XYChart.Series<String,Number>();
-		serie1.setName("Weight measurements");
+		serie1.setName("Weight");
 		Map<String,Double> weights = client.getWeightMap();
 		dates = new ArrayList<String>(weights.keySet());
 		Collections.sort(dates);
@@ -88,7 +88,7 @@ public class OverviewController implements TabController {
 		
 		//Make a series of Datapoints for the fats
 		XYChart.Series<String,Number> serie2 = new XYChart.Series<String,Number>();
-		serie2.setName("Fat measurements");
+		serie2.setName("Fat");
 		Map<String,Double> fats = client.getFatMap();
 		dates = new ArrayList<String>(fats.keySet());
 		dates.stream().forEach(date -> serie2.getData().add(new XYChart.Data<String,Number>(date,fats.get(date))));
