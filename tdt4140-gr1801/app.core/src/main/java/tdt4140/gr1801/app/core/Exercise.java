@@ -3,8 +3,6 @@ package tdt4140.gr1801.app.core;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.beans.property.SimpleStringProperty;
-
 public class Exercise {
 
 	private String name;
@@ -14,8 +12,8 @@ public class Exercise {
 	// Each index corresponds to one single set, while the value corresponds to number of reps in this set.  
 	// [  10  ,  8   ,  6  , ... ]
 	//   Set1   Set2   Set3  ...
-	// TODO: Better ways to do this?
-	// TODO: Weight is not always constant throughout all sets
+	// Are there a better ways to do this?
+	// 		Weight is not always constant throughout all sets
 	
 	public Exercise(String name, double weight, List<Integer> repsPerSet) {
 		checkArguments(name, weight, repsPerSet);

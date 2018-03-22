@@ -6,7 +6,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 import org.apache.http.client.ClientProtocolException;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -82,9 +81,6 @@ public class LoginModule {
 		boolean test = checkLogin("henrhoi","puerbest");
 		System.out.println(test);
 	}
-	//TODO - SHA-256 - Done
-	//TODO - Boolean funksjon for aa skjekke username og passord - Done
-	//TODO - SALT - evt ha som env.
-	
+
 
 }

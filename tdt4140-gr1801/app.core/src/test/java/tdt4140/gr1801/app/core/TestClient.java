@@ -65,6 +65,7 @@ public class TestClient extends TestCase{
 	
 	public void testExceptionsInGetFat() {
 		try {
+			@SuppressWarnings("unused")
 			Double fat = client.getFat(date5);
 			fail();
 		}

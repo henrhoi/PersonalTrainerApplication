@@ -78,7 +78,7 @@ public class PersonalTrainer {
 	}
 	
 	public static boolean checkUsername(String username) {
-		//TODO check if username is taken i database.
+		//needs check if username is taken i database.
 		return username.matches("[A-Za-z0-9]+");
 	}
 	
@@ -159,7 +159,7 @@ public class PersonalTrainer {
 	}
 	
 	
-	// TODO - må teste denne
+	// Må testes
 	public void getPTClients() throws ClientProtocolException, IOException {
 		String data = GetURL.getRequest("/client/all/"+this.username);
 		JSONArray json = new JSONArray(data);
@@ -169,6 +169,8 @@ public class PersonalTrainer {
 			int id = object.getInt("ClientID");
 			int height = object.getInt("Height");
 			
+			//La til kommentar som fjerner error om at client aldri blir brukt
+			@SuppressWarnings("unused")
 			Client client = new Client(id, navn, height, this);
 		}
 	}

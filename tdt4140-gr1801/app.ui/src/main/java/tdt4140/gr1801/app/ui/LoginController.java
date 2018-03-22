@@ -14,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.web.server.LoginModule;
 
 public class LoginController implements Controller{
@@ -37,7 +36,6 @@ public class LoginController implements Controller{
 	//Action on enter from passwordField and loginButton
 	@FXML
 	public void loginAction() throws NoSuchAlgorithmException, ClientProtocolException, IOException {
-		//TODO - Check if username and password are OK
 		String username = usernameField.getText();
 		String password = passwordField.getText();
 		if(LoginModule.checkLogin(username, password)) {

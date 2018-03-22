@@ -49,7 +49,6 @@ public class MainViewController implements Controller{
 	private Set<TabController> tabControllers;
 	
 	
-	//TODO - idea.. instead of making a new controller everytime we change controller.
 	//We make a list of all the controllers that is made on updateinfo
 	//when then make methods for changeClient(client) for controllers like EnduraceController etc
 	
@@ -64,7 +63,7 @@ public class MainViewController implements Controller{
 			client.getClientEnduranceTraining();
 			client.getClientNutrition();
 			client.getClientWeightFat();
-			//TODO update endurance nutrition etc
+			
 		}
 		tabControllers = new HashSet<TabController>();
 	}

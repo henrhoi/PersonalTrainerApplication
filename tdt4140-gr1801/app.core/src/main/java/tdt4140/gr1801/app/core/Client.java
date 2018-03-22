@@ -5,14 +5,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.mysql.cj.xdevapi.JsonArray;
 
 import tdt4140.gr1801.web.server.GetURL;
 
@@ -140,7 +137,7 @@ public class Client {
     		this.nutritions.add(nutrition);
     }
     
-    // TODO - M legge inn tester i TestClient-klassen 
+ 
     public void addStrengthTraining(Strength training) {
     		this.strengthTraining.add(training);
     }

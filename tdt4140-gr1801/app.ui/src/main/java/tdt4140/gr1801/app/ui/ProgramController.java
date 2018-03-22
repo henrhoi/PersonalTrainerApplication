@@ -5,6 +5,7 @@ import tdt4140.gr1801.app.core.Client;
 public class ProgramController implements TabController {
 	
 	
+	@SuppressWarnings("unused")
 	private Client client;
 	
 	public ProgramController(Client client) {
@@ -17,13 +18,13 @@ public class ProgramController implements TabController {
 
 	@Override
 	public void updateInfo() {
-		// TODO Auto-generated method stub
+		// 
 		
 	}
 
 	@Override
 	public void startup() {
-		// TODO Auto-generated method stub
+		// 
 		
 	}
 

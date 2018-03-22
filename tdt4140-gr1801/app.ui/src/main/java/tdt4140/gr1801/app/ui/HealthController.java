@@ -10,9 +10,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.paint.Color;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Nutrition;
 

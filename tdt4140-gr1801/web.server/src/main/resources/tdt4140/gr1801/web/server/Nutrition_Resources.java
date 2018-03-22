@@ -8,14 +8,11 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
 @Path("/nutrition")
 public class Nutrition_Resources {
 
-// TODO - Faa all naeringsdata til en klient
-// EVT TODO - Faa naeringsdata til en klient paa dato
-	
+
 	@GET
 	@Path("/{clientID}")
 	@Produces("application/json")

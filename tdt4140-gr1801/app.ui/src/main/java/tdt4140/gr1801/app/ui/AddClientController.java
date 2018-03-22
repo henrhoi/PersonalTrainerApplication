@@ -43,7 +43,7 @@ public class AddClientController implements Controller {
 		fields.stream().forEach(f -> check(f));
 		
 		// Checking if the styleclass of the fields contains "error" (is unvalid input)
-		// TODO: markere ugyldige felter med røde kanter (CSS)
+		// Markere ugyldige felter med rï¿½de kanter (CSS)
 		AnchorPane pane = (AnchorPane)first_name_field.getParent();
 		List<Node> errors = pane.getChildren().stream().filter(f -> f.getStyleClass().contains("error")).collect(Collectors.toList());
 		// Adding new client to database
@@ -72,7 +72,7 @@ public class AddClientController implements Controller {
 	}
 	
 	
-	// TODO: Doesn't get back to the same mainview as before
+	// NB: Doesn't get back to the same mainview as before
 	@FXML
 	public void backToMainview() {
 		Stage stage = (Stage)first_name_field.getScene().getWindow();

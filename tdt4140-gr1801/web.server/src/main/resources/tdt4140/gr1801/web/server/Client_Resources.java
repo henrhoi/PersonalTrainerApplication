@@ -16,7 +16,6 @@ import org.apache.http.client.ClientProtocolException;
 public class Client_Resources {
 	
 	// hente informasjon om en klient med klient ID = ?
-	// TODO - Legge til slik at kun PT kan se egne klienter, ikke andres.
     @GET
     @Path("/{param}")
     @Produces("application/json")

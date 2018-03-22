@@ -19,7 +19,7 @@ public class Endurance extends Training implements Comparable<Endurance>{
 		this.averageSpeed = distance/((double)(duration)/60);
 		this.caloriesBurned = caloriesBurned;
 		
-		// TODO: measurments of heartrate
+		// Could be cool with heartbeat-measurements
 	}
 	
 	public double getDistance() {

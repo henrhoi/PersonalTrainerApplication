@@ -2,9 +2,7 @@ package tdt4140.gr1801.web.server;
 
 import java.sql.SQLException;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 
 import java.io.IOException;
@@ -14,9 +12,6 @@ import java.sql.ResultSet;
 
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import org.apache.http.client.ClientProtocolException;
 
 @Path("/pt")

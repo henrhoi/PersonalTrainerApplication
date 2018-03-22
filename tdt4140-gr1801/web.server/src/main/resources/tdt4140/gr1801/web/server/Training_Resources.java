@@ -15,11 +15,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
 
-// TODO - Faa alle styrkeoektene - samt oevelser(?) til en client
-
-// TODO - Faa alle utholdenhetsoektene til en client
-
-
 @Path("/training")
 public class Training_Resources {
 	

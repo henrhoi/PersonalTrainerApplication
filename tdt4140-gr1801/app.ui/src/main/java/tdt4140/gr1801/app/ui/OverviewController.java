@@ -1,23 +1,16 @@
 package tdt4140.gr1801.app.ui;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import tdt4140.gr1801.app.core.Client;
@@ -100,7 +93,7 @@ public class OverviewController implements TabController {
 
 	@Override
 	public void startup() {
-		// TODO Auto-generated method stub
+		// 
 		
 	}
 
