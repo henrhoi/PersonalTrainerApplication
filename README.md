@@ -1,6 +1,7 @@
 # PT-applikasjon - Gruppe 01
 
-Vi har laget en applikasjon der en PT kan følge sine klienter. PT-en kan se følgende informasjon om sine 
+Vi har laget en applikasjon der en PT kan følge sine klienter. PT-en kan se følgende informasjon om sine. 
+Denne applikasjonen er laget med Scrum, og i sammenheng med emnet TDT4140 på NTNU. Utviklingen skal følge kodekonvensjonene og retningslinjene for bruk av GitLab som finnes [her](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01/wikis/Home/Kodekonvensjoner%20og%20retningslinjer%20i%20gitlab).
 
 ## Hvordan bruke applikasjonen
 
@@ -107,6 +108,9 @@ password: puerbest
 
 * [Eclipse Oxygen](https://www.eclipse.org/) - Utviklingsverktøy - IDE
 * [Maven](https://maven.apache.org/) - Håndtering av avhengigheter
+* [Jetty](https://www.eclipse.org/jetty/)
+* [Jersey](https://jersey.github.io/)
+* [JSON](https://stleary.github.io/JSON-java/)
 
 
 <br></br>
