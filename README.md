@@ -1,18 +1,19 @@
 # PT-applikasjon - Gruppe 01
 
-Vi har laget en applikasjon der en PT kan følge sine klienter. PT-en kan se følgende informasjon om sine. 
-Denne applikasjonen er laget med Scrum, og i sammenheng med emnet TDT4140 på NTNU. Utviklingen skal følge kodekonvensjonene og retningslinjene for bruk av GitLab som finnes [her](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01/wikis/Home/Kodekonvensjoner%20og%20retningslinjer%20i%20gitlab).
+Vi har laget en applikasjon der en PT kan følge sine klienter. 
+Vi har fulgt den smidige utviklingsmetoden *Scrum*, som du kan lese mer om [her](http://www.mountaingoatsoftware.com/agile/scrum).
+Applikasjonen er utviklet i henhold til krav spesifisert av emnet TDT4140 på NTNU. Utviklingen har fulgt kodekonvensjonene og retningslinjene for bruk av GitLab som finnes [her](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01/wikis/Home/Kodekonvensjoner%20og%20retningslinjer%20i%20gitlab).
 
 ## Hvordan bruke applikasjonen
 
-Disse instruksjonene gir deg en kopi av prosjektet oppe og går på din lokale maskin for utvikling og testing. Se [her](#start) for fremgangsmåte for å kjøre prosjektet, etter installering.
+Disse instruksjonene gir deg en kopi av prosjektet på din lokale maskin, som du kan bruke til utvikling og/eller testing. Se [her](#start) for fremgangsmåte for å kjøre prosjektet, etter installering.
 
 
 
 ### Installering
 ---
 
-For å installere systemet, kjør følgende kommando
+For å installere systemet, kjør følgende kommando:
 
 ```
 $ git clone https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01.git
@@ -20,7 +21,7 @@ $ git clone https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01.git
 
 #### Få tilgang til database:
 
-Applikasjonen har SQL-database på NTNU-servere, og for å ha tilgang på denne må man enten være tilkoblet Eduroam eller bruke VPN-program som tillater å koble til NTNUs nettverk hjemmefra.
+Applikasjonen har SQL-database på NTNU-servere, og for å ha tilgang på denne må man enten være tilkoblet nettverket Eduroam eller bruke et VPN-program som tillater å koble til NTNUs nettverk hjemmefra.
 Vi har brukt VPN-programvaren som tilbys av NTNU [her](https://software.ntnu.no/ntnu/vpn), kalt *Cisco AnyConnect*. Følg installasjonsbeskrivelsen som står på nedlastingssiden.
 
 
