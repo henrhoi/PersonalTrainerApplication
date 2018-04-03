@@ -1,5 +1,11 @@
 
  /*profile*/
+ 
+ .profilelabel {
+	-fx-text-fill: derive(black,130%); 
+	-fx-font-size: 30px;
+}
+ 
 .profile-button {
     -fx-graphic: url("../images/profileblue.png");
     -fx-background-color: transparent;

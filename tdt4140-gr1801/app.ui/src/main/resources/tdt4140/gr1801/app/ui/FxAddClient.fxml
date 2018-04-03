@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,14 +14,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane id="pane" fx:id="pane" prefHeight="500.0" prefWidth="686.0" style="-fx-background-image: ../images/background.png;" stylesheets="@../stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="pane" fx:id="pane" prefHeight="500.0" prefWidth="686.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="243.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="290.0" stylesheets="@NewUserStyle.css">
          <children>
-            <TextField fx:id="last_name_field" layoutX="62.0" layoutY="162.0" promptText="Last name" stylesheets="@../stylesheets/LoginStyle.css" />
-            <TextField fx:id="first_name_field" layoutX="62.0" layoutY="114.0" promptText="First name" stylesheets="@../stylesheets/LoginStyle.css" />
-            <TextField fx:id="height_field" layoutX="62.0" layoutY="208.0" promptText="Height (cm)" stylesheets="@../stylesheets/LoginStyle.css" />
-            <Label id="h2" fx:id="infoLabel" layoutX="5.0" layoutY="-7.0" stylesheets="@../../../../PU-TDT4140/01/tdt4140-gr1801/app.ui/src/main/resources/tdt4140/gr1801/app/ui/stylesheets/NewUserStyle.css" text="Create Client" textFill="WHITE" />
+            <TextField fx:id="last_name_field" layoutX="62.0" layoutY="162.0" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
+            <TextField fx:id="first_name_field" layoutX="62.0" layoutY="114.0" promptText="First name" stylesheets="@stylesheets/LoginStyle.css" />
+            <TextField fx:id="height_field" layoutX="62.0" layoutY="208.0" promptText="Height (cm)" stylesheets="@stylesheets/LoginStyle.css" />
+            <Label id="h2" fx:id="infoLabel" layoutX="5.0" layoutY="-7.0" stylesheets="@stylesheets/NewUserStyle.css" text="Create Client" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane mouseTransparent="true" prefHeight="500.0" prefWidth="95.0" style="-fx-background-color: derive(black,30%);" stylesheets="@../stylesheets/AddClient.css">
@@ -32,14 +33,23 @@
                <children>
                   <Group>
                      <children>
-                        <Label fx:id="label" layoutY="49.0" stylesheets="@../stylesheets/MainClientStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
+                        <Label fx:id="label" layoutY="49.0" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
                      </children>
                   </Group>
                </children>
             </Group>
+            <Button fx:id="addClientButton" layoutX="8.0" layoutY="228.0" mnemonicParsing="false" onAction="#addClient" prefHeight="56.0" prefWidth="81.0" styleClass="addClient-button" stylesheets="@stylesheets/AddClient.css">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="37.0" fitWidth="37.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                     <image>
+                        <Image url="@plusgreen.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="add_client_button" defaultButton="true" layoutX="618.0" layoutY="448.0" mnemonicParsing="false" onAction="#addClient" styleClass="addclient-button" stylesheets="@../stylesheets/AddClient.css">
+      <Button fx:id="add_client_button" defaultButton="true" layoutX="618.0" layoutY="448.0" mnemonicParsing="false" onAction="#addClient" styleClass="addclient-button">
          <effect>
             <Bloom>
                <input>
@@ -49,8 +59,12 @@
          </effect>
          <tooltip>
             <Tooltip text="add client" />
-         </tooltip></Button>
-      <Button fx:id="logOffButton" layoutX="-61.0" layoutY="438.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="220.0" styleClass="log-button" stylesheets="@../stylesheets/AddClient.css">
+         </tooltip>
+         <stylesheets>
+            <URL value="@../stylesheets/AddClient.css" />
+            <URL value="@stylesheets/AddClient.css" />
+         </stylesheets></Button>
+      <Button fx:id="logOffButton" layoutX="7.0" layoutY="438.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="81.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
                <image>
@@ -62,16 +76,7 @@
             <Tooltip text="log out" />
          </tooltip>
       </Button>
-      <Button fx:id="addClientButton" layoutX="-81.0" layoutY="236.0" mnemonicParsing="false" onAction="#addClient" prefHeight="54.0" prefWidth="252.0" styleClass="addClient-button" stylesheets="@../stylesheets/AddClient.css">
-         <graphic>
-            <ImageView accessibleRole="BUTTON" fitHeight="37.0" fitWidth="37.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" styleClass="button">
-               <image>
-                  <Image url="@plusgreen.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="showClientsButton" layoutX="-8.0" layoutY="156.0" mnemonicParsing="false" onAction="#showClient" onMouseClicked="#showClient" prefHeight="48.0" prefWidth="112.0" styleClass="client-button" stylesheets="@../stylesheets/MainViewStyle.css">
+      <Button layoutX="-8.0" layoutY="156.0" mnemonicParsing="false" onAction="#backToMainview" prefHeight="48.0" prefWidth="112.0" styleClass="client-button" stylesheets="@stylesheets/AddClient.css">
          <graphic>
             <ImageView accessibleRole="BUTTON" fitHeight="33.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -83,10 +88,10 @@
             <Tooltip text="show clients" />
          </tooltip>
       </Button>
-      <Button layoutX="6.0" layoutY="68.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="81.0" styleClass="profile-button" stylesheets="@../stylesheets/AddClient.css">
+      <Button layoutX="6.0" layoutY="68.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="81.0" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
          <tooltip>
             <Tooltip text="profile" />
          </tooltip></Button>
-      <Button fx:id="back_button" cancelButton="true" layoutX="-10.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToMainview" prefHeight="26.0" prefWidth="30.0" styleClass="backbutton" stylesheets="@../stylesheets/AddClient.css" />
+      <Button fx:id="back_button" cancelButton="true" layoutX="-10.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToMainview" prefHeight="26.0" prefWidth="30.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css" />
    </children>
 </Pane>

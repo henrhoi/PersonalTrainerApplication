@@ -22,12 +22,12 @@
 
 /*choose client */
 .client-button {
-    -fx-graphic: url("../images/clientyellow.png");
+    -fx-graphic: url("../images/clientwhite.png");
     -fx-background-color: transparent;
     -fx-cursor: hand;
 }
 .client-button:hover {
-    -fx-graphic: url("../images/clientwhite.png");
+    -fx-graphic: url("../images/clientyellow.png");
     -fx-background-color: transparent;
 }
  
