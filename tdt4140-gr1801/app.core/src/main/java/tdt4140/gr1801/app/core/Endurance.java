@@ -33,11 +33,6 @@ public class Endurance extends Training implements Comparable<Endurance>{
 	public int getCaloriesBurned() {
 		return caloriesBurned;
 	}
-	
-	@Override
-	public String toString() {
-		return date;
-	}
 
 	@Override
 	public int compareTo(Endurance o) {
