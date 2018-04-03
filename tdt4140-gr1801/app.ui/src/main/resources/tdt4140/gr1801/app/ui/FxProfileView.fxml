@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane id="pane3" fx:id="pane" prefHeight="500.0" prefWidth="686.0" style="-fx-background-color: derive(black,30%);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="243.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="290.0" style="-fx-background-color: derive(black,30%);" stylesheets="@../stylesheets/AddClient.css">
+         <children>
+            <Label id="label" fx:id="infoLabel" layoutX="43.0" layoutY="14.0" styleClass="profilelabel" stylesheets="@../stylesheets/MyProfileStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
+            <Text layoutX="84.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="148.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="318.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+            <Text layoutX="84.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PT details&gt;.............." />
+         </children>
+      </AnchorPane>
+      <AnchorPane mouseTransparent="true" prefHeight="500.0" prefWidth="95.0" style="-fx-background-color: derive(black,40%);" stylesheets="@../stylesheets/AddClient.css">
+         <effect>
+            <DropShadow blurType="ONE_PASS_BOX" color="#282525" height="37.13" radius="26.417500000000004" spread="0.27" width="70.54" />
+         </effect>
+         <children>
+            <Group layoutX="13.0" layoutY="65.0">
+               <children>
+                  <Group>
+                     <children>
+                        <Label id="label" fx:id="label" layoutY="49.0" stylesheets="@../stylesheets/ProfileStyle.css" text="&lt;Name of PT&gt;" textAlignment="CENTER" textFill="WHITE" />
+                     </children>
+                  </Group>
+               </children>
+            </Group>
+         </children>
+      </AnchorPane>
+      <Button fx:id="logOffButton" layoutX="-61.0" layoutY="438.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="220.0" styleClass="log-button" stylesheets="@../stylesheets/AddClient.css">
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
+               <image>
+                  <Image url="@logoutred.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="log out" />
+         </tooltip>
+      </Button>
+      <Button fx:id="addClientButton" layoutX="-80.0" layoutY="236.0" mnemonicParsing="false" onAction="#addClient" prefHeight="54.0" prefWidth="252.0" styleClass="addClient-button" stylesheets="@../stylesheets/MainViewStyle.css">
+         <graphic>
+            <ImageView accessibleRole="BUTTON" fitHeight="37.0" fitWidth="37.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" styleClass="button">
+               <image>
+                  <Image url="@plusgreen.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="add client" />
+         </tooltip>
+      </Button>
+      <Button fx:id="showClientsButton" layoutX="-8.0" layoutY="156.0" mnemonicParsing="false" onAction="#showClient" onMouseClicked="#showClient" prefHeight="48.0" prefWidth="112.0" styleClass="client-button" stylesheets="@../stylesheets/MainViewStyle.css">
+         <graphic>
+            <ImageView accessibleRole="BUTTON" fitHeight="33.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@clientyellow.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <tooltip>
+            <Tooltip text="show clients" />
+         </tooltip>
+      </Button>
+      <Button layoutX="6.0" layoutY="68.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="81.0" styleClass="profile-button" stylesheets="@../stylesheets/ProfileStyle.css" />
+      <Button fx:id="back_button" cancelButton="true" layoutX="-10.0" layoutY="1.0" mnemonicParsing="false" onAction="#backToMainview" prefHeight="26.0" prefWidth="30.0" styleClass="backbutton" stylesheets="@../stylesheets/AddClient.css" />
+   </children>
+   <stylesheets>
+      <URL value="@../stylesheets/LoginStyle.css" />
+      <URL value="@../stylesheets/AddClient.css" />
+   </stylesheets>
+</Pane>

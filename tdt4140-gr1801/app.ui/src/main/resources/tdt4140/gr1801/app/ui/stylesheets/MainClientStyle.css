@@ -1,19 +1,4 @@
-/*
- @FXML
-private boolean showClient() throws ClassNotFoundException {
-    Stage clientview = (Stage) iView.getScene().getWindow();
-
-    try {
-            Parent root = FXMLLoader.load(getClass().getResource("FxMainClientList.fxml"));
-            Scene scene = new Scene(root);
-            clientview.setScene(scene);
-            clientview.setTitle("Client Window");
-        }
-            catch(Exception e){}
-}
- */
-
-
+/*Should be used on FxMainView*/
 #pane {
 	-fx-background-image: url("../images/background_main.jpg") no-repeat center center fixed;
 	-fx-background-size: cover;
@@ -32,7 +17,7 @@ private boolean showClient() throws ClassNotFoundException {
     -fx-background-color: derive(black,53%); /*&& same color! */
 }
 
-/*denne skal egentlig sette tab-bakgrunn når valgt...
+/*denne skal egentlig gi sette tab-bakgrunn når valgt...
 .tab:selected .tab-pane .tab {
     -fx-background-color: derive(black,50%);
 }*/
@@ -44,7 +29,7 @@ private boolean showClient() throws ClassNotFoundException {
 
 /*space mellom fanene */
 .tab-pane {
-    -fx-tab-min-width:100px;
+    -fx-tab-min-width:70px;
 }
 
  .tab:selected .tab-label { 
@@ -64,7 +49,7 @@ private boolean showClient() throws ClassNotFoundException {
 
 /*expanding the tab view in order to make the listview disappear */
 .tab-pane:top *.tab-header-area {
-    -fx-padding: 0.2em 0.166667em 0em 8.5em;
+    -fx-padding: 0.2em 0.166667em 0em 12.6em;
     /*padding nedover, ,str på tabbar, padding bortover*/
 }
 
@@ -73,12 +58,14 @@ private boolean showClient() throws ClassNotFoundException {
 /*LABEL */
 #nameOfClient {
 	-fx-text-fill: #d7cccc;
-	-fx-font-size: 17px;
+	-fx-font-size: 15px;
 }
 
 #label {
+	/*<Name of PT>*/
 	-fx-font-size: 10px;
-	-fx-text-fill: derive(#6495ed,40%);
+	-fx-text-fill: derive(#c0c0c0,50%); /*correct blue: derive(#6495ed,40%);*/
+	-fx-opacity: 0.9;
 	}
 	
 .label {
@@ -87,17 +74,10 @@ private boolean showClient() throws ClassNotFoundException {
 	-fx-font-size: 9px;
 }
 
-.clientlabel {
-	-fx-text-fill: derive(#c0c0c0,50%);
-}
-
-.addclientlabel {
-	-fx-text-fill: derive(#c0c0c0,50%);
-}
-
 
 
 /*BUTTONS */
+/*INGEN AV HOVER FUNKER!?:( */
 /*log-out */
 .log-button {
     -fx-graphic: url("../images/log.png");
@@ -107,7 +87,6 @@ private boolean showClient() throws ClassNotFoundException {
 
 .log-button:hover {
     -fx-graphic: url("../images/logred.png");
-    -fx-background-color: transparent;
 }
 .log-button:pressed {
     -fx-graphic: url("../images/logred.png");
@@ -124,20 +103,18 @@ private boolean showClient() throws ClassNotFoundException {
 }
 .addClient-button:hover {
     -fx-graphic: url("../images/plusgreen.png");
-    -fx-background-color: transparent;
 }
 
 /*choose client */
 .client-button {
-    -fx-graphic: url("../images/clientwhite.png");
+    -fx-graphic: url("../images/clientyellow.png");
     -fx-background-color: transparent;
     -fx-cursor: hand;
 }
 .client-button:hover {
-    -fx-graphic: url("../images/clientyellow.png");
+    -fx-graphic: url("../images/clientwhite.png");
     -fx-background-color: transparent;
 }
-
 
 /*profile*/
 .profile-button {
@@ -172,7 +149,6 @@ private boolean showClient() throws ClassNotFoundException {
 		.tooltip:hover .tooltiptext {
 		    visibility: visible;
 		}
-	
 
 
 .button {
@@ -197,6 +173,82 @@ private boolean showClient() throws ClassNotFoundException {
 	-fx-background-color: transparent;
 	-fx-text-fill: derive(white,30%);
 }
+
+
+/*CLIENTS */
+#clients {
+	-fx-background-color: derive(black,40%);
+	-fx-border-radius: 10em;
+	-fx-text-fill: white;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: derive(black,28%); /*background when selected */
+    -fx-text-fill: derive(white,10%); /*text fill when selected */
+}
+
+.list-cell:even { /*alternativley odd?*/
+    -fx-background-color: derive(black,39%);
+    	-fx-text-fill: derive(black,120%) /*#d7cccc;*/
+}
+
+.list-cell:odd { /*alternativley odd?*/
+    -fx-background-color: derive(black,38%); 
+    	-fx-text-fill: derive(black,120%) /*#d7cccc;*/
+    }
+
+.list-cell:filled:hover {
+    -fx-background-color: #696969;
+    -fx-text-fill: white;
+}
+
+
+	/*SPACE BETWEEN CELLS*/
+	.list-view {
+	    -fx-padding: 0px ; /*krymper listen ift viewet */
+	}
+	
+	.list-cell {
+	    -fx-padding: 15px ; /*avstand mellom cellene */
+	}
+
+
+	/*SCROLLBAR */
+	.mylistview .scroll-bar:horizontal .track,
+	.mylistview .scroll-bar:vertical .track{
+		-fx-background-color: derive(black,30%); /*fyll rundt scrollbar */
+		-fx-border-color: transparent; /*border rundt scrollbar */
+		-fx-background-radius: 5em; /*krumning på bakgrunnen */
+		-fx-border-radius:2em; /*krumning */
+	}
+	/*horisonal scroller */
+	.mylistview .scroll-bar:horizontal .increment-button ,
+	.mylistview .scroll-bar:horizontal .decrement-button {
+		-fx-padding:0 0 0 10; /*scoller - fjernet bortoverscroller, men bestemmer str på den*/
+	}
+	
+	/*vertikal scroller */
+	.mylistview .scroll-bar:vertical .increment-button ,
+	.mylistview .scroll-bar:vertical .decrement-button {
+		-fx-padding:0 10 0 0; /* str på oppned-scroller (lengde og tykkelse)*/
+	}
+	
+	/*fjerner pilene */
+	.mylistview  .scroll-bar .increment-arrow,
+	.mylistview  .scroll-bar .decrement-arrow {
+		-fx-shape: " ";
+		-fx-padding:0;
+	}
+	
+	/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+	.mylistview .scroll-bar:horizontal .thumb,
+	.mylistview .scroll-bar:vertical .thumb {
+	    -fx-background-color:derive(black,80%); /*fargen på scrolleren */
+		-fx-background-insets: 1, 0, 0; /*str på scoller ift rommet rundt(border) */ 
+		-fx-background-radius: 2em; /*krumning */
+	
+	}
+	
 	
 	
 	
