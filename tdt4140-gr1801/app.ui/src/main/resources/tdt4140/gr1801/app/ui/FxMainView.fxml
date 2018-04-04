@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="PTInfoPane" layoutX="100.0" prefHeight="1000.0" prefWidth="1300.0" style="-fx-background-color: derive(black,45%) derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
          <children>
@@ -51,7 +51,7 @@
          <children>
             <Pane prefHeight="100.0" prefWidth="472.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
                <children>
-                  <Label fx:id="nameOfClient" layoutX="600.0" layoutY="27.0" stylesheets="@../stylesheets/MainClientStyle.css" text="&lt;Name of Client&gt;" textAlignment="CENTER" textFill="WHITE" />
+                  <Label fx:id="nameOfClient" layoutX="615.0" layoutY="35.0" styleClass="nameOfClient" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of Client&gt;" textAlignment="CENTER" textFill="WHITE" />
                </children>
             </Pane>
             <TabPane prefHeight="900.0" prefWidth="474.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE">
@@ -83,20 +83,20 @@
                               </Group>
                            </children>
                         </Group>
+                        <Button fx:id="logOffButton" layoutX="17.0" layoutY="935.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="59.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
+                                 <image>
+                                    <Image url="@images/logred.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <tooltip>
+                              <Tooltip text="log out" />
+                           </tooltip>
+                        </Button>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="logOffButton" layoutX="18.0" layoutY="438.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="59.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
-                           <image>
-                              <Image url="@images/logred.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <tooltip>
-                        <Tooltip text="log out" />
-                     </tooltip>
-                  </Button>
                   <Button fx:id="addClientButton" layoutX="13.0" layoutY="236.0" mnemonicParsing="false" onAction="#addClient" prefHeight="51.0" prefWidth="68.0" styleClass="addClient-button" stylesheets="@stylesheets/MainViewStyle.css">
                      <graphic>
                         <ImageView accessibleRole="BUTTON" fitHeight="37.0" fitWidth="37.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" styleClass="button">
@@ -118,7 +118,7 @@
                         </ImageView>
                      </graphic>
                      <tooltip>
-                        <Tooltip text="hide clients" />
+                        <Tooltip text="clients" />
                      </tooltip>
                   </Button>
                   <Button layoutX="13.0" layoutY="70.0" mnemonicParsing="false" onAction="#movePTInfoPane" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">

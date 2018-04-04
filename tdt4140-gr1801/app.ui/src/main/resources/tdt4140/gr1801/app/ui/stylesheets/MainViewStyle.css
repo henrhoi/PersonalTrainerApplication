@@ -24,25 +24,24 @@
 
 /*space mellom fanene */
 .tab-pane {
-    -fx-tab-min-width:70px;
+    -fx-tab-min-width:205px;
 }
 
  .tab:selected .tab-label { 
     -fx-alignment: CENTER;
     -fx-text-fill: white; /*#96b946;*/
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
     -fx-background-color: derive(black,53%); /*&& same color! */
     /*-fx-padding: 6px;*/
 }
 
  .tab:hover .tab-label { 
     -fx-alignment: CENTER;
-    -fx-font-size: 15px;
+    -fx-font-size: 16px;
     -fx-background-color: derive(black,53%); /*&& same color! */
     /*-fx-padding: 6px;*/
 }
 
-/*expanding the tab view in order to make the listview disappear */
 .tab-pane:top *.tab-header-area {
     -fx-padding: 0.2em 0.166667em 0em 12.6em;
     /*padding nedover, ,str på tabbar, padding bortover*/
@@ -51,7 +50,7 @@
 /*LABEL */
 #nameOfClient {
 	-fx-text-fill: #d7cccc;
-	-fx-font-size: 15px;
+	-fx-font-size: 25px;
 }
 
 #label {
