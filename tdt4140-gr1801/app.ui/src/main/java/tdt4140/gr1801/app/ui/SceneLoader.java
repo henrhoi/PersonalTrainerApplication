@@ -22,6 +22,7 @@ public class SceneLoader {
 	        stage.setScene(scene);
 	        stage.setMinHeight(500);
 	        stage.setMinWidth(700);
+	        stage.centerOnScreen();
 	        stage.show();
 	        System.out.println("Success");
 		} catch (IOException e) {

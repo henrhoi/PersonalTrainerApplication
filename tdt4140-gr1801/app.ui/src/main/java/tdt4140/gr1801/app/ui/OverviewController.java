@@ -13,6 +13,7 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import tdt4140.gr1801.app.core.Client;
 
 public class OverviewController implements TabController {
@@ -55,11 +56,12 @@ public class OverviewController implements TabController {
 		final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         xAxis.setLabel("Date");
+        
         //Add the axis to the lineChart
         final LineChart<String,Number> lineChart = new LineChart<String,Number>(xAxis,yAxis);
         //Set the title and change the size
         lineChart.setTitle("Client's weigth and fat measurements");
-        lineChart.setMaxSize(450, 340);
+        lineChart.setPrefSize(600, 480);
         //Set the position
         lineChart.setLayoutX(200);
         lineChart.setLayoutY(10);

@@ -1,0 +1,100 @@
+.backbutton {
+    -fx-graphic: url("../images/arrowwhite.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.backbutton:hover {
+    -fx-graphic: url("../images/arrowgray.png");
+    -fx-background-color: transparent;
+    }
+    
+ /*profile*/
+.profile-button {
+    -fx-graphic: url("../images/profilewhite.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.profile-button:hover {
+    -fx-graphic: url("../images/profileblue.png");
+    -fx-background-color: transparent;
+}
+
+/*choose client */
+.client-button {
+    -fx-graphic: url("../images/clientwhite.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.client-button:hover {
+    -fx-graphic: url("../images/clientyellow.png");
+    -fx-background-color: transparent;
+}
+ 
+ /*add client */
+.addClient-button {
+    -fx-graphic: url("../images/plusgreen.png");
+    -fx-background-color: transparent;
+}
+.addClient-button:hover {
+    -fx-background-color: transparent;
+}
+
+.addclient-button {
+	-fx-graphic: url("../images/plussmall.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.addclient-button:hover {
+    -fx-graphic: url("../images/plusmedium.png");
+    -fx-background-color: transparent;
+}
+
+.log-button {
+    -fx-graphic: url("../images/log.png");
+    -fx-background-color: transparent;
+}
+
+.log-button:hover {
+    -fx-graphic: url("../images/logred.png");
+    -fx-background-color: transparent;
+    }
+
+	/*Tooltip */
+			.tooltip {
+			    -fx-background: rgba(30,30,30);
+			    -fx-text-fill: white;
+			    -fx-background-color: transparent; /*rgba(30,30,30,0.8);*/
+			    -fx-background-radius: 6px;
+			    -fx-background-insets: 0;
+			    -fx-padding: 0.667em 0.75em 0.667em 0.75em; /* 10px */
+			    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 10, 0.0 , 0 , 3 );
+			    -fx-font-size: 0.85em;
+			}
+		
+			/* Tooltip text */
+			.tooltip .tooltiptext {
+			    visibility: hidden;
+			    -fx-text-fill: white;
+			}
+			
+			/* Tooltip hover*/
+			.tooltip:hover .tooltiptext {
+			    visibility: visible;
+			}
+
+
+
+.addclientlabel {
+	-fx-text-fill: #5c7543;
+	-fx-font-size: 9px;
+}
+
+#pane3 {
+	-fx-background-color: derive(black,30%);
+}
+
+.clientlabel {
+	-fx-text-fill: derive(black,130%); 
+	-fx-font-size: 30px;
+}

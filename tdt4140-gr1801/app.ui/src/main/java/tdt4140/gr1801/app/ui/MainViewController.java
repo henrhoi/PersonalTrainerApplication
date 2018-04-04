@@ -21,14 +21,18 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
 public class MainViewController implements Controller{
-	
-	@FXML
-	ImageView picture;
 	
 	@FXML
 	Tab overviewTab, strengthTab, enduranceTab, healthTab, programTab;
@@ -37,10 +41,22 @@ public class MainViewController implements Controller{
 	Button logOffButton, addClientButton;
 	
 	@FXML
-	Label label;
+	Label nameOfClient,nameOfPT;
 	
 	@FXML
 	ListView<Client> clients;
+	
+	@FXML
+	HBox buttonBox;
+	
+	@FXML
+	Text nameOfPTInfo, birthdayOfPTInfo, phoneOfPTInfo, mailOfPTInfo;
+	
+	@FXML
+	Pane PTInfoPane;
+	
+	@FXML
+	AnchorPane clientsPane;
 	
 	
 
@@ -100,7 +116,7 @@ public class MainViewController implements Controller{
 	}
 	
 	@FXML
-	private void logOff() {
+	public void logOff() {
 		Stage stage = (Stage) logOffButton.getScene().getWindow();
 		LoginController controller = new LoginController();
 		URL path = getClass().getResource("FxLogin.fxml");
@@ -113,6 +129,25 @@ public class MainViewController implements Controller{
 		Controller controller = new AddClientController(pt, this);
 		URL path = getClass().getResource("FxAddClient.fxml");
 		SceneLoader.setScene(stage, path, controller);
+		((AddClientController) controller).update();
+		
+	}
+	
+	@FXML
+	public void hideClientList() {
+		if(clientsPane.isVisible()) {
+			buttonBox.toBack();
+		}
+		else {
+			buttonBox.toFront();
+		}
+		clientsPane.setVisible(!clientsPane.isVisible());
+		PTInfoPane.toBack();
+	}
+	
+	@FXML
+	public void movePTInfoPane() {
+		PTInfoPane.toFront();
 	}
 	
 	//This method should be used when we add functionality for choosing clients inn a menu
@@ -133,6 +168,8 @@ public class MainViewController implements Controller{
 				Client selected = clients.getSelectionModel().getSelectedItem();
 				// Setting data in the view thereafter
 				changeClientInTabs(selected);
+				nameOfClient.setText(selected.getName());
+				hideClientList();
 			}
 		});
 
@@ -147,6 +184,8 @@ public class MainViewController implements Controller{
 				}
 				// Setting data in the view thereafter
 				changeClientInTabs(selected);
+				nameOfClient.setText(selected.getName());
+				hideClientList();
 			}
 		});
 
@@ -157,7 +196,14 @@ public class MainViewController implements Controller{
 	public void updateInfo() {
 		//User this.username to update all the information
 		System.out.println("Update information for " + this.pt.getUsername());
-		label.setText(this.pt.getName().split(" ")[0]);
+		nameOfPT.setText(pt.getName());
+		
+		//Set PTInfoPage
+		nameOfPTInfo.setText(pt.getName());
+		birthdayOfPTInfo.setText(pt.getBirthday());
+		mailOfPTInfo.setText(pt.getEmail());
+		phoneOfPTInfo.setText(pt.getPhoneNumber());
+		
 		
 		//Create list view of Clients.
 		ObservableList<Client> observableClients = FXCollections.observableArrayList ();

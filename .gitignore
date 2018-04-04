@@ -12,3 +12,4 @@ target/
 *._trace
 
 node_modules/
+/.metadata/

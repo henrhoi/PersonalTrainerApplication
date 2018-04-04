@@ -1,7 +1,7 @@
 /*Should be used on FxNewUser*/
 
 #pane {
-	-fx-background-image: url("../images/Gray-Background.png") center center;
+	-fx-background-image: url("../images/background.png") center center;
 	-fx-background-repeat: no-repeat;
 	 background-attachment: fixed;
 	-fx-background-color: black;
@@ -14,5 +14,5 @@
 #h2 {
 	-fx-font-size: 45px;
     -fx-text-fill: #ffffff;
-    fx-letter-spacing: 5px; /* No effect */
+    -fx-letter-spacing: 5px; /* No effect */
 }
