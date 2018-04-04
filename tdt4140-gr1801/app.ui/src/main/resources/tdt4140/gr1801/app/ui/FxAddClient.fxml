@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane id="pane" fx:id="pane" prefHeight="500.0" prefWidth="686.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="pane" fx:id="pane" prefHeight="500.0" prefWidth="686.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="243.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="290.0" stylesheets="@NewUserStyle.css">
          <children>
@@ -33,7 +33,7 @@
                <children>
                   <Group>
                      <children>
-                        <Label fx:id="label" layoutY="49.0" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
+                        <Label fx:id="nameOfPT" layoutY="49.0" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
                      </children>
                   </Group>
                </children>
@@ -64,7 +64,7 @@
             <URL value="@../stylesheets/AddClient.css" />
             <URL value="@stylesheets/AddClient.css" />
          </stylesheets></Button>
-      <Button fx:id="logOffButton" layoutX="7.0" layoutY="438.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="81.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
+      <Button fx:id="logOffButton" layoutX="7.0" layoutY="438.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="81.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
                <image>
@@ -88,7 +88,7 @@
             <Tooltip text="show clients" />
          </tooltip>
       </Button>
-      <Button layoutX="6.0" layoutY="68.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="81.0" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
+      <Button layoutX="6.0" layoutY="68.0" mnemonicParsing="false" onAction="#backToMainview" prefHeight="51.0" prefWidth="81.0" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
          <tooltip>
             <Tooltip text="profile" />
          </tooltip></Button>

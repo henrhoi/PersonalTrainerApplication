@@ -11,18 +11,50 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="97.0" prefHeight="500.0" prefWidth="603.0">
+      <Pane fx:id="PTInfoPane" layoutX="100.0" prefHeight="1000.0" prefWidth="1300.0" style="-fx-background-color: derive(black,45%) derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
          <children>
-            <Pane prefHeight="72.0" prefWidth="603.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
+            <VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="1000.0" prefWidth="1300.0" spacing="30.0">
                <children>
-                  <Label fx:id="nameOfClient" layoutX="305.0" layoutY="27.0" stylesheets="@../stylesheets/MainClientStyle.css" text="&lt;Name of Client&gt;" textAlignment="CENTER" textFill="WHITE" />
+                  <Text fx:id="nameOfPTInfo" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PTNAME&gt;">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="birthdayOfPTInfo" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="INFO">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="phoneOfPTInfo" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="INFO">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="mailOfPTInfo" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="INFO">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <VBox fx:id="contentBox" layoutX="100.0" prefHeight="1000.0" prefWidth="1300.0">
+         <children>
+            <Pane prefHeight="100.0" prefWidth="472.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
+               <children>
+                  <Label fx:id="nameOfClient" layoutX="600.0" layoutY="27.0" stylesheets="@../stylesheets/MainClientStyle.css" text="&lt;Name of Client&gt;" textAlignment="CENTER" textFill="WHITE" />
                </children>
             </Pane>
-            <TabPane layoutY="70.0" prefHeight="430.0" prefWidth="603.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="900.0" prefWidth="474.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                   <Tab fx:id="overviewTab" text="Overview" />
                 <Tab fx:id="strengthTab" text="Strength" />
@@ -32,13 +64,12 @@
               </tabs>
             </TabPane>
          </children>
-      </Pane>
-      <Pane layoutY="-3.0" prefHeight="506.0" prefWidth="260.0">
+      </VBox>
+      <HBox fx:id="buttonBox" prefHeight="1000.0" prefWidth="242.0">
          <children>
-            <AnchorPane prefHeight="503.0" prefWidth="242.0" style="-fx-background-color: derive(black,40%);">
+            <AnchorPane prefHeight="1000.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);">
                <children>
-                  <ListView id="clients" fx:id="clients" layoutX="98.0" layoutY="-1.0" prefHeight="500.0" prefWidth="139.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
-                  <AnchorPane layoutY="3.0" mouseTransparent="true" prefHeight="500.0" prefWidth="95.0" style="-fx-background-color: derive(black,30%);" stylesheets="@../stylesheets/MainClientStyle.css">
+                  <AnchorPane layoutY="3.0" mouseTransparent="true" prefHeight="1000.0" prefWidth="95.0" style="-fx-background-color: derive(black,30%);" stylesheets="@../stylesheets/MainClientStyle.css">
                      <effect>
                         <DropShadow blurType="ONE_PASS_BOX" color="#c6bbbb" height="24.98" radius="11.995000000000001" width="25.0" />
                      </effect>
@@ -47,7 +78,7 @@
                            <children>
                               <Group>
                                  <children>
-                                    <Label fx:id="label" layoutY="47.0" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
+                                    <Label fx:id="nameOfPT" layoutY="47.0" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
                                  </children>
                               </Group>
                            </children>
@@ -78,7 +109,7 @@
                         <Tooltip text="add client" />
                      </tooltip>
                   </Button>
-                  <Button layoutX="10.0" layoutY="159.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="69.0" styleClass="client-button" stylesheets="@stylesheets/MainViewStyle.css">
+                  <Button layoutX="10.0" layoutY="159.0" mnemonicParsing="false" onAction="#hideClientList" prefHeight="27.0" prefWidth="69.0" styleClass="client-button" stylesheets="@stylesheets/MainViewStyle.css">
                      <graphic>
                         <ImageView accessibleRole="BUTTON" fitHeight="33.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -90,16 +121,25 @@
                         <Tooltip text="hide clients" />
                      </tooltip>
                   </Button>
-                  <Button layoutX="13.0" layoutY="70.0" mnemonicParsing="false" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
+                  <Button layoutX="13.0" layoutY="70.0" mnemonicParsing="false" onAction="#movePTInfoPane" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
                      <tooltip>
                         <Tooltip text="profile" />
-                     </tooltip></Button>
+                     </tooltip>
+                  </Button>
                </children>
                <effect>
                   <DropShadow color="#e8dfdf" />
                </effect>
             </AnchorPane>
+            <AnchorPane fx:id="clientsPane" prefHeight="1000.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);">
+               <effect>
+                  <DropShadow color="#e8dfdf" />
+               </effect>
+               <children>
+                  <ListView id="clients" fx:id="clients" prefHeight="1000.0" prefWidth="139.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
+               </children>
+            </AnchorPane>
          </children>
-      </Pane>
+      </HBox>
    </children>
 </Pane>

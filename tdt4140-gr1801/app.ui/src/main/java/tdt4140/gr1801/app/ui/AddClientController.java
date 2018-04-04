@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,7 +24,10 @@ public class AddClientController implements Controller {
 	TextField first_name_field, last_name_field, height_field;
 	
 	@FXML
-	Button add_client_button;
+	Button add_client_button,logOffButton;
+	
+	@FXML
+	Label nameOfPT;
 	
 	PersonalTrainer pt;
 	Client client;
@@ -33,6 +37,10 @@ public class AddClientController implements Controller {
 		this.pt = pt;
 		this.mainviewController = mainviewController;
 		
+	}
+	
+	public void update() {
+		nameOfPT.setText(pt.getName());
 	}
 	
 	@FXML
@@ -83,6 +91,14 @@ public class AddClientController implements Controller {
 		
 	}
 	
+	@FXML
+	public void logOff() {
+		Stage stage = (Stage) logOffButton.getScene().getWindow();
+		LoginController controller = new LoginController();
+		URL path = getClass().getResource("FxLogin.fxml");
+		SceneLoader.setScene(stage, path, controller);
+	}
+	
 	private void check(TextField field) {
 		boolean bool;
 		ObservableList<String> style = field.getStyleClass();
@@ -102,6 +118,8 @@ public class AddClientController implements Controller {
 		}
 		
 	}
+	
+	
 	
 	
 
