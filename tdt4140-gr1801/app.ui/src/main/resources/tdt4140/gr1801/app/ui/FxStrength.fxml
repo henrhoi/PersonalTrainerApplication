@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="930.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="160.0" layoutY="841.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
-      <TextField fx:id="duration_field" disable="true" editable="false" layoutX="221.0" layoutY="823.0" prefHeight="25.0" prefWidth="48.0" />
-      <ListView fx:id="listview" prefHeight="930.0" prefWidth="115.0" />
-      <TableView fx:id="tableview" layoutX="114.0" prefHeight="798.0" prefWidth="1274.0">
+      <Text layoutX="362.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" wrappingWidth="52.3427734375" />
+      <TextField fx:id="duration_field" disable="true" editable="false" layoutX="435.0" layoutY="563.0" prefHeight="25.0" prefWidth="48.0" />
+      <ListView fx:id="listview" prefHeight="600.0" prefWidth="115.0" />
+      <TableView fx:id="tableview" layoutX="114.0" prefHeight="550.0" prefWidth="900.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="172.41842651367188" text="Name" />
             <TableColumn fx:id="colWeight" prefWidth="102.58161926269531" text="Weight (kg)" />

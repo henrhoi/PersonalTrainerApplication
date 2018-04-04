@@ -61,7 +61,7 @@ public class OverviewController implements TabController {
         final LineChart<String,Number> lineChart = new LineChart<String,Number>(xAxis,yAxis);
         //Set the title and change the size
         lineChart.setTitle("Client's weigth and fat measurements");
-        lineChart.setPrefSize(900, 680);
+        lineChart.setPrefSize(600, 480);
         //Set the position
         lineChart.setLayoutX(200);
         lineChart.setLayoutY(10);

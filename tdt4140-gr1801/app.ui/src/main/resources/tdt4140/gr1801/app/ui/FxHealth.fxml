@@ -6,10 +6,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="930.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <PieChart fx:id="NutritionPieChart" layoutX="135.0" layoutY="7.0" prefHeight="906.0" prefWidth="1235.0" />
-      <ListView fx:id="listview" prefHeight="930.0" prefWidth="115.0" />
+      <PieChart fx:id="NutritionPieChart" layoutX="135.0" layoutY="148.0" prefHeight="476.0" prefWidth="867.0" />
+      <ListView fx:id="listview" prefHeight="640.0" prefWidth="115.0" />
       <Label fx:id="PieChartDataLabel" layoutX="242.0" layoutY="60.0" prefHeight="76.0" prefWidth="719.0" text="Hover Pie Chart For Info">
          <font>
             <Font size="62.0" />

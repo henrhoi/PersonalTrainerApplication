@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -17,11 +18,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1400.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="PTInfoPane" layoutX="100.0" prefHeight="1000.0" prefWidth="1300.0" style="-fx-background-color: derive(black,45%) derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
+      <Pane fx:id="PTInfoPane" layoutX="100.0" prefHeight="640.0" prefWidth="924.0" style="-fx-background-color: derive(black,45%) derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
          <children>
-            <VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="1000.0" prefWidth="1300.0" spacing="30.0">
+            <VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="640.0" prefWidth="924.0" spacing="30.0">
                <children>
                   <Text fx:id="nameOfPTInfo" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="&lt;PTNAME&gt;">
                      <font>
@@ -47,14 +48,14 @@
             </VBox>
          </children>
       </Pane>
-      <VBox fx:id="contentBox" layoutX="100.0" prefHeight="1000.0" prefWidth="1300.0">
+      <VBox fx:id="contentBox" layoutX="100.0" prefHeight="640.0" prefWidth="924.0">
          <children>
-            <Pane prefHeight="100.0" prefWidth="472.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
+            <Pane prefHeight="81.0" prefWidth="796.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css">
                <children>
-                  <Label fx:id="nameOfClient" layoutX="615.0" layoutY="35.0" styleClass="nameOfClient" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of Client&gt;" textAlignment="CENTER" textFill="WHITE" />
+                  <Label fx:id="nameOfClient" layoutX="366.0" layoutY="16.0" styleClass="nameOfClient" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of Client&gt;" textAlignment="CENTER" textFill="WHITE" />
                </children>
             </Pane>
-            <TabPane prefHeight="900.0" prefWidth="474.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE">
+            <TabPane prefHeight="579.0" prefWidth="924.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                   <Tab fx:id="overviewTab" text="Overview" />
                 <Tab fx:id="strengthTab" text="Strength" />
@@ -62,14 +63,17 @@
                   <Tab fx:id="healthTab" text="Health" />
                   <Tab fx:id="programTab" text="Program" />
               </tabs>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </TabPane>
          </children>
       </VBox>
-      <HBox fx:id="buttonBox" prefHeight="1000.0" prefWidth="242.0">
+      <HBox fx:id="buttonBox" prefHeight="640.0" prefWidth="242.0">
          <children>
-            <AnchorPane prefHeight="1000.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);">
+            <AnchorPane prefHeight="580.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);">
                <children>
-                  <AnchorPane layoutY="3.0" mouseTransparent="true" prefHeight="1000.0" prefWidth="95.0" style="-fx-background-color: derive(black,30%);" stylesheets="@../stylesheets/MainClientStyle.css">
+                  <AnchorPane layoutY="3.0" mouseTransparent="true" prefHeight="640.0" prefWidth="95.0" style="-fx-background-color: derive(black,30%);" stylesheets="@stylesheets/MainViewStyle.css">
                      <effect>
                         <DropShadow blurType="ONE_PASS_BOX" color="#c6bbbb" height="24.98" radius="11.995000000000001" width="25.0" />
                      </effect>
@@ -79,24 +83,25 @@
                               <Group>
                                  <children>
                                     <Label fx:id="nameOfPT" layoutY="47.0" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
+                                    <Label fx:id="nameOfPT1" layoutX="16.0" layoutY="136.0" stylesheets="@stylesheets/MainViewStyle.css" text="Clients" textFill="WHITE" />
                                  </children>
                               </Group>
                            </children>
                         </Group>
-                        <Button fx:id="logOffButton" layoutX="17.0" layoutY="935.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="59.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
-                                 <image>
-                                    <Image url="@images/logred.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <tooltip>
-                              <Tooltip text="log out" />
-                           </tooltip>
-                        </Button>
                      </children>
                   </AnchorPane>
+                  <Button fx:id="logOffButton" layoutX="16.0" layoutY="555.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="59.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
+                           <image>
+                              <Image url="@images/logred.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="log out" />
+                     </tooltip>
+                  </Button>
                   <Button fx:id="addClientButton" layoutX="13.0" layoutY="236.0" mnemonicParsing="false" onAction="#addClient" prefHeight="51.0" prefWidth="68.0" styleClass="addClient-button" stylesheets="@stylesheets/MainViewStyle.css">
                      <graphic>
                         <ImageView accessibleRole="BUTTON" fitHeight="37.0" fitWidth="37.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" styleClass="button">
@@ -131,12 +136,12 @@
                   <DropShadow color="#e8dfdf" />
                </effect>
             </AnchorPane>
-            <AnchorPane fx:id="clientsPane" prefHeight="1000.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);">
+            <AnchorPane fx:id="clientsPane" prefHeight="708.0" prefWidth="139.0" style="-fx-background-color: derive(black,40%);">
                <effect>
                   <DropShadow color="#e8dfdf" />
                </effect>
                <children>
-                  <ListView id="clients" fx:id="clients" prefHeight="1000.0" prefWidth="139.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
+                  <ListView id="clients" fx:id="clients" prefHeight="635.0" prefWidth="139.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
                </children>
             </AnchorPane>
          </children>
