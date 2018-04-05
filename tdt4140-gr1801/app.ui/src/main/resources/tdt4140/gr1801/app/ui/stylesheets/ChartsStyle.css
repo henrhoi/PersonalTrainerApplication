@@ -1,0 +1,74 @@
+
+ /*styling the different charts*/
+
+.hoverForInfo {
+	-fx-text-fill: #d7cccc;
+	-fx-font-size: 15px;
+}
+ 
+ /*charts*/
+.chart {
+    -fx-padding: 20px;
+    -fx-background-color: transparent;
+}
+.chart-content {
+    -fx-padding: 20px; /*distance between the pie-text */
+}
+
+/*the text below the pie chart*/
+.chart-legend {
+   -fx-background-color:  transparent;
+   -fx-padding: 20px;
+}
+ 
+.chart-legend-item{
+    -fx-text-fill: #d7cccc;
+}
+
+ .chart-title {
+  -fx-text-fill: #d7cccc;
+  -fx-font-size: 30px;
+  -fx-font-size: 1.6em;
+}
+
+/*for pie charts only */
+ 
+.chart-pie-label-line {
+    -fx-stroke: #d7cccc;
+    -fx-fill: #d7cccc;
+}
+ 
+.chart-pie-label {
+    -fx-fill: #d7cccc;
+    -fx-font-size: 1em;
+} 
+.chart-legend {
+   -fx-background-color:  transparent;
+   -fx-stroke: #daa520;
+}
+
+
+
+/*for the overview tab*/
+/* .chart-title {
+  -fx-text-fill: #4682b4;
+  -fx-font-size: 1.6em;
+}
+.axis-label {
+  -fx-text-fill: #4682b4;
+}
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: #3278fa;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: #3278fa;
+}
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
+*/

@@ -24,7 +24,7 @@
 
 /*space mellom fanene */
 .tab-pane {
-    -fx-tab-min-width:205px;
+    -fx-tab-min-width:130px;
 }
 
  .tab:selected .tab-label { 
@@ -43,7 +43,7 @@
 }
 
 .tab-pane:top *.tab-header-area {
-    -fx-padding: 0.2em 0.166667em 0em 12.6em;
+    -fx-padding: 0.2em 0.166667em 0em 13.3em;
     /*padding nedover, ,str på tabbar, padding bortover*/
 }
 
@@ -80,13 +80,9 @@
     -fx-background-color: transparent;
 }
 
-/*
 .log-button:pressed {
     -fx-graphic: url("../images/logred.png");
 }
-.log-button:selected {
-    -fx-graphic: url("../images/logred.png");
-}*/
 
 /*add client */
 .addClient-button {
