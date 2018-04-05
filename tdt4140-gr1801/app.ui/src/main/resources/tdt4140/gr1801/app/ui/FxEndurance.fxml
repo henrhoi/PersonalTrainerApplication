@@ -3,23 +3,31 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" stylesheets="@stylesheets/MainViewStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="484.0" layoutY="409.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DISTANCE" wrappingWidth="126.087890625" />
-      <Text layoutX="396.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DURATION" />
-      <TextField fx:id="distance_field" disable="true" layoutX="335.0" layoutY="98.0" prefHeight="289.0" prefWidth="415.0">
+      <Text fill="#829764" layoutX="468.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DISTANCE" wrappingWidth="115.75653076171875">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Text>
+      <Text fill="#829764" layoutX="326.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DURATION" />
+      <TextField fx:id="distance_field" disable="true" layoutX="456.0" layoutY="122.0" prefHeight="131.0" prefWidth="185.0" styleClass="totalDistanceField" stylesheets="@stylesheets/ChartsStyle.css">
          <font>
             <Font size="48.0" />
          </font>
       </TextField>
-      <TextField fx:id="avg_speed_field" disable="true" layoutX="506.0" layoutY="454.0" prefHeight="27.0" prefWidth="68.0" />
-      <Text layoutX="506.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG SPEED" />
-      <TextField fx:id="cal_burned_field" disable="true" layoutX="619.0" layoutY="454.0" prefHeight="27.0" prefWidth="68.0" />
-      <Text layoutX="615.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAL BURNED" />
-      <TextField fx:id="duration_field" disable="true" layoutX="397.0" layoutY="454.0" prefHeight="27.0" prefWidth="68.0" />
-      <ListView fx:id="listview" prefHeight="640.0" prefWidth="115.0" />
+      <TextField fx:id="avg_speed_field" disable="true" layoutX="484.0" layoutY="372.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <Text fill="#829764" layoutX="480.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG SPEED" />
+      <TextField fx:id="cal_burned_field" disable="true" layoutX="642.0" layoutY="372.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <Text fill="#829764" layoutX="631.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAL BURNED" />
+      <TextField fx:id="duration_field" disable="true" layoutX="333.0" layoutY="372.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <ListView fx:id="listview" prefHeight="640.0" prefWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" />
+      <Circle fill="#1f93ff00" layoutX="523.0" layoutY="193.0" radius="103.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="4.0" />
+      <Circle fill="#1f93ff00" layoutX="360.0" layoutY="398.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="#1f93ff00" layoutX="516.0" layoutY="398.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+      <Circle fill="#1f93ff00" layoutX="672.0" layoutY="398.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
    </children>
 </Pane>

@@ -1,12 +1,7 @@
 
  /*styling the different charts*/
-
-.hoverForInfo {
-	-fx-text-fill: #d7cccc;
-	-fx-font-size: 15px;
-}
  
- /*charts*/
+ /*all charts*/
 .chart {
     -fx-padding: 20px;
     -fx-background-color: transparent;
@@ -31,13 +26,18 @@
   -fx-font-size: 1.6em;
 }
 
-/*for pie charts only */
- 
+/*HEALTH TAB*/
+.hoverForInfo {
+	-fx-text-fill: #d7cccc;
+	-fx-font-size: 15px;
+}
+
+/*for pie chart only */
 .chart-pie-label-line {
     -fx-stroke: #d7cccc;
     -fx-fill: #d7cccc;
 }
- 
+
 .chart-pie-label {
     -fx-fill: #d7cccc;
     -fx-font-size: 1em;
@@ -47,28 +47,17 @@
    -fx-stroke: #daa520;
 }
 
+/*ENDURANCE TAB */
+.totalDistanceField {
+	-fx-background-color:  transparent;
+	-fx-text-fill: #bcff05;
+	-fx-font-size: 45px;
+	-fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+}
 
-
-/*for the overview tab*/
-/* .chart-title {
-  -fx-text-fill: #4682b4;
-  -fx-font-size: 1.6em;
+.enduranceField {
+	-fx-background-color:  transparent;
+	-fx-text-fill: #bcff05;
+	-fx-font-size: 20px;
+	-fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
 }
-.axis-label {
-  -fx-text-fill: #4682b4;
-}
-.chart-plot-background {
-    -fx-background-color: transparent;
-}
-.chart-vertical-grid-lines {
-    -fx-stroke: #3278fa;
-}
-.chart-horizontal-grid-lines {
-    -fx-stroke: #3278fa;
-}
-.chart-alternative-row-fill {
-    -fx-fill: transparent;
-    -fx-stroke: transparent;
-    -fx-stroke-width: 0;
-}
-*/
