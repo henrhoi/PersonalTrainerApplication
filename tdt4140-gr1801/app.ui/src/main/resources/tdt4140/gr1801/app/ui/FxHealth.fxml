@@ -10,7 +10,7 @@
    <children>
       <PieChart fx:id="NutritionPieChart" layoutX="234.0" layoutY="55.0" prefHeight="458.0" prefWidth="561.0" stylesheets="@stylesheets/ChartsStyle.css" />
       <ListView fx:id="listview" prefHeight="640.0" prefWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" />
-      <Label fx:id="PieChartDataLabel" layoutX="439.0" layoutY="76.0" prefHeight="76.0" prefWidth="176.0" styleClass="hoverForInfo" stylesheets="@stylesheets/ChartsStyle.css" text="Hover Pie Chart For Info" textAlignment="CENTER">
+      <Label fx:id="PieChartDataLabel" layoutX="439.0" layoutY="77.0" prefHeight="76.0" prefWidth="176.0" styleClass="hoverForInfo" stylesheets="@stylesheets/ChartsStyle.css" text="Hover Pie Chart For Info" textAlignment="CENTER">
          <font>
             <Font size="62.0" />
          </font></Label>
