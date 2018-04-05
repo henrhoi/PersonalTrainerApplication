@@ -9,8 +9,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="WHITE" layoutX="457.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" wrappingWidth="63.57664382729229" />
-      <TextField fx:id="duration_field" disable="true" editable="false" layoutX="512.0" layoutY="514.0" prefHeight="27.0" prefWidth="40.0" styleClass="durationField" stylesheets="@stylesheets/StrengthViewStyle.css" />
+      <Text fill="WHITE" layoutX="455.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" wrappingWidth="63.57664382729229" />
+      <TextField fx:id="duration_field" disable="true" editable="false" layoutX="510.0" layoutY="514.0" prefHeight="27.0" prefWidth="40.0" styleClass="durationField" stylesheets="@stylesheets/StrengthViewStyle.css" />
       <ListView fx:id="listview" prefHeight="600.0" prefWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" />
       <TableView fx:id="tableview" layoutX="114.0" layoutY="5.0" prefHeight="511.0" prefWidth="827.0" stylesheets="@stylesheets/StrengthViewStyle.css">
         <columns>
@@ -23,6 +23,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Text fill="WHITE" layoutX="549.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="minutes" wrappingWidth="53.00675857338604" />
+      <Text fill="WHITE" layoutX="547.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="minutes" wrappingWidth="53.00675857338604" />
    </children>
 </Pane>
