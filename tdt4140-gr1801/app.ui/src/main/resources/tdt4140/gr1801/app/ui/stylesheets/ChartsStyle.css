@@ -63,3 +63,40 @@
 }
 
 
+/*OVERVIEW TAB */
+ 
+.axis {
+    -fx-font-size: 1.4em;    
+    -fx-tick-label-fill: white; /*color of values along axis */
+    -fx-font-family: Tahoma;
+    -fx-tick-length: 10;
+    -fx-minor-tick-length: 5;
+}
+ 
+.axis-label {
+   -fx-text-fill: white; /*date */
+   -fx-font-size: 14px;
+}
+ 
+.axis-tick-mark {
+    -fx-stroke: white; /*bars marking values in 10s */
+    -fx-stroke-width: 3; 
+}
+.axis-minor-tick-mark {
+    -fx-stroke: white; /*bars marking all values */
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: white;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: white;
+}
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
