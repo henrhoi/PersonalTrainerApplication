@@ -1,12 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="114.0" layoutY="125.0" text="Program" />
-      <Line endX="1024.0" endY="600.0" strokeWidth="4.0" />
+      <ListView fx:id="listview" prefHeight="600.0" prefWidth="200.0" />
+      <SplitPane dividerPositions="0.5033288948069241" layoutX="200.0" layoutY="112.0" prefHeight="377.0" prefWidth="753.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="495.0" prefWidth="330.0">
+               <children>
+                  <TableView fx:id="tableview" layoutX="5.0" layoutY="123.0" prefHeight="204.0" prefWidth="362.0">
+                    <columns>
+                      <TableColumn fx:id="colName" prefWidth="109.60003662109375" text="Name" />
+                      <TableColumn fx:id="colWeight" prefWidth="76.79998779296875" text="Weight (kg)" />
+                        <TableColumn fx:id="colSets" prefWidth="64.0" text="Sets" />
+                        <TableColumn fx:id="colReps" prefWidth="110.40003967285156" text="Repetitions" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="127.0" layoutY="55.0" text="Strength Exercise">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="30.0" layoutY="337.0" mnemonicParsing="false" text="Edit" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="distance_field" layoutX="50.0" layoutY="134.0" prefHeight="19.0" prefWidth="101.0" />
+                  <TextField fx:id="duration_field" layoutX="50.0" layoutY="201.0" prefHeight="25.0" prefWidth="101.0" />
+                  <TextField fx:id="speed_field" layoutX="50.0" layoutY="266.0" prefHeight="25.0" prefWidth="101.0" />
+                  <Text layoutX="78.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance" />
+                  <Text layoutX="77.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+                  <Text layoutX="71.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avg. speed" />
+                  <TextArea fx:id="description_field" layoutX="200.0" layoutY="147.0" prefHeight="160.0" prefWidth="146.0" />
+                  <Text layoutX="233.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+                  <Label layoutX="138.0" layoutY="52.0" text="Endurance Exercise">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="24.0" layoutY="337.0" mnemonicParsing="false" text="Edit" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Button layoutX="520.0" layoutY="518.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" text="Update" />
    </children>
 </Pane>

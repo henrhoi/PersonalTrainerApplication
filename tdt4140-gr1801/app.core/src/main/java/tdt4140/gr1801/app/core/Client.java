@@ -25,6 +25,9 @@ public class Client {
     
 	private List<Strength> strengthTraining;
 	private List<Endurance> enduranceTraining;
+	
+	//program for client
+	private List<DayProgram> program;
     
     
 	public Client(int id, String name, int height, PersonalTrainer pt) {
@@ -188,6 +191,36 @@ public class Client {
     		}
     }
     
+    public void getClientProgram() throws ClientProtocolException, IOException {
+    	String data = GetURL.getRequest("/weeklyprogram/"+this.id);
+		JSONArray json = new JSONArray(data);
+		DayProgram dayprogram;
+		for (int n = 0; n < json.length(); n++) {
+			JSONObject object = json.getJSONObject(n);
+			String day = object.getString("day");
+			// Check if row is endurance or strength
+			if (object.getString("description").length() != 0) {
+				// row is endurance
+				int duration = object.getInt("duration");
+				double distance = object.getDouble("distance");
+				double speed = object.getDouble("speed");
+				String description = object.getString("description");
+				dayprogram = new DayProgram(day, duration, distance, speed, 
+						description, null, null, null, null);
+				program.add(dayprogram);
+			}
+			else {
+				// row is strength
+				String exercise = object.getString("exerciseName");
+				double weight = object.getDouble("weight");
+				int sets = object.getInt("sets");
+				String reps = object.getString("reps");
+				dayprogram = new DayProgram(day, null, null, null,
+						null, exercise, weight, sets, reps);	
+			}
+			program.add(dayprogram);
+		}
+    }
 
     // ikke testet 
     public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
