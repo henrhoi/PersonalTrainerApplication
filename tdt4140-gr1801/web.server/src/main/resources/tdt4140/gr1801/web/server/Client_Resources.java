@@ -52,8 +52,18 @@ public class Client_Resources {
     		return json;
     	
     }
+   
     
-    
+    @GET
+    @Path("/pics/{clientid}")
+    @Produces
+    public String getClientProgressionPictures(@PathParam("clientid") String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    		PreparedStatement stmt = QueryFactory.getClientProgressionPictures(ClientID);
+    		ResultSet rs = stmt.executeQuery();
+    		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+    		return json;
+    		
+    }
     
     
     

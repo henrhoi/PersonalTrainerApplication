@@ -79,6 +79,7 @@ public class MainViewController implements Controller{
 			client.getClientEnduranceTraining();
 			client.getClientNutrition();
 			client.getClientWeightFat();
+			client.getClientPictures();
 			
 		}
 		tabControllers = new HashSet<TabController>();
@@ -217,6 +218,7 @@ public class MainViewController implements Controller{
 			setTab("FxHealth.fxml", healthTab);
 			setTab("FxProgram.fxml", programTab);
 			setTab("FxOverview.fxml", overviewTab);
+			
 			setClientListviewNavigationLogic();
 		}
 	}

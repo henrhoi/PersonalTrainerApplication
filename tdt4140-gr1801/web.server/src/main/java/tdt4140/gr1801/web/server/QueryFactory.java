@@ -114,12 +114,21 @@ public final class QueryFactory {
 	}
 	
 	
+	public static PreparedStatement getClientProgressionPictures(String clientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ProgressionPicture WHERE ClientID = ?");
+		stmt.setInt(1, Integer.parseInt(clientID));
+		return stmt;
+		
+	}
 	
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
 		stmt.execute();
 	}
+
+	
 	
 	
 	
