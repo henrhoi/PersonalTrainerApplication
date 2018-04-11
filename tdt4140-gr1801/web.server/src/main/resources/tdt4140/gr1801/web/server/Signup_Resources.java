@@ -33,7 +33,7 @@ public class Signup_Resources {
         
         PreparedStatement stmt = QueryFactory.insertPT(PT_ID, Passwrd, Salt, Navn, Email, Birthday, Phonenr);
         stmt.execute();
-        
+        stmt.getConnection().close();
         return Response.status(201).entity(Navn + " added to PT-table in database if all input were correct").build(); 
     }
     
@@ -52,6 +52,7 @@ public class Signup_Resources {
 
         PreparedStatement stmt = QueryFactory.insertClient(Navn, Height, PT_ID);
         stmt.execute();
+        stmt.getConnection().close();
         return Response.status(201).entity("Navn" + " added to Klient-table in database if all input were correct").build(); 
     }
     

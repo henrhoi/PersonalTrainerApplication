@@ -26,6 +26,7 @@ public class Training_Resources {
 		PreparedStatement stmt = QueryFactory.getAllEndurance(Integer.parseInt(clientid));
 		ResultSet rs = stmt.executeQuery();
 		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+		stmt.getConnection().close();
 		return json;
 	}
 		
@@ -37,6 +38,7 @@ public class Training_Resources {
 		PreparedStatement stmt  = QueryFactory.getStrengthTraningsFromClient(ClientID);
 		ResultSet rs = stmt.executeQuery();
 		String json  = RSJSONConverter.ResultSetToJSON(rs).toString();
+		stmt.getConnection().close();
 		return json;
 	}
 	
@@ -48,6 +50,7 @@ public class Training_Resources {
 		PreparedStatement stmt  = QueryFactory.getExercisesFromStrengthTraining(StrengthID);
 		ResultSet rs = stmt.executeQuery();
 		String json  = RSJSONConverter.ResultSetToJSON(rs).toString();
+		stmt.getConnection().close();
 		return json;
 	}
 	

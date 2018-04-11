@@ -23,6 +23,7 @@ public class Client_Resources {
     		PreparedStatement stmt = QueryFactory.getClient(Integer.parseInt(clientID));
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+    		stmt.getConnection().close();
     		return json;
 
 	}
@@ -37,6 +38,7 @@ public class Client_Resources {
     			PreparedStatement stmt = QueryFactory.getAllClients(PT_ID);
         		ResultSet rs = stmt.executeQuery();
         		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+        		stmt.getConnection().close();
         		return json;
 	}
     
@@ -49,6 +51,7 @@ public class Client_Resources {
     		PreparedStatement stmt = QueryFactory.getWeigthFatFromClient(ClientID);
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+    		stmt.getConnection().close();
     		return json;
     	
     }
