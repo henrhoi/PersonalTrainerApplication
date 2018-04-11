@@ -1,0 +1,102 @@
+
+ /*styling the different charts*/
+ 
+ /*all charts*/
+.chart {
+    -fx-padding: 20px;
+    -fx-background-color: transparent;
+}
+.chart-content {
+    -fx-padding: 20px; /*distance between the pie-text */
+}
+
+/*the text below the pie chart*/
+.chart-legend {
+   -fx-background-color:  transparent;
+   -fx-padding: 20px;
+}
+ 
+.chart-legend-item{
+    -fx-text-fill: #d7cccc;
+}
+
+ .chart-title {
+  -fx-text-fill: #d7cccc;
+  -fx-font-size: 30px;
+  -fx-font-size: 1.6em;
+}
+
+/*HEALTH TAB*/
+.hoverForInfo {
+	-fx-text-fill: #d7cccc;
+	-fx-font-size: 15px;
+}
+
+/*for pie chart only */
+.chart-pie-label-line {
+    -fx-stroke: #d7cccc;
+    -fx-fill: #d7cccc;
+}
+
+.chart-pie-label {
+    -fx-fill: #d7cccc;
+    -fx-font-size: 1em;
+} 
+.chart-legend {
+   -fx-background-color:  transparent;
+   -fx-stroke: #daa520;
+}
+
+/*ENDURANCE TAB */
+.totalDistanceField {
+	-fx-background-color:  transparent;
+	-fx-text-fill: #bcff05;
+	-fx-font-size: 45px;
+	-fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+}
+
+.enduranceField {
+	-fx-background-color:  transparent;
+	-fx-text-fill: #bcff05;
+	-fx-font-size: 20px;
+	-fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+}
+
+
+/*OVERVIEW TAB */
+ 
+.axis {
+    -fx-font-size: 1.4em;    
+    -fx-tick-label-fill: white; /*color of values along axis */
+    -fx-font-family: Tahoma;
+    -fx-tick-length: 10;
+    -fx-minor-tick-length: 5;
+}
+ 
+.axis-label {
+   -fx-text-fill: white; /*date */
+   -fx-font-size: 14px;
+}
+ 
+.axis-tick-mark {
+    -fx-stroke: white; /*bars marking values in 10s */
+    -fx-stroke-width: 3; 
+}
+.axis-minor-tick-mark {
+    -fx-stroke: white; /*bars marking all values */
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+.chart-vertical-grid-lines {
+    -fx-stroke: white;
+}
+.chart-horizontal-grid-lines {
+    -fx-stroke: white;
+}
+.chart-alternative-row-fill {
+    -fx-fill: transparent;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}

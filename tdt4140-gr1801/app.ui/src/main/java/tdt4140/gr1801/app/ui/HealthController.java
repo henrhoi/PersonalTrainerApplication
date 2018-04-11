@@ -143,7 +143,7 @@ public class HealthController implements TabController {
 			data.getNode().addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent event) {
-					PieChartDataLabel.setText(data.getName() + " - " + data.getPieValue() + "grams");
+					PieChartDataLabel.setText(data.getName() + " - " + data.getPieValue() + " grams");
 				}
 			});
 		}

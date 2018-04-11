@@ -33,7 +33,6 @@ public class Signup_Resources {
         
         PreparedStatement stmt = QueryFactory.insertPT(PT_ID, Passwrd, Salt, Navn, Email, Birthday, Phonenr);
         stmt.execute();
-        
         return Response.status(201).entity(Navn + " added to PT-table in database if all input were correct").build(); 
     }
     
