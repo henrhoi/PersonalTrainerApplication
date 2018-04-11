@@ -14,12 +14,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane id="pane" fx:id="pane" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="pane" fx:id="pane" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="387.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="290.0" stylesheets="@NewUserStyle.css">
          <children>
-            <TextField fx:id="last_name_field" layoutX="62.0" layoutY="162.0" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
             <TextField fx:id="first_name_field" layoutX="62.0" layoutY="114.0" promptText="First name" stylesheets="@stylesheets/LoginStyle.css" />
+            <TextField fx:id="last_name_field" layoutX="62.0" layoutY="162.0" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
             <TextField fx:id="height_field" layoutX="62.0" layoutY="208.0" promptText="Height (cm)" stylesheets="@stylesheets/LoginStyle.css" />
             <Label id="h2" fx:id="infoLabel" layoutX="5.0" layoutY="-7.0" stylesheets="@stylesheets/NewUserStyle.css" text="Create Client" textFill="WHITE" />
             <Button fx:id="add_client_button" defaultButton="true" layoutX="115.0" layoutY="244.0" mnemonicParsing="false" onAction="#addClient" prefWidth="60.0" styleClass="addclient-button">
