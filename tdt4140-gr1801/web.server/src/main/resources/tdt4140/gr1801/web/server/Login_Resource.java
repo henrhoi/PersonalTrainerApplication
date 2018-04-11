@@ -29,7 +29,6 @@ public class Login_Resource {
 		} 
 		JSONObject json = jsonarray.getJSONObject(0);
 		System.out.println(json);
-		
 		return Response.status(200).entity(json.toString()).build();
 	}
 	

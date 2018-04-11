@@ -1,0 +1,48 @@
+/*Should be used on FxStrength*/
+
+.durationField {
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+}
+
+
+/*TABLE VIEW */
+.table-view{
+   -fx-background-color: transparent;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+/*column header*/
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 10px;
+    -fx-border-color: 0 0 derive(black, 50%) 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: derive(black, 50%);
+}
+
+/*table cells */
+.table-view .table-cell{
+    -fx-text-fill: derive(black, 140%);
+    -fx-font-size: 12px;
+    -fx-padding: 20px;
+}
+
+.table-row-cell{
+    -fx-background-color: derive(black, 50%);
+    -fx-background-insets: 0, 0 0 0 1;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: derive(black, 52%);
+    -fx-background-insets: 0, 0 0 0 0;
+}
+
+

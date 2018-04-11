@@ -16,7 +16,7 @@ public class Nutrition_Resources {
 	@GET
 	@Path("/{clientID}")
 	@Produces("application/json")
-    public String getAllNutrition(@PathParam("clientID") String clientID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public static String getAllNutrition(@PathParam("clientID") String clientID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		// Returner all registrert data over mat til en klient
 		PreparedStatement stmt = QueryFactory.getAllNutritions(Integer.parseInt(clientID));
 		ResultSet rs = stmt.executeQuery();
