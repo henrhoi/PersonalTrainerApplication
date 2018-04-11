@@ -24,7 +24,6 @@ public class Client_Resources {
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
     		return json;
-
 	}
     
     
