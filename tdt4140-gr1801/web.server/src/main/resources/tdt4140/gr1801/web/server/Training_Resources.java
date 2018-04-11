@@ -28,7 +28,9 @@ public class Training_Resources {
 		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
 		return json;
 	}
-		
+	
+
+	
 	@GET
 	@Path("/strength/{ClientID}") 
 	@Produces("application/json")

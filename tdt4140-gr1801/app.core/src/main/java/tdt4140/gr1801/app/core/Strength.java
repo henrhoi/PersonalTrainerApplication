@@ -34,8 +34,5 @@ public class Strength extends Training implements Comparable<Strength> {
 
 	}
 	
-	public String toString() {
-		return date;
-	}
 	
 }

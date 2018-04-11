@@ -22,7 +22,7 @@ public class OverviewController implements TabController {
 	Pane root;
 	
 	@FXML
-	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel;
+	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, maxPulseLabel;
 		
 	private Client client;
 	
@@ -46,9 +46,11 @@ public class OverviewController implements TabController {
 		this.idLabel.setText(String.format("ClientID: %s", this.client.getId()));
 		this.nameLabel.setText(String.format("Name: %s", this.client.getName()));
 		this.heightLabel.setText(String.format("Height: %s", this.client.getHeight()));
+		this.maxPulseLabel.setText(String.format("Max pulse: %s", this.client.getMaxPulse()));
 		this.strengthLabel.setText(String.format("No. of Strengths: %s", this.client.getStrengthList().size()));
 		this.enduranceLabel.setText(String.format("No. of Endurances: %s", this.client.getEnduranceList().size()));
 		this.nutritionLabel.setText(String.format("No. of Nutritions: %s", this.client.getNutritionList().size()));
+
 	}
 	
 	private void updateWeightAndFatChart() {
