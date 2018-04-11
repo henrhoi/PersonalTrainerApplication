@@ -14,17 +14,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane id="pane" fx:id="pane" prefHeight="500.0" prefWidth="686.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<Pane id="pane" fx:id="pane" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="243.0" layoutY="62.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="290.0" stylesheets="@NewUserStyle.css">
+      <AnchorPane layoutX="387.0" layoutY="131.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="290.0" stylesheets="@NewUserStyle.css">
          <children>
-            <TextField fx:id="last_name_field" layoutX="62.0" layoutY="162.0" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
             <TextField fx:id="first_name_field" layoutX="62.0" layoutY="114.0" promptText="First name" stylesheets="@stylesheets/LoginStyle.css" />
+            <TextField fx:id="last_name_field" layoutX="62.0" layoutY="162.0" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
             <TextField fx:id="height_field" layoutX="62.0" layoutY="208.0" promptText="Height (cm)" stylesheets="@stylesheets/LoginStyle.css" />
             <Label id="h2" fx:id="infoLabel" layoutX="5.0" layoutY="-7.0" stylesheets="@stylesheets/NewUserStyle.css" text="Create Client" textFill="WHITE" />
+            <Button fx:id="add_client_button" defaultButton="true" layoutX="115.0" layoutY="244.0" mnemonicParsing="false" onAction="#addClient" prefWidth="60.0" styleClass="addclient-button">
+               <effect>
+                  <Bloom>
+                     <input>
+                        <Shadow color="#a8c39e" height="0.0" radius="0.0" width="0.0" />
+                     </input>
+                  </Bloom>
+               </effect>
+               <tooltip>
+                  <Tooltip text="add client" />
+               </tooltip>
+               <stylesheets>
+                  <URL value="@../stylesheets/AddClient.css" />
+                  <URL value="@stylesheets/AddClient.css" />
+               </stylesheets>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane mouseTransparent="true" prefHeight="500.0" prefWidth="95.0" style="-fx-background-color: derive(black,30%);" stylesheets="@../stylesheets/AddClient.css">
+      <AnchorPane mouseTransparent="true" prefHeight="640.0" prefWidth="95.0" style="-fx-background-color: derive(black,30%);" stylesheets="@../stylesheets/AddClient.css">
          <effect>
             <DropShadow blurType="ONE_PASS_BOX" color="#282525" height="37.13" radius="26.417500000000004" spread="0.27" width="70.54" />
          </effect>
@@ -34,6 +50,7 @@
                   <Group>
                      <children>
                         <Label fx:id="nameOfPT" layoutY="49.0" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
+                        <Label fx:id="nameOfPT1" layoutX="19.0" layoutY="134.0" stylesheets="@stylesheets/MainViewStyle.css" text="Clients" textFill="WHITE" />
                      </children>
                   </Group>
                </children>
@@ -49,22 +66,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="add_client_button" defaultButton="true" layoutX="618.0" layoutY="448.0" mnemonicParsing="false" onAction="#addClient" styleClass="addclient-button">
-         <effect>
-            <Bloom>
-               <input>
-                  <Shadow color="#a8c39e" height="0.0" radius="0.0" width="0.0" />
-               </input>
-            </Bloom>
-         </effect>
-         <tooltip>
-            <Tooltip text="add client" />
-         </tooltip>
-         <stylesheets>
-            <URL value="@../stylesheets/AddClient.css" />
-            <URL value="@stylesheets/AddClient.css" />
-         </stylesheets></Button>
-      <Button fx:id="logOffButton" layoutX="7.0" layoutY="438.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="81.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
+      <Button fx:id="logOffButton" layoutX="7.0" layoutY="557.0" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="81.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
          <graphic>
             <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
                <image>

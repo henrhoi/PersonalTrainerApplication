@@ -14,56 +14,54 @@
     -fx-font-size: 14px;
 }
 .tab-pane .tab {
-    -fx-background-color: derive(black,53%); /*&& same color! */
+    -fx-background-color: derive(black,53%); 
 }
 
-/*fjerner tab-bar-bakgrunnen */
+/*removes tab-bar-background */
 .tab-pane .tab-header-area .tab-header-background {
     -fx-opacity: 0.01;
 }
 
-/*space mellom fanene */
+/*space between tabs */
 .tab-pane {
-    -fx-tab-min-width:70px;
+    -fx-tab-min-width:130px;
 }
 
  .tab:selected .tab-label { 
     -fx-alignment: CENTER;
-    -fx-text-fill: white; /*#96b946;*/
-    -fx-font-size: 15px;
-    -fx-background-color: derive(black,53%); /*&& same color! */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-color: derive(black,53%); 
     /*-fx-padding: 6px;*/
 }
 
  .tab:hover .tab-label { 
     -fx-alignment: CENTER;
-    -fx-font-size: 15px;
-    -fx-background-color: derive(black,53%); /*&& same color! */
+    -fx-font-size: 16px;
+    -fx-background-color: derive(black,53%); 
     /*-fx-padding: 6px;*/
 }
 
-/*expanding the tab view in order to make the listview disappear */
 .tab-pane:top *.tab-header-area {
-    -fx-padding: 0.2em 0.166667em 0em 12.6em;
-    /*padding nedover, ,str på tabbar, padding bortover*/
+    -fx-padding: 0.2em 0.166667em 0em 13.3em;
+    /*padding down, ,size of tabbar, padding right*/
 }
 
 /*LABEL */
 #nameOfClient {
 	-fx-text-fill: #d7cccc;
-	-fx-font-size: 15px;
+	-fx-font-size: 25px;
 }
 
 #label {
 	/*<Name of PT>*/
 	-fx-font-size: 10px;
-	-fx-text-fill: derive(#c0c0c0,50%); /*correct blue: derive(#6495ed,40%);*/
+	-fx-text-fill: derive(#c0c0c0,50%);
 	-fx-opacity: 0.9;
 	}
 	
 .label {
 	-fx-text-fill: #d7cccc;
-	-fx-font-weight: bold; /*no effect!? */
 	-fx-font-size: 9px;
 }
 
@@ -81,13 +79,9 @@
     -fx-background-color: transparent;
 }
 
-/*
 .log-button:pressed {
     -fx-graphic: url("../images/logred.png");
 }
-.log-button:selected {
-    -fx-graphic: url("../images/logred.png");
-}*/
 
 /*add client */
 .addClient-button {
@@ -101,7 +95,6 @@
 }
 
 /*choose client */
-/*MERK: denne må få en on-action som fjerner listview */
 .client-button {
     -fx-graphic: url("../images/clientwhite.png");
     -fx-background-color: transparent;
@@ -143,10 +136,10 @@
 		.tooltip {
 		    -fx-background: rgba(30,30,30);
 		    -fx-text-fill: white;
-		    -fx-background-color: transparent; /*rgba(30,30,30,0.8);*/
+		    -fx-background-color: transparent;
 		    -fx-background-radius: 6px;
 		    -fx-background-insets: 0;
-		    -fx-padding: 0.667em 0.75em 0.667em 0.75em; /* 10px */
+		    -fx-padding: 0.667em 0.75em 0.667em 0.75em; 
 		    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 10, 0.0 , 0 , 3 );
 		    -fx-font-size: 0.85em;
 		}
@@ -176,12 +169,12 @@
 
 .list-cell:even { /*alternativley odd?*/
     -fx-background-color: derive(black,39%);
-    	-fx-text-fill: derive(black,120%) /*#d7cccc;*/
+    	-fx-text-fill: derive(black,120%)
 }
 
 .list-cell:odd { /*alternativley odd?*/
     -fx-background-color: derive(black,38%); 
-    	-fx-text-fill: derive(black,120%) /*#d7cccc;*/
+    	-fx-text-fill: derive(black,120%)
     }
 
 .list-cell:filled:hover {
@@ -192,49 +185,54 @@
 
 	/*SPACE BETWEEN CELLS*/
 	.list-view {
-	    -fx-padding: 0px ; /*krymper listen ift viewet */
+	    -fx-padding: 0px ; /*minimizing list according to mainview */
 	}
 	
 	.list-cell {
-	    -fx-padding: 15px ; /*avstand mellom cellene */
+	    -fx-padding: 15px ; /*sets distance between cells */
 	}
 
 
 	/*SCROLLBAR */
 	.mylistview .scroll-bar:horizontal .track,
 	.mylistview .scroll-bar:vertical .track{
-		-fx-background-color: derive(black,30%); /*fyll rundt scrollbar */
-		-fx-border-color: transparent; /*border rundt scrollbar */
-		-fx-background-radius: 5em; /*krumning på bakgrunnen */
-		-fx-border-radius:2em; /*krumning */
+		-fx-background-color: derive(black,30%); /*fills the area around the scrollbar */
+		-fx-border-color: transparent; /*border around scrollbar */
+		-fx-background-radius: 5em;
+		-fx-border-radius:2em; 
 	}
 	/*horisonal scroller */
 	.mylistview .scroll-bar:horizontal .increment-button ,
 	.mylistview .scroll-bar:horizontal .decrement-button {
-		-fx-padding:0 0 0 10; /*scoller - fjernet bortoverscroller, men bestemmer str på den*/
+		-fx-padding:0 0 0 10; /*scoller - to remove the left-right scroller*/
 	}
 	
 	/*vertikal scroller */
 	.mylistview .scroll-bar:vertical .increment-button ,
 	.mylistview .scroll-bar:vertical .decrement-button {
-		-fx-padding:0 10 0 0; /* str på oppned-scroller (lengde og tykkelse)*/
+		-fx-padding:0 10 0 0; /* size of up-down scroller*/
 	}
 	
-	/*fjerner pilene */
+	/*removes scroller arrows */
 	.mylistview  .scroll-bar .increment-arrow,
 	.mylistview  .scroll-bar .decrement-arrow {
 		-fx-shape: " ";
 		-fx-padding:0;
 	}
 	
-	/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+	/* The main scrollbar class, "thumb" */
 	.mylistview .scroll-bar:horizontal .thumb,
 	.mylistview .scroll-bar:vertical .thumb {
-	    -fx-background-color:derive(black,80%); /*fargen på scrolleren */
-		-fx-background-insets: 1, 0, 0; /*str på scoller ift rommet rundt(border) */ 
-		-fx-background-radius: 2em; /*krumning */
+	    -fx-background-color:derive(black,80%); 
+		-fx-background-insets: 1, 0, 0; /*size of scoller according to border*/ 
+		-fx-background-radius: 2em; 
 	
 	}
-	
+	/*OVERVIEW TAB */
+	.overviewLabels {
+		-fx-background-color: transparent; 
+		-fx-text-fill: white; 
+		-fx-font-size: 12px;
+	}
 
 

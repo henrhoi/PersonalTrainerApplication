@@ -169,6 +169,7 @@ public class MainViewController implements Controller{
 				// Setting data in the view thereafter
 				changeClientInTabs(selected);
 				nameOfClient.setText(selected.getName());
+				hideClientList();
 			}
 		});
 
@@ -184,6 +185,7 @@ public class MainViewController implements Controller{
 				// Setting data in the view thereafter
 				changeClientInTabs(selected);
 				nameOfClient.setText(selected.getName());
+				hideClientList();
 			}
 		});
 
