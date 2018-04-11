@@ -28,7 +28,6 @@ public class Client_Resources {
 	}
     
     
-    
     //Kan hentes paa /all/PT_ID
     @GET
     @Path("/all/{pt}")

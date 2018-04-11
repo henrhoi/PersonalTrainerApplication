@@ -2,8 +2,8 @@ package tdt4140.gr1801.web.server;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
 
 // Denne klassen produserer PreparedStatements, som gjoer at man kan bestemme hva slags spoerringer/kommandoer som kan gjoeres opp mot databasen.
 // Dersom en spoerring skal kunne gjoeres, skal den ligge her. 
@@ -87,6 +87,32 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	// PreparedStatement for innsetting av WeeklyProgram i databasen
+		public static PreparedStatement insertWeeklyProgram(String clientID, String day, int duration, double distance, 
+				double speed, String description, String exerciseName, double weight, int sets, String reps) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+			Connection conn = DBConnection.getDBConnection();
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO WeeklyProgram  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");  
+			stmt.setString(1, clientID);
+			stmt.setString(2, day);
+			stmt.setInt(3, duration);
+			stmt.setDouble(4, distance);
+			stmt.setDouble(5, speed);
+			stmt.setString(6, description);
+			stmt.setString(7, exerciseName);
+			stmt.setDouble(8, weight);
+			stmt.setInt(9, sets);
+			stmt.setString(10, reps);
+			return stmt;
+		}
+	
+	// PreparedStatement for getting information about a clients weekly program
+	public static PreparedStatement getProgramFromClient(String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM WeeklyProgram WHERE ClientID = ?");  
+		stmt.setString(1, ClientID);
+		return stmt;
+	}
+	
 	
 	//Kissa
 	// PreparedStatement for getting information about a clients strengthTrainings
@@ -117,8 +143,15 @@ public final class QueryFactory {
 	
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
-		stmt.execute();
+//		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
+//		stmt.execute();
+		
+//		PreparedStatement stmt = QueryFactory.getProgramFromClient("1");
+//		ResultSet rs = stmt.executeQuery();
+//		while(rs.next()) {
+//			System.out.println(rs.getString("day"));
+//		}
+		System.out.println("I en main");
 	}
 	
 	

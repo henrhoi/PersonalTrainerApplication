@@ -6,15 +6,15 @@ public class DayProgram {
 	private String weekday;
 	
 	// For Endurance
-	private int duration;
-	private double distance;
-	private double avgSpeed;
+	private Integer duration;
+	private Double distance;
+	private Double avgSpeed;
 	private String description;
 	
 	// For Strength
 	private String exerciseName;
-	private double weight;
-	private int sets;
+	private Double weight;
+	private Integer sets;
 	private String reps;
 	
 	
@@ -42,7 +42,7 @@ public class DayProgram {
 	}
 
 
-	public int getDuration() {
+	public Integer getDuration() {
 		return duration;
 	}
 
@@ -52,7 +52,7 @@ public class DayProgram {
 	}
 
 
-	public double getDistance() {
+	public Double getDistance() {
 		return distance;
 	}
 
@@ -62,7 +62,7 @@ public class DayProgram {
 	}
 
 
-	public double getAvgSpeed() {
+	public Double getAvgSpeed() {
 		return avgSpeed;
 	}
 
@@ -92,7 +92,7 @@ public class DayProgram {
 	}
 
 
-	public double getWeight() {
+	public Double getWeight() {
 		return weight;
 	}
 
@@ -102,7 +102,7 @@ public class DayProgram {
 	}
 
 
-	public int getSets() {
+	public Integer getSets() {
 		return sets;
 	}
 
@@ -119,6 +119,12 @@ public class DayProgram {
 
 	public void setReps(String reps) {
 		this.reps = reps;
+	}
+	
+
+	@Override
+	public String toString() {
+		return weekday;
 	}
 	
 

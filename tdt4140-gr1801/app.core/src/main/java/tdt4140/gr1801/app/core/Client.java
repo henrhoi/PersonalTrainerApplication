@@ -43,6 +43,7 @@ public class Client {
     		this.nutritions = new ArrayList<Nutrition>();
     		this.strengthTraining = new ArrayList<Strength>();
     		this.enduranceTraining = new ArrayList<Endurance>();
+    		this.program = new ArrayList<DayProgram>();
 	}
     
     
@@ -80,6 +81,10 @@ public class Client {
     
     public List<Nutrition> getNutritionList(){
     		return this.nutritions;
+    }
+    
+    public List<DayProgram> getDayProgramList(){
+    	return this.program;
     }
     
     public HashMap<String,Double> getWeightMap(){
@@ -173,6 +178,23 @@ public class Client {
 		System.out.println(respons);
     }
     
+    public void createWeeklyProgram(DayProgram dp) throws IOException {
+    	JSONObject json = new JSONObject();
+		json.put("clientID",this.id);
+		json.put("day", dp.getWeekday());
+		json.put("duration", dp.getDuration());
+		json.put("distance", dp.getDistance());
+		json.put("speed", dp.getAvgSpeed());
+		json.put("description", dp.getDescription());
+		json.put("exerciseName", dp.getExerciseName());
+		json.put("weight", dp.getWeight());
+		json.put("sets", dp.getSets());
+		json.put("reps", dp.getReps());
+		System.out.println(json);
+		String respons = GetURL.postRequest("/weeklyprogram/" + Integer.toString(this.id), json);
+		System.out.println(respons);
+    }
+    
 
     // ikke testet 
     public void getClientNutrition() throws ClientProtocolException, IOException {
@@ -192,14 +214,14 @@ public class Client {
     }
     
     public void getClientProgram() throws ClientProtocolException, IOException {
-    	String data = GetURL.getRequest("/weeklyprogram/"+this.id);
-		JSONArray json = new JSONArray(data);
+    	String data = GetURL.getRequest("/weeklyprogram/"+Integer.toString(this.id));
+    	JSONArray json = new JSONArray(data);
 		DayProgram dayprogram;
 		for (int n = 0; n < json.length(); n++) {
 			JSONObject object = json.getJSONObject(n);
 			String day = object.getString("day");
 			// Check if row is endurance or strength
-			if (object.getString("description").length() != 0) {
+			if (object.getInt("weight") == 0) {
 				// row is endurance
 				int duration = object.getInt("duration");
 				double distance = object.getDouble("distance");
@@ -296,10 +318,12 @@ public class Client {
 
     // Tester at innsetting av Client fungerer. 
     public static void main(String[] args) throws IOException {
-    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
-    		Client client = new Client(1,"Vilde Arntzen",160, pt);
-    		client.getClientWeightFat();
-    		System.out.println(client.weights);
+//    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
+//    		Client client = new Client(1,"Vilde Arntzen",160, pt);
+//    		client.getClientWeightFat();
+//    		System.out.println(client.weights);
+    		
+
 	}
 
 }
