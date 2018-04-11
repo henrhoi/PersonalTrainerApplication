@@ -10,7 +10,7 @@ public class TrainingTest extends TestCase{
 	
 	public void setUp() {
 		date = "20180227-xxxx";
-		endurance = new Endurance(date, 90, 12, 555);
+		endurance = new Endurance(date, 90, 12, 555, 190, 180);
 	}
 	
 	public void testGetDate() {
@@ -25,7 +25,7 @@ public class TrainingTest extends TestCase{
 	public void testNegativeDuration() {
 		try {
 			date = "20180227-xxxx";
-			new Endurance(date, -100, 12, 555);
+			new Endurance(date, -100, 12, 555, 195, 180);
 			fail();
 		}
 		catch

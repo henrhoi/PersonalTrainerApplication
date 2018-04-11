@@ -225,7 +225,9 @@ public class Client {
     			int duration = object.getInt("Duration");
     			double distance = object.getDouble("Distance");
     			int calories = object.getInt("CaloriesBurned");
-    			Endurance e = new Endurance(date, duration, distance, calories);
+    			int maxPulse = object.getInt("MaxPulse");
+    			int avgPulse = object.getInt("AvgPulse");
+    			Endurance e = new Endurance(date, duration, distance, calories, maxPulse, avgPulse);
     			this.enduranceTraining.add(e);
     			
     		}
