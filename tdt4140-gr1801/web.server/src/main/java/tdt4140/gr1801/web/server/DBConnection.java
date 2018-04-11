@@ -2,6 +2,8 @@ package tdt4140.gr1801.web.server;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -19,10 +21,11 @@ public final class DBConnection {
 		p.put("user", user);
 		p.put("password", pass);
 		
-		Class.forName ("com.mysql.cj.jdbc.Driver").newInstance ();
-		Connection conn = DriverManager.getConnection (url, p);
+		Class.forName("com.mysql.jdbc.Driver").newInstance();
+		Connection conn = DriverManager.getConnection(url, p);
 		
 		return conn;
 	}
+
 
 }
