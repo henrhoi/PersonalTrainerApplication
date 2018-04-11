@@ -21,7 +21,6 @@ public class Nutrition_Resources {
 		PreparedStatement stmt = QueryFactory.getAllNutritions(Integer.parseInt(clientID));
 		ResultSet rs = stmt.executeQuery();
 		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
-		stmt.getConnection().close();
 		return json;
 
 	}
