@@ -4,37 +4,38 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" stylesheets="@stylesheets/MainViewStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="#829764" layoutX="468.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DISTANCE" wrappingWidth="115.75653076171875">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font></Text>
-      <Text fill="#829764" layoutX="230.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DURATION" />
-      <TextField fx:id="distance_field" disable="true" layoutX="430.0" layoutY="122.0" prefHeight="131.0" prefWidth="185.0" styleClass="totalDistanceField" stylesheets="@stylesheets/ChartsStyle.css">
+      <ListView fx:id="listview" prefHeight="640.0" prefWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" />
+      <Circle fill="#1f93ff00" layoutX="522.0" layoutY="189.0" radius="103.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="4.0" />
+      <TextField fx:id="distance_field" disable="true" layoutX="449.0" layoutY="118.0" prefHeight="131.0" prefWidth="185.0" styleClass="totalDistanceField" stylesheets="@stylesheets/ChartsStyle.css">
          <font>
             <Font size="48.0" />
          </font>
       </TextField>
-      <TextField fx:id="avg_speed_field" disable="true" layoutX="395.0" layoutY="367.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <Text fill="#829764" layoutX="400.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG SPEED" />
-      <TextField fx:id="cal_burned_field" disable="true" layoutX="582.0" layoutY="369.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <Text fill="#829764" layoutX="581.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAL BURNED" />
-      <TextField fx:id="duration_field" disable="true" layoutX="225.0" layoutY="363.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <ListView fx:id="listview" prefHeight="640.0" prefWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" />
-      <Circle fill="#1f93ff00" layoutX="523.0" layoutY="193.0" radius="103.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="4.0" />
-      <Circle fill="#1f93ff00" layoutX="260.0" layoutY="389.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
-      <Circle fill="#1f93ff00" layoutX="430.0" layoutY="393.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
-      <Circle fill="#1f93ff00" layoutX="617.0" layoutY="395.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
-      <TextField fx:id="max_pulse_field" disable="true" layoutX="742.0" layoutY="368.0" prefHeight="27.0" prefWidth="50.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <Text fill="#829764" layoutX="766.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG PULSE" />
-      <Circle fill="#1f93ff00" layoutX="796.0" layoutY="394.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
-      <Text fill="#829764" layoutX="765.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX PULSE" />
-      <TextField fx:id="avg_pulse_field" disable="true" layoutX="798.0" layoutY="368.0" prefHeight="27.0" prefWidth="50.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <Line endX="7.0" endY="-20.0" layoutX="795.0" layoutY="397.0" startX="-10.0" startY="10.0" />
+      <Text fill="#829764" layoutX="467.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DISTANCE" wrappingWidth="115.75653076171875">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Text>
+      <Circle fill="#1f93ff00" layoutX="280.0" layoutY="400.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+      <TextField fx:id="duration_field" disable="true" layoutX="255.0" layoutY="374.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <Text fill="#829764" layoutX="250.0" layoutY="428.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DURATION" />
+      <Circle fill="#1f93ff00" layoutX="405.0" layoutY="401.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+      <TextField fx:id="avg_speed_field" disable="true" layoutX="370.0" layoutY="375.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <Text fill="#829764" layoutX="375.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG SPEED" />
+      <Circle fill="#1f93ff00" layoutX="531.0" layoutY="401.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+      <TextField fx:id="cal_burned_field" disable="true" layoutX="500.0" layoutY="375.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <Text fill="#829764" layoutX="495.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAL BURNED" />
+      <Ellipse fill="#515151" layoutX="724.0" layoutY="400.0" radiusX="120.0" radiusY="59.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+      <TextField fx:id="max_pulse_field" disable="true" layoutX="644.0" layoutY="379.0" prefHeight="44.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <Text fill="#829764" layoutX="642.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX PULSE" />
+      <TextField fx:id="avg_pulse_field" disable="true" layoutX="738.0" layoutY="378.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+      <Text fill="#829764" layoutX="741.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG PULSE" />
+      <Line endX="10.0" endY="-30.0" layoutX="721.0" layoutY="399.0" opacity="0.5" startX="-10.0" startY="30.0" stroke="#64754d" strokeWidth="3.0" />
    </children>
 </Pane>

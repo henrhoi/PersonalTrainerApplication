@@ -18,7 +18,7 @@ public class Endurance extends Training implements Comparable<Endurance>{
 			throw new IllegalArgumentException("Calories burned cannot be negative");
 		}
 		this.distance = distance;
-		this.averageSpeed = distance/((double)(duration)/60);
+		this.averageSpeed = (double)Math.round(distance/((double)(duration)/60) * 10d) / 10d;
 		this.caloriesBurned = caloriesBurned;
 		this.maxPulse = maxPulse;
 		this.avgPulse = avgPulse;
