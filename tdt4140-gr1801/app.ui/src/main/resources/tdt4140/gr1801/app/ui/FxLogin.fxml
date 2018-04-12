@@ -20,8 +20,8 @@
                   <Label id="h1" prefHeight="86.0" prefWidth="99.0" stylesheets="@stylesheets/LoginStyle.css" text="PT" textFill="WHITE" VBox.vgrow="ALWAYS">
   
                   </Label>
-                  <TextField fx:id="usernameField" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="text-field" stylesheets="@stylesheets/LoginStyle.css" />
-                  <PasswordField fx:id="passwordField" onAction="#loginAction" prefHeight="30.0" prefWidth="220.0" promptText="Password" stylesheets="@stylesheets/LoginStyle.css" />
+                  <TextField fx:id="usernameField" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="220.0" promptText="Username" styleClass="text-field" stylesheets="@stylesheets/LoginStyle.css" text="demo" />
+                  <PasswordField fx:id="passwordField" onAction="#loginAction" prefHeight="30.0" prefWidth="220.0" promptText="Password" stylesheets="@stylesheets/LoginStyle.css" text="puerbest" />
                   <Label fx:id="loginInfo" text="Wrong username or password" textAlignment="CENTER" textFill="RED" visible="false" />
                   <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
                      <children>

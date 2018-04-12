@@ -5,11 +5,9 @@
   	-fx-opacity: 0.3;
   	}
   	
-  	
  /*TAB PANEL */
- 
  .tab .tab-label { 
-    -fx-alignment: CENTER;
+    -fx-alignment: center-left;
     -fx-text-fill: #d7cccc;
     -fx-font-size: 14px;
 }
@@ -22,29 +20,19 @@
     -fx-opacity: 0.01;
 }
 
-/*space between tabs */
-.tab-pane {
-    -fx-tab-min-width:130px;
-}
+
 
  .tab:selected .tab-label { 
-    -fx-alignment: CENTER;
+    -fx-alignment: center;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-background-color: derive(black,53%); 
-    /*-fx-padding: 6px;*/
 }
 
  .tab:hover .tab-label { 
-    -fx-alignment: CENTER;
+   -fx-alignment: center;
     -fx-font-size: 16px;
     -fx-background-color: derive(black,53%); 
-    /*-fx-padding: 6px;*/
-}
-
-.tab-pane:top *.tab-header-area {
-    -fx-padding: 0.2em 0.166667em 0em 13.3em;
-    /*padding down, ,size of tabbar, padding right*/
 }
 
 /*LABEL */
