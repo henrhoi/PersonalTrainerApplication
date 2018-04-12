@@ -113,6 +113,15 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	public static PreparedStatement changePassword(String PT_ID, String passwrd, String salt) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("UPDATE PT SET Passwrd = ?, Salt = ? WHERE PT_ID = ?");
+		stmt.setString(1, passwrd);
+		stmt.setString(2, salt);
+		stmt.setString(3, PT_ID);
+		return stmt;
+	}
+	
 	
 	
 	
@@ -120,6 +129,9 @@ public final class QueryFactory {
 		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
 		stmt.execute();
 	}
+
+
+
 	
 	
 	
