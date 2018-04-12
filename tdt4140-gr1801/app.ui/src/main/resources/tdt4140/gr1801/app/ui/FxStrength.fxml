@@ -1,28 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="WHITE" layoutX="455.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" wrappingWidth="63.57664382729229" />
-      <TextField fx:id="duration_field" disable="true" editable="false" layoutX="510.0" layoutY="514.0" prefHeight="27.0" prefWidth="40.0" styleClass="durationField" stylesheets="@stylesheets/StrengthViewStyle.css" />
-      <ListView fx:id="listview" layoutY="6.0" prefHeight="600.0" prefWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" />
-      <TableView fx:id="tableview" layoutX="114.0" layoutY="5.0" prefHeight="511.0" prefWidth="827.0" stylesheets="@stylesheets/StrengthViewStyle.css">
-        <columns>
-          <TableColumn fx:id="colName" prefWidth="172.41842651367188" text="Name" />
-            <TableColumn fx:id="colWeight" prefWidth="102.58161926269531" text="Weight (kg)" />
-          <TableColumn fx:id="colSets" prefWidth="142.36224365234375" text="Sets" />
-            <TableColumn fx:id="colReps" prefWidth="136.63775634765625" text="Repetitions" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-      <Text fill="WHITE" layoutX="547.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="minutes" wrappingWidth="53.00675857338604" />
+      <ListView fx:id="listview" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox layoutX="247.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="247.5" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TableView fx:id="tableview" stylesheets="@stylesheets/StrengthViewStyle.css" VBox.vgrow="ALWAYS">
+              <columns>
+                <TableColumn fx:id="colName" prefWidth="172.41842651367188" text="Name" />
+                  <TableColumn fx:id="colWeight" prefWidth="102.58161926269531" text="Weight (kg)" />
+                <TableColumn fx:id="colSets" prefWidth="142.36224365234375" text="Sets" />
+                  <TableColumn fx:id="colReps" prefWidth="136.63775634765625" text="Repetitions" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+            <HBox alignment="CENTER_LEFT" VBox.vgrow="NEVER">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration:" wrappingWidth="63.57664382729229" />
+                  <TextField fx:id="duration_field" disable="true" editable="false" prefHeight="27.0" prefWidth="40.0" styleClass="durationField" stylesheets="@stylesheets/StrengthViewStyle.css" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="minutes" wrappingWidth="53.00675857338604" />
+               </children>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
    </children>
-</Pane>
+</AnchorPane>
