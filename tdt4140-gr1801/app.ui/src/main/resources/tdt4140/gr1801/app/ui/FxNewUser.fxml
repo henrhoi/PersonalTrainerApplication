@@ -1,32 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" stylesheets="@stylesheets/NewUserStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button defaultButton="true" layoutX="566.0" layoutY="459.0" mnemonicParsing="false" onAction="#createUser" stylesheets="@stylesheets/LoginStyle.css" text="Create User" textFill="#141414" />
-      <Label id="h2" fx:id="infoLabel" layoutX="187.0" layoutY="31.0" stylesheets="@stylesheets/NewUserStyle.css" text="Create account" textFill="WHITE" />
-      <VBox layoutX="257.0" layoutY="122.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+      <Pane id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@stylesheets/NewUserStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox alignment="CENTER" layoutX="1.0" layoutY="100.0" prefHeight="373.0" prefWidth="399.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <children>
-            <TextField fx:id="firstNameField" promptText="First name" stylesheets="@stylesheets/LoginStyle.css" />
-            <TextField fx:id="lastNameField" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
-            <TextField fx:id="usernameField" promptText="Username" stylesheets="@stylesheets/LoginStyle.css" />
-            <Line id="line" endX="92.0" startX="-92.0" stroke="LIGHTGRAY" strokeType="OUTSIDE" />
-            <PasswordField fx:id="passwordField" promptText="Password" stylesheets="@stylesheets/LoginStyle.css" />
-            <PasswordField fx:id="confirmPasswordField" promptText="Confrim Password" stylesheets="@stylesheets/LoginStyle.css" />
-            <Line id="line" endX="92.0" startX="-92.0" stroke="LIGHTGRAY" strokeType="OUTSIDE" />
-            <TextField fx:id="emailField" promptText="Email" stylesheets="@stylesheets/LoginStyle.css" />
-            <TextField fx:id="phoneNumberField" promptText="Phone number" stylesheets="@stylesheets/LoginStyle.css" />
-            <DatePicker fx:id="birthdayField" prefHeight="27.0" prefWidth="188.0" promptText="Birthday" stylesheets="@stylesheets/LoginStyle.css" />
+            <VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="373.0" prefWidth="400.0" spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <TextField fx:id="firstNameField" promptText="First name" stylesheets="@stylesheets/LoginStyle.css" />
+                  <TextField fx:id="lastNameField" promptText="Last name" stylesheets="@stylesheets/LoginStyle.css" />
+                  <TextField fx:id="usernameField" promptText="Username" stylesheets="@stylesheets/LoginStyle.css" />
+                  <Line id="line" endX="100.0" startX="-100.0" stroke="LIGHTGRAY" strokeType="OUTSIDE" />
+                  <PasswordField fx:id="passwordField" promptText="Password" stylesheets="@stylesheets/LoginStyle.css" />
+                  <PasswordField fx:id="confirmPasswordField" prefWidth="330.0" promptText="Confrim Password" stylesheets="@stylesheets/LoginStyle.css" />
+                  <Line id="line" endX="100.0" startX="-100.0" stroke="LIGHTGRAY" strokeType="OUTSIDE" />
+                  <TextField fx:id="emailField" promptText="Email" stylesheets="@stylesheets/LoginStyle.css" />
+                  <TextField fx:id="phoneNumberField" promptText="Phone number" stylesheets="@stylesheets/LoginStyle.css" />
+                  <HBox VBox.vgrow="ALWAYS">
+                     <children>
+                        <DatePicker fx:id="birthdayField" maxWidth="1.7976931348623157E308" prefWidth="200.0" promptText="Birthday" stylesheets="@stylesheets/LoginStyle.css" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <HBox maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="202.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#backToLogin" prefWidth="95.0" stylesheets="@stylesheets/LoginStyle.css" text="Back" textFill="#141414" HBox.hgrow="ALWAYS" />
+                        <Button defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createUser" prefWidth="95.0" stylesheets="@stylesheets/LoginStyle.css" text="Create" textFill="#141414" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="90.0" right="90.0" />
+               </padding>
+            </VBox>
          </children>
-      </VBox>
-      <Button defaultButton="true" layoutX="20.0" layoutY="459.0" mnemonicParsing="false" onAction="#backToLogin" stylesheets="@stylesheets/LoginStyle.css" text="Back" textFill="#141414" />
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="101.0" prefWidth="399.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label id="h2" fx:id="infoLabel" alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" stylesheets="@stylesheets/NewUserStyle.css" text="Create account" textAlignment="CENTER" textFill="WHITE" />
+         </children>
+      </HBox>
    </children>
-</Pane>
+</AnchorPane>

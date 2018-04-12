@@ -25,7 +25,6 @@ public class PT_Resources {
 		PreparedStatement stmt = QueryFactory.getPT(username);	// Henter et statement fra QueryFactoryen
 		ResultSet rs = stmt.executeQuery();	// Utfoerer spoerringen
 		String json = RSJSONConverter.ResultSetToJSON(rs).toString();	// Konverterer resultat til JSON
-
 		return json;
     }
 	
