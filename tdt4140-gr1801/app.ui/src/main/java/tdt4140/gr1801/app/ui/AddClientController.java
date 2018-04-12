@@ -52,7 +52,7 @@ public class AddClientController implements Controller {
 		
 		// Checking if the styleclass of the fields contains "error" (is unvalid input)
 		// Markere ugyldige felter med r�de kanter (CSS)
-		AnchorPane pane = (AnchorPane)first_name_field.getParent();
+		AnchorPane pane = (AnchorPane)first_name_field.getParent().getParent().getParent();
 		List<Node> errors = pane.getChildren().stream().filter(f -> f.getStyleClass().contains("error")).collect(Collectors.toList());
 		// Adding new client to database
 		if (errors.size() == 0) {
