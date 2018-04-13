@@ -1,6 +1,7 @@
 package tdt4140.gr1801.app.ui;
 
 import java.io.File;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -43,11 +44,13 @@ public class ProgramController implements TabController {
 		//Open DirectoryChooser and save path
 		final DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setTitle("Choose Export Location");
-        final String selectedDirectoryPath = directoryChooser.showDialog(stage).toString();
-        
+		final File selectedDirectoryPath = directoryChooser.showDialog(stage);   
+		
         //Create the new document if path not null
         if (selectedDirectoryPath != null) {
-        	Document doc = PdfCreator.getNewDocument(selectedDirectoryPath + "/nameoffile.pdf");
+        	LocalDateTime date = LocalDateTime.now();
+        	Document doc = PdfCreator.getNewDocument(selectedDirectoryPath.toString() + "/" 
+        	+ client.getName() + "_" + date.getDayOfMonth() + "_" + date.getMonthValue() + "_" + date.getYear() + ".pdf");
         	try {
         		//Add all the data to the document
         		PdfCreator.addMetaData(doc, "TrainingProgram_" + client.getName(), "Training", new ArrayList<String>(Arrays.asList("Training")), "PTApp", "PTApp");
