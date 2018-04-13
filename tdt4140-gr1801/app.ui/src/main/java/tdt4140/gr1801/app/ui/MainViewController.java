@@ -8,6 +8,8 @@ import java.util.Set;
 
 import org.apache.http.client.ClientProtocolException;
 
+import com.sun.prism.paint.Color;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -19,9 +21,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.Effect;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -47,7 +54,7 @@ public class MainViewController implements Controller{
 	ListView<Client> clients;
 	
 	@FXML
-	HBox buttonBox;
+	VBox buttonBox;
 	
 	@FXML
 	Text nameOfPTInfo, birthdayOfPTInfo, phoneOfPTInfo, mailOfPTInfo;
@@ -57,7 +64,6 @@ public class MainViewController implements Controller{
 	
 	@FXML
 	AnchorPane clientsPane;
-	
 	
 
 	private PersonalTrainer pt;
@@ -111,6 +117,7 @@ public class MainViewController implements Controller{
 			tab.setContent(root);
 			controller.startup();
 			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -137,10 +144,10 @@ public class MainViewController implements Controller{
 	@FXML
 	public void hideClientList() {
 		if(clientsPane.isVisible()) {
-			buttonBox.toBack();
+			clientsPane.toBack();
 		}
 		else {
-			buttonBox.toFront();
+			clientsPane.toFront();
 		}
 		clientsPane.setVisible(!clientsPane.isVisible());
 		PTInfoPane.toBack();
@@ -197,7 +204,14 @@ public class MainViewController implements Controller{
 	public void updateInfo() {
 		//User this.username to update all the information
 		System.out.println("Update information for " + this.pt.getUsername());
+		System.out.println(nameOfPT);
+		
 		nameOfPT.setText(pt.getName());
+		
+		
+		//Make the tabs i TabPane resize by it self by binding it to the pane that lies behind it.
+		TabPane tabpane = overviewTab.getTabPane();
+		tabpane.tabMinWidthProperty().bind(PTInfoPane.widthProperty().divide(tabpane.getTabs().size()).subtract(18));
 		
 		//Set PTInfoPage
 		nameOfPTInfo.setText(pt.getName());

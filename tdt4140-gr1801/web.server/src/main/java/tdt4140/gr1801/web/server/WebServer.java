@@ -42,6 +42,10 @@ public class WebServer{
 		
 	}
 	
+	public void stopServer() {
+		this.server.destroy();
+	}
+	
 	// Starter en WebServer paa port 8080
 	public static void main(String[] args) throws Exception {
 		WebServer webserver = new WebServer(8080);
