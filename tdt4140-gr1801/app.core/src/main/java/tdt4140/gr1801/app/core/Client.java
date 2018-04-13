@@ -59,6 +59,10 @@ public class Client {
     		return pt.getUsername();
     }
     
+    public PersonalTrainer getPersonalTrainerObject() {
+    	return this.pt;
+    }
+    
     public Double getWeight(String date){
     		if (this.weights.containsKey(date)) {
     			return this.weights.get(date);
