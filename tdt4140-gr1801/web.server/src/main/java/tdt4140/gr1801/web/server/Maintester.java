@@ -21,10 +21,7 @@ public class Maintester {
 		
 		System.out.println(json);
 		System.out.println(json.length());
-		System.out.println("hei");
-		System.out.println(Nutrition_Resources.getAllNutrition("1"));
 
-		System.out.println(Nutrition_Resources.getAllNutrition("1").length());
 		
 		
 		/*
