@@ -3,14 +3,17 @@ package tdt4140.gr1801.app.core;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javafx.scene.image.Image;
 import tdt4140.gr1801.web.server.GetURL;
 
 public class Client {
@@ -21,6 +24,7 @@ public class Client {
 	private PersonalTrainer pt;
 	private HashMap<String,Double> weights; // measured in float (kg)
 	private HashMap<String,Double> fats; // measured in float [0,1]
+	private HashMap<String,Image> pictureDates; //String with corresponding date, and url to picture link
 	private List<Nutrition> nutritions;
     
 	private List<Strength> strengthTraining;
@@ -37,6 +41,7 @@ public class Client {
 	    
     		this.weights = new HashMap<String,Double>();
     		this.fats = new HashMap<String,Double>();
+    		this.pictureDates = new HashMap<String,Image>();
     		this.nutritions = new ArrayList<Nutrition>();
     		this.strengthTraining = new ArrayList<Strength>();
     		this.enduranceTraining = new ArrayList<Endurance>();
@@ -255,6 +260,41 @@ public class Client {
     		}
     }
     
+    
+    public void getClientPictures() throws ClientProtocolException, IOException{
+    		String data = GetURL.getRequest("/client/pics/"+this.id);
+    		
+    		if(!data.equals("[]")) {
+    			JSONArray json = new JSONArray(data);
+    			for(int i = 0; i < json.length(); i ++) {
+    				JSONObject jsonObj = json.getJSONObject(i);
+    				String date = jsonObj.getString("Dato");
+    				String url = jsonObj.getString("ImageURL");
+    				Image image = new Image(url);
+    				
+    				
+    				pictureDates.put(date, image);
+    			}
+    		}
+    }
+    
+    
+    //returns a list of picture dates sorted
+    public List<String> getPictureDates(){
+    		List<String> dates = new ArrayList<String>();
+    		
+    		for(String key : pictureDates.keySet()) {
+    			dates.add(key);
+    		}
+    		Collections.sort(dates);
+    		return dates;
+    }
+    
+    public Image getImage(String date) {
+    		return this.pictureDates.get(date);
+    }
+    
+    
     public String toString() {
     	return name;
     }
@@ -263,10 +303,17 @@ public class Client {
 
     // Tester at innsetting av Client fungerer. 
     public static void main(String[] args) throws IOException {
-    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
-    		Client client = new Client(1,"Vilde Arntzen",160, pt);
-    		client.getClientWeightFat();
-    		System.out.println(client.weights);
+    		//PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
+    		//Client client = new Client(1,"Vilde Arntzen",160, pt);
+    		//client.getClientWeightFat();
+    		//System.out.println(client.weights);
+    		ArrayList<String> hei = new ArrayList<String>();
+    		hei.add("Martin");
+    		hei.add("Henrik");
+    		System.out.println(hei);
+    		Collections.sort(hei);
+    		System.out.println(hei);
+    		System.out.println("2018".compareTo("2017"));
 	}
 
 }

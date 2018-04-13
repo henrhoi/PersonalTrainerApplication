@@ -11,7 +11,6 @@ public class Maintester {
 	
 	// Min tester for aa kunne proeve ut nye ting
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		
 		Connection conn = DBConnection.getDBConnection();
 		PreparedStatement stmt = conn.prepareStatement("SELECT Passwrd FROM PT WHERE PT_ID = ?");  
 		
@@ -21,7 +20,8 @@ public class Maintester {
 		JSONArray json = RSJSONConverter.ResultSetToJSON(rs);
 		
 		System.out.println(json);
-		
+		System.out.println(json.length());
+
 		
 		
 		/*
