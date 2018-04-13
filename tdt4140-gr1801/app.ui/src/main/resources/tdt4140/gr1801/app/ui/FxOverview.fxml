@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="root" layoutX="-63.0" layoutY="-14.0" prefHeight="930.0" prefWidth="1400.0" stylesheets="@stylesheets/ChartsStyle.css">
+      <Pane fx:id="root" layoutX="-40.0" layoutY="-14.0" prefHeight="930.0" prefWidth="1400.0" stylesheets="@stylesheets/ChartsStyle.css">
          <children>
             <VBox layoutX="48.0" layoutY="117.0" prefHeight="374.0" prefWidth="488.0" spacing="20.0" stylesheets="@stylesheets/MainViewStyle.css">
                <children>
@@ -44,14 +44,19 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <Button fx:id="deleteClientButton" mnemonicParsing="false" onAction="#deleteClient" style="-fx-border-radius: 0px;" text="Delete client">
+                  <Button fx:id="deleteClientButton" mnemonicParsing="false" onAction="#deleteClient" text="Delete Client ">
                      <VBox.margin>
-                        <Insets top="120.0" />
+                        <Insets top="100.0" />
                      </VBox.margin>
-                     <font>
-                        <Font size="11.0" />
-                     </font>
                   </Button>
+                  <Label fx:id="errorLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Wrong password, try again" textFill="RED" visible="false">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="-15.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
             </VBox>
          </children></Pane>
