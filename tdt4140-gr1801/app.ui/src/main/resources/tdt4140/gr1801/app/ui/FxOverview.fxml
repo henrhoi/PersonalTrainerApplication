@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane fx:id="root" layoutX="-40.0" layoutY="-14.0" prefHeight="930.0" prefWidth="1400.0" stylesheets="@stylesheets/ChartsStyle.css">
+      <Pane fx:id="root" layoutX="-63.0" layoutY="-14.0" prefHeight="930.0" prefWidth="1400.0" stylesheets="@stylesheets/ChartsStyle.css">
          <children>
             <VBox layoutX="48.0" layoutY="117.0" prefHeight="374.0" prefWidth="488.0" spacing="20.0" stylesheets="@stylesheets/MainViewStyle.css">
                <children>
@@ -42,6 +44,14 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
+                  <Button fx:id="deleteClientButton" mnemonicParsing="false" onAction="#deleteClient" style="-fx-border-radius: 0px;" text="Delete client">
+                     <VBox.margin>
+                        <Insets top="120.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
                </children>
             </VBox>
          </children></Pane>

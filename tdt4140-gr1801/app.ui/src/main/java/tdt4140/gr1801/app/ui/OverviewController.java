@@ -92,6 +92,10 @@ public class OverviewController implements TabController {
 		lineChart.getData().addAll(serie1,serie2);	
 	}
 
+	@FXML
+	public void deleteClient() {
+		String a = "";
+	}
 
 	@Override
 	public void startup() {
