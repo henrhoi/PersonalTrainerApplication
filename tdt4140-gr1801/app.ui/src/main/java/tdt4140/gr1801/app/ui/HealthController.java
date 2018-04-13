@@ -10,6 +10,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.PieChart.Data;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Nutrition;
@@ -24,6 +25,9 @@ public class HealthController implements TabController {
 	
 	@FXML
 	Label PieChartDataLabel;
+	
+	@FXML
+	TextArea caloriesText;	
 		
 	private Client client;
 	
@@ -72,7 +76,6 @@ public class HealthController implements TabController {
 				Nutrition selected = listview.getSelectionModel().getSelectedItem();
 				// Setting data in the view thereafter
 				updateView(selected);
-				System.out.println("moved");
 			}
 		});
 	}
@@ -81,7 +84,6 @@ public class HealthController implements TabController {
 		if (n != null) {
 			ObservableList<Data> pieChartData = FXCollections.observableArrayList(
 					new Data("Fat", n.getFat()),
-					new Data("Calories", n.getCalories()),
 					new Data("Protein", n.getProtein()),
 					new Data("Carbs" , n.getCarbs())
 				);
@@ -95,12 +97,14 @@ public class HealthController implements TabController {
 			applyCustomColorSequence(
 				      pieChartData, 
 				      "bisque", 
-				      "chocolate", 
 				      "coral", 
 				      "crimson"
 				    );
-			NutritionPieChart.setLegendVisible(false);	
+			NutritionPieChart.setLegendVisible(false);
+			PieChartDataLabel.setText("Hover Pie Chart For Info");
 			addEventHandlerPieChart();
+			caloriesText.setText("Calories: " + n.getCalories());
+			
 		}
 
 		else {

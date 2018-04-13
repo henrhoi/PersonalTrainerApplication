@@ -41,7 +41,7 @@ public class OverviewController implements TabController {
 	
 	
 	@FXML
-	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, beforeDateLabel, beforeWeightLabel, beforeFatLabel;
+	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, beforeDateLabel, afterDateLabel;
 	
 	@FXML
 	ListView<String> pictureDates;
@@ -132,8 +132,7 @@ public class OverviewController implements TabController {
 		//Getting picture dates
 		ObservableList<String> dates = FXCollections.observableArrayList();
 		for(String date : myDates) {
-			dates.add(date);
-			
+			dates.add(getDateString(date));	
 		}
 		
 		if(myDates.isEmpty()) {
@@ -149,7 +148,8 @@ public class OverviewController implements TabController {
 		if(myDates.size() > 0) {
 			Image image = this.client.getImage(myDates.get(0));
 			beforeImage.setImage(image);
-			beforeDateLabel.setText("Date: "+  myDates.get(0));
+			beforeDateLabel.setText(getDateString(myDates.get(0)));
+			
 		}
 		
 		else {
@@ -167,6 +167,7 @@ public class OverviewController implements TabController {
 		}
 		else if(myDates.size() > 1) {
 			afterImage.setImage(this.client.getImage(myDates.get(1)));
+			afterDateLabel.setText(getDateString(myDates.get(1)));
 		}
 	}
 	
@@ -193,11 +194,51 @@ public class OverviewController implements TabController {
 	}
 	
 	private void updatePicture(String date) {
-		afterImage.setImage(this.client.getImage(date));
-		
+		afterImage.setImage(this.client.getImage(getNormalDateFormat(date)));
+		afterDateLabel.setText(date);
 	}
 
-
+	
+	public String getDateString(String date) {
+		String year = date.substring(0, 4);
+		String day = date.substring(8);
+		switch(date.substring(5, 7)) {
+		case "01": return day + ". Jan " + year;
+		case "02": return day + ". Feb " + year;
+		case "03": return day + ". Mar " + year;
+		case "04": return day + ". Apr " + year;
+		case "05": return day + ". May " + year;
+		case "06": return day + ". Jun " + year;
+		case "07": return day + ". Jul " + year;
+		case "08": return day + ". Aug " + year;
+		case "09": return day + ". Sep " + year;
+		case "10": return day + ". Oct " + year;
+		case "11": return day + ". Nov " + year;
+		case "12": return day + ". Des " + year;
+		default: return "";
+		}
+	}
+	
+	public String getNormalDateFormat(String date) {
+		String year = date.substring(8);
+		String day = date.substring(0,2);
+		switch(date.substring(4,7)) {
+		case "Jan": return year + "-01-" + day;
+		case "Feb": return year + "-02-" + day;
+		case "Mar": return year + "-03-" + day;
+		case "Apr": return year + "-04-" + day;
+		case "May": return year + "-05-" + day;
+		case "Jun": return year + "-06-" + day;
+		case "Jul": return year + "-07-" + day;
+		case "Aug": return year + "-08-" + day;
+		case "Sep": return year + "-09-" + day;
+		case "Oct": return year + "-10-" + day;
+		case "Nov": return year + "-11-" + day;
+		case "Dec": return year + "-12-" + day;
+		default: return "";
+		}
+	}
+	
 	@Override
 	public void startup() {
 		addPictureNavigationLogic();
