@@ -36,6 +36,4 @@ public class FxApp extends Application {
     		thread1.start();
     		launch(args);
     }
-   
-
 }

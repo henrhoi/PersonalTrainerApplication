@@ -33,7 +33,7 @@ public class Client_Resources {
     @GET
     @Path("/all/{pt}")
     @Produces("application/json")
-    public static String getClients(@PathParam("pt") String PT_ID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public String getClients(@PathParam("pt") String PT_ID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
     			PreparedStatement stmt = QueryFactory.getAllClients(PT_ID);
         		ResultSet rs = stmt.executeQuery();
         		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
@@ -52,8 +52,18 @@ public class Client_Resources {
     		return json;
     	
     }
+   
     
-    
+    @GET
+    @Path("/pics/{clientid}")
+    @Produces
+    public String getClientProgressionPictures(@PathParam("clientid") String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    		PreparedStatement stmt = QueryFactory.getClientProgressionPictures(ClientID);
+    		ResultSet rs = stmt.executeQuery();
+    		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+    		return json;
+    		
+    }
     
     
     
@@ -63,7 +73,6 @@ public class Client_Resources {
     		String clientInfo = GetURL.getRequest("/client/1");
     		System.out.println(clientInfo);
     		
-    		Client_Resources.getClients("henrhoi");
     		
     		String allClients = GetURL.getRequest("/all/henrhoi");
     		System.out.println(allClients);
