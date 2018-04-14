@@ -30,7 +30,6 @@ public class PdfTest extends TestCase{
         	
         PdfCreator.addMetaData(doc, "DocumentTitle", "Subject", new ArrayList<String>(Arrays.asList("key1","key2")), "Author", "Creator");
         PdfCreator.addFrontPage(doc, pt, client);
-        PdfCreator.addContent(doc);
         doc.close();
 	}
 	public void testFileCreated() {

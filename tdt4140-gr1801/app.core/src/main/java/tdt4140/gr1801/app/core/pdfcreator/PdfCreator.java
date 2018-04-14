@@ -21,7 +21,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import tdt4140.gr1801.app.core.Client;
+import tdt4140.gr1801.app.core.DayProgram;
+import tdt4140.gr1801.app.core.Exercise;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
 //http://www.vogella.com/tutorials/JavaPDF/article.html
@@ -45,8 +49,6 @@ public class PdfCreator {
         return document;
     }
     
-    
-
     //Add metadata to the document
     public static void addMetaData(Document document, String title, String subject, List<String> keywords, String author, String creator) {
         document.addTitle(title);
@@ -74,97 +76,57 @@ public class PdfCreator {
         document.newPage();
     }
     
-    //This method should just write the Healthplan
-    public static void addContent(Document document) throws DocumentException {
-    	//Example
-    	Anchor anchor = new Anchor("First Chapter", catFont);
-        anchor.setName("First Chapter");
-
-        // Second parameter is the number of the chapter
-        Chapter catPart = new Chapter(new Paragraph(anchor), 1);
-
-        Paragraph subPara = new Paragraph("Subcategory 1", subFont);
-        Section subCatPart = catPart.addSection(subPara);
-        subCatPart.add(new Paragraph("Hello"));
-
-        subPara = new Paragraph("Subcategory 2", subFont);
-        subCatPart = catPart.addSection(subPara);
-        subCatPart.add(new Paragraph("Paragraph 1"));
-        subCatPart.add(new Paragraph("Paragraph 2"));
-        subCatPart.add(new Paragraph("Paragraph 3"));
-
-        // add a list
-        createList(subCatPart);
-        Paragraph paragraph = new Paragraph();
-        addEmptyLine(paragraph, 5);
-        subCatPart.add(paragraph);
-
-        // add a table
-        createTable(subCatPart);
-
-        // now add all this to the document
-        document.add(catPart);
-
-        // Next section
-        anchor = new Anchor("Second Chapter", catFont);
-        anchor.setName("Second Chapter");
-
-        // Second parameter is the number of the chapter
-        catPart = new Chapter(new Paragraph(anchor), 1);
-
-        subPara = new Paragraph("Subcategory", subFont);
-        subCatPart = catPart.addSection(subPara);
-        subCatPart.add(new Paragraph("This is a very important message"));
-
-        // now add all this to the document
-        document.add(catPart);
-        
-        //Example
+    //Add content to the TrainingProgram
+    public static void addContent(Document document, ObservableList<DayProgram> programs) throws DocumentException {
+    	Paragraph content = new Paragraph();
+    	for (DayProgram program : programs) {
+    		addEmptyLine(content, 1);
+    		content.add(new Paragraph(program.getWeekday(), catFont));
+    		//Strength Program
+    		if(program.getExercises() != null) {
+    			//Make a table with all the exercises and add to doc
+    			PdfPTable table = createTable(program.getExercises());
+    			content.add(table);
+    		}
+    		//Endurance Program
+    		if(program.getAvgSpeed() != null) {
+    			//Add all the fields given in an Endurance object
+    			Paragraph subpar = new Paragraph();
+    			subpar.add(new Paragraph("Distance: " + program.getDistance() + "km"));
+    			subpar.add(new Paragraph("Duration: " + program.getDuration()));
+    			subpar.add(new Paragraph("Avg.speed: " + program.getAvgSpeed()));
+    			subpar.add(new Paragraph("Description: " + program.getDescription()));
+    			content.add(subpar);
+    		}
+    	}
+    	//Add content to document
+    	document.add(content);
     }
-
-    public static void createTable(Section subCatPart) throws BadElementException {
-    	///EXAMPLE///
-        PdfPTable table = new PdfPTable(3);
-
-        // t.setBorderColor(BaseColor.GRAY);
-        // t.setPadding(4);
-        // t.setSpacing(4);
-        // t.setBorderWidth(1);
-
-        PdfPCell c1 = new PdfPCell(new Phrase("Table Header 1"));
-        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("Table Header 2"));
-        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-        table.addCell(c1);
-
-        c1 = new PdfPCell(new Phrase("Table Header 3"));
-        c1.setHorizontalAlignment(Element.ALIGN_CENTER);
-        table.addCell(c1);
-        table.setHeaderRows(1);
-
-        table.addCell("1.0");
-        table.addCell("1.1");
-        table.addCell("1.2");
-        table.addCell("2.1");
-        table.addCell("2.2");
-        table.addCell("2.3");
-
-        subCatPart.add(table);
-     	///EXAMPLE///
-
+    
+    //Create a Table for Strength Exercises
+    private static PdfPTable createTable(List<Exercise> exs) throws DocumentException {
+    	//A table with four columns
+        PdfPTable table = new PdfPTable(4);
+        //Headers
+        addTextToNextTableCell("Name", table);
+        addTextToNextTableCell("Weight", table);
+        addTextToNextTableCell("Sets", table);
+        addTextToNextTableCell("Repetitions", table);
+        //Add Exercises
+        for (Exercise ex : exs) {
+        	addTextToNextTableCell(ex.getName(), table);
+        	addTextToNextTableCell(ex.getWeight()+"", table);
+        	addTextToNextTableCell(ex.getNumberOfSets()+"", table);
+        	addTextToNextTableCell(ex.getReps(), table);
+        }
+        //Add Table to document
+        return table;
     }
-
-    private static void createList(Section subCatPart) {
-    	///EXAMPLE///
-    	com.itextpdf.text.List list = new com.itextpdf.text.List(true, false, 10);
-        list.add(new ListItem("First point"));
-        list.add(new ListItem("Second point"));
-        list.add(new ListItem("Third point"));
-        subCatPart.add(list);
-        ///EXAMPLE///
-    }
+    
+    private static void addTextToNextTableCell(String str, PdfPTable table) {
+   	 PdfPCell cell = new PdfPCell(new Paragraph(str));
+        table.addCell(cell);
+   }
 
     private static void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
