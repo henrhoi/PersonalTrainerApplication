@@ -56,6 +56,6 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Button layoutX="520.0" layoutY="518.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="114.0" text="Update" />
+      <Button layoutX="520.0" layoutY="518.0" mnemonicParsing="false" onAction="#updateProgram" prefHeight="44.0" prefWidth="114.0" text="Update" />
    </children>
 </Pane>

@@ -2,7 +2,10 @@ package tdt4140.gr1801.app.ui;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -15,9 +18,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.DayProgram;
+import tdt4140.gr1801.app.core.Exercise;
 
 
 public class ProgramController implements TabController {
@@ -27,10 +30,10 @@ public class ProgramController implements TabController {
 	ListView<DayProgram> listview;
 	
     @FXML
-    TableView<DayProgram> tableview;
+    TableView<Exercise> tableview;
     
     @FXML
-    TableColumn<DayProgram, String> colName, colWeight, colSets, colReps;
+    TableColumn<Exercise, String> colName, colWeight, colSets, colReps;
 	
     @FXML
     TextField distance_field, duration_field, speed_field;
@@ -64,7 +67,7 @@ public class ProgramController implements TabController {
 		for (DayProgram dayprogram : client.getDayProgramList()) {
 			days.add(dayprogram);
 		}
-		days.remove(0); // First is duplicated because of some reason
+		//days.remove(0); // First is duplicated because of some reason
 		listview.setItems(days);
 	}
 	
@@ -125,13 +128,15 @@ public class ProgramController implements TabController {
 			description_field.setText(day.getDescription());
 		}
 		
-		if (day == null || day.getWeight() == null) {
+		if (day == null || day.getExercises() == null) {
 			tableview.setItems(null);
 		}
 		
-		else if (day.getWeight() != null) {
-			ObservableList<DayProgram> items = FXCollections.observableArrayList ();
-			items.add(day);
+		else if (day.getExercises() != null) {
+			ObservableList<Exercise> items = FXCollections.observableArrayList ();
+			for (Exercise exercise : day.getExercises()) {
+				items.add(exercise);
+			}
 			tableview.setItems(items);
 		}
 	}
@@ -140,11 +145,13 @@ public class ProgramController implements TabController {
 	@Override
 	public void startup() {
 
-		// Connecting the columns of the tableview to attributes in DayProgram
-		this.colName.setCellValueFactory(new PropertyValueFactory<DayProgram, String>("ExerciseName"));
-		this.colWeight.setCellValueFactory(new PropertyValueFactory<DayProgram, String>("Weight"));
-		this.colSets.setCellValueFactory(new PropertyValueFactory<DayProgram, String>("Sets"));
-		this.colReps.setCellValueFactory(new PropertyValueFactory<DayProgram, String>("Reps"));
+		// Connecting the columns of the tableview to attributes in Exercise
+		this.colName.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Name"));
+		this.colWeight.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Weight"));
+		
+		// Sets and reps are not excplicit defined as attributes in Exercise, so they must be calculated
+		this.colSets.setCellValueFactory(s -> new SimpleStringProperty(Integer.toString(s.getValue().getNumberOfSets())));
+		this.colReps.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getReps()));
 		
 		setNavigationLogic();
 		updateView(null);
@@ -154,13 +161,24 @@ public class ProgramController implements TabController {
 	@FXML
 	public void editEndurance() throws IOException {
 		// Innsetting av weeklyprogram
-		DayProgram dp = new DayProgram("Monday", 120, 12.0, 6.5, "Intervaller 4x4", null, null, null, null);
+		DayProgram dp = new DayProgram("Monday", 120, 12.0, 6.5, "Intervaller 4x4", null);
 		client.createWeeklyProgram(dp);
 	}
 	
 	@FXML 
 	public void editStrength() {
 		
+	}
+	
+	@FXML
+	public void updateProgram() throws IOException {
+		Exercise e1 = new Exercise("Benchpress", 80, Arrays.asList(5, 5, 5, 5, 5));
+    	Exercise e2 = new Exercise("Deadlift", 120, Arrays.asList(12, 10, 8));
+    	ArrayList<Exercise> exercises = new ArrayList<>();
+    	exercises.add(e1);
+    	exercises.add(e2);
+    	DayProgram dp = new DayProgram("Wednesday", null, null, null, null, exercises);
+    	client.createWeeklyProgram(dp);
 	}
 
 }

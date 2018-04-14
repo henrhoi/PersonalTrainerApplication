@@ -180,18 +180,27 @@ public class Client {
     
     public void createWeeklyProgram(DayProgram dp) throws IOException {
     	JSONObject json = new JSONObject();
-		json.put("clientID",this.id);
-		json.put("day", dp.getWeekday());
-		json.put("duration", dp.getDuration());
-		json.put("distance", dp.getDistance());
-		json.put("speed", dp.getAvgSpeed());
-		json.put("description", dp.getDescription());
-		json.put("exerciseName", dp.getExerciseName());
-		json.put("weight", dp.getWeight());
-		json.put("sets", dp.getSets());
-		json.put("reps", dp.getReps());
+		json.put("ClientID",this.id);
+		json.put("Day", dp.getWeekday());
+		json.put("Duration", dp.getDuration());
+		json.put("Distance", dp.getDistance());
+		json.put("Speed", dp.getAvgSpeed());
+		json.put("Description", dp.getDescription());
+		String exercises = "";
+		for (Exercise e : dp.getExercises()) {
+			exercises += e.getName() + ",";
+			exercises += e.getWeight() + ",";
+			for (int rep : e.getRepsPerSet()) {
+				exercises += rep + "-";
+			}
+			exercises = exercises.substring(0, exercises.length()-1);
+			exercises += "#";
+		}
+		exercises = exercises.substring(0, exercises.length()-1);
+		json.put("Exercises", exercises);
+		System.out.println("inside createWeeklyProgram in Client");
 		System.out.println(json);
-		String respons = GetURL.postRequest("/weeklyprogram/" + Integer.toString(this.id), json);
+		String respons = GetURL.postRequest("/weeklyprogram/client", json);
 		System.out.println(respons);
     }
     
@@ -216,29 +225,36 @@ public class Client {
     public void getClientProgram() throws ClientProtocolException, IOException {
     	String data = GetURL.getRequest("/weeklyprogram/"+Integer.toString(this.id));
     	JSONArray json = new JSONArray(data);
-		DayProgram dayprogram;
 		for (int n = 0; n < json.length(); n++) {
+			DayProgram dayprogram;
 			JSONObject object = json.getJSONObject(n);
-			String day = object.getString("day");
+			String day = object.getString("Day");
 			// Check if row is endurance or strength
-			if (object.getInt("weight") == 0) {
+			if (object.getString("Exercises").length() < 4) {
 				// row is endurance
-				int duration = object.getInt("duration");
-				double distance = object.getDouble("distance");
-				double speed = object.getDouble("speed");
-				String description = object.getString("description");
+				int duration = object.getInt("Duration");
+				double distance = object.getDouble("Distance");
+				double speed = object.getDouble("Speed");
+				String description = object.getString("Description");
 				dayprogram = new DayProgram(day, duration, distance, speed, 
-						description, null, null, null, null);
-				program.add(dayprogram);
+						description, null);
 			}
 			else {
-				// row is strength
-				String exercise = object.getString("exerciseName");
-				double weight = object.getDouble("weight");
-				int sets = object.getInt("sets");
-				String reps = object.getString("reps");
+				// Row is strength
+				List<Exercise> exercises = new ArrayList<>();
+				// Iterate over the string to get the different exercises
+				List<String> stringExercises = new ArrayList<String>(Arrays.asList(object.getString("Exercises").split("#")));
+				for (String ex : stringExercises) {
+					String[] info = ex.split(",");
+					String name = info[0];
+					double weight = Double.parseDouble(info[1]);
+					List<Integer> repsList = Arrays.asList(info[2].split("-"))
+			    			.stream().map(r -> Integer.parseInt(r)).collect(Collectors.toList());
+					Exercise e = new Exercise(name, weight, repsList);
+					exercises.add(e);
+				}
 				dayprogram = new DayProgram(day, null, null, null,
-						null, exercise, weight, sets, reps);	
+						null, exercises);
 			}
 			program.add(dayprogram);
 		}
@@ -322,7 +338,9 @@ public class Client {
 //    		Client client = new Client(1,"Vilde Arntzen",160, pt);
 //    		client.getClientWeightFat();
 //    		System.out.println(client.weights);
-    		
+    	
+    	
+    	
 
 	}
 

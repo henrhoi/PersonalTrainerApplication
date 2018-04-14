@@ -88,20 +88,17 @@ public final class QueryFactory {
 	}
 	
 	// PreparedStatement for innsetting av WeeklyProgram i databasen
-		public static PreparedStatement insertWeeklyProgram(String clientID, String day, int duration, double distance, 
-				double speed, String description, String exerciseName, double weight, int sets, String reps) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		public static PreparedStatement insertWeeklyProgram(int clientID, String day, int duration, double distance, 
+				double speed, String description, String exercises) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 			Connection conn = DBConnection.getDBConnection();
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO WeeklyProgram  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");  
-			stmt.setString(1, clientID);
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO WeeklyProgram VALUES (?, ?, ?, ?, ?, ?, ?)");  
+			stmt.setInt(1, clientID);
 			stmt.setString(2, day);
 			stmt.setInt(3, duration);
 			stmt.setDouble(4, distance);
 			stmt.setDouble(5, speed);
 			stmt.setString(6, description);
-			stmt.setString(7, exerciseName);
-			stmt.setDouble(8, weight);
-			stmt.setInt(9, sets);
-			stmt.setString(10, reps);
+			stmt.setString(7, exercises);
 			return stmt;
 		}
 	
@@ -151,7 +148,10 @@ public final class QueryFactory {
 //		while(rs.next()) {
 //			System.out.println(rs.getString("day"));
 //		}
-		System.out.println("I en main");
+//		System.out.println("I en main");
+//		
+//		PreparedStatement st = insertWeeklyProgram("1", "Monday", 120, 12.0, 6.5, "Intervaller 4x4", "", 0.0, 0, "");
+//		st.execute();
 	}
 	
 	
