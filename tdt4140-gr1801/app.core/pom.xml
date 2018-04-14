@@ -89,6 +89,14 @@
              <artifactId>tdt4140-gr1801.web.server</artifactId>
              <version>0.0.1-SNAPSHOT</version>
          </dependency>
+         
+         <!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+         <!-- for creating pdf files -->
+         <dependency>
+    		<groupId>com.itextpdf</groupId>
+    		<artifactId>itextpdf</artifactId>
+    		<version>5.0.6</version>
+		</dependency>
 		
 	</dependencies>
 	
