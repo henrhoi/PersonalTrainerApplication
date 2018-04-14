@@ -92,7 +92,6 @@ public class Client {
     		return this.fats;
     }
     
-    
     public Double getFat(String date){
     		if (this.fats.containsKey(date)) {
     			return this.fats.get(date);
@@ -101,9 +100,6 @@ public class Client {
     		}
     }
     
-    
-    
-    
     public Nutrition getNutrition(String date) {
     		for (Nutrition nutrition : nutritions) {
     			if (nutrition.getDate().equals(date)){
@@ -111,10 +107,6 @@ public class Client {
     			}
     		} throw new IllegalArgumentException("No nutrition registered for this date");
     }
-    
-    
-    //kan legge til metode for å endre pt for klient, må da legge til
-    // metode i pt som fjerner klient fra pt også
     
     
     public void addWeight(String date, double weight) {
@@ -134,14 +126,9 @@ public class Client {
     		}
     }
     
-    
-    
-    // Burde mulig ha en sjekk her for om datoen allerede eksisterer?
-    // for-løkke?
     public void addNutrition(Nutrition nutrition) {
     		this.nutritions.add(nutrition);
     }
-    
  
     public void addStrengthTraining(Strength training) {
     		this.strengthTraining.add(training);
@@ -163,8 +150,7 @@ public class Client {
 		return height < 272 && height > 130;
 	}
     
-    
-    // Funksjon som legger Client til i Klient-tablen i DB. Kan kanskje gjøres statisk og ta inn Client som input og gjøres statisk.
+    //Funksjon som legger Client til i Klient-tablen i DB.
     public void createClient() throws IOException {
 		JSONObject json = new JSONObject();
 		json.put("Navn", this.name);
@@ -175,8 +161,7 @@ public class Client {
 		System.out.println(respons);
     }
     
-
-    // ikke testet 
+    //Get all the Nutrition measurements for one given Client
     public void getClientNutrition() throws ClientProtocolException, IOException {
     		String data = GetURL.getRequest("/nutrition/"+this.id);
     		JSONArray json = new JSONArray(data);
@@ -193,8 +178,7 @@ public class Client {
     		}
     }
     
-
-    // ikke testet 
+    //Get all the EnduranceTraining´s for one given Client
     public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
     		String data = GetURL.getRequest("/training/endurance/"+this.id);
     		JSONArray json = new JSONArray(data);
@@ -210,8 +194,6 @@ public class Client {
     		}
     }
     
-    
-    //KISSA
     public void getStrengthTrainings() throws ClientProtocolException, IOException {
     	//Get all strength training
     	String strengthData = GetURL.getRequest("/training/strength/"+ this.id);
@@ -222,7 +204,7 @@ public class Client {
     		String date = strengthObject.getString("Dato");
     		int duration = strengthObject.getInt("Duration");    		
     		
-    		//Get all exercies for every strength training, we do not need sets, because that would be the length of repsList anyway
+    		//Get all exercises for every strength training, we do not need sets, because that would be the length of repsList anyway
     		List<Exercise> exerciseList = new ArrayList<Exercise>();
     		String exData = GetURL.getRequest("/training/exercise/"+strengthID);
     		JSONArray exJson = new JSONArray(exData);
@@ -242,9 +224,8 @@ public class Client {
     		addStrengthTraining(strength);
     	}
     }
-    //KISSA
     
-    //Fungerer
+    //Gets all the Weight and Fats measurements for one given Client
     public void getClientWeightFat() throws ClientProtocolException, IOException {
     		String data = GetURL.getRequest("/client/weightfat/"+this.id);
     		if (!data.equals("[]")) {
@@ -260,7 +241,7 @@ public class Client {
     		}
     }
     
-    
+    //Gets all the ImageUrl´s for one given client
     public void getClientPictures() throws ClientProtocolException, IOException{
     		String data = GetURL.getRequest("/client/pics/"+this.id);
     		
@@ -278,8 +259,7 @@ public class Client {
     		}
     }
     
-    
-    //returns a list of picture dates sorted
+    //Returns a list of picture dates sorted
     public List<String> getPictureDates(){
     		List<String> dates = new ArrayList<String>();
     		
@@ -299,21 +279,5 @@ public class Client {
     	return name;
     }
     
-    
-
-    // Tester at innsetting av Client fungerer. 
-    public static void main(String[] args) throws IOException {
-    		//PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
-    		//Client client = new Client(1,"Vilde Arntzen",160, pt);
-    		//client.getClientWeightFat();
-    		//System.out.println(client.weights);
-    		ArrayList<String> hei = new ArrayList<String>();
-    		hei.add("Martin");
-    		hei.add("Henrik");
-    		System.out.println(hei);
-    		Collections.sort(hei);
-    		System.out.println(hei);
-    		System.out.println("2018".compareTo("2017"));
-	}
 
 }
