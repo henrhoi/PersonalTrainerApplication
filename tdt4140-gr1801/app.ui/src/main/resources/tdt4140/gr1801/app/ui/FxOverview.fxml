@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="root" layoutX="-40.0" layoutY="-14.0" prefHeight="930.0" prefWidth="1400.0" stylesheets="@stylesheets/ChartsStyle.css">
          <children>
@@ -44,7 +44,7 @@
                         <Font size="32.0" />
                      </font>
                   </Label>
-                  <Button fx:id="deleteClientButton" mnemonicParsing="false" onAction="#deleteClient" text="Delete Client ">
+                  <Button fx:id="deleteClientButton" mnemonicParsing="false" onAction="#deleteClient" prefHeight="27.0" prefWidth="114.0" style="-fx-font-size: 13;" stylesheets="@stylesheets/MainViewStyle.css" text="Delete Client ">
                      <VBox.margin>
                         <Insets top="100.0" />
                      </VBox.margin>
