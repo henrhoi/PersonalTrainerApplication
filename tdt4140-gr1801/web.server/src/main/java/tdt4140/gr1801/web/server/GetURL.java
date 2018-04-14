@@ -18,8 +18,8 @@ public class GetURL {
 	// Denne funksjonen legger paa de ekstra endpointene paa URL-forespoerselene.
 	// Returnerer innholdet i en HTTP-respons.
 	public static String getRequest(String URL) throws ClientProtocolException, IOException {
-		
 		HttpUriRequest request = new HttpGet("http://localhost:8080"+URL);	// Lager 
+		System.out.println(URL);
 		HttpResponse response = HttpClientBuilder.create().build().execute( request );
 		HttpEntity entity = response.getEntity();
 	    String content = EntityUtils.toString(entity);

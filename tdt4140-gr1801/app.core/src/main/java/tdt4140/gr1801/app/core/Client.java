@@ -29,6 +29,9 @@ public class Client {
     
 	private List<Strength> strengthTraining;
 	private List<Endurance> enduranceTraining;
+	
+	//program for client
+	private List<DayProgram> program;
     
     
 	public Client(int id, String name, int height, PersonalTrainer pt) {
@@ -45,6 +48,7 @@ public class Client {
     		this.nutritions = new ArrayList<Nutrition>();
     		this.strengthTraining = new ArrayList<Strength>();
     		this.enduranceTraining = new ArrayList<Endurance>();
+    		this.program = new ArrayList<DayProgram>();
 	}
     
     
@@ -82,6 +86,10 @@ public class Client {
     
     public List<Nutrition> getNutritionList(){
     		return this.nutritions;
+    }
+    
+    public List<DayProgram> getDayProgramList(){
+    	return this.program;
     }
     
     public HashMap<String,Double> getWeightMap(){
@@ -161,7 +169,34 @@ public class Client {
 		System.out.println(respons);
     }
     
-    //Get all the Nutrition measurements for one given Client
+    public void createWeeklyProgram(DayProgram dp) throws IOException {
+    	JSONObject json = new JSONObject();
+		json.put("ClientID",this.id);
+		json.put("Day", dp.getWeekday());
+		json.put("Duration", dp.getDuration());
+		json.put("Distance", dp.getDistance());
+		json.put("Speed", dp.getAvgSpeed());
+		json.put("Description", dp.getDescription());
+		String exercises = "";
+		for (Exercise e : dp.getExercises()) {
+			exercises += e.getName() + ",";
+			exercises += e.getWeight() + ",";
+			for (int rep : e.getRepsPerSet()) {
+				exercises += rep + "-";
+			}
+			exercises = exercises.substring(0, exercises.length()-1);
+			exercises += "#";
+		}
+		exercises = exercises.substring(0, exercises.length()-1);
+		json.put("Exercises", exercises);
+		System.out.println("inside createWeeklyProgram in Client");
+		System.out.println(json);
+		String respons = GetURL.postRequest("/weeklyprogram/client", json);
+		System.out.println(respons);
+    }
+    
+
+    // ikke testet 
     public void getClientNutrition() throws ClientProtocolException, IOException {
     		String data = GetURL.getRequest("/nutrition/"+this.id);
     		JSONArray json = new JSONArray(data);
@@ -178,7 +213,45 @@ public class Client {
     		}
     }
     
-    //Get all the EnduranceTraining´s for one given Client
+    public void getClientProgram() throws ClientProtocolException, IOException {
+    	String data = GetURL.getRequest("/weeklyprogram/"+Integer.toString(this.id));
+    	JSONArray json = new JSONArray(data);
+		for (int n = 0; n < json.length(); n++) {
+			DayProgram dayprogram;
+			JSONObject object = json.getJSONObject(n);
+			String day = object.getString("Day");
+			// Check if row is endurance or strength
+			if (object.getString("Exercises").length() < 4) {
+				// row is endurance
+				int duration = object.getInt("Duration");
+				double distance = object.getDouble("Distance");
+				double speed = object.getDouble("Speed");
+				String description = object.getString("Description");
+				dayprogram = new DayProgram(day, duration, distance, speed, 
+						description, null);
+			}
+			else {
+				// Row is strength
+				List<Exercise> exercises = new ArrayList<>();
+				// Iterate over the string to get the different exercises
+				List<String> stringExercises = new ArrayList<String>(Arrays.asList(object.getString("Exercises").split("#")));
+				for (String ex : stringExercises) {
+					String[] info = ex.split(",");
+					String name = info[0];
+					double weight = Double.parseDouble(info[1]);
+					List<Integer> repsList = Arrays.asList(info[2].split("-"))
+			    			.stream().map(r -> Integer.parseInt(r)).collect(Collectors.toList());
+					Exercise e = new Exercise(name, weight, repsList);
+					exercises.add(e);
+				}
+				dayprogram = new DayProgram(day, null, null, null,
+						null, exercises);
+			}
+			program.add(dayprogram);
+		}
+    }
+
+    // ikke testet 
     public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
     		String data = GetURL.getRequest("/training/endurance/"+this.id);
     		JSONArray json = new JSONArray(data);
@@ -279,5 +352,18 @@ public class Client {
     	return name;
     }
     
+    
+
+    // Tester at innsetting av Client fungerer. 
+    public static void main(String[] args) throws IOException {
+//    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
+//    		Client client = new Client(1,"Vilde Arntzen",160, pt);
+//    		client.getClientWeightFat();
+//    		System.out.println(client.weights);
+    	
+    	
+    	
+
+	}
 
 }

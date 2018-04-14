@@ -94,8 +94,8 @@ public class MainViewController implements Controller{
 			client.getClientEnduranceTraining();
 			client.getClientNutrition();
 			client.getClientWeightFat();
+			client.getClientProgram();
 			client.getClientPictures();
-			
 		}
 		tabControllers = new HashSet<TabController>();
 	}
@@ -177,12 +177,12 @@ public class MainViewController implements Controller{
 	}
 	
 	public void setClientListviewNavigationLogic(){
-		// Adding logic for updating view when different trainings gets selected.
+		// Adding logic for updating view when different clients gets selected.
 		// Mouseclick
 		clients.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent event) {
-				// Getting the selected endurance training
+				// Getting the selected client
 				Client selected = clients.getSelectionModel().getSelectedItem();
 				// Setting data in the view thereafter
 				changeClientInTabs(selected);
@@ -195,7 +195,7 @@ public class MainViewController implements Controller{
 		clients.setOnKeyReleased(new EventHandler<Event>() {
 			@Override
 			public void handle(Event event) {
-				// Getting the selected endurance training
+				// Getting the selected client
 				Client selected = clients.getSelectionModel().getSelectedItem();
 				if(selected == null) {
 					selected = pt.getClientList().get(0);
