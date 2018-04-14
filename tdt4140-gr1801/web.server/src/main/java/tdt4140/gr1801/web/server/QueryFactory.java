@@ -45,7 +45,7 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
-	// må testes
+	// maa testes
 	public static PreparedStatement getAllNutritions(Integer ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = DBConnection.getDBConnection();
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Nutrition WHERE ClientID = ?");
@@ -54,7 +54,7 @@ public final class QueryFactory {
 	}
 	
 	
-	// må testes
+	// maa testes
 	public static PreparedStatement getAllEndurance(Integer ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = DBConnection.getDBConnection();
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Endurance WHERE ClientID = ?");
@@ -136,7 +136,23 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	public static PreparedStatement changePassword(String PT_ID, String passwrd, String salt) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("UPDATE PT SET Passwrd = ?, Salt = ? WHERE PT_ID = ?");
+		stmt.setString(1, passwrd);
+		stmt.setString(2, salt);
+		stmt.setString(3, PT_ID);
+		return stmt;
+	}
 	
+	
+	public static PreparedStatement getClientProgressionPictures(String clientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ProgressionPicture WHERE ClientID = ?");
+		stmt.setInt(1, Integer.parseInt(clientID));
+		return stmt;
+		
+	}
 	
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
@@ -153,6 +169,9 @@ public final class QueryFactory {
 //		PreparedStatement st = insertWeeklyProgram("1", "Monday", 120, 12.0, 6.5, "Intervaller 4x4", "", 0.0, 0, "");
 //		st.execute();
 	}
+
+
+
 	
 	
 	

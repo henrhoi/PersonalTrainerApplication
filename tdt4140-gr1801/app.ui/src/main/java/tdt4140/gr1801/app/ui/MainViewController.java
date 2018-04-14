@@ -3,10 +3,13 @@ package tdt4140.gr1801.app.ui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.http.client.ClientProtocolException;
+
+import com.sun.prism.paint.Color;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,10 +21,16 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.Effect;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -31,6 +40,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
+import tdt4140.gr1801.web.server.LoginModule;
 
 public class MainViewController implements Controller{
 	
@@ -41,13 +51,13 @@ public class MainViewController implements Controller{
 	Button logOffButton, addClientButton;
 	
 	@FXML
-	Label nameOfClient,nameOfPT;
+	Label nameOfClient,nameOfPT, notValid, passwordChanged;
 	
 	@FXML
 	ListView<Client> clients;
 	
 	@FXML
-	HBox buttonBox;
+	VBox buttonBox;
 	
 	@FXML
 	Text nameOfPTInfo, birthdayOfPTInfo, phoneOfPTInfo, mailOfPTInfo;
@@ -58,6 +68,11 @@ public class MainViewController implements Controller{
 	@FXML
 	AnchorPane clientsPane;
 	
+	//Changing password fields
+	@FXML
+	PasswordField oldPasswordField, newPasswordField1, newPasswordField2;
+	
+	private boolean inPTInfo = false;
 	
 
 	private PersonalTrainer pt;
@@ -80,6 +95,7 @@ public class MainViewController implements Controller{
 			client.getClientNutrition();
 			client.getClientWeightFat();
 			client.getClientProgram();
+			client.getClientPictures();
 		}
 		tabControllers = new HashSet<TabController>();
 	}
@@ -96,7 +112,7 @@ public class MainViewController implements Controller{
 			case "FxStrength.fxml": controller = new StrengthController(client);break;
 			case "FxEndurance.fxml": controller = new EnduranceController(client);break;
 			case "FxHealth.fxml": controller = new HealthController(client);break;
-			case "FxProgram.fxml": controller = new ProgramController(client);break;
+			case "FxProgram.fxml": controller = new ProgramController(pt,client);break;
 			case "FxOverview.fxml": controller = new OverviewController(client);break;
 			default:controller = null;break;//Would crash
 			}
@@ -109,6 +125,7 @@ public class MainViewController implements Controller{
 			Parent root = (Parent)loader.load();
 			tab.setContent(root);
 			controller.startup();
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -136,10 +153,10 @@ public class MainViewController implements Controller{
 	@FXML
 	public void hideClientList() {
 		if(clientsPane.isVisible()) {
-			buttonBox.toBack();
+			clientsPane.toBack();
 		}
 		else {
-			buttonBox.toFront();
+			clientsPane.toFront();
 		}
 		clientsPane.setVisible(!clientsPane.isVisible());
 		PTInfoPane.toBack();
@@ -147,6 +164,7 @@ public class MainViewController implements Controller{
 	
 	@FXML
 	public void movePTInfoPane() {
+		this.inPTInfo = true;
 		PTInfoPane.toFront();
 	}
 	
@@ -196,13 +214,22 @@ public class MainViewController implements Controller{
 	public void updateInfo() {
 		//User this.username to update all the information
 		System.out.println("Update information for " + this.pt.getUsername());
+		System.out.println(nameOfPT);
+		
 		nameOfPT.setText(pt.getName());
 		
+		
+		//Make the tabs i TabPane resize by it self by binding it to the pane that lies behind it.
+		TabPane tabpane = overviewTab.getTabPane();
+		tabpane.tabMinWidthProperty().bind(PTInfoPane.widthProperty().divide(tabpane.getTabs().size()).subtract(18));
+		
 		//Set PTInfoPage
+		String bd = pt.getBirthday();
+		String pn = pt.getPhoneNumber();
 		nameOfPTInfo.setText(pt.getName());
-		birthdayOfPTInfo.setText(pt.getBirthday());
-		mailOfPTInfo.setText(pt.getEmail());
-		phoneOfPTInfo.setText(pt.getPhoneNumber());
+		birthdayOfPTInfo.setText("Birthday: " + bd.substring(6, 8) + "."+bd.substring(4, 6)+"."+bd.substring(0, 4));
+		mailOfPTInfo.setText("Email: " + pt.getEmail());
+		phoneOfPTInfo.setText("Phone number: " + pn.substring(0, 3)+" "+pn.substring(3,5) +" " + pn.substring(5));
 		
 		
 		//Create list view of Clients.
@@ -217,11 +244,98 @@ public class MainViewController implements Controller{
 			setTab("FxHealth.fxml", healthTab);
 			setTab("FxProgram.fxml", programTab);
 			setTab("FxOverview.fxml", overviewTab);
+			
 			setClientListviewNavigationLogic();
 		}
 	}
-
 	
+	@FXML
+	public void changePassword() throws NoSuchAlgorithmException, ClientProtocolException, IOException {
+		String oldPassword = oldPasswordField.getText();
+		String newPassword1 = newPasswordField1.getText();
+		String newPassword2 = newPasswordField2.getText();
+		
+		notValid.setVisible(false);
+		notValid.setVisible(false);
+		ObservableList<String> style1 = newPasswordField1.getStyleClass();
+		ObservableList<String> style2 = newPasswordField2.getStyleClass();
+		ObservableList<String> style3 = oldPasswordField.getStyleClass();
+
+		if(style1.contains("error")) {
+			style1.remove("error");
+		}if(style2.contains("error")) {
+			style2.remove("error");
+		}if(style2.contains("error")) {
+			style2.remove("error");
+		}
+		
+		if (LoginModule.checkLogin(this.pt.getUsername(), oldPassword)) {
+			
+			if(newPassword1.equals(newPassword2)){
+				this.pt.changePassword(oldPassword, newPassword1);
+				passwordChanged.setVisible(true);
+				notValid.setVisible(false);
+				
+				Thread thread = new Thread () {
+					public void run() {
+						try {
+							Thread.sleep(3000);
+							passwordChanged.setVisible(false);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				};
+				thread.start();
+			}else {
+				notValid.setVisible(true);
+				ObservableList<String> oldPasswordStyle1 = newPasswordField1.getStyleClass();
+				ObservableList<String> oldPasswordStyle2 = newPasswordField2.getStyleClass();
+
+				if(!oldPasswordStyle1.contains("error")) {
+					oldPasswordStyle1.add("error");
+					oldPasswordStyle2.add("error");
+				}
+			}
+			
+		} else {
+			notValid.setVisible(true);
+			ObservableList<String> passwordStyle = oldPasswordField.getStyleClass();
+
+			if(!passwordStyle.contains("error")) {
+				passwordStyle.add("error");
+			}
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	@FXML
+	public void backToMainview() {
+		if(inPTInfo) {
+			this.inPTInfo = false;
+			Stage stage = (Stage)newPasswordField1.getScene().getWindow();
+			URL path = getClass().getResource("FxMainView.fxml");
+			SceneLoader.setScene(stage, path, this);
+			this.updateInfo();
+			System.out.println("Back to mainview.");			
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		String a = "19941215";
+		System.out.println(a.substring(6, 8));
+	}
 	
   
 	

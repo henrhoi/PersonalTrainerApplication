@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javafx.fxml.FXML;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,6 +18,23 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+
+import java.io.File;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+
+
+import javafx.scene.control.Button;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import tdt4140.gr1801.app.core.Client;
+import tdt4140.gr1801.app.core.PersonalTrainer;
+import tdt4140.gr1801.app.core.pdfcreator.PdfCreator;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.DayProgram;
 import tdt4140.gr1801.app.core.Exercise;
@@ -42,15 +59,52 @@ public class ProgramController implements TabController {
     
     
 	private Client client;
+	private PersonalTrainer pt;
 	
-	public ProgramController(Client client) {
+	@FXML
+	Button exportButton;
+	
+	public ProgramController(PersonalTrainer pt, Client client) {
 		this.client = client;
+		this.pt = pt;
 	}
 	
 	public void setClient(Client client) {
 		this.client = client;
 	}
 	
+	@FXML
+	public void exportPdf() {
+		//Get the stage to open DirectoryChooser in
+		Stage stage = (Stage) exportButton.getScene().getWindow();
+		
+		//Open DirectoryChooser and save path
+		final DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setTitle("Choose Export Location");
+		final File selectedDirectoryPath = directoryChooser.showDialog(stage);   
+		
+        //Create the new document if path not null
+        if (selectedDirectoryPath != null) {
+        	LocalDateTime date = LocalDateTime.now();
+        	Document doc = PdfCreator.getNewDocument(selectedDirectoryPath.toString() + "/" 
+        	+ client.getName() + "_" + date.getDayOfMonth() + "_" + date.getMonthValue() + "_" + date.getYear() + ".pdf");
+        	try {
+        		//Add all the data to the document
+        		PdfCreator.addMetaData(doc, "TrainingProgram_" + client.getName(), "Training", new ArrayList<String>(Arrays.asList("Training")), "PTApp", "PTApp");
+				PdfCreator.addFrontPage(doc, pt, client);
+				PdfCreator.addContent(doc);
+			} catch (DocumentException e) {
+				e.printStackTrace();
+			}
+        	finally {
+        		//Always close the document
+				doc.close();
+			}
+        }
+        
+        
+	}
+
 	@Override
 	public void updateInfo() {
 		fillListview();
