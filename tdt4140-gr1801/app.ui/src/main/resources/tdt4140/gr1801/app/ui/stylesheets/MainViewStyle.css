@@ -237,5 +237,23 @@
 		-fx-text-fill: white; 
 		-fx-font-size: 12px;
 	}
-
-
+	
+	/*PROGRAM TAB */
+	.programPane {
+		-fx-background-color:derive(black,60%);
+		-fx-border-color: derive(black,60%);
+	}
+	.splitPane {
+		-fx-background-color:derive(black,30%);
+	}
+	/*transparent divider */
+	.split-pane *.split-pane-divider {
+		-fx-padding: 0 1 0 1;
+	}
+	.programLabel {
+		-fx-text-fill: derive(black, 150%);
+		-fx-font-size: 18px;
+	}
+	
+	
+	

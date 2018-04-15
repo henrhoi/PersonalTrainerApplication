@@ -10,10 +10,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="listview" maxWidth="200.0" minWidth="200.0" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <VBox layoutX="247.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ListView fx:id="listview" maxWidth="200.0" minWidth="115.0" prefHeight="427.0" prefWidth="115.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox layoutX="116.0" prefHeight="427.0" prefWidth="756.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="116.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <TableView fx:id="tableview" prefWidth="669.0" stylesheets="@stylesheets/StrengthViewStyle.css" VBox.vgrow="ALWAYS">
               <columns>
