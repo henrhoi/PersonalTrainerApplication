@@ -3,14 +3,17 @@ package tdt4140.gr1801.app.core;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javafx.scene.image.Image;
 import tdt4140.gr1801.web.server.GetURL;
 
 public class Client {
@@ -22,10 +25,14 @@ public class Client {
 	private PersonalTrainer pt;
 	private HashMap<String,Double> weights; // measured in float (kg)
 	private HashMap<String,Double> fats; // measured in float [0,1]
+	private HashMap<String,Image> pictureDates; //String with corresponding date, and url to picture link
 	private List<Nutrition> nutritions;
     
 	private List<Strength> strengthTraining;
 	private List<Endurance> enduranceTraining;
+	
+	//program for client
+	private List<DayProgram> program;
     
     
 	public Client(int id, String name, int height, PersonalTrainer pt, int maxPulse) {
@@ -39,9 +46,11 @@ public class Client {
 	    
     		this.weights = new HashMap<String,Double>();
     		this.fats = new HashMap<String,Double>();
+    		this.pictureDates = new HashMap<String,Image>();
     		this.nutritions = new ArrayList<Nutrition>();
     		this.strengthTraining = new ArrayList<Strength>();
     		this.enduranceTraining = new ArrayList<Endurance>();
+    		this.program = new ArrayList<DayProgram>();
 	}
 	
 	public Client(int id, String name, int height, PersonalTrainer pt) {
@@ -80,6 +89,10 @@ public class Client {
     		return pt.getUsername();
     }
     
+    public PersonalTrainer getPersonalTrainerObject() {
+    	return this.pt;
+    }
+    
     public Double getWeight(String date){
     		if (this.weights.containsKey(date)) {
     			return this.weights.get(date);
@@ -100,6 +113,10 @@ public class Client {
     		return this.nutritions;
     }
     
+    public List<DayProgram> getDayProgramList(){
+    	return this.program;
+    }
+    
     public HashMap<String,Double> getWeightMap(){
     		return this.weights;
     }
@@ -107,7 +124,6 @@ public class Client {
     public HashMap<String,Double> getFatMap(){
     		return this.fats;
     }
-    
     
     public Double getFat(String date){
     		if (this.fats.containsKey(date)) {
@@ -117,9 +133,6 @@ public class Client {
     		}
     }
     
-    
-    
-    
     public Nutrition getNutrition(String date) {
     		for (Nutrition nutrition : nutritions) {
     			if (nutrition.getDate().equals(date)){
@@ -127,10 +140,6 @@ public class Client {
     			}
     		} throw new IllegalArgumentException("No nutrition registered for this date");
     }
-    
-    
-    //kan legge til metode for å endre pt for klient, må da legge til
-    // metode i pt som fjerner klient fra pt også
     
     
     public void addWeight(String date, double weight) {
@@ -150,14 +159,9 @@ public class Client {
     		}
     }
     
-    
-    
-    // Burde mulig ha en sjekk her for om datoen allerede eksisterer?
-    // for-løkke?
     public void addNutrition(Nutrition nutrition) {
     		this.nutritions.add(nutrition);
     }
-    
  
     public void addStrengthTraining(Strength training) {
     		this.strengthTraining.add(training);
@@ -183,8 +187,7 @@ public class Client {
 		return maxPulse < 500 && maxPulse > 100;
 	}
     
-    
-    // Funksjon som legger Client til i Klient-tablen i DB. Kan kanskje gjøres statisk og ta inn Client som input og gjøres statisk.
+    //Funksjon som legger Client til i Klient-tablen i DB.
     public void createClient() throws IOException {
 		JSONObject json = new JSONObject();
 		json.put("Navn", this.name);
@@ -193,6 +196,32 @@ public class Client {
 		json.put("MaxPulse", this.getMaxPulse());
 		System.out.println(json);
 		String respons = GetURL.postRequest("/signup/client", json);
+		System.out.println(respons);
+    }
+    
+    public void createWeeklyProgram(DayProgram dp) throws IOException {
+    	JSONObject json = new JSONObject();
+		json.put("ClientID",this.id);
+		json.put("Day", dp.getWeekday());
+		json.put("Duration", dp.getDuration());
+		json.put("Distance", dp.getDistance());
+		json.put("Speed", dp.getAvgSpeed());
+		json.put("Description", dp.getDescription());
+		String exercises = "";
+		for (Exercise e : dp.getExercises()) {
+			exercises += e.getName() + ",";
+			exercises += e.getWeight() + ",";
+			for (int rep : e.getRepsPerSet()) {
+				exercises += rep + "-";
+			}
+			exercises = exercises.substring(0, exercises.length()-1);
+			exercises += "#";
+		}
+		exercises = exercises.substring(0, exercises.length()-1);
+		json.put("Exercises", exercises);
+		System.out.println("inside createWeeklyProgram in Client");
+		System.out.println(json);
+		String respons = GetURL.postRequest("/weeklyprogram/client", json);
 		System.out.println(respons);
     }
     
@@ -214,6 +243,43 @@ public class Client {
     		}
     }
     
+    public void getClientProgram() throws ClientProtocolException, IOException {
+    	String data = GetURL.getRequest("/weeklyprogram/"+Integer.toString(this.id));
+    	JSONArray json = new JSONArray(data);
+		for (int n = 0; n < json.length(); n++) {
+			DayProgram dayprogram;
+			JSONObject object = json.getJSONObject(n);
+			String day = object.getString("Day");
+			// Check if row is endurance or strength
+			if (object.getString("Exercises").length() < 4) {
+				// row is endurance
+				int duration = object.getInt("Duration");
+				double distance = object.getDouble("Distance");
+				double speed = object.getDouble("Speed");
+				String description = object.getString("Description");
+				dayprogram = new DayProgram(day, duration, distance, speed, 
+						description, null);
+			}
+			else {
+				// Row is strength
+				List<Exercise> exercises = new ArrayList<>();
+				// Iterate over the string to get the different exercises
+				List<String> stringExercises = new ArrayList<String>(Arrays.asList(object.getString("Exercises").split("#")));
+				for (String ex : stringExercises) {
+					String[] info = ex.split(",");
+					String name = info[0];
+					double weight = Double.parseDouble(info[1]);
+					List<Integer> repsList = Arrays.asList(info[2].split("-"))
+			    			.stream().map(r -> Integer.parseInt(r)).collect(Collectors.toList());
+					Exercise e = new Exercise(name, weight, repsList);
+					exercises.add(e);
+				}
+				dayprogram = new DayProgram(day, null, null, null,
+						null, exercises);
+			}
+			program.add(dayprogram);
+		}
+    }
 
     // ikke testet 
     public void getClientEnduranceTraining() throws ClientProtocolException, IOException {
@@ -233,10 +299,6 @@ public class Client {
     		}
     }
     
-
-    
-    
-    //KISSA
     public void getStrengthTrainings() throws ClientProtocolException, IOException {
     	//Get all strength training
     	String strengthData = GetURL.getRequest("/training/strength/"+ this.id);
@@ -247,7 +309,7 @@ public class Client {
     		String date = strengthObject.getString("Dato");
     		int duration = strengthObject.getInt("Duration");    		
     		
-    		//Get all exercies for every strength training, we do not need sets, because that would be the length of repsList anyway
+    		//Get all exercises for every strength training, we do not need sets, because that would be the length of repsList anyway
     		List<Exercise> exerciseList = new ArrayList<Exercise>();
     		String exData = GetURL.getRequest("/training/exercise/"+strengthID);
     		JSONArray exJson = new JSONArray(exData);
@@ -267,9 +329,8 @@ public class Client {
     		addStrengthTraining(strength);
     	}
     }
-    //KISSA
     
-    //Fungerer
+    //Gets all the Weight and Fats measurements for one given Client
     public void getClientWeightFat() throws ClientProtocolException, IOException {
     		String data = GetURL.getRequest("/client/weightfat/"+this.id);
     		if (!data.equals("[]")) {
@@ -285,6 +346,40 @@ public class Client {
     		}
     }
     
+    //Gets all the ImageUrl´s for one given client
+    public void getClientPictures() throws ClientProtocolException, IOException{
+    		String data = GetURL.getRequest("/client/pics/"+this.id);
+    		
+    		if(!data.equals("[]")) {
+    			JSONArray json = new JSONArray(data);
+    			for(int i = 0; i < json.length(); i ++) {
+    				JSONObject jsonObj = json.getJSONObject(i);
+    				String date = jsonObj.getString("Dato");
+    				String url = jsonObj.getString("ImageURL");
+    				Image image = new Image(url);
+    				
+    				
+    				pictureDates.put(date, image);
+    			}
+    		}
+    }
+    
+    //Returns a list of picture dates sorted
+    public List<String> getPictureDates(){
+    		List<String> dates = new ArrayList<String>();
+    		
+    		for(String key : pictureDates.keySet()) {
+    			dates.add(key);
+    		}
+    		Collections.sort(dates);
+    		return dates;
+    }
+    
+    public Image getImage(String date) {
+    		return this.pictureDates.get(date);
+    }
+    
+    
     public String toString() {
     	return name;
     }
@@ -293,10 +388,11 @@ public class Client {
 
     // Tester at innsetting av Client fungerer. 
     public static void main(String[] args) throws IOException {
-    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
-    		Client client = new Client(1,"Vilde Arntzen",160, pt,200);
-    		client.getClientWeightFat();
-    		System.out.println(client.weights);
+//    		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
+//    		Client client = new Client(1,"Vilde Arntzen",160, pt);
+//    		client.getClientWeightFat();
+//    		System.out.println(client.weights);
+    	
 	}
     
 }

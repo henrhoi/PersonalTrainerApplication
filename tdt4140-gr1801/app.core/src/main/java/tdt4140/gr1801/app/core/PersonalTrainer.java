@@ -1,10 +1,12 @@
 package tdt4140.gr1801.app.core;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javafx.scene.control.TextField;
@@ -159,6 +161,25 @@ public class PersonalTrainer {
 	}
 	
 	
+	
+	//ikke testet - vilde 
+	public void deleteClient(String passwrd, int clientID) throws IOException, NoSuchAlgorithmException, JSONException {
+		JSONObject json = new JSONObject();
+		json.put("PT_ID", this.username);
+		json.put("Passwrd", passwrd);
+		json.put("ClientID", clientID);
+		System.out.println(json);
+		String respons = GetURL.postRequest("/client/remove", json);
+		System.out.println(respons);
+		
+		for(Client client : clientList) {
+			if(client.getId() == clientID){
+				clientList.remove(client);
+				break;
+			}
+		}
+	}
+	
 	// Må testes
 	public void getPTClients() throws ClientProtocolException, IOException {
 		String data = GetURL.getRequest("/client/all/"+this.username);
@@ -176,16 +197,25 @@ public class PersonalTrainer {
 		}
 	}
 	
+	public Boolean changePassword(String password, String new_password) throws NoSuchAlgorithmException, ClientProtocolException, IOException {
+		if (LoginModule.checkLogin(this.getUsername(), password)) {
+			JSONObject json = new JSONObject();
+			String salt = LoginModule.generateSalt();
+			json.put("PT_ID", this.username);
+			json.put("Passwrd", LoginModule.hashSha256(new_password, salt));
+			json.put("Salt", salt);
+			System.out.println(json);
+			String respons = GetURL.postRequest("/pt/changepassword", json);
+			System.out.println(respons);
+			
+		}
+		return false;
+	}
+	
 	
 	// Main som tester at PT får sine klienter.
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
 		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
-		pt.getPTClients();
-		for (Client client : pt.clientList) {
-			System.out.println(client.getName());
-		}
-		
-		PersonalTrainer pt1 = new PersonalTrainer("henrhoi");
-		System.out.println(pt1.birthday);
+		pt.changePassword("kristogj", "puerbest");
 	}
 }

@@ -20,9 +20,25 @@
     -fx-opacity: 0.01;
 }
 
+<<<<<<< HEAD
 .tab{
    -fx-padding: 5 10 7 5;
 }
+=======
+.button{
+	-fx-background-color: darkgrey;
+	-fx-padding: 4px 15px;
+	-fx-font-size: 13px;  
+	-fx-cursor: hand;
+}
+
+.button:hover {
+	-fx-background-color: #606060;
+	-fx-color: #383838; /* Button text becomes white... */
+	/*-fx-effect: dropshadow( one-pass-box, black , 1px , 1px , 1px , 1px);*/
+}
+
+>>>>>>> branch 'sprint3_development' of https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01.git
 
  .tab:selected .tab-label { 
     -fx-alignment: center;
