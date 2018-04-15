@@ -52,7 +52,8 @@ public class OverviewController implements TabController {
 	
 	@FXML
 	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, errorLabel, beforeDateLabel, afterDateLabel;
-
+	
+	@FXML
 	AnchorPane infoTab;
 	
 	@FXML
@@ -114,7 +115,6 @@ public class OverviewController implements TabController {
         lineChart.setLayoutY(50);
         
         //Remove other LineCharts
-        
         infoTab.getChildren().setAll((infoTab.getChildren().stream().filter(n -> !(n instanceof LineChart)).collect(Collectors.toList())));
         //Add the LineChart to the view
         infoTab.getChildren().add(lineChart);
