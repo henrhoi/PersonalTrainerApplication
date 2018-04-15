@@ -249,9 +249,6 @@ public class MainViewController implements Controller{
 		}
 	}
 	
-<<<<<<< tdt4140-gr1801/app.ui/src/main/java/tdt4140/gr1801/app/ui/MainViewController.java
-	
-=======
 	@FXML
 	public void changePassword() throws NoSuchAlgorithmException, ClientProtocolException, IOException {
 		String oldPassword = oldPasswordField.getText();
@@ -295,7 +292,6 @@ public class MainViewController implements Controller{
 				notValid.setVisible(true);
 				ObservableList<String> oldPasswordStyle1 = newPasswordField1.getStyleClass();
 				ObservableList<String> oldPasswordStyle2 = newPasswordField2.getStyleClass();
->>>>>>> tdt4140-gr1801/app.ui/src/main/java/tdt4140/gr1801/app/ui/MainViewController.java
 
 				if(!oldPasswordStyle1.contains("error")) {
 					oldPasswordStyle1.add("error");
@@ -312,15 +308,6 @@ public class MainViewController implements Controller{
 			}
 			
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	
 	@FXML
