@@ -113,7 +113,7 @@ public class MainViewController implements Controller{
 			case "FxEndurance.fxml": controller = new EnduranceController(client);break;
 			case "FxHealth.fxml": controller = new HealthController(client);break;
 			case "FxProgram.fxml": controller = new ProgramController(pt,client);break;
-			case "FxOverview.fxml": controller = new OverviewController(client);break;
+			case "FxOverview.fxml": controller = new OverviewController(client, this);break;
 			default:controller = null;break;//Would crash
 			}
 			
@@ -308,15 +308,6 @@ public class MainViewController implements Controller{
 			}
 			
 		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
 	
 	@FXML

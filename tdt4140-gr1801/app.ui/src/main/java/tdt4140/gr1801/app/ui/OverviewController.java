@@ -1,6 +1,11 @@
 package tdt4140.gr1801.app.ui;
 
 import java.io.IOException;
+
+import java.net.URL;
+
+import java.security.NoSuchAlgorithmException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -19,6 +24,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
@@ -29,19 +35,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 import tdt4140.gr1801.app.core.Client;
+import tdt4140.gr1801.app.ui.PasswordDialog;
+import tdt4140.gr1801.web.server.LoginModule;
+
+import java.util.Optional;
+
 
 public class OverviewController implements TabController {
 	
+	
 	@FXML
-	Pane root;
+	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, errorLabel, beforeDateLabel, afterDateLabel;
 	
 	@FXML
 	AnchorPane infoTab;
-	
-	
-	@FXML
-	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, beforeDateLabel, afterDateLabel;
 	
 	@FXML
 	ListView<String> pictureDates;
@@ -51,14 +62,19 @@ public class OverviewController implements TabController {
 	
 	@FXML
 	ImageView beforeImage, afterImage;
-	
 		
+	@FXML
+	Button deleteClientButton; 
+	
+	
+	
 	private Client client;
+	private MainViewController mainviewController; 
 	
-	public OverviewController(Client client) {
+	public OverviewController(Client client, MainViewController mainviewController) {
 		this.client = client;
+		this.mainviewController = mainviewController;
 	}
-	
 	
 	@Override
 	public void setClient(Client client) {
@@ -89,15 +105,18 @@ public class OverviewController implements TabController {
         
         //Add the axis to the lineChart
         final LineChart<String,Number> lineChart = new LineChart<String,Number>(xAxis,yAxis);
-        //Set the title and change the size
+       
+        //Set the title and bind the size
         lineChart.setTitle("Client's weigth and fat measurements");
-        lineChart.setPrefSize(600, 480);
+        lineChart.prefWidthProperty().bind(infoTab.widthProperty().multiply(0.7));
+        lineChart.prefHeightProperty().bind(infoTab.heightProperty());
         //Set the position
         lineChart.setLayoutX(200);
         lineChart.setLayoutY(50);
         
-        //Remove other LineCharts
         
+        
+        //Remove other LineCharts
         infoTab.getChildren().setAll((infoTab.getChildren().stream().filter(n -> !(n instanceof LineChart)).collect(Collectors.toList())));
         //Add the LineChart to the view
         infoTab.getChildren().add(lineChart);
@@ -198,6 +217,62 @@ public class OverviewController implements TabController {
 		afterDateLabel.setText(date);
 	}
 
+	// definerer streng for å lagre passord som skrives inn for at klient skal kunne slettes 
+	private String inputPassword = "";
+	@FXML
+	public void deleteClient() throws NoSuchAlgorithmException, ClientProtocolException, IOException {
+		// skal lage popup-vindu som skal ta inn ting
+		// skal sjekke passord -- rød tekst hvis ikke
+		// kalle funksjon for å slette klient hos pt (pt.deleteClient ) 
+		// må slette klient fra liste i app 
+		    PasswordDialog pd = new PasswordDialog();
+
+		    Optional<String> result = pd.showAndWait();
+			result.ifPresent(password -> {this.inputPassword=password;});
+			System.out.println("Password : "+this.inputPassword);
+			if(LoginModule.checkLogin(this.client.getPersonalTrainer(), this.inputPassword)){
+				//ObservableList<String> buttonStyle = deleteClientButton.getStyleClass();
+				//if(buttonStyle.contains("error")) {
+				//	buttonStyle.remove("error");
+				System.out.println("Riktig passord");
+			
+				
+				this.client.getPersonalTrainerObject().deleteClient(this.inputPassword, this.client.getId());
+				Stage stage = (Stage)idLabel.getScene().getWindow();
+				URL path = getClass().getResource("FxMainView.fxml");
+				SceneLoader.setScene(stage, path, this.mainviewController);
+				this.mainviewController.updateInfo();
+			
+				// mangler: 
+				// maa slette i liste i MainView også 
+			} else {
+				ObservableList<String> buttonStyle = deleteClientButton.getStyleClass();
+				deleteClientButton.setStyle("    -fx-border-radius: 6;" + 
+						"    -fx-border-color: red;" + 
+						"    -fx-border-width: 1;" + 
+						"    -fx-background-radius: 6;");
+				errorLabel.setVisible(true);
+				Thread thread = new Thread () {
+					public void run() {
+						try {
+							Thread.sleep(1600);
+							deleteClientButton.setStyle("    -fx-border-radius: 6;" + 
+									"    -fx-border-color: black;" + 
+									"    -fx-border-width: 1;" + 
+									"    -fx-background-radius: 6;");
+							errorLabel.setStyle("-fx-text-fill: red;");
+							errorLabel.setVisible(false);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				};
+				thread.start();
+				System.out.println("Feil passord");
+			}
+				
+			}
+	
 	
 	public String getDateString(String date) {
 		String year = date.substring(0, 4);
@@ -244,5 +319,7 @@ public class OverviewController implements TabController {
 		addPictureNavigationLogic();
 		
 	}
-
 }
+
+
+

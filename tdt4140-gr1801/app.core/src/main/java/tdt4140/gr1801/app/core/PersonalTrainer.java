@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import javafx.scene.control.TextField;
@@ -159,6 +160,25 @@ public class PersonalTrainer {
 		System.out.println(respons);
 	}
 	
+	
+	
+	//ikke testet - vilde 
+	public void deleteClient(String passwrd, int clientID) throws IOException, NoSuchAlgorithmException, JSONException {
+		JSONObject json = new JSONObject();
+		json.put("PT_ID", this.username);
+		json.put("Passwrd", passwrd);
+		json.put("ClientID", clientID);
+		System.out.println(json);
+		String respons = GetURL.postRequest("/client/remove", json);
+		System.out.println(respons);
+		
+		for(Client client : clientList) {
+			if(client.getId() == clientID){
+				clientList.remove(client);
+				break;
+			}
+		}
+	}
 	
 	// Må testes
 	public void getPTClients() throws ClientProtocolException, IOException {

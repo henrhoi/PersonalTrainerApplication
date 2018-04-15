@@ -20,6 +20,18 @@
     -fx-opacity: 0.01;
 }
 
+.button{
+	-fx-background-color: darkgrey;
+	-fx-padding: 4px 15px;
+	-fx-font-size: 13px;  
+	-fx-cursor: hand;
+}
+
+.button:hover {
+	-fx-background-color: #606060;
+	-fx-color: #383838; /* Button text becomes white... */
+	/*-fx-effect: dropshadow( one-pass-box, black , 1px , 1px , 1px , 1px);*/
+}
 
 
  .tab:selected .tab-label { 

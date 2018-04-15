@@ -96,7 +96,7 @@ public class ProgramController implements TabController {
         		//Add all the data to the document
         		PdfCreator.addMetaData(doc, "TrainingProgram_" + client.getName(), "Training", new ArrayList<String>(Arrays.asList("Training")), "PTApp", "PTApp");
 				PdfCreator.addFrontPage(doc, pt, client);
-				PdfCreator.addContent(doc);
+				PdfCreator.addContent(doc, listview.getItems());
 			} catch (DocumentException e) {
 				e.printStackTrace();
 			}
@@ -215,7 +215,7 @@ public class ProgramController implements TabController {
 		updateView(null);
 		updateStrength_button.setDisable(true);
 		updateEndurance_button.setDisable(true);
-		
+		listview.setEditable(true);
 	}
 	
 	
