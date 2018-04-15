@@ -20,7 +20,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="640.0" prefWidth="1038.0" style="-fx-background-color: derive(black,40%) derive(black,40%);" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="640.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -30,10 +29,7 @@
       </AnchorPane>
       <VBox fx:id="buttonBox" alignment="TOP_CENTER" prefHeight="640.0" prefWidth="99.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css">
-               <padding>
-                  <Insets right="60.0" />
-               </padding></Button>
+            <Button mnemonicParsing="false" onAction="#backToMainview" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css" />
             <VBox alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#movePTInfoPane" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
@@ -68,7 +64,7 @@
                   <Tooltip text="add client" />
                </tooltip>
             </Button>
-            <Separator minHeight="50.0" orientation="VERTICAL" prefHeight="208.0" prefWidth="20.0" visible="false" VBox.vgrow="ALWAYS" />
+            <Separator minHeight="50.0" orientation="VERTICAL" prefHeight="241.0" prefWidth="8.0" visible="false" VBox.vgrow="ALWAYS" />
             <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="59.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
@@ -80,9 +76,6 @@
                <tooltip>
                   <Tooltip text="log out" />
                </tooltip>
-               <padding>
-                  <Insets bottom="25.0" />
-               </padding>
             </Button>
          </children>
          <padding>
@@ -171,15 +164,15 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Pane layoutX="100.0" minHeight="81.0" prefHeight="81.0" prefWidth="942.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="0.0" />
-      <HBox alignment="CENTER" layoutX="100.0" prefHeight="72.0" prefWidth="942.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="0.0">
+      <Pane layoutX="100.0" minHeight="81.0" prefHeight="81.0" prefWidth="940.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="0.0" />
+      <HBox alignment="CENTER" layoutX="100.0" prefHeight="81.0" prefWidth="940.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Label fx:id="nameOfClient" styleClass="nameOfClient" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of Client&gt;" textFill="WHITE" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
-      <VBox fx:id="contentBox" layoutX="99.0" layoutY="73.0" prefHeight="567.0" prefWidth="941.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
+      <VBox fx:id="contentBox" layoutX="99.0" layoutY="81.0" prefHeight="640.0" prefWidth="939.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
          <children>
-            <TabPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="596.0" prefWidth="941.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <TabPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="627.0" prefWidth="802.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
               <tabs>
                   <Tab fx:id="overviewTab" text="Overview" />
                 <Tab fx:id="strengthTab" text="Strength" />
