@@ -46,6 +46,23 @@ public class TestClient extends TestCase{
 		assertEquals(1,client.getId());
 	}
 	
+	public void testFatMap() {
+		assertEquals(0.2, client.getFatMap().get(date1));
+	}
+	
+	public void testWeightMap() {
+		assertEquals(56.0, client.getWeightMap().get(date1));
+	}
+	
+	public void testName() {
+		assertEquals(true, Client.checkFirstName(client.getName()));
+		assertEquals(true, Client.checkLastName(client.getName()));
+	}
+	
+	public void testHeight() {
+		assertEquals(true, Client.checkHeight(client.getHeight()));
+	}
+	
 	public void testGetName() {
 		assertEquals("Vilde", client.getName());
 	}

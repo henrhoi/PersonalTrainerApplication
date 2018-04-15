@@ -196,14 +196,25 @@ public class PersonalTrainer {
 		}
 	}
 	
+	public Boolean changePassword(String password, String new_password) throws NoSuchAlgorithmException, ClientProtocolException, IOException {
+		if (LoginModule.checkLogin(this.getUsername(), password)) {
+			JSONObject json = new JSONObject();
+			String salt = LoginModule.generateSalt();
+			json.put("PT_ID", this.username);
+			json.put("Passwrd", LoginModule.hashSha256(new_password, salt));
+			json.put("Salt", salt);
+			System.out.println(json);
+			String respons = GetURL.postRequest("/pt/changepassword", json);
+			System.out.println(respons);
+			
+		}
+		return false;
+	}
+	
 	
 	// Main som tester at PT får sine klienter.
-	public static void main(String[] args) throws IOException, NoSuchAlgorithmException, JSONException {
-		PersonalTrainer pt = new PersonalTrainer("axeloh","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
-		pt.deleteClient("axelerkul321", 20);
-		
-		//StrengthID = 36
-		//ClientID =20
-		//
+	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
+		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
+		pt.changePassword("kristogj", "puerbest");
 	}
 }

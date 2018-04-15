@@ -2,10 +2,10 @@ package tdt4140.gr1801.web.server;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 // Denne klassen produserer PreparedStatements, som gjoer at man kan bestemme hva slags spoerringer/kommandoer som kan gjoeres opp mot databasen.
 // Dersom en spoerring skal kunne gjoeres, skal den ligge her. 
@@ -47,7 +47,7 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
-	// må testes
+	// maa testes
 	public static PreparedStatement getAllNutritions(Integer ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = DBConnection.getDBConnection();
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Nutrition WHERE ClientID = ?");
@@ -56,7 +56,7 @@ public final class QueryFactory {
 	}
 	
 	
-	// må testes
+	// maa testes
 	public static PreparedStatement getAllEndurance(Integer ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Connection conn = DBConnection.getDBConnection();
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Endurance WHERE ClientID = ?");
@@ -89,6 +89,29 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	// PreparedStatement for innsetting av WeeklyProgram i databasen
+		public static PreparedStatement insertWeeklyProgram(int clientID, String day, int duration, double distance, 
+				double speed, String description, String exercises) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+			Connection conn = DBConnection.getDBConnection();
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO WeeklyProgram VALUES (?, ?, ?, ?, ?, ?, ?)");  
+			stmt.setInt(1, clientID);
+			stmt.setString(2, day);
+			stmt.setInt(3, duration);
+			stmt.setDouble(4, distance);
+			stmt.setDouble(5, speed);
+			stmt.setString(6, description);
+			stmt.setString(7, exercises);
+			return stmt;
+		}
+	
+	// PreparedStatement for getting information about a clients weekly program
+	public static PreparedStatement getProgramFromClient(String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM WeeklyProgram WHERE ClientID = ?");  
+		stmt.setString(1, ClientID);
+		return stmt;
+	}
+	
 	
 	//Kissa
 	// PreparedStatement for getting information about a clients strengthTrainings
@@ -115,6 +138,14 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	public static PreparedStatement changePassword(String PT_ID, String passwrd, String salt) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("UPDATE PT SET Passwrd = ?, Salt = ? WHERE PT_ID = ?");
+		stmt.setString(1, passwrd);
+		stmt.setString(2, salt);
+		stmt.setString(3, PT_ID);
+		return stmt;
+	}
 	
 	// Metoden lages for å sjekke om en client tilhører PT i metoden deleteClient i clientResources
 	public static PreparedStatement getPTforClient(int ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
@@ -124,6 +155,13 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	public static PreparedStatement getClientProgressionPictures(String clientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ProgressionPicture WHERE ClientID = ?");
+		stmt.setInt(1, Integer.parseInt(clientID));
+		return stmt;
+		
+	}
 	
 	// metode for å slette data for klient i databasen
 	public static List<PreparedStatement> deleteAllClientData(int ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
@@ -158,7 +196,18 @@ public final class QueryFactory {
 	}
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
-		stmt.execute();
+//		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
+//		stmt.execute();
+		
+//		PreparedStatement stmt = QueryFactory.getProgramFromClient("1");
+//		ResultSet rs = stmt.executeQuery();
+//		while(rs.next()) {
+//			System.out.println(rs.getString("day"));
+//		}
+//		System.out.println("I en main");
+//		
+//		PreparedStatement st = insertWeeklyProgram("1", "Monday", 120, 12.0, 6.5, "Intervaller 4x4", "", 0.0, 0, "");
+//		st.execute();
 	}
+
 }

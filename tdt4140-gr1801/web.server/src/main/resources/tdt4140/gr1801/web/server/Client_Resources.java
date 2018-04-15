@@ -37,12 +37,11 @@ public class Client_Resources {
 	}
     
     
-    
     //Kan hentes paa /all/PT_ID
     @GET
     @Path("/all/{pt}")
     @Produces("application/json")
-    public static String getClients(@PathParam("pt") String PT_ID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    public String getClients(@PathParam("pt") String PT_ID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
     			PreparedStatement stmt = QueryFactory.getAllClients(PT_ID);
         		ResultSet rs = stmt.executeQuery();
         		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
@@ -61,9 +60,17 @@ public class Client_Resources {
     		return json;
     	
     }
-    
-    
-
+   
+    @GET
+    @Path("/pics/{clientid}")
+    @Produces
+    public String getClientProgressionPictures(@PathParam("clientid") String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+    		PreparedStatement stmt = QueryFactory.getClientProgressionPictures(ClientID);
+    		ResultSet rs = stmt.executeQuery();
+    		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+    		return json;
+    		
+    }
     
     @POST
     @Path("/remove")
@@ -105,12 +112,19 @@ public class Client_Resources {
     public static void main(String[] args) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, ClientProtocolException, IOException, NoSuchAlgorithmException {
     		//Skjekker at jeg faar riktig info om client med clientID = 1
     		// Henrik har testet dette, funker
-		JSONObject json = new JSONObject();
-		json.put("PT_ID", "axeloh");
-		json.put("Passwrd", "axelerkul321");
-		json.put("ClientID", 11);
-		
-		System.out.println(Client_Resources.deleteClient(json.toString()));
+    		JSONObject json = new JSONObject();
+    		json.put("PT_ID", "axeloh");
+    		json.put("Passwrd", "axelerkul321");
+    		json.put("ClientID", 11);
+    		
+    		System.out.println(Client_Resources.deleteClient(json.toString()));
+    	
+    		String clientInfo = GetURL.getRequest("/client/1");
+    		System.out.println(clientInfo);
+    		
+    		
+    		String allClients = GetURL.getRequest("/all/henrhoi");
+    		System.out.println(allClients);
     }
     
 

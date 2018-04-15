@@ -3,6 +3,10 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -12,53 +16,82 @@
    <children>
       <Pane fx:id="root" layoutX="-40.0" layoutY="-14.0" prefHeight="930.0" prefWidth="1400.0" stylesheets="@stylesheets/ChartsStyle.css">
          <children>
-            <VBox layoutX="48.0" layoutY="117.0" prefHeight="374.0" prefWidth="488.0" spacing="20.0" stylesheets="@stylesheets/MainViewStyle.css">
-               <children>
-                  <Label fx:id="idLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="ClientID: ">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="nameLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Name: ">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="heightLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Height: ">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="strengthLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="No. of Strengths:">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="enduranceLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="No. of Endurances:">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="nutritionLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="No. of Nutritions:">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="deleteClientButton" mnemonicParsing="false" onAction="#deleteClient" prefHeight="27.0" prefWidth="114.0" style="-fx-font-size: 13;" stylesheets="@stylesheets/MainViewStyle.css" text="Delete Client ">
-                     <VBox.margin>
-                        <Insets top="100.0" />
-                     </VBox.margin>
-                  </Button>
-                  <Label fx:id="errorLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Wrong password, try again" textFill="RED" visible="false">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="-15.0" />
-                     </VBox.margin>
-                  </Label>
-               </children>
-            </VBox>
-         </children></Pane>
+            <TabPane fx:id="ClientInfoTab" layoutX="-1.0" layoutY="4.0" prefHeight="929.0" prefWidth="1301.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="InfoTab" text="Client Info">
+                  <content>
+                    <AnchorPane fx:id="infoTab" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="69.0" layoutY="86.0" prefHeight="374.0" prefWidth="536.0" spacing="20.0">
+                                 <children>
+                                    <Label fx:id="idLabel" text="ClientID: ">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nameLabel" text="Name: ">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="heightLabel" text="Height: ">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="strengthLabel" text="No. of Strengths:">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="enduranceLabel" text="No. of Endurances:">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nutritionLabel" text="No. of Nutritions:">
+                                       <font>
+                                          <Font size="32.0" />
+                                       </font>
+                                    </Label>
+                                    <Button fx:id="deleteClientButton" mnemonicParsing="false" onAction="#deleteClient" prefHeight="27.0" prefWidth="114.0" style="-fx-font-size: 13;" stylesheets="@stylesheets/MainViewStyle.css" text="Delete Client ">
+                                        <VBox.margin>
+                                            <Insets top="100.0" />
+                                        </VBox.margin>
+                                    </Button>
+                                    <Label fx:id="errorLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Wrong password, try again" textFill="RED" visible="false">
+                                        <font>
+                                            <Font size="22.0" />
+                                        </font>
+                                        <VBox.margin>
+                                            <Insets top="-15.0" />
+                                        </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab fx:id="ProgressionTab" text="Progression">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="896.0" prefWidth="1311.0">
+                           <children>
+                              <ListView fx:id="pictureDates" layoutX="48.0" layoutY="42.0" prefHeight="893.0" prefWidth="124.0" />
+                              <ImageView fx:id="beforeImage" fitHeight="500.0" fitWidth="350.0" layoutX="205.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="afterImage" fitHeight="500.0" fitWidth="350.0" layoutX="573.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label layoutX="253.0" layoutY="39.0" prefHeight="17.0" prefWidth="49.0" text="Before" />
+                              <Label layoutX="615.0" layoutY="43.0" text="After" />
+                              <Label fx:id="beforeDateLabel" layoutX="266.0" layoutY="632.0" />
+                              <Label fx:id="beforeDateLabel" layoutX="360.0" layoutY="41.0" text="Label" />
+                              <Label fx:id="afterDateLabel" layoutX="697.0" layoutY="44.0" text="Label" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

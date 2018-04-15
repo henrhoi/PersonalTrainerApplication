@@ -3,6 +3,7 @@
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -14,5 +15,6 @@
          <font>
             <Font size="62.0" />
          </font></Label>
+      <TextArea fx:id="caloriesText" disable="true" layoutX="460.0" layoutY="475.0" prefHeight="76.0" prefWidth="135.0" />
    </children>
 </Pane>
