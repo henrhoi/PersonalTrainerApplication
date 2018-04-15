@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="640.0" prefWidth="1038.0" style="-fx-background-color: derive(black,40%) derive(black,40%);" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="640.0" prefWidth="1038.0" style="-fx-background-color: derive(black,40%) derive(black,40%);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="640.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <effect>
@@ -29,7 +29,7 @@
       </AnchorPane>
       <VBox fx:id="buttonBox" alignment="TOP_CENTER" prefHeight="640.0" prefWidth="99.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#backToMainview" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css" />
+            <Button mnemonicParsing="false" onAction="#backToMainview" prefHeight="24.0" prefWidth="34.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css" />
             <VBox alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#movePTInfoPane" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
@@ -190,7 +190,7 @@
          <children>
             <HBox>
                <children>
-                  <ListView id="clients" fx:id="clients" prefHeight="639.0" prefWidth="139.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
+                  <ListView id="clients" fx:id="clients" prefHeight="639.0" prefWidth="152.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
                </children>
             </HBox>
          </children>
