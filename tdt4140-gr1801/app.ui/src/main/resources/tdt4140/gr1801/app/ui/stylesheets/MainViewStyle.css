@@ -255,5 +255,22 @@
 		-fx-font-size: 18px;
 	}
 	
+	.programField {
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-border: 0.5px;
+	-fx-border-color: white;
+	-fx-font-size: 20px;
+	-fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+	}
 	
+.text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+}
+
+.text-area .content {
+    -fx-background-color: derive(black,60%);
+}
 	

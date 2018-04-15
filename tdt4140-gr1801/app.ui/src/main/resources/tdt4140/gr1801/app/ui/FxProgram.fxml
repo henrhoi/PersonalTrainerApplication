@@ -43,14 +43,14 @@
             </AnchorPane>
           <AnchorPane fx:id="endurance_pane" minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="372.0" styleClass="programPane" stylesheets="@stylesheets/MainViewStyle.css">
                <children>
-                  <TextField fx:id="distance_field" editable="false" layoutX="61.0" layoutY="96.0" prefHeight="19.0" prefWidth="101.0" />
-                  <TextField fx:id="duration_field" layoutX="61.0" layoutY="163.0" prefHeight="25.0" prefWidth="101.0" />
-                  <TextField fx:id="speed_field" layoutX="61.0" layoutY="228.0" prefHeight="25.0" prefWidth="101.0" />
-                  <Text layoutX="89.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance" />
-                  <Text layoutX="88.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
-                  <Text layoutX="82.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avg. speed" />
-                  <TextArea fx:id="description_field" layoutX="211.0" layoutY="109.0" prefHeight="160.0" prefWidth="146.0" />
-                  <Text layoutX="244.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+                  <TextField fx:id="distance_field" editable="false" layoutX="236.0" layoutY="85.0" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                  <TextField fx:id="duration_field" layoutX="236.0" layoutY="182.0" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                  <TextField fx:id="speed_field" layoutX="236.0" layoutY="278.0" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                  <Text fill="#eeecec" layoutX="245.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance" />
+                  <Text fill="#eeecec" layoutX="245.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+                  <Text fill="#eeecec" layoutX="221.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avgerage speed" />
+                  <TextArea fx:id="description_field" layoutX="36.0" layoutY="92.0" prefHeight="214.0" prefWidth="146.0" styleClass="text-area" stylesheets="@stylesheets/MainViewStyle.css" />
+                  <Text fill="#eeecec" layoutX="72.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
                   <Label layoutX="111.0" layoutY="9.0" styleClass="programLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Endurance Exercise">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -61,7 +61,7 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Button layoutX="474.0" layoutY="439.0" mnemonicParsing="false" onAction="#updateProgram" prefHeight="44.0" prefWidth="114.0" text="Update" />
-      <Button fx:id="exportButton" layoutX="832.0" layoutY="457.0" mnemonicParsing="false" onAction="#exportPdf" text="Export" />
+      <Button layoutX="491.0" layoutY="439.0" mnemonicParsing="false" onAction="#updateProgram" prefHeight="35.0" prefWidth="89.0" text="Update" />
+      <Button fx:id="exportButton" layoutX="839.0" layoutY="444.0" mnemonicParsing="false" onAction="#exportPdf" text="Export" />
    </children>
 </Pane>
