@@ -93,7 +93,8 @@ public final class QueryFactory {
 		public static PreparedStatement insertWeeklyProgram(int clientID, String day, int duration, double distance, 
 				double speed, String description, String exercises) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 			Connection conn = DBConnection.getDBConnection();
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO WeeklyProgram VALUES (?, ?, ?, ?, ?, ?, ?)");  
+			PreparedStatement stmt = conn.prepareStatement("INSERT INTO WeeklyProgram VALUES (?, ?, ?, ?, ?, ?, ?)"
+					+ " ON DUPLICATE KEY UPDATE");  
 			stmt.setInt(1, clientID);
 			stmt.setString(2, day);
 			stmt.setInt(3, duration);
@@ -103,6 +104,7 @@ public final class QueryFactory {
 			stmt.setString(7, exercises);
 			return stmt;
 		}
+		
 	
 	// PreparedStatement for getting information about a clients weekly program
 	public static PreparedStatement getProgramFromClient(String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {

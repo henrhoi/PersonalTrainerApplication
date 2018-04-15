@@ -4,6 +4,7 @@ package tdt4140.gr1801.app.ui;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,6 +14,8 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -60,12 +63,11 @@ public class ProgramController implements TabController {
     TextArea description_field;
     
     @FXML
-	Button exportButton, updateStrength_button, updateEndurance_button; 
+	Button exportButton, updateProgram_button; 
     
     
 	private Client client;
 	private PersonalTrainer pt;
-	
 	
 	
 	public ProgramController(PersonalTrainer pt, Client client) {
@@ -213,39 +215,115 @@ public class ProgramController implements TabController {
 		
 		setNavigationLogic();
 		updateView(null);
-		updateStrength_button.setDisable(true);
-		updateEndurance_button.setDisable(true);
+		updateProgram_button.setDisable(true);
 		listview.setEditable(true);
 	}
 	
 	
 	@FXML
 	public void editEndurance() throws IOException {
-		updateEndurance_button.setDisable(false);
+		updateProgram_button.setDisable(false);
 		setFieldsEditable(true);
-		//client.createWeeklyProgram(dp);
-		
 	}
 	
 	@FXML 
 	public void editStrength() {
-		
+		updateProgram_button.setDisable(false);
 	}
 	
-	@FXML
-	public void updateStrength() throws IOException {
-//		Exercise e1 = new Exercise("Benchpress", 80, Arrays.asList(5, 5, 5, 5, 5));
-//    	Exercise e2 = new Exercise("Deadlift", 120, Arrays.asList(12, 10, 8));
-//    	ArrayList<Exercise> exercises = new ArrayList<>();
-//    	exercises.add(e1);
-//    	exercises.add(e2);
-//    	DayProgram dp = new DayProgram("Wednesday", null, null, null, null, exercises);
-//    	client.createWeeklyProgram(dp);
-	}
+	
 	
 	@FXML
-	public void updateEndurance() {
-		
-	}
+	public void updateProgram() throws IOException {
+		if (checkEnduranceFields()) {
+			String weekday = listview.getSelectionModel().getSelectedItem().getWeekday();
+			
+			// Updated endurance info
+			int duration = duration_field.getText() == "" ? 
+					0 : Integer.parseInt(duration_field.getText());
+			double distance = distance_field.getText() == "" ?
+					0 : Double.parseDouble(distance_field.getText()) ;
+			double speed = speed_field.getText() == "" ?
+					0 : Double.parseDouble(speed_field.getText());
+			String descr = description_field.getText();
+			
+			// Updated strength info
+			List<Exercise> exercises = new ArrayList<>();
+			if (!tableview.getItems().isEmpty()) {
+				tableview.getItems().stream().forEach(e -> exercises.add(e));
+			}
 
+			DayProgram dp = new DayProgram(weekday, duration, distance, speed, descr, exercises);
+			client.createWeeklyProgram(dp);
+			updateProgram_button.setDisable(true);
+		}
+	}
+	
+	@FXML
+	public void nameChanged(CellEditEvent<Exercise, String> event) {
+		String newName = event.getNewValue();
+		try {
+			event.getRowValue().setName(newName);
+		} catch(Exception e) {
+			System.out.println("Name is not valid");
+		}
+	}
+	
+	@FXML
+	public void weightChanged(CellEditEvent<Exercise, String> event) {
+		String newWeight = event.getNewValue();
+		try {
+			event.getRowValue().setWeight(Double.parseDouble(newWeight));
+		} catch(Exception e) {
+			System.out.println("Weight is not valid");
+		}
+	}
+	
+	@FXML
+	public void repsChanged(CellEditEvent<Exercise, String> event) {
+		String newReps = event.getNewValue();
+		try {
+			List<Integer> reps = new ArrayList<>();
+			for (int i = 0; i < newReps.length(); i+=2) {
+				reps.add(Integer.parseInt(""+newReps.charAt(i)));
+			}
+			event.getRowValue().setRepsPerSet(reps);
+		} catch(Exception e) {
+			System.out.println("Reps is not valid");
+		}
+	}
+	
+	
+	@FXML 
+	public void clearAllEndurance() {
+		distance_field.setText("");
+		duration_field.setText("");
+		speed_field.setText("");
+		description_field.setText("");
+	}
+	
+	@FXML
+	public void clearAllStrength() {
+		tableview.getItems().clear();
+	}
+	
+	
+	
+	private boolean checkEnduranceFields() {
+		try {
+			if (distance_field.getText() != "" && Double.parseDouble(distance_field.getText()) < 0) {
+				return false;
+			}
+			if (duration_field.getText() != "" && Integer.parseInt(duration_field.getText()) < 0) {
+				return false;
+			}
+			if (duration_field.getText() != "" && Double.parseDouble(speed_field.getText()) < 0) {
+				return false;
+			}
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	
 }
