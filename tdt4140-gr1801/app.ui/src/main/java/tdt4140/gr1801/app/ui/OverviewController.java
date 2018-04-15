@@ -3,6 +3,7 @@ package tdt4140.gr1801.app.ui;
 import java.io.IOException;
 
 import java.net.URL;
+
 import java.security.NoSuchAlgorithmException;
 
 import java.util.ArrayList;
@@ -14,12 +15,10 @@ import java.util.stream.Collectors;
 
 import org.apache.http.client.ClientProtocolException;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
-
 import javafx.fxml.FXML;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
@@ -36,33 +35,25 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 import tdt4140.gr1801.app.core.Client;
-
-
-// tester popupvindu
 import tdt4140.gr1801.app.ui.PasswordDialog;
 import tdt4140.gr1801.web.server.LoginModule;
 
 import java.util.Optional;
 
-import javafx.application.Application;
-import javafx.collections.ObservableList;
-import javafx.stage.Stage;
 
-//
 public class OverviewController implements TabController {
 	
 	@FXML
 	Pane root;
 	
 	@FXML
-	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, errorLabel;
+	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, errorLabel, beforeDateLabel, afterDateLabel;
 
 	AnchorPane infoTab;
-	
-	
-	@FXML
-	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, beforeDateLabel, afterDateLabel;
 	
 	@FXML
 	ListView<String> pictureDates;
@@ -76,6 +67,8 @@ public class OverviewController implements TabController {
 	@FXML
 	Button deleteClientButton; 
 	
+	
+	
 	private Client client;
 	private MainViewController mainviewController; 
 	
@@ -83,7 +76,6 @@ public class OverviewController implements TabController {
 		this.client = client;
 		this.mainviewController = mainviewController;
 	}
-	
 	
 	@Override
 	public void setClient(Client client) {
