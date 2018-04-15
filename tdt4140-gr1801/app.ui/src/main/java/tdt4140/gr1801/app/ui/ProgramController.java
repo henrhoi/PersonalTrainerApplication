@@ -28,6 +28,7 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 
 
+
 import javafx.scene.control.Button;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
@@ -55,14 +56,17 @@ public class ProgramController implements TabController {
     @FXML
     TextField distance_field, duration_field, speed_field;
     
-    @FXML TextArea description_field;
+    @FXML 
+    TextArea description_field;
+    
+    @FXML
+	Button exportButton, updateStrength_button, updateEndurance_button; 
     
     
 	private Client client;
 	private PersonalTrainer pt;
 	
-	@FXML
-	Button exportButton;
+	
 	
 	public ProgramController(PersonalTrainer pt, Client client) {
 		this.client = client;
@@ -109,7 +113,7 @@ public class ProgramController implements TabController {
 	public void updateInfo() {
 		fillListview();
 		updateView(null);
-		disableFields();
+		setFieldsEditable(false);
 		
 	}
 	
@@ -125,17 +129,17 @@ public class ProgramController implements TabController {
 		listview.setItems(days);
 	}
 	
-	public void disableFields() {
+	public void setFieldsEditable(boolean value) {
 		//distance_field.setDisable(true);
-		distance_field.setEditable(false);
+		distance_field.setEditable(value);
 		//duration_field.setDisable(true);
-		duration_field.setEditable(false);
+		duration_field.setEditable(value);
 		//speed_field.setDisable(true);
-		speed_field.setEditable(false);
+		speed_field.setEditable(value);
 		//description_field.setDisable(true);
-		description_field.setEditable(false);
+		description_field.setEditable(value);
 		//tableview.setDisable(true);
-		tableview.setEditable(false);
+		tableview.setEditable(value);
 	}
 	
 	public void setNavigationLogic() {
@@ -209,14 +213,18 @@ public class ProgramController implements TabController {
 		
 		setNavigationLogic();
 		updateView(null);
+		updateStrength_button.setDisable(true);
+		updateEndurance_button.setDisable(true);
+		
 	}
 	
 	
 	@FXML
 	public void editEndurance() throws IOException {
-		// Innsetting av weeklyprogram
-		DayProgram dp = new DayProgram("Monday", 120, 12.0, 6.5, "Intervaller 4x4", null);
-		client.createWeeklyProgram(dp);
+		updateEndurance_button.setDisable(false);
+		setFieldsEditable(true);
+		//client.createWeeklyProgram(dp);
+		
 	}
 	
 	@FXML 
@@ -225,14 +233,19 @@ public class ProgramController implements TabController {
 	}
 	
 	@FXML
-	public void updateProgram() throws IOException {
-		Exercise e1 = new Exercise("Benchpress", 80, Arrays.asList(5, 5, 5, 5, 5));
-    	Exercise e2 = new Exercise("Deadlift", 120, Arrays.asList(12, 10, 8));
-    	ArrayList<Exercise> exercises = new ArrayList<>();
-    	exercises.add(e1);
-    	exercises.add(e2);
-    	DayProgram dp = new DayProgram("Wednesday", null, null, null, null, exercises);
-    	client.createWeeklyProgram(dp);
+	public void updateStrength() throws IOException {
+//		Exercise e1 = new Exercise("Benchpress", 80, Arrays.asList(5, 5, 5, 5, 5));
+//    	Exercise e2 = new Exercise("Deadlift", 120, Arrays.asList(12, 10, 8));
+//    	ArrayList<Exercise> exercises = new ArrayList<>();
+//    	exercises.add(e1);
+//    	exercises.add(e2);
+//    	DayProgram dp = new DayProgram("Wednesday", null, null, null, null, exercises);
+//    	client.createWeeklyProgram(dp);
+	}
+	
+	@FXML
+	public void updateEndurance() {
+		
 	}
 
 }
