@@ -21,27 +21,8 @@
 }
 
 .tab{
-   -fx-padding: 5 10 7 5;
+   -fx-padding: 3 8 7 5;
 }
-/*OVERVIEW-TAB-PANEL */
- .Otab .Otab-label { 
-    -fx-alignment: center-left;
-    -fx-text-fill: #d7cccc;
-    -fx-font-size: 6px;
-}
-.Otab-pane .tab {
-    -fx-background-color: derive(black,53%); 
-}
-
-/*removes tab-bar-background */
-.Otab-pane .Otab-header-area .Otab-header-background {
-    -fx-opacity: 0.01;
-}
-
-.Otab{
-   -fx-padding: 5 10 7 5;
-}
-
 
 .button{
 	-fx-background-color: darkgrey;

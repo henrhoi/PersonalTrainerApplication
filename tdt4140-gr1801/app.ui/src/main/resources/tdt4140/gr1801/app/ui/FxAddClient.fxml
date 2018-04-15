@@ -66,10 +66,13 @@
       </AnchorPane>
       <VBox alignment="CENTER" prefHeight="632.0" prefWidth="100.0" spacing="30.0" AnchorPane.bottomAnchor="8.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="back_button" cancelButton="true" mnemonicParsing="false" onAction="#backToMainview" prefHeight="26.0" prefWidth="30.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css">
+            <Button fx:id="back_button" cancelButton="true" mnemonicParsing="false" onAction="#backToMainview" prefHeight="26.0" prefWidth="35.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css">
                <padding>
                   <Insets right="70.0" top="5.0" />
-               </padding></Button>
+               </padding>
+               <VBox.margin>
+                  <Insets right="55.0" top="13.0" />
+               </VBox.margin></Button>
             <VBox alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#backToMainview" prefHeight="51.0" prefWidth="81.0" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
@@ -111,7 +114,7 @@
                   <Insets top="200.0" />
                </padding>
             </Separator>
-            <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="81.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
+            <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="68.0" prefWidth="69.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
                      <image>

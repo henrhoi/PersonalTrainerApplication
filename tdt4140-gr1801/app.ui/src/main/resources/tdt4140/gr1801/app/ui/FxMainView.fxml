@@ -29,7 +29,10 @@
       </AnchorPane>
       <VBox fx:id="buttonBox" alignment="TOP_CENTER" prefHeight="640.0" prefWidth="99.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#backToMainview" prefHeight="24.0" prefWidth="34.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css" />
+            <Button mnemonicParsing="false" onAction="#backToMainview" prefHeight="24.0" prefWidth="29.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css">
+               <VBox.margin>
+                  <Insets right="50.0" top="5.0" />
+               </VBox.margin></Button>
             <VBox alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#movePTInfoPane" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
@@ -65,7 +68,7 @@
                </tooltip>
             </Button>
             <Separator minHeight="50.0" orientation="VERTICAL" prefHeight="241.0" prefWidth="8.0" visible="false" VBox.vgrow="ALWAYS" />
-            <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="51.0" prefWidth="59.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
+            <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="91.0" prefWidth="71.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
                      <image>
