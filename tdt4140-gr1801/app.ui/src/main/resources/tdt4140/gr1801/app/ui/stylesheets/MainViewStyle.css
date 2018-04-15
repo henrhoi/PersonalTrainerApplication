@@ -20,7 +20,9 @@
     -fx-opacity: 0.01;
 }
 
-
+.tab{
+   -fx-padding: 5 10 7 5;
+}
 
  .tab:selected .tab-label { 
     -fx-alignment: center;

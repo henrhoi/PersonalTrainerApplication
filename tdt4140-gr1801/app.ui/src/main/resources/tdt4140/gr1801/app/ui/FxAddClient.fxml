@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane minHeight="640.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="640.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane id="pane" fx:id="pane" minHeight="640.0" minWidth="1000.0" prefHeight="640.0" prefWidth="1024.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Pane id="pane" fx:id="pane" minHeight="640.0" minWidth="1000.0" prefHeight="674.0" prefWidth="1024.0" style="-fx-background-image: ../images/background.png;" stylesheets="@stylesheets/LoginStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <HBox alignment="CENTER" layoutY="200.0" prefHeight="172.0" prefWidth="1024.0" AnchorPane.bottomAnchor="208.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
          <children>
             <Separator minWidth="115.0" prefWidth="355.0" visible="false" HBox.hgrow="ALWAYS">
@@ -66,7 +66,10 @@
       </AnchorPane>
       <VBox alignment="CENTER" prefHeight="632.0" prefWidth="100.0" spacing="30.0" AnchorPane.bottomAnchor="8.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="back_button" cancelButton="true" mnemonicParsing="false" onAction="#backToMainview" prefHeight="26.0" prefWidth="30.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css" />
+            <Button fx:id="back_button" cancelButton="true" mnemonicParsing="false" onAction="#backToMainview" prefHeight="26.0" prefWidth="30.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css">
+               <padding>
+                  <Insets right="70.0" top="5.0" />
+               </padding></Button>
             <VBox alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#backToMainview" prefHeight="51.0" prefWidth="81.0" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
@@ -119,6 +122,9 @@
                <tooltip>
                   <Tooltip text="log out" />
                </tooltip>
+               <padding>
+                  <Insets bottom="13.0" />
+               </padding>
             </Button>
          </children>
       </VBox>
