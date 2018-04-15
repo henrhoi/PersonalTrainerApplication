@@ -41,7 +41,7 @@
                                     <Font size="32.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="maxPulseLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Max pulse:">
+                              <Label fx:id="maxPulseLabel" text="Max pulse:">
                      			<font>
                        			 	<Font size="32.0" />
                     			 </font>
