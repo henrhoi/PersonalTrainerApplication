@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 // Denne klassen produserer PreparedStatements, som gjoer at man kan bestemme hva slags spoerringer/kommandoer som kan gjoeres opp mot databasen.
 // Dersom en spoerring skal kunne gjoeres, skal den ligge her. 
@@ -145,6 +147,13 @@ public final class QueryFactory {
 		return stmt;
 	}
 	
+	// Metoden lages for å sjekke om en client tilhører PT i metoden deleteClient i clientResources
+	public static PreparedStatement getPTforClient(int ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt = conn.prepareStatement("SELECT PT_ID FROM Klient WHERE ClientID = ?");
+		stmt.setInt(1, ClientID);;
+		return stmt;
+	}
 	
 	public static PreparedStatement getClientProgressionPictures(String clientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();
@@ -154,6 +163,37 @@ public final class QueryFactory {
 		
 	}
 	
+	// metode for å slette data for klient i databasen
+	public static List<PreparedStatement> deleteAllClientData(int ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		Connection conn = DBConnection.getDBConnection();
+		PreparedStatement stmt1 = conn.prepareStatement("DELETE FROM Nutrition WHERE ClientID = ?");
+		PreparedStatement stmt2 = conn.prepareStatement("DELETE FROM Endurance WHERE ClientID = ?");
+		PreparedStatement stmt3 = conn.prepareStatement("DELETE FROM Exercise WHERE StrengthID IN (SELECT StrengthID FROM Strength WHERE ClientID = ?)");
+		PreparedStatement stmt4 = conn.prepareStatement("DELETE FROM Strength WHERE ClientID = ?");
+		PreparedStatement stmt5 = conn.prepareStatement("DELETE FROM ProgressionPicture WHERE ClientID = ?");
+		PreparedStatement stmt6 = conn.prepareStatement("DELETE FROM WeeklyProgram WHERE ClientID = ?");
+		PreparedStatement stmt7 = conn.prepareStatement("DELETE FROM ClientWeight WHERE ClientID = ?");
+		PreparedStatement stmt8 = conn.prepareStatement("DELETE FROM Klient WHERE ClientID = ?");
+		stmt1.setInt(1, ClientID);
+		stmt2.setInt(1, ClientID);
+		stmt3.setInt(1, ClientID);
+		stmt4.setInt(1, ClientID);
+		stmt5.setInt(1, ClientID);
+		stmt6.setInt(1, ClientID);
+		stmt7.setInt(1, ClientID);
+		stmt8.setInt(1, ClientID);
+		List<PreparedStatement> statements = new ArrayList<PreparedStatement>();
+		statements.add(stmt1);
+		statements.add(stmt2);
+		statements.add(stmt3);
+		statements.add(stmt4);
+		statements.add(stmt5);
+		statements.add(stmt6);
+		statements.add(stmt7);
+		statements.add(stmt8);
+		return statements;
+		
+	}
 	
 	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 //		PreparedStatement stmt = QueryFactory.insertClient("Vilde Arntzen", 170, "henrhoi");
@@ -170,16 +210,4 @@ public final class QueryFactory {
 //		st.execute();
 	}
 
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
