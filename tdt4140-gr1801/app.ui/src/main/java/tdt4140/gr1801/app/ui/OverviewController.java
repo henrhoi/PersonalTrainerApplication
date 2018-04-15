@@ -47,8 +47,6 @@ import java.util.Optional;
 
 public class OverviewController implements TabController {
 	
-	@FXML
-	Pane root;
 	
 	@FXML
 	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, errorLabel, beforeDateLabel, afterDateLabel;
@@ -107,12 +105,16 @@ public class OverviewController implements TabController {
         
         //Add the axis to the lineChart
         final LineChart<String,Number> lineChart = new LineChart<String,Number>(xAxis,yAxis);
-        //Set the title and change the size
+       
+        //Set the title and bind the size
         lineChart.setTitle("Client's weigth and fat measurements");
-        lineChart.setPrefSize(600, 480);
+        lineChart.prefWidthProperty().bind(infoTab.widthProperty().multiply(0.7));
+        lineChart.prefHeightProperty().bind(infoTab.heightProperty());
         //Set the position
         lineChart.setLayoutX(200);
         lineChart.setLayoutY(50);
+        
+        
         
         //Remove other LineCharts
         infoTab.getChildren().setAll((infoTab.getChildren().stream().filter(n -> !(n instanceof LineChart)).collect(Collectors.toList())));
@@ -261,7 +263,6 @@ public class OverviewController implements TabController {
 							errorLabel.setStyle("-fx-text-fill: red;");
 							errorLabel.setVisible(false);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
