@@ -56,7 +56,6 @@ public class Client {
 		this.pt = pt;
 		pt.addClient(this);
 
-    
 		this.weights = new HashMap<String,Double>();
 		this.fats = new HashMap<String,Double>();
 		this.nutritions = new ArrayList<Nutrition>();
@@ -205,9 +204,7 @@ public class Client {
 		json.put("Height", this.height);
 		json.put("PT_ID", this.pt.getUsername());
 		json.put("MaxPulse", this.getMaxPulse());
-		System.out.println(json);
 		String respons = GetURL.postRequest("/signup/client", json);
-		System.out.println(respons);
     }
     
     // function that adds client's weekly program to program-tab in the database
@@ -231,10 +228,7 @@ public class Client {
 		}
 		exercises = exercises.substring(0, exercises.length()-1);
 		json.put("Exercises", exercises);
-		System.out.println("inside createWeeklyProgram in Client");
-		System.out.println(json);
 		String respons = GetURL.postRequest("/weeklyprogram/client", json);
-		System.out.println(respons);
     }
     
     // the next get-functions are functions to collect data from the database and into the application 
@@ -249,7 +243,6 @@ public class Client {
     			int fat = object.getInt("Fat");
     			int carbs = object.getInt("Carbs");
     			int protein = object.getInt("Protein");
-    			
     			Nutrition nutrition = new Nutrition(date, cals, fat, carbs, protein, this.id);
     			this.nutritions.add(nutrition);
     		}
