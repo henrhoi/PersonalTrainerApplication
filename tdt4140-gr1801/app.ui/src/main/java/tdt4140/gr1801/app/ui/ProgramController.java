@@ -228,6 +228,7 @@ public class ProgramController implements TabController {
 	
 	@FXML 
 	public void editStrength() {
+		tableview.setEditable(true);
 		updateProgram_button.setDisable(false);
 	}
 	
