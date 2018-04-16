@@ -113,7 +113,7 @@
                            <children>
                               <HBox alignment="CENTER" maxHeight="50.0" minHeight="50.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Label styleClass="oLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Now," />
+                                    <Label styleClass="oLabel" stylesheets="@stylesheets/MainViewStyle.css" />
                                     <Label fx:id="afterDateLabel" styleClass="oLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Label" />
                                  </children>
                               </HBox>
