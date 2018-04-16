@@ -96,6 +96,7 @@ public class Client {
     	return this.program;
     }
     
+    
     public HashMap<String,Double> getWeightMap(){
     		return this.weights;
     }
