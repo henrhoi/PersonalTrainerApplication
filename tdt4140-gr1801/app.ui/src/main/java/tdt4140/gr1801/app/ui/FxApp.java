@@ -17,23 +17,27 @@ public class FxApp extends Application {
     }
 
     public static void main(String[] args) {
+    		WebServer webserver = new WebServer(8080);
     		Thread thread1 = new Thread () {
     			public void run () {
-    				WebServer webserver = new WebServer(8080);
     				try {
-    					try {
-    						webserver.setup();} catch (Exception e) {e.printStackTrace();}
-    						System.out.println("Setting up server");
-        				try {webserver.server.start();} catch (Exception e) {e.printStackTrace();}
-        					System.out.println("Server started");
-        				try {webserver.server.join();} catch (InterruptedException e) {e.printStackTrace();}	
-    				} finally {
-    					webserver.stopServer();
-    					System.out.println("Server stopped");
-    				}
+    					webserver.setup();
+						webserver.server.start();
+						webserver.server.join();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
     		  }
     		};
+    		//Start Webserver in own Thread
     		thread1.start();
+    		//Launch application
     		launch(args);
+    		//Stop server after application is terminated
+    		try {
+				webserver.server.stop();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
     }
 }
