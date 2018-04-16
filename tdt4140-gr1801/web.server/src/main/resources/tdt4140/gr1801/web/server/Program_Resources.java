@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 
 
+
 @Path("/weeklyprogram")
 public class Program_Resources {
 	
@@ -35,50 +36,5 @@ public class Program_Resources {
 		return json;
 
 	}
-	
-	@POST
-    @Path("/client")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public static void createWeeklyProgram(String data) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-    	JSONObject json = new JSONObject(data);
-    	PreparedStatement stmt;
-    	int clientID = json.getInt("ClientID");
-    	String day = json.getString("Day");
-    	if (json.length() == 3 ) {
-    		String exercises = json.getString("Exercises");
-    		stmt = QueryFactory.insertWeeklyProgram(clientID, day, 0, 0.0, 0.0, "", exercises);
-            
-    	}
-    	else {
-    		int duration = json.getInt("Duration");
-            double distance = json.getDouble("Distance");
-            double speed = json.getDouble("Speed");
-            String description = json.getString("Description");
-            stmt = QueryFactory.insertWeeklyProgram(clientID, day, duration,
-            		distance, speed, description, "");
-    		
-    		
-    	}
-       
-        stmt.execute();
-
-    }
-	  
-	  
-	  
-	  public static void main(String[] args) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, ClientProtocolException, IOException {
-  		//Skjekker at jeg faar riktig info om program til klient med clientID = 1
-  	
-  		String programInfo = GetURL.getRequest("/weeklyprogram/1");
-  		System.out.println(programInfo);
-//  		
-//  		String j = Program_Resources.getWeeklyProgram("1");
-//  		System.out.println(j);
-//  		createWeeklyProgram("Monday", 120, 12.0, 6.5, "Intervaller 4x4", null, null, null, null);
-  
-  		
-  		
-	  
-	  }
 
 }

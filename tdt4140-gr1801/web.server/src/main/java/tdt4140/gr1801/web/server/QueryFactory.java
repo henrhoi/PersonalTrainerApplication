@@ -96,23 +96,7 @@ public final class QueryFactory {
 		stmt.setInt(4, MaxPulse);
 		return stmt;
 	}
-	
-	
-	// PreparedStatement for inserting of WeeklyProgram-tuples in the database
-		public static PreparedStatement insertWeeklyProgram(int clientID, String day, int duration, double distance, 
-				double speed, String description, String exercises) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
-			Connection conn = DBConnection.getDBConnection(); // Getting conection to database
-			PreparedStatement stmt = conn.prepareStatement("INSERT INTO WeeklyProgram VALUES (?, ?, ?, ?, ?, ?, ?)");  
-			stmt.setInt(1, clientID);
-			stmt.setString(2, day);
-			stmt.setInt(3, duration);
-			stmt.setDouble(4, distance);
-			stmt.setDouble(5, speed);
-			stmt.setString(6, description);
-			stmt.setString(7, exercises);
-			return stmt;
-		}
-	
+		
 		
 	// PreparedStatement for getting information about a client's weekly program
 	public static PreparedStatement getProgramFromClient(String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {

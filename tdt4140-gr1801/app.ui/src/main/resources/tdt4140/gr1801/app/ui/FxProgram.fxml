@@ -38,7 +38,6 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="8.0" layoutY="348.0" mnemonicParsing="false" onAction="#editStrength" text="Edit" />
                </children>
             </AnchorPane>
           <AnchorPane fx:id="endurance_pane" minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="372.0" styleClass="programPane" stylesheets="@stylesheets/MainViewStyle.css">
@@ -56,12 +55,10 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <Button layoutX="10.0" layoutY="347.0" mnemonicParsing="false" onAction="#editEndurance" text="Edit" />
                </children>
             </AnchorPane>
         </items>
       </SplitPane>
-      <Button layoutX="491.0" layoutY="439.0" mnemonicParsing="false" onAction="#updateProgram" prefHeight="35.0" prefWidth="89.0" text="Update" />
-      <Button fx:id="exportButton" layoutX="839.0" layoutY="444.0" mnemonicParsing="false" onAction="#exportPdf" text="Export" />
+      <Button fx:id="exportButton" layoutX="532.0" layoutY="517.0" mnemonicParsing="false" onAction="#exportPdf" text="Export to PDF" />
    </children>
 </Pane>
