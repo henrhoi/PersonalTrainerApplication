@@ -15,6 +15,9 @@ import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Endurance;
 
 
+//This controller controls the Endurance Tab in the program 
+//Implements TabController and has all the required methods.
+
 public class EnduranceController implements TabController {
 	
 	

@@ -15,6 +15,11 @@ import javafx.scene.input.MouseEvent;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Nutrition;
 
+
+//This controller controls the nutrition tab in the application
+//Keeps the pie chart updated according to the client's food intake for the day.
+
+
 public class HealthController implements TabController {
 	
 	@FXML
@@ -89,9 +94,9 @@ public class HealthController implements TabController {
 				);
 			
 			//Setting the title of the chart + placing the legend on the left side of the chart.
-			NutritionPieChart.setTitle("Nutrition of " + n.getDate());
+			NutritionPieChart.setTitle("Nutrition of " + n);
 			NutritionPieChart.setData(pieChartData);
-			NutritionPieChart.setLegendSide(Side.LEFT);
+			
 			
 			// Changes the colors of the Pie chart so that they are the same every time
 			applyCustomColorSequence(
@@ -102,46 +107,26 @@ public class HealthController implements TabController {
 				    );
 			NutritionPieChart.setLegendVisible(false);
 			PieChartDataLabel.setText("Hover Pie Chart For Info");
-			addEventHandlerPieChart();
 			caloriesText.setText("Calories: " + n.getCalories());
+			
+			addEventHandlerPieChart();
+
 			
 		}
 
 		else {
 			NutritionPieChart.setData(FXCollections.observableArrayList());
 		}
-		
-		
-		/*
-		 Below is an attempt to not make new data-objects everytime, but to just update them instead. 
-		 In that case one must first only initialize the pieChartData-observablelist with 
-		 0 values for fat, calories, etc. setNavigationLogic() makes sure that everytime you click/switch
-		 to another nutrition-object in the listview, this method will be called and the piechart updated.
-		 The below code does currently not work as the fields in the pieChart do not change from their initial value. 
-		*/
-		
-//		for (Data d : pieChartData) {
-//			switch (d.getName()) {
-//				case ("Fat"): d.setPieValue(n.getFat());
-//				case ("Calories"): d.setPieValue(n.getCalories());
-//				case ("Protein"): d.setPieValue(n.getProtein());
-//				case ("Carbs"): d.setPieValue(n.getCarbs());
-//			}
-//		}
-//		NutritionPieChart.setData(pieChartData);
 
 	}
 
 	@Override
 	public void startup() {
-		setNavigationLogic();
-		//NutritionPieChart.setTitle("OVERSKRIFT");
-		
+		setNavigationLogic();	
 	}
 	
 	
-	//Creates an event handler every time you change the date for that date's data.
-
+	//Creates an event handler every time you change the date for that date's data
 	public void addEventHandlerPieChart() {
 		for(PieChart.Data data : NutritionPieChart.getData()) {
 			data.getNode().addEventHandler(MouseEvent.MOUSE_MOVED, new EventHandler<MouseEvent>() {
