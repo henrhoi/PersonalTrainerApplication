@@ -1,6 +1,7 @@
 package tdt4140.gr1801.app.core.pdfcreator;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -30,7 +31,9 @@ public class PdfTest extends TestCase{
         	
         PdfCreator.addMetaData(doc, "DocumentTitle", "Subject", new ArrayList<String>(Arrays.asList("key1","key2")), "Author", "Creator");
         PdfCreator.addFrontPage(doc, pt, client);
-        DayProgram prog = new DayProgram("Monday", 60, 0.0, 0.0, "Testtest", new ArrayList<Exercise>());
+        ArrayList<Exercise> ExList = new ArrayList<Exercise>();
+        ExList.add(new Exercise("Test",3.0,Arrays.asList(3,4,5)));
+        DayProgram prog = new DayProgram("Monday", 60, 0.0, 0.0, "Testtest", ExList);
         PdfCreator.addContent(doc, FXCollections.observableArrayList (prog));
         doc.close();
 	}
@@ -38,6 +41,9 @@ public class PdfTest extends TestCase{
 		File f = new File(System.getProperty("user.dir") + "/test.pdf");
 		assertEquals(f.exists(), true);		
 	}
+	
+
+
 	
 	@After
 	public void tearDown() throws IOException  {

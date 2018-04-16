@@ -8,6 +8,7 @@ import java.util.List;
 
 import javafx.scene.image.Image;
 import junit.framework.TestCase;
+import tdt4140.gr1801.app.core.pdfcreator.PdfCreator;
 
 public class TestClient extends TestCase{
 	
@@ -96,6 +97,15 @@ public class TestClient extends TestCase{
 		}
 		catch (IllegalArgumentException IAE) {
 		}
+	}
+	
+	public void testConstructor() {
+		try {
+			PdfCreator pdfc = new PdfCreator();			
+		} catch (Exception e) {
+			fail();
+		}
+		
 	}
 	
 	
