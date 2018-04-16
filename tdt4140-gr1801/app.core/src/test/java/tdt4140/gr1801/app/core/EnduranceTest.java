@@ -52,4 +52,11 @@ public class EnduranceTest extends TestCase{
 		}
 	}
 	
+	public void testCompareEnduranceObjects() {
+		Endurance endurance2 = new Endurance("20180325-xxxx", 90, 12, 685, 200, 188);
+		assertTrue(endurance.compareTo(endurance2) < 0);
+		
+	}
+
+	
 }
