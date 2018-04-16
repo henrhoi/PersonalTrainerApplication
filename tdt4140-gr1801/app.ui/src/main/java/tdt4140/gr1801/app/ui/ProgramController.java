@@ -267,6 +267,7 @@ public class ProgramController implements TabController {
 			colWeight.setEditable(false);
 			colSets.setEditable(false);
 			colReps.setEditable(false);
+			
 		}
 	}
 	
