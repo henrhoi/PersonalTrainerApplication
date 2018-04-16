@@ -79,14 +79,19 @@ public class TestClient extends TestCase{
 	}
 	
 	public void testGetStrengthList() {
-		Strength e1 = new Strength("20180101-1400",4,null);
-		Strength e2 = new Strength("20180101-1500",30,null);
+		List<Exercise> testExercises = new ArrayList<Exercise>();
+		List<Integer> rep = new ArrayList<Integer>();
+		rep.add(2); rep.add(3);
+		Exercise e = new Exercise("Hopp", 0.5, rep);
+		testExercises.add(e);
+		Strength e1 = new Strength("20180101-1400",4,testExercises);
+		Strength e2 = new Strength("20180101-1500",30,testExercises);
 		List<Strength> testList = new ArrayList<Strength>();
 		testList.add(e1);
 		testList.add(e2);
 		client.addStrengthTraining(e1);
 		client.addStrengthTraining(e2);
-		assertEquals(client.getEnduranceList(),testList);
+		assertEquals(client.getStrengthList(),testList);
 	}
 
 	public void testGetEnduranceList() {
@@ -184,7 +189,14 @@ public class TestClient extends TestCase{
 	}
 	
 	public void testAddStrengthTraining() {
-		Strength test = new Strength("20180101-1400", 30,null);
+		List<Exercise> testExercises = new ArrayList<Exercise>();
+		List<Integer> rep = new ArrayList<Integer>();
+		rep.add(2); rep.add(3);
+		Exercise e = new Exercise("Hopp", 0.5, rep);
+		testExercises.add(e);
+		Strength e1 = new Strength("20180101-1400",4,testExercises);
+		Strength e2 = new Strength("20180101-1500",30,testExercises);
+		Strength test = new Strength("20180101-1400",30, testExercises);
 		client.addStrengthTraining(test);
 		assertEquals(client.getStrengthList().contains(test),true);
 	}
