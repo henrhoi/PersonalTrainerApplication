@@ -53,9 +53,6 @@ public class PersonalTrainer {
 	
 
 	public PersonalTrainer(String username, String firstName, String lastName, String email, String phoneNumber, String birthday) {
-		//if(!checkNames(firstName, lastName)) {
-		//	throw new IllegalArgumentException("Invalid names. Only letters.");
-		//}
 		this.username = username;
 		this.name = firstName + " " + lastName;
 		this.email = email;
@@ -210,12 +207,5 @@ public class PersonalTrainer {
 			
 		}
 		return false;
-	}
-	
-	
-	// Main som tester at PT får sine klienter.
-	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
-		PersonalTrainer pt = new PersonalTrainer("henrhoi","Vilde", "Arntzen", "vildera@stud.ntnu.no","90959409","19970603");
-		pt.changePassword("kristogj", "puerbest");
 	}
 }

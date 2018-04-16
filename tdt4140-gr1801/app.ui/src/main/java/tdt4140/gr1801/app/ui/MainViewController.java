@@ -1,6 +1,5 @@
 package tdt4140.gr1801.app.ui;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
@@ -42,6 +41,9 @@ import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 import tdt4140.gr1801.web.server.LoginModule;
 
+//This is the controller for the general app. Here get the overview over each client as well as a profile for the PT
+//All the info about each client is aligned in the tabs overview, Strength, Endurance, Nutrition and Program
+
 public class MainViewController implements Controller{
 	
 	@FXML
@@ -76,6 +78,7 @@ public class MainViewController implements Controller{
 	
 
 	private PersonalTrainer pt;
+	
 	//This set should contain controllers for all the tabs
 	private Set<TabController> tabControllers;
 	
@@ -146,9 +149,9 @@ public class MainViewController implements Controller{
 		Controller controller = new AddClientController(pt, this);
 		URL path = getClass().getResource("FxAddClient.fxml");
 		SceneLoader.setScene(stage, path, controller);
-		((AddClientController) controller).update();
-		
+		((AddClientController) controller).update();	
 	}
+	
 	
 	@FXML
 	public void hideClientList() {
@@ -162,11 +165,13 @@ public class MainViewController implements Controller{
 		PTInfoPane.toBack();
 	}
 	
+	
 	@FXML
 	public void movePTInfoPane() {
 		this.inPTInfo = true;
 		PTInfoPane.toFront();
 	}
+	
 	
 	//This method should be used when we add functionality for choosing clients inn a menu
 	public void changeClientInTabs(Client client) {
@@ -175,6 +180,7 @@ public class MainViewController implements Controller{
 			c.updateInfo();
 		}
 	}
+	
 	
 	public void setClientListviewNavigationLogic(){
 		// Adding logic for updating view when different clients gets selected.
@@ -206,15 +212,12 @@ public class MainViewController implements Controller{
 				hideClientList();
 			}
 		});
-
 	}
 	
 	
 	//You could say that this method is the same as init
 	public void updateInfo() {
 		//User this.username to update all the information
-		System.out.println("Update information for " + this.pt.getUsername());
-		System.out.println(nameOfPT);
 		
 		nameOfPT.setText(pt.getName());
 		
@@ -248,6 +251,7 @@ public class MainViewController implements Controller{
 			setClientListviewNavigationLogic();
 		}
 	}
+	
 	
 	@FXML
 	public void changePassword() throws NoSuchAlgorithmException, ClientProtocolException, IOException {
@@ -298,17 +302,17 @@ public class MainViewController implements Controller{
 					oldPasswordStyle2.add("error");
 				}
 			}
-			
-		} else {
+		}	
+		else {
 			notValid.setVisible(true);
 			ObservableList<String> passwordStyle = oldPasswordField.getStyleClass();
 
 			if(!passwordStyle.contains("error")) {
 				passwordStyle.add("error");
-			}
-			
+			}		
 		}
 	}
+	
 	
 	@FXML
 	public void backToMainview() {
@@ -318,19 +322,8 @@ public class MainViewController implements Controller{
 			URL path = getClass().getResource("FxMainView.fxml");
 			SceneLoader.setScene(stage, path, this);
 			this.updateInfo();
-			System.out.println("Back to mainview.");			
 		}
 		
 	}
 
-	public static void main(String[] args) {
-		String a = "19941215";
-		System.out.println(a.substring(6, 8));
-	}
-	
-  
-	
-	
-
-	
 }
