@@ -20,8 +20,7 @@ import tdt4140.gr1801.app.core.DayProgram;
 import tdt4140.gr1801.app.core.Exercise;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
-//http://www.vogella.com/tutorials/JavaPDF/article.html
-
+// This class is used to create PDF-files from Client's DayPrograms
 public class PdfCreator {
 	
     private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,Font.BOLD);
@@ -29,7 +28,7 @@ public class PdfCreator {
     private static Font subFont = new Font(Font.FontFamily.TIMES_ROMAN, 16,Font.BOLD);
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,Font.BOLD);
     
-    //Make a new document
+    // Make a new document
     public static Document getNewDocument(String filepath) {
     	Document document = new Document();
         try {
@@ -41,7 +40,7 @@ public class PdfCreator {
         return document;
     }
     
-    //Add metadata to the document
+    // Add metadata to the document
     public static void addMetaData(Document document, String title, String subject, List<String> keywords, String author, String creator) {
         document.addTitle(title);
         document.addSubject(subject);
@@ -50,11 +49,11 @@ public class PdfCreator {
         document.addCreator(creator);
     } 
     
-    //Add front page
+    // Add front page
     public static void addFrontPage(Document document, PersonalTrainer pt, Client client) throws DocumentException {
         Paragraph preface = new Paragraph();
         
-        //Write content
+        // Write content
         addEmptyLine(preface, 1);
         preface.add(new Paragraph("TraningProgram", catFont));
         addEmptyLine(preface, 1);
@@ -63,26 +62,26 @@ public class PdfCreator {
         preface.add(new Paragraph("This document contains a personal training program for " + client.getName(), smallBold));
         addEmptyLine(preface, 8);
         
-        //Add paragraph to document, and make a new page
+        // Add paragraph to document, and make a new page
         document.add(preface);
         document.newPage();
     }
     
-    //Add content to the TrainingProgram
+    // Add content to the TrainingProgram
     public static void addContent(Document document, ObservableList<DayProgram> programs) throws DocumentException {
     	Paragraph content = new Paragraph();
     	for (DayProgram program : programs) {
     		addEmptyLine(content, 1);
     		content.add(new Paragraph(program.getWeekday(), catFont));
-    		//Strength Program
+    		// Strength Program
     		if(program.getExercises() != null) {
-    			//Make a table with all the exercises and add to doc
+    			// Make a table with all the exercises and add to doc
     			PdfPTable table = createTable(program.getExercises());
     			content.add(table);
     		}
-    		//Endurance Program
+    		// Endurance Program
     		if(program.getAvgSpeed() != null) {
-    			//Add all the fields given in an Endurance object
+    			// Add all the fields given in an Endurance object
     			Paragraph subpar = new Paragraph();
     			subpar.add(new Paragraph("Distance: " + program.getDistance() + "km"));
     			subpar.add(new Paragraph("Duration: " + program.getDuration()));
@@ -91,27 +90,27 @@ public class PdfCreator {
     			content.add(subpar);
     		}
     	}
-    	//Add content to document
+    	// Add content to document
     	document.add(content);
     }
     
-    //Create a Table for Strength Exercises
+    // Create a Table for Strength Exercises
     private static PdfPTable createTable(List<Exercise> exs) throws DocumentException {
-    	//A table with four columns
+    	// A table with four columns
         PdfPTable table = new PdfPTable(4);
-        //Headers
+        // Headers
         addTextToNextTableCell("Name", table);
         addTextToNextTableCell("Weight", table);
         addTextToNextTableCell("Sets", table);
         addTextToNextTableCell("Repetitions", table);
-        //Add Exercises
+        // Add Exercises
         for (Exercise ex : exs) {
         	addTextToNextTableCell(ex.getName(), table);
         	addTextToNextTableCell(ex.getWeight()+"", table);
         	addTextToNextTableCell(ex.getNumberOfSets()+"", table);
         	addTextToNextTableCell(ex.getReps(), table);
         }
-        //Add Table to document
+        // Add Table to document
         return table;
     }
     

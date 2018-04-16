@@ -3,16 +3,17 @@ package tdt4140.gr1801.app.core;
 // Class with information about nutrition for one day for a client 
 public class Nutrition {
 	
-	// date format "yyyymmdd-xxxx"
-	private String date; 
+	private String date; 	// date format: "yyyymmdd-xxxx"
+	
 	// everything measured in grams: 
 	private Integer calories; 
 	private Integer fat; 
 	private Integer carbs;
 	private Integer protein; 
+	
 	private Integer clientId;
 	
-	// assuming valid data 
+	// Assuming valid data 
 	public Nutrition(String date, int calories, int fat, int carbs, int protein, int clientId) {
 		this.clientId = clientId;
 		this.date = date;
@@ -22,7 +23,7 @@ public class Nutrition {
 		this.protein = protein; 
 	}
 	
-	// getters
+	// Getters:
 	public String getDate() {
 		return date; 
 	}
@@ -47,6 +48,7 @@ public class Nutrition {
 		return clientId;
 	}
 	
+
 	public String toString() {
 		String year = date.substring(0, 4);
 		String day = date.substring(8);
