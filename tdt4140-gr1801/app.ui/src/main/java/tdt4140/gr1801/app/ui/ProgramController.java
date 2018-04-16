@@ -229,6 +229,10 @@ public class ProgramController implements TabController {
 	@FXML 
 	public void editStrength() {
 		tableview.setEditable(true);
+		colName.setEditable(true);
+		colWeight.setEditable(true);
+		colSets.setEditable(true);
+		colReps.setEditable(true);
 		updateProgram_button.setDisable(false);
 	}
 	
@@ -257,14 +261,19 @@ public class ProgramController implements TabController {
 			DayProgram dp = new DayProgram(weekday, duration, distance, speed, descr, exercises);
 			client.createWeeklyProgram(dp);
 			updateProgram_button.setDisable(true);
+			tableview.setEditable(false);
+			colName.setEditable(false);
+			colWeight.setEditable(false);
+			colSets.setEditable(false);
+			colReps.setEditable(false);
 		}
 	}
 	
 	@FXML
 	public void nameChanged(CellEditEvent<Exercise, String> event) {
-		String newName = event.getNewValue();
+		Exercise exerciseSelected = tableview.getSelectionModel().getSelectedItem();
 		try {
-			event.getRowValue().setName(newName);
+			exerciseSelected.setName(event.getNewValue());
 		} catch(Exception e) {
 			System.out.println("Name is not valid");
 		}
@@ -272,9 +281,9 @@ public class ProgramController implements TabController {
 	
 	@FXML
 	public void weightChanged(CellEditEvent<Exercise, String> event) {
-		String newWeight = event.getNewValue();
+		Exercise exerciseSelected = tableview.getSelectionModel().getSelectedItem();
 		try {
-			event.getRowValue().setWeight(Double.parseDouble(newWeight));
+			exerciseSelected.setWeight(Double.parseDouble(event.getNewValue()));
 		} catch(Exception e) {
 			System.out.println("Weight is not valid");
 		}
@@ -282,13 +291,14 @@ public class ProgramController implements TabController {
 	
 	@FXML
 	public void repsChanged(CellEditEvent<Exercise, String> event) {
+		Exercise exerciseSelected = tableview.getSelectionModel().getSelectedItem();
 		String newReps = event.getNewValue();
 		try {
 			List<Integer> reps = new ArrayList<>();
 			for (int i = 0; i < newReps.length(); i+=2) {
 				reps.add(Integer.parseInt(""+newReps.charAt(i)));
 			}
-			event.getRowValue().setRepsPerSet(reps);
+			exerciseSelected.setRepsPerSet(reps);
 		} catch(Exception e) {
 			System.out.println("Reps is not valid");
 		}
