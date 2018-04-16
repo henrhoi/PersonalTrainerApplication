@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import org.apache.http.client.ClientProtocolException;
 
+import javafx.scene.control.TextField;
 import junit.framework.TestCase;
 
 public class PersonalTrainerTest extends TestCase{
@@ -39,8 +40,48 @@ public class PersonalTrainerTest extends TestCase{
 		Client clientTest1 = new Client(81,"Ingalf Randolf",190,pt);
 		pt.removeClient(clientTest1);
 		assertFalse(pt.getClientList().contains(clientTest1));
+		try {
+			pt1.removeClient(c3);
+		} catch (IllegalArgumentException IAE) {
+			// Correct to go
+		} catch (Exception e) {
+			fail();
+		}
 	}
 	
+	/*
+	 public static ArrayList<Boolean> checkAllFields(ArrayList<TextField> fields) {
+        ArrayList<Boolean> correctness = new ArrayList<Boolean>();
+        correctness.add(checkUsername(fields.get(0).getText()));
+        correctness.add(checkFirstName(fields.get(1).getText()));
+        correctness.add(checkLastName(fields.get(2).getText()));
+        correctness.add(checkPhoneNumber(fields.get(3).getText()));
+        correctness.add(checkEmail(fields.get(4).getText()));
+        return correctness;  
+	 */
+	
+	
+	public void testAllFields() {
+		com.sun.javafx.application.PlatformImpl.startup(()->{});
+		TextField tf0 = new TextField();
+		TextField tf1 = new TextField();
+		TextField tf2 = new TextField();
+		TextField tf3 = new TextField();
+		TextField tf4 = new TextField();
+		tf0.setText("testtest");
+		tf1.setText("Test");
+		tf2.setText("Test");
+		tf3.setText("12345678");
+		tf4.setText("test@test.no");
+		ArrayList<TextField> fields = new ArrayList<>();
+		fields.add(tf0);fields.add(tf1);fields.add(tf2);fields.add(tf3);fields.add(tf4);
+		
+		ArrayList<Boolean> correctness_test = new ArrayList<>();
+		correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);
+		assertEquals(correctness_test, PersonalTrainer.checkAllFields(fields));
+		
+		
+	}
 	
 	public void testGetBirthday() {
 		assertEquals(pt.getBirthday(),null);
@@ -84,10 +125,11 @@ public class PersonalTrainerTest extends TestCase{
 		pt.addClient(c1);
 		assertEquals(pt.getClient(c1),c1);
 		try {
-			pt1.addClient(c3);
 			pt1.getClient(c3);
 		} catch (IllegalArgumentException IAE) {
-			System.err.println(IAE);
+			// Correct to go
+		} catch (Exception e) {
+			fail();
 		}
 	}
 	
