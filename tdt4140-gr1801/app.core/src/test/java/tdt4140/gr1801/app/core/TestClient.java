@@ -1,6 +1,9 @@
 package tdt4140.gr1801.app.core;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import junit.framework.TestCase;
 
 public class TestClient extends TestCase{
@@ -43,55 +46,27 @@ public class TestClient extends TestCase{
 	}
 	
 	public void testGetId() {
-		assertEquals(1,client.getId());
-	}
-	
-	public void testFatMap() {
-		assertEquals(0.2, client.getFatMap().get(date1));
-	}
-	
-	public void testWeightMap() {
-		assertEquals(56.0, client.getWeightMap().get(date1));
-	}
-	
-	public void testName() {
-		assertEquals(true, Client.checkFirstName(client.getName()));
-		assertEquals(true, Client.checkLastName(client.getName()));
-	}
-	
-	public void testHeight() {
-		assertEquals(true, Client.checkHeight(client.getHeight()));
+		assertEquals(client.getId(),1);
 	}
 	
 	public void testGetName() {
-		assertEquals("Vilde", client.getName());
+		assertEquals(client.getName(),"Vilde");
 	}
 	
 	public void testGetHeight() {
-		assertEquals(170, client.getHeight());
+		assertEquals(Client.checkHeight(client.getHeight()),true);
 	}
 	
 	public void testGetPersonalTrainer() {
-		assertEquals(this.pt.getUsername(), client.getPersonalTrainer());
+		assertEquals(client.getPersonalTrainer(),this.pt.getUsername());
 	}
 	
-	public void testGetFat() {
-		assertEquals(0.22, client.getFat(this.date3));
+	public void testGetPersonalTrainerObject(){
+		assertEquals(client.getPersonalTrainerObject(),this.pt);
 	}
-
 	
-	public void testExceptionsInGetFat() {
-		try {
-			@SuppressWarnings("unused")
-			Double fat = client.getFat(date5);
-			fail();
-		}
-		catch (IllegalArgumentException IAE) {
-		}
-	}
-
 	public void testGetWeight() {
-		assertEquals(56.0, client.getWeight(date1));
+		assertEquals(client.getWeight(date1),56.0);
 	}
 	
 	public void testExceptionsInGetWeight() {
@@ -102,11 +77,68 @@ public class TestClient extends TestCase{
 		catch (IllegalArgumentException IAE) {
 		}
 	}
+	
+	public void testGetStrengthList() {
+		Strength e1 = new Strength("20180101-1400",4,null);
+		Strength e2 = new Strength("20180101-1500",30,null);
+		List<Strength> testList = new ArrayList<Strength>();
+		testList.add(e1);
+		testList.add(e2);
+		client.addStrengthTraining(e1);
+		client.addStrengthTraining(e2);
+		assertEquals(client.getEnduranceList(),testList);
+	}
 
-	public void testGetNutrition() {
-		assertEquals(n1,client.getNutrition(date1));
+	public void testGetEnduranceList() {
+		Endurance e1 = new Endurance("20180101-1400",4,0.5,4);
+		Endurance e2 = new Endurance("20180101-1500",2,0.5,4);
+		List<Endurance> testList = new ArrayList<Endurance>();
+		testList.add(e1);
+		testList.add(e2);
+		client.addEnduranceTraining(e1);
+		client.addEnduranceTraining(e2);
+		assertEquals(client.getEnduranceList(),testList);
 	}
 	
+	public void testGetNutritionList() {
+		List<Nutrition> testList = new ArrayList<Nutrition>();
+		testList.add(n1);
+		testList.add(n2);
+		testList.add(n3);
+		testList.add(n4);
+		assertEquals(client.getNutritionList(),testList);
+	}
+	
+	// Axel 
+	public void testGetDayProgramList() {
+		// legg til kode
+	}
+	
+	public void testGetWeightMap() {
+		assertEquals(client.getWeightMap().get(date1),56.0);
+	}
+	
+	public void testGetFatMap() {
+		assertEquals(client.getFatMap().get(date1),0.2);
+	}
+	
+	public void testGetFat() {
+		assertEquals(client.getFat(this.date3),0.22);
+	}
+	
+	public void testExceptionsInGetFat() {
+		try {
+			@SuppressWarnings("unused")
+			Double fat = client.getFat(date5);
+			fail();
+		}
+		catch (IllegalArgumentException IAE) {
+		}
+	}
+	
+	public void testGetNutrition() {
+		assertEquals(client.getNutrition(date1),n1);
+	}
 	
 	public void testExceptionsInGetNutrition() {
 		try {
@@ -116,14 +148,15 @@ public class TestClient extends TestCase{
 		catch (IllegalArgumentException IAE) {
 		}
 	}
-
-	public void testAddFat() {
-		try {
-			client.addFat(date1, -1.0);
-			fail();
-		}
-		catch (IllegalArgumentException IAE) {
-		}
+	
+	// Martin
+	public void testGetImage() {
+		// legg til kode
+	}
+	
+	//Martin
+	public void testGetPictureDates() {
+		// legg til kode
 	}
 	
 	public void testAddWeight() {
@@ -134,5 +167,42 @@ public class TestClient extends TestCase{
 		catch (IllegalArgumentException IAE) {
 		}
 	}
+	
+	public void testAddFat() {
+		try {
+			client.addFat(date1, -1.0);
+			fail();
+		}
+		catch (IllegalArgumentException IAE) {
+		}
+	}
+	
+	public void testAddNutrition() {
+		Nutrition n5 = new Nutrition("20180101-1400",1688, 62, 78, 203, 1);
+		client.addNutrition(n5);
+		assertEquals(client.getNutritionList().contains(n5),true);
+	}
+	
+	public void testAddStrengthTraining() {
+		Strength test = new Strength("20180101-1400", 30,null);
+		client.addStrengthTraining(test);
+		assertEquals(client.getStrengthList().contains(test),true);
+	}
+ 
+	public void testAddEnduranceTraining() {
+		Endurance test = new Endurance("20180101-1400",5,10,300);
+		client.addEnduranceTraining(test);
+		assertEquals(client.getEnduranceList().contains(test),true);
+	}
+	
+	public void testCheckName() {
+		assertEquals(Client.checkFirstName(client.getName()),true);
+		assertEquals(Client.checkLastName(client.getName()),true);
+	}
+	
+	public void testCheckHeight() {
+		assertEquals(client.checkHeight(client.getHeight()),true);
+	}
+	
 }	
 
