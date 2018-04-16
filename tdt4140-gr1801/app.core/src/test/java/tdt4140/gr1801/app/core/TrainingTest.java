@@ -49,6 +49,11 @@ public class TrainingTest extends TestCase{
 		}
 	}
 	
+	public void testNullToString(){
+		Endurance nullerud = null;
+		assertEquals(null, nullerud);
+	}
+	
 	public void testGetDate() {
 		assertEquals(date, endurance.getDate());
 	}

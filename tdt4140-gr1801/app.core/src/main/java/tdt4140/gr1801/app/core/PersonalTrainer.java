@@ -63,8 +63,7 @@ public class PersonalTrainer {
 	public PersonalTrainer() {
 		
 	}
-	
-	// Konstruktør som tar inn PT_ID som input, returnerer et PT-objekt fra DB, dersom brukernavnet er gyldig
+	// constructor that has PT_ID as input and returns a PT-object from the database if the username is valid
 	public PersonalTrainer(String username) throws ClientProtocolException, IOException {
 		String data = GetURL.getRequest("/pt/"+username);
 		JSONObject json = new JSONArray(data).getJSONObject(0);
@@ -73,16 +72,14 @@ public class PersonalTrainer {
 		this.email = json.getString("Email");
 		this.phoneNumber = json.getString("Phonenr");
 		this.birthday = json.getString("Birthday");
-		
 	}
 	
 	public static boolean checkUsername(String username) {
-		//needs check if username is taken i database.
 		return username.matches("[A-Za-z0-9]+");
 	}
 	
 	
-	//First and last name must only consist of letters. Can allow symbols as well if we find it necessary.
+	// first and last name must only consist of letters. Can allow symbols as well if we find it necessary.
 	public static boolean checkFirstName(String firstName) {
 		return (firstName.matches("[a-zA-Z]+"));
 	}
@@ -91,8 +88,7 @@ public class PersonalTrainer {
 		return (lastName.matches("[a-zA-Z]+"));
 	}
 	
-	
-	//Assumes all types of Norwegian phone numbers. Must contain 8 numbers.
+	// assumes all types of Norwegian phone numbers. Must contain 8 numbers.
 	public static boolean checkPhoneNumber(String phoneNumber) {
 		return (phoneNumber.length() == 8 && phoneNumber.matches("[0-9]+"));
 	}
@@ -123,7 +119,7 @@ public class PersonalTrainer {
 		if(!clientList.contains(client)) {
 			throw new IllegalArgumentException("Client is not in client list");
 		}
-		clientList.add(client);
+		clientList.remove(client);
 	}
 	
 	public Client getClient(Client client) throws IllegalArgumentException{
@@ -139,8 +135,7 @@ public class PersonalTrainer {
 	
 	
 	
-	// OPPRETTELSE AV PT I DB:
-	//Metode som setter inn en PT i databasen - skal denne legges inn i konstruktoeren til PT. 
+	// creating PersonalTrainer in the database
 	public void createPT(String passwrd) throws IOException  {
 		JSONObject json = new JSONObject();
 		String salt = LoginModule.generateSalt();
@@ -152,23 +147,16 @@ public class PersonalTrainer {
 		json.put("Email", this.email);
 		json.put("Birthday", this.birthday);
 		json.put("Phonenr", this.phoneNumber);
-		System.out.println(json);
-		String respons = GetURL.postRequest("/signup/pt", json);
-		System.out.println(respons);
+		GetURL.postRequest("/signup/pt", json);
 	}
 	
 	
-	
-	//ikke testet - vilde 
 	public void deleteClient(String passwrd, int clientID) throws IOException, NoSuchAlgorithmException, JSONException {
 		JSONObject json = new JSONObject();
 		json.put("PT_ID", this.username);
 		json.put("Passwrd", passwrd);
 		json.put("ClientID", clientID);
-		System.out.println(json);
 		String respons = GetURL.postRequest("/client/remove", json);
-		System.out.println(respons);
-		
 		for(Client client : clientList) {
 			if(client.getId() == clientID){
 				clientList.remove(client);
@@ -177,7 +165,6 @@ public class PersonalTrainer {
 		}
 	}
 	
-	// Må testes
 	public void getPTClients() throws ClientProtocolException, IOException {
 		String data = GetURL.getRequest("/client/all/"+this.username);
 		JSONArray json = new JSONArray(data);
@@ -187,8 +174,7 @@ public class PersonalTrainer {
 			int id = object.getInt("ClientID");
 			int height = object.getInt("Height");
 			int maxPulse = object.getInt("MaxPulse");
-			
-			//La til kommentar som fjerner error om at client aldri blir brukt
+			// comment that removes error that client is never used
 			@SuppressWarnings("unused")
 			Client client = new Client(id, navn, height, this, maxPulse);
 		}
@@ -201,10 +187,7 @@ public class PersonalTrainer {
 			json.put("PT_ID", this.username);
 			json.put("Passwrd", LoginModule.hashSha256(new_password, salt));
 			json.put("Salt", salt);
-			System.out.println(json);
-			String respons = GetURL.postRequest("/pt/changepassword", json);
-			System.out.println(respons);
-			
+			GetURL.postRequest("/pt/changepassword", json);
 		}
 		return false;
 	}

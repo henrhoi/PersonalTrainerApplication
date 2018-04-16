@@ -57,6 +57,14 @@ public class EnduranceTest extends TestCase{
 		assertTrue(endurance.compareTo(endurance2) < 0);
 		
 	}
+	
+	public void testGetMaxPulse() {
+		assertEquals(this.endurance.getMaxPulse(),200);
+	}
+	
+	public void testGetAvgPulse() {
+		assertEquals(this.endurance.getAvgPulse(),188);
+	}
 
 	
 }
