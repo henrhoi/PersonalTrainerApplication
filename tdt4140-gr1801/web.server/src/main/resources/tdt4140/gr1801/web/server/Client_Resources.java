@@ -112,12 +112,15 @@ public class Client_Resources {
 					statements.get(i).execute();
 					System.out.println("Deleting " + beingDeleted.get(i));
 				}
+				//If everything went ok a "201 CREATED" response will be sent with a corresponding message
 				return Response.status(201).entity(username + " with data was deleted in database if all input were correct").build(); 
     		} else {
-    			return Response.status(201).entity("Wrong username or password. Please try again.").build(); 
-			}
+    			//If the input was wrong a "400 BAD REQUEST" response will be sent
+    			return Response.status(400).entity("Wrong username or password. Please try again.").build(); 
+    			}
 		} else {
-			return Response.status(201).entity("This client does not belong to "+username).build(); 
+			//If the input was wrong a "400 BAD REQUEST" response will be sent
+			return Response.status(400).entity("This client does not belong to "+username).build(); 
 		}
     }
     
