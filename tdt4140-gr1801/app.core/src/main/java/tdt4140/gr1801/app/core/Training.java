@@ -5,12 +5,12 @@ package tdt4140.gr1801.app.core;
 
 public abstract class Training {
 
-	//Date format "yyyymmdd-xxxx"
-
-	protected String date;
+	protected String date;  //Date format: "yyyymmdd-xxxx"
 	protected int duration; // In minutes
 	
+	
 	public Training(String date, int duration) {
+		// Checking if duration valid
 		if (duration < 0) {
 			throw new IllegalArgumentException("Duration cannot be negative");
 		}
@@ -18,6 +18,8 @@ public abstract class Training {
 		this.date = date;
 	}
 
+	
+	// Getters:
 	public String getDate() {
 		return date;
 	}

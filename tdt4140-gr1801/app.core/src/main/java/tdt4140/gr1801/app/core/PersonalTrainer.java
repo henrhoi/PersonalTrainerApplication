@@ -158,17 +158,12 @@ public class PersonalTrainer {
 	}
 	
 	
-	
-	//ikke testet - vilde 
 	public void deleteClient(String passwrd, int clientID) throws IOException, NoSuchAlgorithmException, JSONException {
 		JSONObject json = new JSONObject();
 		json.put("PT_ID", this.username);
 		json.put("Passwrd", passwrd);
 		json.put("ClientID", clientID);
-		System.out.println(json);
 		String respons = GetURL.postRequest("/client/remove", json);
-		System.out.println(respons);
-		
 		for(Client client : clientList) {
 			if(client.getId() == clientID){
 				clientList.remove(client);
