@@ -114,6 +114,7 @@ public class TestClient extends TestCase{
 		assertEquals(test, client.getDayProgramList());
 	}
 	
+	@SuppressWarnings("restriction")
 	public void testGetPictureDates() {
 		com.sun.javafx.application.PlatformImpl.startup(()->{});
 		Image img = new Image("https://i.imgur.com/LlXkC4gb.jpg");

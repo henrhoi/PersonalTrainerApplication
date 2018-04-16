@@ -51,6 +51,7 @@ public class PersonalTrainerTest extends TestCase{
 	
 	
 	
+	@SuppressWarnings("restriction")
 	public void testAllFields() {
 		com.sun.javafx.application.PlatformImpl.startup(()->{});
 		TextField tf0 = new TextField();
