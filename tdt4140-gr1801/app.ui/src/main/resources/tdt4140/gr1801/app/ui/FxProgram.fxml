@@ -22,10 +22,10 @@
                <children>
                   <TableView fx:id="tableview" layoutX="5.0" layoutY="123.0" prefHeight="204.0" prefWidth="362.0">
                     <columns>
-                      <TableColumn fx:id="colName" onEditCommit="#nameChanged" prefWidth="109.60003662109375" text="Name" />
-                      <TableColumn fx:id="colWeight" onEditCommit="#weightChanged" prefWidth="76.79998779296875" text="Weight (kg)" />
-                        <TableColumn fx:id="colSets" onEditCommit="#setsChanged" prefWidth="64.0" text="Sets" />
-                        <TableColumn fx:id="colReps" onEditCommit="#repsChanged" prefWidth="110.40003967285156" text="Repetitions" />
+                      <TableColumn fx:id="colName" prefWidth="109.60003662109375" text="Name" />
+                      <TableColumn fx:id="colWeight" prefWidth="76.79998779296875" text="Weight (kg)" />
+                        <TableColumn fx:id="colSets" prefWidth="64.0" text="Sets" />
+                        <TableColumn fx:id="colReps" prefWidth="110.40003967285156" text="Repetitions" />
                     </columns>
                   </TableView>
                   <Label layoutX="127.0" layoutY="55.0" text="Strength Exercise">
