@@ -6,7 +6,8 @@ I tillegg har utviklingen fulgt kodekonvensjonene og retningslinjene for bruk av
 
 Vi har valgt å lage en applikasjon der en personlig trener kan følge opp sine klienter. PT-en kan navigere mellom klientene og se informasjon om utholdenhetsøkter, styrkeøkter, kosthold og treningsprogrammer. Under er en liten demo som viser applikasjonen mens den kjører.
 
-[gif](https://imgur.com/GCzBI1P)
+Illustrasjon av applikasjonen i bruk:
+[gif](https://i.imgur.com/GCzBI1P.mp4)
 
 
 ## Hvordan bruke applikasjonen
