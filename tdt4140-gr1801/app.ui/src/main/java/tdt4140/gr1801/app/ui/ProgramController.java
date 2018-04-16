@@ -68,7 +68,7 @@ public class ProgramController implements TabController {
     
     
 	private Client client;
-	private PersonalTrainer pt;
+	private PersonalTrainer pt;	
 	
 	
 	public ProgramController(PersonalTrainer pt, Client client) {
