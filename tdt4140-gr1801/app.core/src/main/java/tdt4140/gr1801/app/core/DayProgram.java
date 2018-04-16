@@ -1,8 +1,9 @@
 package tdt4140.gr1801.app.core;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class DayProgram {
+public class DayProgram implements Comparable<DayProgram>{
 	
 	
 	private String weekday;
@@ -60,6 +61,13 @@ public class DayProgram {
 	@Override
 	public String toString() {
 		return weekday;
+	}
+
+
+	@Override
+	public int compareTo(DayProgram o) {
+		List<String> weekdays = Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+		return weekdays.indexOf(this.getWeekday()) - weekdays.indexOf(o.getWeekday());
 	}
 	
 

@@ -20,8 +20,10 @@ import org.json.JSONObject;
 
 
 
+
 @Path("/weeklyprogram")
 public class Program_Resources {
+	
 	
 	
 	@GET
@@ -37,7 +39,7 @@ public class Program_Resources {
 	}
 	
 	@POST
-    @Path("/client")
+	@Path("/client")
     @Consumes(MediaType.APPLICATION_JSON)
     public static void createWeeklyProgram(String data) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
     	JSONObject json = new JSONObject(data);
