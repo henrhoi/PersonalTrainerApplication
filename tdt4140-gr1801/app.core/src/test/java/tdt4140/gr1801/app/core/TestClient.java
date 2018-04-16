@@ -3,6 +3,7 @@ package tdt4140.gr1801.app.core;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.scene.image.Image;
@@ -46,6 +47,8 @@ public class TestClient extends TestCase{
 		client.addWeight(date2,56.5);
 		client.addWeight(date3,57);
 		client.addWeight(date4,57.2);
+		
+
 		
 		
 		
@@ -94,6 +97,23 @@ public class TestClient extends TestCase{
 		catch (IllegalArgumentException IAE) {
 		}
 	}
+	
+	
+	public void testGetProgram() {
+		ArrayList<DayProgram> test = new ArrayList<DayProgram>();
+		assertEquals(test, client.getDayProgramList());
+	}
+	
+	public void testGetPictureDates() {
+		com.sun.javafx.application.PlatformImpl.startup(()->{});
+		Image img = new Image("https://i.imgur.com/LlXkC4gb.jpg");
+		client.addPicture(date, img);
+		ArrayList<String> test = new ArrayList<String>();
+		test.add(date);
+		assertEquals(test, client.getPictureDates());
+		assertEquals(img, client.getImage(date));
+	}
+	
 	
 	public void testGetStrengthList() {
 		List<Exercise> testExercises = new ArrayList<Exercise>();
