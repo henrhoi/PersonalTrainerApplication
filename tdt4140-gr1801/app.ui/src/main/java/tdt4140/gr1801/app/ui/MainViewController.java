@@ -1,6 +1,5 @@
 package tdt4140.gr1801.app.ui;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
@@ -41,6 +40,9 @@ import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 import tdt4140.gr1801.web.server.LoginModule;
+
+//This is the controller for the general app. Here get the overview over each client as well as a profile for the PT
+//All the info about each client is aligned in the tabs overview, Strength, Endurance, Nutrition and Program
 
 public class MainViewController implements Controller{
 	
@@ -147,8 +149,7 @@ public class MainViewController implements Controller{
 		Controller controller = new AddClientController(pt, this);
 		URL path = getClass().getResource("FxAddClient.fxml");
 		SceneLoader.setScene(stage, path, controller);
-		((AddClientController) controller).update();
-		
+		((AddClientController) controller).update();	
 	}
 	
 	//Action when choosing client from clientlist
@@ -171,6 +172,7 @@ public class MainViewController implements Controller{
 		PTInfoPane.toFront();
 	}
 	
+	
 	//This method should be used when we add functionality for choosing clients inn a menu
 	public void changeClientInTabs(Client client) {
 		for(TabController c : tabControllers) {
@@ -178,6 +180,7 @@ public class MainViewController implements Controller{
 			c.updateInfo();
 		}
 	}
+	
 	
 	public void setClientListviewNavigationLogic(){
 		// Adding logic for updating view when different clients gets selected.
@@ -209,7 +212,6 @@ public class MainViewController implements Controller{
 				hideClientList();
 			}
 		});
-
 	}
 	
 	
@@ -283,7 +285,6 @@ public class MainViewController implements Controller{
 							Thread.sleep(3000);
 							passwordChanged.setVisible(false);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}
@@ -299,17 +300,17 @@ public class MainViewController implements Controller{
 					oldPasswordStyle2.add("error");
 				}
 			}
-			
-		} else {
+		}	
+		else {
 			notValid.setVisible(true);
 			ObservableList<String> passwordStyle = oldPasswordField.getStyleClass();
 
 			if(!passwordStyle.contains("error")) {
 				passwordStyle.add("error");
-			}
-			
+			}		
 		}
 	}
+	
 	
 	@FXML
 	public void backToMainview() {
@@ -319,7 +320,6 @@ public class MainViewController implements Controller{
 			URL path = getClass().getResource("FxMainView.fxml");
 			SceneLoader.setScene(stage, path, this);
 			this.updateInfo();
-			System.out.println("Back to mainview.");			
 		}
 		
 	}

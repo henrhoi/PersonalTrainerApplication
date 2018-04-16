@@ -15,6 +15,11 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import tdt4140.gr1801.web.server.LoginModule;
 
+
+//This class controls the login window. Whenever you type in the correct password for a user, you will be 
+//redirected to the mainview for that PT.
+//You can also create a new PT.
+
 public class LoginController implements Controller{
 	
 	@FXML

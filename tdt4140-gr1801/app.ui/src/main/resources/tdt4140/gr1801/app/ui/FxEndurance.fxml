@@ -1,33 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" stylesheets="@stylesheets/MainViewStyle.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="#829764" layoutX="468.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DISTANCE" wrappingWidth="115.75653076171875">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font></Text>
-      <Text fill="#829764" layoutX="330.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DURATION" />
-      <TextField fx:id="distance_field" disable="true" layoutX="456.0" layoutY="122.0" prefHeight="131.0" prefWidth="185.0" styleClass="totalDistanceField" stylesheets="@stylesheets/ChartsStyle.css">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="avg_speed_field" disable="true" layoutX="484.0" layoutY="372.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <Text fill="#829764" layoutX="486.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG SPEED" />
-      <TextField fx:id="cal_burned_field" disable="true" layoutX="642.0" layoutY="372.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <Text fill="#829764" layoutX="636.0" layoutY="426.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAL BURNED" />
-      <TextField fx:id="duration_field" disable="true" layoutX="333.0" layoutY="372.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
-      <ListView fx:id="listview" prefHeight="640.0" prefWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" />
-      <Circle fill="#1f93ff00" layoutX="523.0" layoutY="193.0" radius="103.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="4.0" />
-      <Circle fill="#1f93ff00" layoutX="360.0" layoutY="398.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
-      <Circle fill="#1f93ff00" layoutX="516.0" layoutY="398.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
-      <Circle fill="#1f93ff00" layoutX="672.0" layoutY="398.0" radius="56.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+      <HBox minHeight="500.0" minWidth="700.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ListView fx:id="listview" maxWidth="115.0" minWidth="115.0" stylesheets="@stylesheets/MainViewStyle.css" HBox.hgrow="ALWAYS" />
+            <HBox alignment="CENTER" prefHeight="500.0" prefWidth="503.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <AnchorPane minHeight="500.0" minWidth="485.0" prefWidth="530.0">
+                     <children>
+                        <AnchorPane layoutX="370.0" layoutY="67.0" prefWidth="141.0">
+                           <children>
+                              <TextField fx:id="max_pulse_field" disable="true" layoutX="9.0" layoutY="64.0" prefHeight="40.0" prefWidth="63.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+                              <Text fill="#829764" layoutX="8.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MAX PULSE" />
+                              <TextField fx:id="avg_pulse_field" disable="true" layoutX="93.0" layoutY="67.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+                              <Text fill="#829764" layoutX="95.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG PULSE" />
+                              <Line endX="10.0" endY="-30.0" layoutX="82.0" layoutY="91.0" opacity="0.5" startX="-10.0" startY="30.0" stroke="#64754d" strokeWidth="3.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="163.0" layoutY="87.0">
+                           <children>
+                              <Circle fill="#1f93ff00" layoutX="93.0" layoutY="63.0" radius="80.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="4.0" />
+                              <TextField fx:id="distance_field" disable="true" layoutX="25.0" layoutY="10.0" prefHeight="111.0" prefWidth="167.0" styleClass="totalDistanceField" stylesheets="@stylesheets/ChartsStyle.css">
+                                 <font>
+                                    <Font size="48.0" />
+                                 </font>
+                              </TextField>
+                              <Text fill="#829764" layoutX="36.0" layoutY="158.431640625" strokeType="OUTSIDE" strokeWidth="0.0" text="TOTAL DISTANCE" wrappingWidth="115.75653076171875">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </AnchorPane>
+                        <HBox alignment="CENTER" layoutY="246.0" prefHeight="154.0" prefWidth="485.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <AnchorPane HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Circle centerX="40.0" centerY="40.0" fill="#1f93ff00" layoutX="41.0" layoutY="30.0" radius="60.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+                                    <TextField fx:id="duration_field" disable="true" layoutX="45.0" layoutY="52.0" prefHeight="20.0" prefWidth="71.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+                                    <Text fill="#829764" layoutX="44.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DURATION" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Circle centerX="40.0" centerY="40.0" fill="#1f93ff00" layoutX="41.0" layoutY="30.0" radius="60.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+                                    <TextField fx:id="avg_speed_field" disable="true" layoutX="45.0" layoutY="52.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+                                    <Text fill="#829764" layoutX="44.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="AVG SPEED" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Circle centerX="40.0" centerY="40.0" fill="#1f93ff00" layoutX="50.0" layoutY="30.0" radius="60.0" stroke="#64754d" strokeType="INSIDE" strokeWidth="3.0" />
+                                    <TextField fx:id="cal_burned_field" disable="true" layoutX="54.0" layoutY="52.0" prefHeight="27.0" prefWidth="70.0" styleClass="enduranceField" stylesheets="@stylesheets/ChartsStyle.css" />
+                                    <Text fill="#829764" layoutX="48.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CAL BURNED" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <Separator prefWidth="200.0" visible="false" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
    </children>
-</Pane>
+</AnchorPane>

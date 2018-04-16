@@ -45,11 +45,16 @@ import tdt4140.gr1801.web.server.LoginModule;
 import java.util.Optional;
 
 
+
+//This class controls the overview tab, and contains two tabs; client info and progression.
+//client info contains the clients info as well as a graph with both weight info and fat info
+//progression contains a before picture, and after pics. You can view all the 
+
 public class OverviewController implements TabController {
 	
 	
 	@FXML
-	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, errorLabel, beforeDateLabel, afterDateLabel;
+	Label idLabel,nameLabel,heightLabel,strengthLabel,enduranceLabel,nutritionLabel, errorLabel, beforeDateLabel, afterDateLabel, maxPulseLabel;
 	
 	@FXML
 	AnchorPane infoTab;
@@ -88,13 +93,17 @@ public class OverviewController implements TabController {
 		updatePictures();
 	}
 	
+	
+	//Setting the info about the client on the left side of the tab in labels
 	private void updatePersonas() {
 		this.idLabel.setText(String.format("ClientID: %s", this.client.getId()));
 		this.nameLabel.setText(String.format("Name: %s", this.client.getName()));
 		this.heightLabel.setText(String.format("Height: %s", this.client.getHeight()));
+		this.maxPulseLabel.setText(String.format("Max pulse: %s", this.client.getMaxPulse()));
 		this.strengthLabel.setText(String.format("No. of Strengths: %s", this.client.getStrengthList().size()));
 		this.enduranceLabel.setText(String.format("No. of Endurances: %s", this.client.getEnduranceList().size()));
 		this.nutritionLabel.setText(String.format("No. of Nutritions: %s", this.client.getNutritionList().size()));
+
 	}
 	
 	private void updateWeightAndFatChart() {
@@ -179,7 +188,7 @@ public class OverviewController implements TabController {
 			
 		}
 		
-		//setting the after image. Will add event handler for changing image
+		//setting the after image
 		if(myDates.size() == 1)  {			
 			afterImage.setImage(new Image("https://stmichaelsknightsofcolumbus.com/wordpress/wp-content/uploads/2013/08/Photo-not-available.jpg"));
 			
@@ -190,7 +199,7 @@ public class OverviewController implements TabController {
 		}
 	}
 	
-	
+	//Event handler for changing the picture in the app
 	public void addPictureNavigationLogic() {
 		
 		//When you choose an element, it will change the picture to that element.

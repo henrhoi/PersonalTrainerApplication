@@ -80,12 +80,13 @@ public final class QueryFactory {
 	}
 	
 	// PreparedStatement for innsetting av Client i databasen
-	public static PreparedStatement insertClient(String Navn, int Height, String PT_ID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+	public static PreparedStatement insertClient(String Navn, int Height, String PT_ID, int MaxPulse) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
 		Connection conn = DBConnection.getDBConnection();
-		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Klient(Navn, Height, PT_ID)  VALUES (?, ?, ?)");  
+		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Klient(Navn, Height, PT_ID, MaxPulse)  VALUES (?, ?, ?, ?)");  
 		stmt.setString(1, Navn);
 		stmt.setInt(2, Height);
 		stmt.setString(3, PT_ID);
+		stmt.setInt(4, MaxPulse);
 		return stmt;
 	}
 	
