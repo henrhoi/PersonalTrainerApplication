@@ -1,7 +1,6 @@
 package tdt4140.gr1801.app.ui;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -15,20 +14,14 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellEditEvent;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 
 import java.io.File;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 
@@ -36,13 +29,10 @@ import com.itextpdf.text.DocumentException;
 
 import javafx.scene.control.Button;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.converter.DoubleStringConverter;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 import tdt4140.gr1801.app.core.pdfcreator.PdfCreator;
-import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.DayProgram;
 import tdt4140.gr1801.app.core.Exercise;
 

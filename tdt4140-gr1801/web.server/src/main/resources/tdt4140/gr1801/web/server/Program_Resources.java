@@ -1,22 +1,12 @@
 package tdt4140.gr1801.web.server;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
-import org.apache.http.client.ClientProtocolException;
-import org.json.JSONObject;
 
 //This is one of our API's endpoint "/weeklyprogram", which specifies a GET-request in order to get Program-data
 

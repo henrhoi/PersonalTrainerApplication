@@ -8,7 +8,6 @@ import java.security.NoSuchAlgorithmException;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -30,12 +29,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.Tab;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.ImageViewBuilder;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.application.Application;
 import javafx.stage.Stage;
 
 import tdt4140.gr1801.app.core.Client;
@@ -152,7 +147,7 @@ public class OverviewController implements TabController {
 	}
 	
 	
-	@SuppressWarnings("deprecation")
+
 	@FXML
 	public void updatePictures() {
 		

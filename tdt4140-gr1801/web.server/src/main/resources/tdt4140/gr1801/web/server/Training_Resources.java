@@ -1,7 +1,5 @@
 package tdt4140.gr1801.web.server;
 
-import java.io.IOException;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +9,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
 //This is one of our API's endpoint "/training", which specifies some GET-requests for endurance- and training-data
