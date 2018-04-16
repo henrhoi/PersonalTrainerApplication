@@ -41,6 +41,11 @@ public class StrengthTest extends TestCase {
 		}
 	}
 	
+	public void testCompareStrengthObjects() {
+		Strength s2 = new Strength("20180325-xxxx", 60, Arrays.asList(e1));
+		assertTrue(strength.compareTo(s2) < 0);
+	}
+	
 	
 	
 }
