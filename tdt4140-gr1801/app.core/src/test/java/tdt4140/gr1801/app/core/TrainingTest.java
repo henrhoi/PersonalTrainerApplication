@@ -15,13 +15,13 @@ public class TrainingTest extends TestCase{
 	
 	public void setUp() {
 		date = "20180227-xxxx";
-		endurance = new Endurance(date, 90, 12, 555);
+		endurance = new Endurance(date, 90, 12, 555,200,120);
 		
 		testers = new ArrayList<Endurance>();
 		for (int i = 1 ; i<= 13 ; i++) {
 			String str = i < 10 ? "0"+i : i+"";
 			String dato = "2018-" + str + "-01";
-			testers.add(new Endurance(dato, 90, 12, 555));
+			testers.add(new Endurance(dato, 90, 12, 555,200,120));
 		}
 	}
 	
@@ -47,7 +47,6 @@ public class TrainingTest extends TestCase{
 			}
 			assertEquals(str, test.toString());
 		}
-			
 	}
 	
 	public void testGetDate() {
@@ -62,7 +61,7 @@ public class TrainingTest extends TestCase{
 	public void testNegativeDuration() {
 		try {
 			date = "20180227-xxxx";
-			new Endurance(date, -100, 12, 555);
+			new Endurance(date, -100, 12, 555, 195, 180);
 			fail();
 		}
 		catch
