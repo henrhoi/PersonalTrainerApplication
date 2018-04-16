@@ -1,12 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="@stylesheets/MainViewStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="114.0" layoutY="125.0" text="Program" />
-      <Line endX="500.0" endY="385.0" strokeWidth="4.0" />
+      <ListView fx:id="listview" maxWidth="115.0" minWidth="115.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox layoutX="115.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="361.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" prefHeight="23.0" prefWidth="361.0" styleClass="programLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Strength Exercise">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                 <TableView fx:id="tableview" prefWidth="669.0" stylesheets="@stylesheets/StrengthViewStyle.css" VBox.vgrow="ALWAYS">
+              		<columns>
+                		<TableColumn fx:id="colName" prefWidth="172.41842651367188" text="Name" />
+                  		<TableColumn fx:id="colWeight" prefWidth="102.58161926269531" text="Weight (kg)" />
+                		<TableColumn fx:id="colSets" prefWidth="142.36224365234375" text="Sets" />
+                  		<TableColumn fx:id="colReps" prefWidth="136.63775634765625" text="Repetitions" />
+              		</columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label alignment="CENTER" prefHeight="23.0" prefWidth="370.0" styleClass="programLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Endurance Exercise">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                     <children>
+                        <AnchorPane prefWidth="319.0">
+                           <children>
+                              <TextField fx:id="distance_field" editable="false" layoutX="250.0" layoutY="28.568359375" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <TextField fx:id="duration_field" layoutX="250.0" layoutY="125.568359375" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <TextField fx:id="speed_field" layoutX="250.0" layoutY="221.568359375" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <Text fill="#eeecec" layoutX="258.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance" />
+                              <Text fill="#eeecec" layoutX="260.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+                              <Text fill="#eeecec" layoutX="235.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avgerage speed" />
+                              <TextArea fx:id="description_field" layoutX="25.0" layoutY="50.568359375" prefHeight="214.0" prefWidth="146.0" styleClass="text-area" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <Text fill="#eeecec" layoutX="58.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+                              <Button fx:id="exportButton" layoutX="100.0" layoutY="300.0" mnemonicParsing="false" onAction="#exportPdf" text="Export to PDF" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
-</Pane>
+</AnchorPane>

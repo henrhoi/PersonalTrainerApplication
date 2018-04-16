@@ -20,6 +20,7 @@ import tdt4140.gr1801.app.core.Strength;
 import tdt4140.gr1801.app.core.Exercise;
 
 
+//This class controls the StrengthTab-window, and makes sure things are correctly entered to all the fields.
 public class StrengthController implements TabController {
 	
 	@FXML
@@ -36,13 +37,17 @@ public class StrengthController implements TabController {
 
 	Client client;
 	
+	// Constructior with a input Client
 	public StrengthController(Client client) {
 		this.client = client;
 	}
 	
+	
+	// Method for setting the TabControllers client
 	public void setClient(Client client) {
 		this.client = client;
 	}
+	
 	
 	public void updateInfo() {
 		fillListview();
@@ -51,6 +56,7 @@ public class StrengthController implements TabController {
 	}
 	
 	
+	// Method for filling the ListView with Strength-objects
 	public void fillListview() {
 		// Adding the client's endurance-trainings in the listview
 		ObservableList<Strength> strengthItems = FXCollections.observableArrayList ();
@@ -61,8 +67,11 @@ public class StrengthController implements TabController {
 		listview.setItems(strengthItems);
 	}
 	
+	
+	// Setting logic for navigation such as mouse- and keyboard-events
 	public void setNavigationLogic() {
 		// Adding logic for updating view when different trainings gets selected.
+		
 		// Mouseclick
 		listview.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			@Override
@@ -84,9 +93,9 @@ public class StrengthController implements TabController {
 				updateView(selected);
 			}
 		});
-
 	}
 	
+	// Method for updating the view
 	public void updateView(Strength s) {
 		if (s != null) {
 			duration_field.setText(String.valueOf(s.getDuration()));
@@ -102,6 +111,8 @@ public class StrengthController implements TabController {
 		}
 	}
 
+	
+	// Setting up the Controller
 	@Override
 	public void startup() {
 
@@ -114,6 +125,5 @@ public class StrengthController implements TabController {
 		this.colReps.setCellValueFactory(r -> new SimpleStringProperty(r.getValue().getReps()));
 		setNavigationLogic();
 		updateView(null);
-	}
-		
+	}	
 }

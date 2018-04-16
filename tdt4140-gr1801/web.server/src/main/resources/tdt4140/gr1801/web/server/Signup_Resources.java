@@ -11,11 +11,14 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONObject;
 
+
+//This is one of our API's endpoint "/signup", which specifies some POST-requests for new PTs and clients
+
 @Path("/signup")
 public class Signup_Resources {
 	
-	
-	//Svarer paa HTTP-POST requests, og legger til en PT i database. Forslag til bruk ligger i _main_ i PersonalTrainer.java
+
+	// This answers to HTTP-POST-request on this URL, and adds a PT to the database if JSON in body contains valid information
     @POST
     @Path("/pt")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -30,17 +33,18 @@ public class Signup_Resources {
         String Birthday = json.getString("Birthday");
         String Phonenr = json.getString("Phonenr");
 
-        
+		// Getting PreparedStatement from QueryFactory
         PreparedStatement stmt = QueryFactory.insertPT(PT_ID, Passwrd, Salt, Navn, Email, Birthday, Phonenr);
         stmt.execute();
         
+      //If everything went ok a "201 CREATED" response will be sent with a corresponding message
         return Response.status(201).entity(Navn + " added to PT-table in database if all input were correct").build(); 
     }
     
     
     
     
-    // Denne maa lages i issuen om opprettelse av Klient i database
+	// This answers to HTTP-POST-request on this URL, and inserts a new Client to the database, if JSON in the request's body contains valid information
     @POST
     @Path("/client")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -49,15 +53,15 @@ public class Signup_Resources {
         String Navn = json.getString("Navn");
         int Height = json.getInt("Height");
         String PT_ID = json.getString("PT_ID");
+        int MaxPulse = json.getInt("MaxPulse");
 
-        PreparedStatement stmt = QueryFactory.insertClient(Navn, Height, PT_ID);
+		// Getting PreparedStatement from QueryFactory
+        PreparedStatement stmt = QueryFactory.insertClient(Navn, Height, PT_ID, MaxPulse);
         stmt.execute();
-        return Response.status(201).entity("Navn" + " added to Klient-table in database if all input were correct").build(); 
+        
+      //If everything went ok a "201 CREATED" response will be sent with a corresponding message
+        return Response.status(201).entity(Navn + " added to Klient-table in database if all input were correct").build(); 
     }
     
-    
-
 
 }
-
-

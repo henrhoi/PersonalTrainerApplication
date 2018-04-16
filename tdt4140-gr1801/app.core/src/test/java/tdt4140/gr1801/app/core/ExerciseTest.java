@@ -30,9 +30,9 @@ public class ExerciseTest extends TestCase {
 		assertEquals(3, exercise.getNumberOfSets());
 	}
 	
-	public void testGetTotalReps() {
-		assertEquals(37, exercise.getTotalReps());
-	}
+//	public void testGetTotalReps() {
+//		assertEquals(37, exercise.getTotalReps());
+//	}
 	
 	public void testExerciseWithouthException() {
 		try {
@@ -113,6 +113,12 @@ public class ExerciseTest extends TestCase {
 		}
 	}
 	
+	public void testSetName() {
+		exercise.setName("Deadlift");
+		assertEquals("Deadlift", exercise.getName());
+	}
+	
+	//public void setRepsPerSet()
 	
 	
 }

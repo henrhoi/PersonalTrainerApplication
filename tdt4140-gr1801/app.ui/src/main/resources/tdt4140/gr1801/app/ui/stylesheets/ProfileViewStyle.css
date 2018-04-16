@@ -1,0 +1,16 @@
+
+ /*profile*/
+ 
+ .profilelabel {
+	-fx-text-fill: derive(black,130%); 
+	-fx-font-size: 30px;
+}
+ 
+.profile-button {
+    -fx-graphic: url("../images/profileblue.png");
+    -fx-background-color: transparent;
+}
+#label {
+	-fx-font-size: 10px;
+	-fx-text-fill: derive(#6495ed,40%);
+	}

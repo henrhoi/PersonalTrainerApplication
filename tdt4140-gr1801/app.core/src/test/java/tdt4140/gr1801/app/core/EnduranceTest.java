@@ -10,7 +10,7 @@ public class EnduranceTest extends TestCase{
 	Endurance endurance;
 	
 	protected void setUp() {
-		endurance = new Endurance("20180227-xxxx", 90, 12, 685);
+		endurance = new Endurance("20180227-xxxx", 90, 12, 685, 200, 188);
 	}
 	
 	public void testGetDistance() {
@@ -27,7 +27,7 @@ public class EnduranceTest extends TestCase{
 	
 	public void testNegativeDistance() {
 		try {
-			new Endurance("20180227-xxxx", 10, -12, 685);
+			new Endurance("20180227-xxxx", 10, -12, 685, 195, 178);
 			fail(); // Not supposed to get here
 		}
 		catch (IllegalArgumentException iae) {
@@ -40,7 +40,7 @@ public class EnduranceTest extends TestCase{
 	
 	public void testNegativeCaloriesBurned() {
 		try {
-			new Endurance("20180227-xxxx", 10, 12, -500);
+			new Endurance("20180227-xxxx", 10, 12, -500, 190, 180);
 
 			fail(); // Not supposed to get here
 		}
@@ -51,5 +51,20 @@ public class EnduranceTest extends TestCase{
 			fail(); // Not supposed to get here
 		}
 	}
+	
+	public void testCompareEnduranceObjects() {
+		Endurance endurance2 = new Endurance("20180325-xxxx", 90, 12, 685, 200, 188);
+		assertTrue(endurance.compareTo(endurance2) < 0);
+		
+	}
+	
+	public void testGetMaxPulse() {
+		assertEquals(this.endurance.getMaxPulse(),200);
+	}
+	
+	public void testGetAvgPulse() {
+		assertEquals(this.endurance.getAvgPulse(),188);
+	}
+
 	
 }

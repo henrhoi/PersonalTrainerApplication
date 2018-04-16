@@ -1,14 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="385.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <PieChart fx:id="NutritionPieChart" layoutX="135.0" layoutY="7.0" prefHeight="365.0" prefWidth="361.0" />
-      <ListView fx:id="listview" layoutX="6.0" layoutY="23.0" prefHeight="335.0" prefWidth="115.0" />
-      <Label fx:id="PieChartDataLabel" layoutX="242.0" layoutY="60.0" text="Hover Pie Chart For Info" />
+      <HBox prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ListView fx:id="listview" maxWidth="200.0" minWidth="115.0" prefHeight="254.0" prefWidth="115.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label fx:id="PieChartDataLabel" prefHeight="76.0" prefWidth="176.0" styleClass="hoverForInfo" stylesheets="@stylesheets/ChartsStyle.css" text="Hover Pie Chart For Info" textAlignment="CENTER">
+                     <font>
+                        <Font size="62.0" />
+                     </font>
+                  </Label>
+                  <PieChart fx:id="NutritionPieChart" stylesheets="@stylesheets/ChartsStyle.css" VBox.vgrow="ALWAYS" />
+                  <TextArea fx:id="caloriesText" disable="true" maxHeight="25.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </children>
-</Pane>
+</AnchorPane>

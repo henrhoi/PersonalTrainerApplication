@@ -1,1 +1,281 @@
 /*Should be used on FxMainView*/
+#pane {
+	-fx-background-image: url("../images/background_main.jpg") no-repeat center center fixed;
+	-fx-background-size: cover;
+  	-fx-opacity: 0.3;
+  	}
+  	
+ /*TAB PANEL */
+ .tab .tab-label { 
+    -fx-alignment: center-left;
+    -fx-text-fill: #d7cccc;
+    -fx-font-size: 14px;
+}
+.tab-pane .tab {
+    -fx-background-color: derive(black,53%); 
+}
+
+/*removes tab-bar-background */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0.01;
+}
+
+.tab{
+   -fx-padding: 3 8 7 5;
+}
+
+.button{
+	-fx-background-color: darkgrey;
+	-fx-padding: 4px 15px;
+	-fx-font-size: 13px;  
+	-fx-cursor: hand;
+}
+
+.button:hover {
+	-fx-background-color: #606060;
+	-fx-color: #383838; /* Button text becomes white... */
+	/*-fx-effect: dropshadow( one-pass-box, black , 1px , 1px , 1px , 1px);*/
+}
+
+ .tab:selected .tab-label { 
+    -fx-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-background-color: derive(black,53%); 
+}
+
+ .tab:hover .tab-label { 
+   -fx-alignment: center;
+    -fx-font-size: 16px;
+    -fx-background-color: derive(black,53%); 
+}
+
+/*LABEL */
+#nameOfClient {
+	-fx-text-fill: #d7cccc;
+	-fx-font-size: 25px;
+}
+
+#label {
+	/*<Name of PT>*/
+	-fx-font-size: 10px;
+	-fx-text-fill: derive(#c0c0c0,50%);
+	-fx-opacity: 0.9;
+	}
+	
+.label {
+	-fx-text-fill: #d7cccc;
+	-fx-font-size: 9px;
+}
+
+
+/*BUTTONS */
+/*log-out */
+.log-button {
+    -fx-graphic: url("../images/log.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.log-button:hover {
+    -fx-graphic: url("../images/logred.png");
+    -fx-background-color: transparent;
+}
+
+.log-button:pressed {
+    -fx-graphic: url("../images/logred.png");
+}
+
+/*add client */
+.addClient-button {
+    -fx-graphic: url("../images/plus.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.addClient-button:hover {
+    -fx-graphic: url("../images/plusgreen.png");
+    -fx-background-color: transparent;
+}
+
+/*choose client */
+.client-button {
+    -fx-graphic: url("../images/clientwhite.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.client-button:hover {
+    -fx-graphic: url("../images/clientyellow.png");
+    -fx-background-color: transparent;
+}
+
+.client-button:selected {
+    -fx-graphic: url("../images/clientyellow.png");
+    -fx-background-color: transparent;
+}
+
+/*profile*/
+.profile-button {
+    -fx-graphic: url("../images/profilewhite.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+.profile-button:hover {
+    -fx-graphic: url("../images/profileblue.png");
+    -fx-background-color: transparent;
+}
+
+.backbutton {
+    -fx-graphic: url("../images/arrowwhite.png");
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.backbutton:hover {
+    -fx-graphic: url("../images/arrowgray.png");
+    -fx-background-color: transparent;
+    }
+
+	/*Tooltip */
+		.tooltip {
+		    -fx-background: rgba(30,30,30);
+		    -fx-text-fill: white;
+		    -fx-background-color: transparent;
+		    -fx-background-radius: 6px;
+		    -fx-background-insets: 0;
+		    -fx-padding: 0.667em 0.75em 0.667em 0.75em; 
+		    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 10, 0.0 , 0 , 3 );
+		    -fx-font-size: 0.85em;
+		}
+	
+		/* Tooltip text */
+		.tooltip .tooltiptext {
+		    visibility: hidden;
+		    -fx-text-fill: white;
+		}
+		
+		/* Tooltip hover*/
+		.tooltip:hover .tooltiptext {
+		    visibility: visible;
+		}
+
+/*CLIENTS */
+#clients {
+	-fx-background-color: derive(black,40%);
+	-fx-border-radius: 10em;
+	-fx-text-fill: white;
+}
+
+.list-cell:filled:selected:focused, .list-cell:filled:selected {
+    -fx-background-color: derive(black,28%); /*background when selected */
+    -fx-text-fill: derive(white,10%); /*text fill when selected */
+}
+
+.list-cell:even { /*alternativley odd?*/
+    -fx-background-color: derive(black,39%);
+    	-fx-text-fill: derive(black,120%)
+}
+
+.list-cell:odd { /*alternativley odd?*/
+    -fx-background-color: derive(black,38%); 
+    	-fx-text-fill: derive(black,120%)
+    }
+
+.list-cell:filled:hover {
+    -fx-background-color: #696969;
+    -fx-text-fill: white;
+}
+
+
+	/*SPACE BETWEEN CELLS*/
+	.list-view {
+	    -fx-padding: 0px ; /*minimizing list according to mainview */
+	}
+	
+	.list-cell {
+	    -fx-padding: 15px ; /*sets distance between cells */
+	}
+
+
+	/*SCROLLBAR */
+	.mylistview .scroll-bar:horizontal .track,
+	.mylistview .scroll-bar:vertical .track{
+		-fx-background-color: derive(black,30%); /*fills the area around the scrollbar */
+		-fx-border-color: transparent; /*border around scrollbar */
+		-fx-background-radius: 5em;
+		-fx-border-radius:2em; 
+	}
+	/*horisonal scroller */
+	.mylistview .scroll-bar:horizontal .increment-button ,
+	.mylistview .scroll-bar:horizontal .decrement-button {
+		-fx-padding:0 0 0 10; /*scoller - to remove the left-right scroller*/
+	}
+	
+	/*vertikal scroller */
+	.mylistview .scroll-bar:vertical .increment-button ,
+	.mylistview .scroll-bar:vertical .decrement-button {
+		-fx-padding:0 10 0 0; /* size of up-down scroller*/
+	}
+	
+	/*removes scroller arrows */
+	.mylistview  .scroll-bar .increment-arrow,
+	.mylistview  .scroll-bar .decrement-arrow {
+		-fx-shape: " ";
+		-fx-padding:0;
+	}
+	
+	/* The main scrollbar class, "thumb" */
+	.mylistview .scroll-bar:horizontal .thumb,
+	.mylistview .scroll-bar:vertical .thumb {
+	    -fx-background-color:derive(black,80%); 
+		-fx-background-insets: 1, 0, 0; /*size of scoller according to border*/ 
+		-fx-background-radius: 2em; 
+	
+	}
+	/*OVERVIEW TAB */
+	.overviewLabels {
+		-fx-background-color: transparent; 
+		-fx-text-fill: white; 
+		-fx-font-size: 14px;
+	}
+	.oLabel {
+		-fx-background-color: transparent;
+		-fx-text-fill: white;
+		-fx-font-size: 18px;
+	}
+	
+	/*PROGRAM TAB */
+	.programPane {
+		-fx-background-color:derive(black,60%);
+		-fx-border-color: derive(black,60%);
+	}
+	.splitPane {
+		-fx-background-color:derive(black,30%);
+	}
+	/*transparent divider */
+	.split-pane *.split-pane-divider {
+		-fx-padding: 0 1 0 1;
+	}
+	.programLabel {
+		-fx-text-fill: derive(black, 150%);
+		-fx-font-size: 18px;
+	}
+	
+	.programField {
+	-fx-background-color: transparent;
+	-fx-text-fill: white;
+	-fx-border: 0.5px;
+	-fx-border-color: white;
+	-fx-font-size: 20px;
+	-fx-effect: dropshadow( three-pass-box , rgba(255,255,255,0.5) , 0, 0.0 , 0 , 1);
+	}
+	
+.text-area {
+    -fx-font-family: Consolas;
+    -fx-font-size: 15;
+    -fx-text-fill: #ffffff;
+}
+
+.text-area .content {
+    -fx-background-color: derive(black,60%);
+}
+	

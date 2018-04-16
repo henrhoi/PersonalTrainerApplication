@@ -1,13 +1,18 @@
 package tdt4140.gr1801.app.core;
 
+
+// Class with methods and fields for Endurances
 public class Endurance extends Training implements Comparable<Endurance>{
 
 
 	private double distance; // In km
 	private double averageSpeed; // In km/h
 	private int caloriesBurned;
+	private int maxPulse;
+	private int avgPulse;
 
-	public Endurance(String date, int duration, double distance, int caloriesBurned) {
+	// Constructors with checks on input
+	public Endurance(String date, int duration, double distance, int caloriesBurned, int maxPulse, int avgPulse) {
 		super(date, duration);
 		if (distance < 0) {
 			throw new IllegalArgumentException("Distance cannot be negative");
@@ -16,12 +21,14 @@ public class Endurance extends Training implements Comparable<Endurance>{
 			throw new IllegalArgumentException("Calories burned cannot be negative");
 		}
 		this.distance = distance;
-		this.averageSpeed = distance/((double)(duration)/60);
+		this.averageSpeed = (double)Math.round(distance/((double)(duration)/60) * 10d) / 10d;
 		this.caloriesBurned = caloriesBurned;
+		this.maxPulse = maxPulse;
+		this.avgPulse = avgPulse;
 		
-		// Could be cool with heartbeat-measurements
 	}
 	
+	//Getters: 
 	public double getDistance() {
 		return distance;
 	}
@@ -34,9 +41,12 @@ public class Endurance extends Training implements Comparable<Endurance>{
 		return caloriesBurned;
 	}
 	
-	@Override
-	public String toString() {
-		return date;
+	public int getMaxPulse() {
+		return maxPulse;
+	}
+	
+	public int getAvgPulse() {
+		return avgPulse;
 	}
 
 	@Override

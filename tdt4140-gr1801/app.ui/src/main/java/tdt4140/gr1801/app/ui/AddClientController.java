@@ -11,19 +11,25 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
+
+//This class controls the window for creating a new client to the PT.
 public class AddClientController implements Controller {
 	
 	@FXML
-	TextField first_name_field, last_name_field, height_field;
+	TextField first_name_field, last_name_field, height_field, max_pulse;
 	
 	@FXML
-	Button add_client_button;
+	Button add_client_button,logOffButton;
+	
+	@FXML
+	Label nameOfPT;
 	
 	PersonalTrainer pt;
 	Client client;
@@ -35,22 +41,25 @@ public class AddClientController implements Controller {
 		
 	}
 	
+	public void update() {
+		nameOfPT.setText(pt.getName());
+	}
+	
 	@FXML
 	public void addClient() {
 		
 		// Check fields and include "error" in their styleclass if input is invalid
-		ArrayList<TextField> fields = new ArrayList<>(Arrays.asList(first_name_field, last_name_field, height_field));
+		ArrayList<TextField> fields = new ArrayList<>(Arrays.asList(first_name_field, last_name_field, height_field, max_pulse));
 		fields.stream().forEach(f -> check(f));
 		
 		// Checking if the styleclass of the fields contains "error" (is unvalid input)
 		// Markere ugyldige felter med r�de kanter (CSS)
-		AnchorPane pane = (AnchorPane)first_name_field.getParent();
+		AnchorPane pane = (AnchorPane)first_name_field.getParent().getParent().getParent();
 		List<Node> errors = pane.getChildren().stream().filter(f -> f.getStyleClass().contains("error")).collect(Collectors.toList());
 		// Adding new client to database
 		if (errors.size() == 0) {
 			addClientToDatabase();
-			System.out.println("Success");
-			
+			backToMainview();
 		}
 		else {
 			System.err.println(errors.size() + " felter er ugyldige");
@@ -58,11 +67,13 @@ public class AddClientController implements Controller {
 		
 	}
 	
+	
 	private void addClientToDatabase() {
 		try {
 			String name = first_name_field.getText() + " " + last_name_field.getText();
 			int height = Integer.parseInt(height_field.getText());
-			client = new Client(0, name, height, pt);
+			int maxPulse = Integer.parseInt(max_pulse.getText());
+			client = new Client(0, name, height, pt, maxPulse);
 			client.createClient();
 			
 			
@@ -72,16 +83,24 @@ public class AddClientController implements Controller {
 	}
 	
 	
-	// NB: Doesn't get back to the same mainview as before
+	// NB: Does not go back to same mainview
 	@FXML
 	public void backToMainview() {
 		Stage stage = (Stage)first_name_field.getScene().getWindow();
 		URL path = getClass().getResource("FxMainView.fxml");
 		SceneLoader.setScene(stage, path, mainviewController);
-		mainviewController.updateInfo();
-		System.out.println("Back to mainview.");
-		
+		mainviewController.updateInfo();		
 	}
+	
+	
+	@FXML
+	public void logOff() {
+		Stage stage = (Stage) logOffButton.getScene().getWindow();
+		LoginController controller = new LoginController();
+		URL path = getClass().getResource("FxLogin.fxml");
+		SceneLoader.setScene(stage, path, controller);
+	}
+	
 	
 	private void check(TextField field) {
 		boolean bool;
@@ -91,6 +110,7 @@ public class AddClientController implements Controller {
 		case "first_name_field": bool = Client.checkFirstName(field.getText()); break;
 		case "last_name_field": bool = Client.checkLastName(field.getText()); break;
 		case "height": bool = Client.checkHeight((Integer.parseInt(field.getText()))); break;
+		case "maxPulse": bool = Client.checkmaxPulse((Integer.parseInt(field.getText()))); break;
 		default: bool = true; break;
 		}
 		
@@ -99,10 +119,7 @@ public class AddClientController implements Controller {
 		}
 		else if(style.contains("error") && bool) {
 			style.remove("error");
-		}
-		
+		}		
 	}
 	
-	
-
 }

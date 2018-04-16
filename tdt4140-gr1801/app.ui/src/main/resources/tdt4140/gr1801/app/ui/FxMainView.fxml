@@ -1,73 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="640.0" prefWidth="1038.0" style="-fx-background-color: derive(black,40%) derive(black,40%);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="500.0" prefWidth="700.0">
+      <AnchorPane prefHeight="640.0" prefWidth="99.0" style="-fx-background-color: derive(black,40%);" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <DropShadow color="#e8dfdf" />
+         </effect>
+      </AnchorPane>
+      <VBox fx:id="buttonBox" alignment="TOP_CENTER" prefHeight="640.0" prefWidth="99.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="90.0" prefWidth="700.0">
+            <Button mnemonicParsing="false" onAction="#backToMainview" prefHeight="24.0" prefWidth="29.0" styleClass="backbutton" stylesheets="@stylesheets/MainViewStyle.css">
+               <VBox.margin>
+                  <Insets right="50.0" top="5.0" />
+               </VBox.margin></Button>
+            <VBox alignment="CENTER">
                <children>
-                  <ListView fx:id="clients" prefHeight="102.0" prefWidth="241.0" />
-                  <VBox prefHeight="63.0" prefWidth="100.0">
-                     <children>
-                        <Button fx:id="addClientButton" defaultButton="true" mnemonicParsing="false" onAction="#addClient" prefHeight="48.0" prefWidth="48.0" style="-fx-background-radius: 50px; -fx-font-size: 20; -fx-background-color: PALEGREEN; border: BLACK; -fx-border-radius: 50px; -fx-border-color: DARKGREEN;" text="+">
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </Button>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Client" wrappingWidth="64.21875">
-                           <font>
-                              <Font size="11.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </Text>
-                     </children>
+                  <Button mnemonicParsing="false" onAction="#movePTInfoPane" styleClass="profile-button" stylesheets="@stylesheets/MainViewStyle.css">
+                     <tooltip>
+                        <Tooltip text="profile" />
+                     </tooltip>
+                  </Button>
+                  <Label fx:id="nameOfPT" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of PT&gt;" textFill="WHITE" />
+               </children>
+            </VBox>
+            <Button mnemonicParsing="false" onAction="#hideClientList" prefHeight="27.0" prefWidth="69.0" styleClass="client-button" stylesheets="@stylesheets/MainViewStyle.css">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="33.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/clientyellow.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="clients" />
+               </tooltip>
+            </Button>
+            <Button fx:id="addClientButton" mnemonicParsing="false" onAction="#addClient" prefHeight="51.0" prefWidth="68.0" styleClass="addClient-button" stylesheets="@stylesheets/MainViewStyle.css">
+               <graphic>
+                  <ImageView accessibleRole="BUTTON" fitHeight="37.0" fitWidth="37.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                     <image>
+                        <Image url="@images/plusgreen.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="add client" />
+               </tooltip>
+            </Button>
+            <Separator minHeight="50.0" orientation="VERTICAL" prefHeight="241.0" prefWidth="8.0" visible="false" VBox.vgrow="ALWAYS" />
+            <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="91.0" prefWidth="71.0" styleClass="log-button" stylesheets="@stylesheets/MainViewStyle.css">
+               <graphic>
+                  <ImageView fitHeight="32.0" fitWidth="39.0" styleClass="button">
+                     <image>
+                        <Image url="@images/logred.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="log out" />
+               </tooltip>
+            </Button>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </VBox>
+      <AnchorPane fx:id="PTInfoPane" layoutX="100.0" style="-fx-background-color: derive(black,40%) derive(black,40%);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="640.0" prefWidth="940.0" spacing="30.0">
+               <children>
+                  <Text fx:id="nameOfPTInfo" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of PT" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Text fx:id="birthdayOfPTInfo" fill="#d7cccc" strokeType="OUTSIDE" strokeWidth="0.0" text="Birthday" wrappingWidth="679.0881500244141" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
+                  </Text>
+                  <Line endX="100.0" startX="-600.0">
+                     <VBox.margin>
+                        <Insets top="-10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text fx:id="phoneOfPTInfo" fill="#d7cccc" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" wrappingWidth="678.745849609375" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <Line endX="100.0" startX="-600.0">
+                     <VBox.margin>
+                        <Insets top="-10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <Text fx:id="mailOfPTInfo" fill="#d7cccc" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" wrappingWidth="682.1899566650391" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Text>
+                  <Line endX="100.0" startX="-600.0">
+                     <VBox.margin>
+                        <Insets top="-10.0" />
+                     </VBox.margin>
+                  </Line>
+                  <PasswordField fx:id="oldPasswordField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#changePassword" prefHeight="30.0" prefWidth="441.0" promptText="Insert old password" style="-fx-alignment: center;" stylesheets="@stylesheets/LoginStyle.css">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </PasswordField>
+                  <PasswordField fx:id="newPasswordField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#changePassword" prefHeight="30.0" prefWidth="441.0" promptText="Type new password" style="-fx-alignment: center;" stylesheets="@stylesheets/LoginStyle.css" />
+                  <PasswordField fx:id="newPasswordField2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#changePassword" prefHeight="30.0" prefWidth="441.0" promptText="Retype new password" style="-fx-alignment: center;" stylesheets="@stylesheets/LoginStyle.css" />
+                  <Label fx:id="notValid" text="Not valid old and/or new password" textAlignment="CENTER" textFill="RED" visible="false">
                      <padding>
-                        <Insets left="20.0" top="20.0" />
+                        <Insets top="-20.0" />
                      </padding>
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
-                  </VBox>
-                  <ImageView fx:id="picture" fitHeight="102.0" fitWidth="105.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="picture1" fitHeight="102.0" fitWidth="202.0" pickOnBounds="true" preserveRatio="true" />
-                  <VBox prefHeight="102.0" prefWidth="83.0">
-                     <children>
-                        <Button fx:id="logOffButton" mnemonicParsing="false" onAction="#logOff" prefHeight="27.0" prefWidth="86.0" text="Sign out" />
-                        <Label fx:id="label" prefHeight="66.0" prefWidth="128.0" style="-fx-font-weight: bold;" text="Label" textAlignment="CENTER" />
-                     </children>
-                  </VBox>
+                     <VBox.margin>
+                        <Insets bottom="-25.0" top="-5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Button defaultButton="true" maxWidth="-Infinity" mnemonicParsing="false" onAction="#changePassword" prefHeight="27.0" prefWidth="142.0" style="-fx-font-size: 13;" stylesheets="@stylesheets/LoginStyle.css" text="Change password" />
+                  <Label fx:id="passwordChanged" text="Password changed" textAlignment="CENTER" textFill="WHITE" visible="false">
+                     <padding>
+                        <Insets top="-20.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
                </children>
-            </HBox>
-            <HBox prefHeight="533.0" prefWidth="700.0">
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="100.0" minHeight="81.0" prefHeight="81.0" prefWidth="940.0" style="-fx-background-color: derive(black,45%);" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="0.0" />
+      <HBox alignment="CENTER" layoutX="100.0" prefHeight="81.0" prefWidth="940.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="nameOfClient" styleClass="nameOfClient" stylesheets="@stylesheets/MainViewStyle.css" text="&lt;Name of Client&gt;" textFill="WHITE" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <VBox fx:id="contentBox" layoutX="99.0" layoutY="81.0" prefHeight="640.0" prefWidth="939.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="99.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="81.0">
+         <children>
+            <TabPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="627.0" prefWidth="802.0" style="-fx-background-color: derive(black,53%);" stylesheets="@stylesheets/MainViewStyle.css" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+              <tabs>
+                  <Tab fx:id="overviewTab" text="Overview" />
+                <Tab fx:id="strengthTab" text="Strength" />
+                <Tab fx:id="enduranceTab" text="Endurance" />
+                  <Tab fx:id="healthTab" text="Health" />
+                  <Tab fx:id="programTab" text="Program" />
+              </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="clientsPane" layoutX="100.0" prefHeight="640.0" prefWidth="139.0" style="-fx-background-color: derive(black,40%);" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <DropShadow color="#e8dfdf" />
+         </effect>
+         <children>
+            <HBox>
                <children>
-                  <TabPane prefHeight="300.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                        <Tab fx:id="overviewTab" text="Overview" />
-                      <Tab fx:id="strengthTab" text="Strength" />
-                      <Tab fx:id="enduranceTab" text="Endurance" />
-                        <Tab fx:id="healthTab" text="Health" />
-                        <Tab fx:id="programTab" text="Program" />
-                    </tabs>
-                  </TabPane>
+                  <ListView id="clients" fx:id="clients" prefHeight="639.0" prefWidth="152.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
                </children>
             </HBox>
          </children>
-      </VBox>
+      </AnchorPane>
    </children>
-</Pane>
+</AnchorPane>

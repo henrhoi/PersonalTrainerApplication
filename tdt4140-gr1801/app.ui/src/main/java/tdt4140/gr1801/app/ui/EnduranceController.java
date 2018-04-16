@@ -15,11 +15,14 @@ import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.Endurance;
 
 
+//This controller controls the Endurance Tab in the program 
+//Implements TabController and has all the required methods.
+
 public class EnduranceController implements TabController {
 	
 	
 	@FXML
-	TextField distance_field, duration_field, avg_speed_field, cal_burned_field;
+	TextField distance_field, duration_field, avg_speed_field, cal_burned_field, max_pulse_field, avg_pulse_field;
 	
 	@FXML
 	ListView<Endurance> listview;
@@ -84,12 +87,16 @@ public class EnduranceController implements TabController {
 			duration_field.setText(String.valueOf(e.getDuration()));
 			avg_speed_field.setText(String.valueOf(e.getAverageSpeed()));
 			cal_burned_field.setText(String.valueOf(e.getCaloriesBurned()));
+			max_pulse_field.setText(String.valueOf(e.getMaxPulse()));
+			avg_pulse_field.setText(String.valueOf(e.getAvgPulse()));
 		}
 		else {
 			distance_field.setText("");
 			duration_field.setText("");
 			avg_speed_field.setText("");
 			cal_burned_field.setText("");
+			max_pulse_field.setText("");
+			avg_pulse_field.setText("");
 		}
 	}
 
