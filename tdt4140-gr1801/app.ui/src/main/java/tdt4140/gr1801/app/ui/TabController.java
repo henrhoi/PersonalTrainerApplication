@@ -2,6 +2,7 @@ package tdt4140.gr1801.app.ui;
 
 import tdt4140.gr1801.app.core.Client;
 
+//This interface is used for all TabControllers. We save all the tabcontrollers in a set, so that it is easy to update them if we change Client.
 public interface TabController extends Controller{
 	
 	//In all tabControllers this method should change this.client,

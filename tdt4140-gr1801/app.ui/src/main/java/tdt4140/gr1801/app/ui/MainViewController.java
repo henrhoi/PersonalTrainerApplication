@@ -8,8 +8,6 @@ import java.util.Set;
 
 import org.apache.http.client.ClientProtocolException;
 
-import com.sun.prism.paint.Color;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -23,17 +21,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.effect.BoxBlur;
-import javafx.scene.effect.Effect;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -80,11 +70,11 @@ public class MainViewController implements Controller{
 	private PersonalTrainer pt;
 	
 	//This set should contain controllers for all the tabs
+	//This is used in changeClient(client) for controllers like EnduraceController etc
 	private Set<TabController> tabControllers;
 	
 	
-	//We make a list of all the controllers that is made on updateinfo
-	//when then make methods for changeClient(client) for controllers like EnduraceController etc
+	
 	
 	public MainViewController(String username) throws ClientProtocolException, IOException {
 		//Make corresponding PT object
@@ -107,8 +97,6 @@ public class MainViewController implements Controller{
 	private void setTab(String fxml, Tab tab) {
 		try {
 			TabController controller;
-			//Temp - if there is a client, send the first client in the list.
-			//Will be taken care of in a later issue
 			Client client = pt.getClientList().isEmpty() ? null : pt.getClientList().get(0);
 			//Choose correct controller
 			switch (fxml) {
@@ -135,6 +123,7 @@ public class MainViewController implements Controller{
 		}
 	}
 	
+	//Action on logOffButton
 	@FXML
 	public void logOff() {
 		Stage stage = (Stage) logOffButton.getScene().getWindow();
@@ -143,6 +132,7 @@ public class MainViewController implements Controller{
 		SceneLoader.setScene(stage, path, controller);
 	}
 	
+	//Action on addClientButton
 	@FXML
 	public void addClient() {
 		Stage stage = (Stage) addClientButton.getScene().getWindow();
@@ -152,7 +142,7 @@ public class MainViewController implements Controller{
 		((AddClientController) controller).update();	
 	}
 	
-	
+	//Action when choosing client from clientlist
 	@FXML
 	public void hideClientList() {
 		if(clientsPane.isVisible()) {
@@ -165,7 +155,7 @@ public class MainViewController implements Controller{
 		PTInfoPane.toBack();
 	}
 	
-	
+	//Action when pressing the button for showing PTProfil.
 	@FXML
 	public void movePTInfoPane() {
 		this.inPTInfo = true;
@@ -217,8 +207,7 @@ public class MainViewController implements Controller{
 	
 	//You could say that this method is the same as init
 	public void updateInfo() {
-		//User this.username to update all the information
-		
+		//Set the name of logged in PT
 		nameOfPT.setText(pt.getName());
 		
 		
@@ -252,7 +241,7 @@ public class MainViewController implements Controller{
 		}
 	}
 	
-	
+	//Action when trying to change password in PTProfil
 	@FXML
 	public void changePassword() throws NoSuchAlgorithmException, ClientProtocolException, IOException {
 		String oldPassword = oldPasswordField.getText();
@@ -269,8 +258,8 @@ public class MainViewController implements Controller{
 			style1.remove("error");
 		}if(style2.contains("error")) {
 			style2.remove("error");
-		}if(style2.contains("error")) {
-			style2.remove("error");
+		}if(style3.contains("error")) {
+			style3.remove("error");
 		}
 		
 		if (LoginModule.checkLogin(this.pt.getUsername(), oldPassword)) {
@@ -286,7 +275,6 @@ public class MainViewController implements Controller{
 							Thread.sleep(3000);
 							passwordChanged.setVisible(false);
 						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 					}

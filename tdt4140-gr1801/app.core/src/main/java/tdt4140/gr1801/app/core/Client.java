@@ -56,7 +56,6 @@ public class Client {
 		this.pt = pt;
 		pt.addClient(this);
 
-    
 		this.weights = new HashMap<String,Double>();
 		this.fats = new HashMap<String,Double>();
 		this.nutritions = new ArrayList<Nutrition>();
@@ -112,6 +111,7 @@ public class Client {
     public List<DayProgram> getDayProgramList(){
     	return this.program;
     }
+    
     
     public HashMap<String,Double> getWeightMap(){
     		return this.weights;
@@ -205,37 +205,9 @@ public class Client {
 		json.put("Height", this.height);
 		json.put("PT_ID", this.pt.getUsername());
 		json.put("MaxPulse", this.getMaxPulse());
-		System.out.println(json);
 		String respons = GetURL.postRequest("/signup/client", json);
-		System.out.println(respons);
     }
     
-    // function that adds client's weekly program to program-tab in the database
-    public void createWeeklyProgram(DayProgram dp) throws IOException {
-    	JSONObject json = new JSONObject();
-		json.put("ClientID",this.id);
-		json.put("Day", dp.getWeekday());
-		json.put("Duration", dp.getDuration());
-		json.put("Distance", dp.getDistance());
-		json.put("Speed", dp.getAvgSpeed());
-		json.put("Description", dp.getDescription());
-		String exercises = "";
-		for (Exercise e : dp.getExercises()) {
-			exercises += e.getName() + ",";
-			exercises += e.getWeight() + ",";
-			for (int rep : e.getRepsPerSet()) {
-				exercises += rep + "-";
-			}
-			exercises = exercises.substring(0, exercises.length()-1);
-			exercises += "#";
-		}
-		exercises = exercises.substring(0, exercises.length()-1);
-		json.put("Exercises", exercises);
-		System.out.println("inside createWeeklyProgram in Client");
-		System.out.println(json);
-		String respons = GetURL.postRequest("/weeklyprogram/client", json);
-		System.out.println(respons);
-    }
     
     // the next get-functions are functions to collect data from the database and into the application 
     // collects all nutrition data for a client 
@@ -249,7 +221,6 @@ public class Client {
     			int fat = object.getInt("Fat");
     			int carbs = object.getInt("Carbs");
     			int protein = object.getInt("Protein");
-    			
     			Nutrition nutrition = new Nutrition(date, cals, fat, carbs, protein, this.id);
     			this.nutritions.add(nutrition);
     		}
@@ -263,20 +234,24 @@ public class Client {
 			DayProgram dayprogram;
 			JSONObject object = json.getJSONObject(n);
 			String day = object.getString("Day");
-			// Check if row is endurance or strength
-			if (object.getString("Exercises").length() < 4) {
-				// if row is endurance
-				int duration = object.getInt("Duration");
-				double distance = object.getDouble("Distance");
-				double speed = object.getDouble("Speed");
-				String description = object.getString("Description");
-				dayprogram = new DayProgram(day, duration, distance, speed, 
-						description, null);
+			Integer duration = null;
+			Double distance = null;
+			Double speed = null;
+			String description = null;
+			List<Exercise> exercises = null;
+			
+			// Check if row is endurance or strength or both
+			if (object.getInt("Duration") != 0) {
+				// Row contains endurance data
+				duration = object.getInt("Duration");
+				distance = object.getDouble("Distance");
+				speed = object.getDouble("Speed");
+				description = object.getString("Description");
 			}
-			else {
-				// if row is strength
-				List<Exercise> exercises = new ArrayList<>();
-				// iterating over the string to get the different exercises
+			if (object.getString("Exercises").length() > 4){
+				// Row contains strength data
+				exercises = new ArrayList<>();
+				// Iterate over the string to get the different exercises
 				List<String> stringExercises = new ArrayList<String>(Arrays.asList(object.getString("Exercises").split("#")));
 				for (String ex : stringExercises) {
 					String[] info = ex.split(",");
@@ -287,9 +262,9 @@ public class Client {
 					Exercise e = new Exercise(name, weight, repsList);
 					exercises.add(e);
 				}
-				dayprogram = new DayProgram(day, null, null, null,
-						null, exercises);
 			}
+			dayprogram = new DayProgram(day, duration, distance, speed,
+					description, exercises);
 			program.add(dayprogram);
 		}
     }

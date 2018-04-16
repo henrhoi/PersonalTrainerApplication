@@ -7,18 +7,31 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
+/*
+Procedure for starting server:
+	WebServer server = new WebServer(8080);
+	server.start();
+	server.join();
+*/
+
+
 
 // Dette er WebServeren som kommer til aa bli brukt i prosjektet. Det er en embedded Jetty-server med Jersey.
+// This is the applications webserver. It is an embedded Jetty server with Jersey
 public class WebServer{
 	
-	// Alle servere kjoerer paa et spesifikt portnr.
+	// All servers must be run on a specific portnumber
 	private int portnr;
 	public Server server;
 
+	
+	// Constructor with portnumber as input
 	public WebServer(int portnr) {
 	 this.portnr = portnr;
 	}
 	
+	
+	// Method for setting up the server
 	public void setup() throws Exception {
 		ResourceConfig config = new ResourceConfig();
 		config.packages("tdt4140.gr1801.web.server");
@@ -30,30 +43,15 @@ public class WebServer{
 		context.addServlet(servlet, "/*");
 		
 		this.server = server;
-		
-		/*
-		try {
-		     server.start();
-		     server.join();
-		 } finally {
-		     server.destroy();
-		 }
-		*/
-		
 	}
 	
+	
+	// Method for stopping the webserver
 	public void stopServer() {
 		this.server.destroy();
 	}
 	
-	// Starter en WebServer paa port 8080
-	public static void main(String[] args) throws Exception {
-		WebServer webserver = new WebServer(8080);
-		webserver.setup();
-		webserver.server.start();
-		//I TESTER HA .join PAA SLUTTEN - DEN VENTER Paa AT THREADEN SKAL BLI FERDIG 
-		webserver.server.join();
-		
 	
-	}
+
+	
 }

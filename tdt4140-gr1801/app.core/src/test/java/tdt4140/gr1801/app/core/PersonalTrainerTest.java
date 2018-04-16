@@ -17,6 +17,29 @@ public class PersonalTrainerTest extends TestCase{
 		c3 = new Client(3, "Dansemann Dans", 180, pt);
 	}
 	
+	public void testSetEmail() {
+		pt.setEmail("martin@online.no");
+		assertEquals(pt.getEmail(),"martin@online.no");
+	}
+	
+	public void testSetPhoneNumber() {
+		pt.setPhoneNumber("90943559");
+		assertEquals(pt.getPhoneNumber(),"90943559");
+	}
+	
+	public void testGetBirthday() {
+		assertEquals(pt.getBirthday(),null);
+	}
+	
+	public void testConstructor() {
+		PersonalTrainer testPT = new PersonalTrainer("vilde", "Vilde", "Arntzen", "vildera@stud.ntnu.no", "90943558", "19970517-1400");
+		assertEquals(testPT.getBirthday(),"19970517-1400");
+		assertEquals(testPT.getUsername(),"vilde");
+		assertEquals(testPT.getName(), "Vilde Arntzen");
+		assertEquals(testPT.getEmail(),"vildera@stud.ntnu.no");
+		assertEquals(testPT.getPhoneNumber(),"90943558");
+	}
+	
 	public void testCheckUsername() {
 		assertEquals(PersonalTrainer.checkUsername(pt1.getUsername()), true);
 		assertEquals(PersonalTrainer.checkUsername(".t31f!"), false);

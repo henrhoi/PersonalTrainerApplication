@@ -31,7 +31,7 @@ public class TestClient extends TestCase{
 		n4 = new Nutrition(date4, 1688, 62, 78, 203, 1);
 		
 		pt = new PersonalTrainer("Vilde123", "Halvor", "Nilsen", "Halvor@nilsen.com","90911287", "20180227-xxxx");
-		client = new Client(1,"Vilde",170,pt);
+		client = new Client(1,"Vilde",170,pt,200);
 		client.addNutrition(n1);
 		client.addNutrition(n2);
 		client.addNutrition(n3);
@@ -52,6 +52,14 @@ public class TestClient extends TestCase{
 		dates = new ArrayList<String> ();
 		dates.add("2018-04-04");
 		dates.add("2018-05-05");
+	}
+	
+	public void testClient() {
+		Client clientTest = new Client(90,"Henrik",189,pt);
+		assertEquals(clientTest.getId(),90);
+		assertEquals(clientTest.getPersonalTrainer(),pt.getUsername());
+		assertEquals(clientTest.getHeight(),189);
+		assertEquals(clientTest.getPersonalTrainerObject(),pt);
 	}
 	
 	public void testGetId() {
@@ -165,6 +173,10 @@ public class TestClient extends TestCase{
 	
 	
 	
+	public void testGetMaxPulse() {
+		assertEquals(client.getMaxPulse(),200);
+	}
+	
 	public void testAddWeight() {
 		try {
 			client.addWeight(date1, -20);
@@ -213,8 +225,25 @@ public class TestClient extends TestCase{
 		assertEquals(Client.checkLastName(client.getName()),true);
 	}
 	
+	public void testCheckMaxpulse() {
+		assertTrue(client.checkmaxPulse(180));
+		assertFalse(client.checkmaxPulse(800));
+	}
+	
+	
+	
+	
+	
 	public void testCheckHeight() {
-		assertEquals(client.checkHeight(client.getHeight()),true);
+		assertTrue(client.checkHeight(170));
+		assertFalse(client.checkHeight(-900));
+	}
+	
+		
+		
+		
+	public void testToString() {
+		assertEquals(this.client.getName(),client.toString());
 	}
 	
 }	

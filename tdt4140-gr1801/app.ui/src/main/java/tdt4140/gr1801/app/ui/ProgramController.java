@@ -1,9 +1,10 @@
 package tdt4140.gr1801.app.ui;
 
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,25 +22,21 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.File;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 
 
+
 import javafx.scene.control.Button;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 import tdt4140.gr1801.app.core.pdfcreator.PdfCreator;
-import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.DayProgram;
 import tdt4140.gr1801.app.core.Exercise;
 
-
+//This class controls the ProgramTab window, and makes sure things are correctly entered to all the fields.
 public class ProgramController implements TabController {
 	
 	
@@ -55,24 +52,30 @@ public class ProgramController implements TabController {
     @FXML
     TextField distance_field, duration_field, speed_field;
     
-    @FXML TextArea description_field;
+    @FXML 
+    TextArea description_field;
+    
+    @FXML
+	Button exportButton;
     
     
 	private Client client;
-	private PersonalTrainer pt;
+	private PersonalTrainer pt;	
 	
-	@FXML
-	Button exportButton;
 	
+	//Constructor with a PT and a Client
 	public ProgramController(PersonalTrainer pt, Client client) {
 		this.client = client;
 		this.pt = pt;
 	}
 	
+	
 	public void setClient(Client client) {
 		this.client = client;
 	}
 	
+	
+	// Function for exporting the program to a specific path on the running computer in PDF-format
 	@FXML
 	public void exportPdf() {
 		//Get the stage to open DirectoryChooser in
@@ -100,42 +103,43 @@ public class ProgramController implements TabController {
         		//Always close the document
 				doc.close();
 			}
-        }
-        
-        
+        }   
 	}
-
+	
+	
+	//Method for updating the information in the view
 	@Override
 	public void updateInfo() {
 		fillListview();
 		updateView(null);
-		disableFields();
+		setFieldsEditable(false);
 		
 	}
 	
 
-	
+	// Method for filling the listview containing dayprograms
 	public void fillListview() {
 		// Adding the client's programs in the listview
 		ObservableList<DayProgram> days = FXCollections.observableArrayList ();
-		for (DayProgram dayprogram : client.getDayProgramList()) {
+		List<DayProgram> dayPrograms = client.getDayProgramList();
+		Collections.sort(dayPrograms);
+		for (DayProgram dayprogram : dayPrograms) {
 			days.add(dayprogram);
 		}
-		//days.remove(0); // First is duplicated because of some reason
 		listview.setItems(days);
 	}
 	
-	public void disableFields() {
+	public void setFieldsEditable(boolean value) {
 		//distance_field.setDisable(true);
-		distance_field.setEditable(false);
+		distance_field.setEditable(value);
 		//duration_field.setDisable(true);
-		duration_field.setEditable(false);
+		duration_field.setEditable(value);
 		//speed_field.setDisable(true);
-		speed_field.setEditable(false);
+		speed_field.setEditable(value);
 		//description_field.setDisable(true);
-		description_field.setEditable(false);
+		description_field.setEditable(value);
 		//tableview.setDisable(true);
-		tableview.setEditable(false);
+		tableview.setEditable(value);
 	}
 	
 	public void setNavigationLogic() {
@@ -171,7 +175,6 @@ public class ProgramController implements TabController {
 			duration_field.setText("");
 			speed_field.setText("");
 			description_field.setText("");
-			//endurance_pane.setStyle("-fx-background-color: gray");
 		}
 		
 		else if (day.getDistance() != null) {
@@ -187,6 +190,7 @@ public class ProgramController implements TabController {
 		}
 		
 		else if (day.getExercises() != null) {
+			// It's Strength training
 			ObservableList<Exercise> items = FXCollections.observableArrayList ();
 			for (Exercise exercise : day.getExercises()) {
 				items.add(exercise);
@@ -198,7 +202,6 @@ public class ProgramController implements TabController {
 	
 	@Override
 	public void startup() {
-
 		// Connecting the columns of the tableview to attributes in Exercise
 		this.colName.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Name"));
 		this.colWeight.setCellValueFactory(new PropertyValueFactory<Exercise, String>("Weight"));
@@ -209,34 +212,8 @@ public class ProgramController implements TabController {
 		
 		setNavigationLogic();
 		updateView(null);
-		
-		
-		//
-		listview.setEditable(true);
 	}
 	
 	
-	@FXML
-	public void editEndurance() throws IOException {
-		// Innsetting av weeklyprogram
-		DayProgram dp = new DayProgram("Monday", 120, 12.0, 6.5, "Intervaller 4x4", null);
-		client.createWeeklyProgram(dp);
-	}
-	
-	@FXML 
-	public void editStrength() {
-		
-	}
-	
-	@FXML
-	public void updateProgram() throws IOException {
-		Exercise e1 = new Exercise("Benchpress", 80, Arrays.asList(5, 5, 5, 5, 5));
-    	Exercise e2 = new Exercise("Deadlift", 120, Arrays.asList(12, 10, 8));
-    	ArrayList<Exercise> exercises = new ArrayList<>();
-    	exercises.add(e1);
-    	exercises.add(e2);
-    	DayProgram dp = new DayProgram("Wednesday", null, null, null, null, exercises);
-    	client.createWeeklyProgram(dp);
-	}
 
 }

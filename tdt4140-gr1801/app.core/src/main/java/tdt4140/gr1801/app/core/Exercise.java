@@ -62,6 +62,21 @@ public class Exercise {
 		return r.substring(0, r.length()-1);
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+
+
+	public void setRepsPerSet(List<Integer> repsPerSet) {
+		this.repsPerSet = repsPerSet;
+	}
+
+
 	public int getTotalReps() {
 		int total = 0;
 		for (int reps : repsPerSet) {
