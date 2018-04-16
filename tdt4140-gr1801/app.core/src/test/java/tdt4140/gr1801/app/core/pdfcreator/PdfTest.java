@@ -9,6 +9,10 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import org.junit.After;
 import org.junit.Before;
@@ -16,8 +20,14 @@ import org.junit.Before;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 
+import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import junit.framework.TestCase;
 import tdt4140.gr1801.app.core.Client;
+import tdt4140.gr1801.app.core.DayProgram;
+import tdt4140.gr1801.app.core.Exercise;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
 public class PdfTest extends TestCase{
@@ -30,6 +40,8 @@ public class PdfTest extends TestCase{
         	
         PdfCreator.addMetaData(doc, "DocumentTitle", "Subject", new ArrayList<String>(Arrays.asList("key1","key2")), "Author", "Creator");
         PdfCreator.addFrontPage(doc, pt, client);
+        DayProgram prog = new DayProgram("Monday", 60, 0.0, 0.0, "Testtest", new ArrayList<Exercise>());
+        PdfCreator.addContent(doc, FXCollections.observableArrayList (prog));
         doc.close();
 	}
 	public void testFileCreated() {

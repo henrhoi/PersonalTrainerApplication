@@ -59,7 +59,7 @@ public class AddClientController implements Controller {
 		// Adding new client to database
 		if (errors.size() == 0) {
 			addClientToDatabase();
-			
+			backToMainview();
 		}
 		else {
 			System.err.println(errors.size() + " felter er ugyldige");
