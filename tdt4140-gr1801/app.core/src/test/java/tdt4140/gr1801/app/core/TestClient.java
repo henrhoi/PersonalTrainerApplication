@@ -122,6 +122,8 @@ public class TestClient extends TestCase{
 		test.add(date);
 		assertEquals(test, client.getPictureDates());
 		assertEquals(img, client.getImage(date));
+		com.sun.javafx.application.PlatformImpl.exit();
+		
 	}
 	
 	

@@ -49,16 +49,6 @@ public class PersonalTrainerTest extends TestCase{
 		}
 	}
 	
-	/*
-	 public static ArrayList<Boolean> checkAllFields(ArrayList<TextField> fields) {
-        ArrayList<Boolean> correctness = new ArrayList<Boolean>();
-        correctness.add(checkUsername(fields.get(0).getText()));
-        correctness.add(checkFirstName(fields.get(1).getText()));
-        correctness.add(checkLastName(fields.get(2).getText()));
-        correctness.add(checkPhoneNumber(fields.get(3).getText()));
-        correctness.add(checkEmail(fields.get(4).getText()));
-        return correctness;  
-	 */
 	
 	
 	public void testAllFields() {
@@ -79,6 +69,7 @@ public class PersonalTrainerTest extends TestCase{
 		ArrayList<Boolean> correctness_test = new ArrayList<>();
 		correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);
 		assertEquals(correctness_test, PersonalTrainer.checkAllFields(fields));
+		com.sun.javafx.application.PlatformImpl.exit();
 		
 		
 	}
