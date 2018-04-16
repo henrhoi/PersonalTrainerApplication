@@ -20,6 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 
 import java.io.File;
@@ -229,10 +230,10 @@ public class ProgramController implements TabController {
 	@FXML 
 	public void editStrength() {
 		tableview.setEditable(true);
-		colName.setEditable(true);
-		colWeight.setEditable(true);
-		colSets.setEditable(true);
-		colReps.setEditable(true);
+		colName.setCellFactory(TextFieldTableCell.forTableColumn());
+		colWeight.setCellFactory(TextFieldTableCell.forTableColumn());
+		colSets.setCellFactory(TextFieldTableCell.forTableColumn());
+		colReps.setCellFactory(TextFieldTableCell.forTableColumn());
 		updateProgram_button.setDisable(false);
 	}
 	
@@ -287,6 +288,11 @@ public class ProgramController implements TabController {
 		} catch(Exception e) {
 			System.out.println("Weight is not valid");
 		}
+	}
+	
+	@FXML
+	public void setsChanged(CellEditEvent<Exercise, String> event) {
+		
 	}
 	
 	@FXML
