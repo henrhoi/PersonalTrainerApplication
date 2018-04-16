@@ -50,31 +50,6 @@ public class PersonalTrainerTest extends TestCase{
 	}
 	
 	
-	
-	@SuppressWarnings("restriction")
-	public void testAllFields() {
-		com.sun.javafx.application.PlatformImpl.startup(()->{});
-		TextField tf0 = new TextField();
-		TextField tf1 = new TextField();
-		TextField tf2 = new TextField();
-		TextField tf3 = new TextField();
-		TextField tf4 = new TextField();
-		tf0.setText("testtest");
-		tf1.setText("Test");
-		tf2.setText("Test");
-		tf3.setText("12345678");
-		tf4.setText("test@test.no");
-		ArrayList<TextField> fields = new ArrayList<>();
-		fields.add(tf0);fields.add(tf1);fields.add(tf2);fields.add(tf3);fields.add(tf4);
-		
-		ArrayList<Boolean> correctness_test = new ArrayList<>();
-		correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);correctness_test.add(true);
-		assertEquals(correctness_test, PersonalTrainer.checkAllFields(fields));
-		com.sun.javafx.application.PlatformImpl.exit();
-		
-		
-	}
-	
 	public void testGetBirthday() {
 		assertEquals(pt.getBirthday(),null);
 	}

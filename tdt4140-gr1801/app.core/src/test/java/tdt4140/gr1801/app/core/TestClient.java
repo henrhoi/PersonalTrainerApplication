@@ -114,18 +114,6 @@ public class TestClient extends TestCase{
 		assertEquals(test, client.getDayProgramList());
 	}
 	
-	@SuppressWarnings("restriction")
-	public void testGetPictureDates() {
-		com.sun.javafx.application.PlatformImpl.startup(()->{});
-		Image img = new Image("https://i.imgur.com/LlXkC4gb.jpg");
-		client.addPicture(date, img);
-		ArrayList<String> test = new ArrayList<String>();
-		test.add(date);
-		assertEquals(test, client.getPictureDates());
-		assertEquals(img, client.getImage(date));
-		com.sun.javafx.application.PlatformImpl.exit();
-		
-	}
 	
 	
 	public void testGetStrengthList() {
