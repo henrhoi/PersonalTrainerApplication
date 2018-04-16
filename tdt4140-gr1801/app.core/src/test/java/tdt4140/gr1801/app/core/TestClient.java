@@ -1,9 +1,11 @@
 package tdt4140.gr1801.app.core;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.image.Image;
 import junit.framework.TestCase;
 
 public class TestClient extends TestCase{
@@ -12,6 +14,7 @@ public class TestClient extends TestCase{
 	PersonalTrainer pt;
 	Nutrition n1, n2, n3, n4;
 	String date, date1, date2, date3, date4, date5;
+	List<String> dates;
 	
 
 	protected void setUp() {
@@ -43,6 +46,12 @@ public class TestClient extends TestCase{
 		client.addWeight(date2,56.5);
 		client.addWeight(date3,57);
 		client.addWeight(date4,57.2);
+		
+		
+		
+		dates = new ArrayList<String> ();
+		dates.add("2018-04-04");
+		dates.add("2018-05-05");
 	}
 	
 	public void testGetId() {
@@ -154,15 +163,7 @@ public class TestClient extends TestCase{
 		}
 	}
 	
-	// Martin
-	public void testGetImage() {
-		// legg til kode
-	}
 	
-	//Martin
-	public void testGetPictureDates() {
-		// legg til kode
-	}
 	
 	public void testAddWeight() {
 		try {

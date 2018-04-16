@@ -363,6 +363,10 @@ public class Client {
     		}
     }
     
+    public void addPicture(String date, Image image) {
+    		this.pictureDates.put(date, image);
+    }
+    
     // getting all the ImageUrl´s from the database for one given client
     public void getClientPictures() throws ClientProtocolException, IOException{
     		String data = GetURL.getRequest("/client/pics/"+this.id);
@@ -373,7 +377,7 @@ public class Client {
     				String date = jsonObj.getString("Dato");
     				String url = jsonObj.getString("ImageURL");
     				Image image = new Image(url);
-    				pictureDates.put(date, image);
+    				addPicture(date, image);
     			}
     		}
     }
