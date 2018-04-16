@@ -1,9 +1,10 @@
 # PT-applikasjon - Gruppe 01
-
-Vi har laget en applikasjon der en PT kan følge sine klienter. 
+Vi er 7 studenter på NTNU som våren 2018 har gjennomført et prosjekt i emnet TDT4140 - Programvareutvikling. Prosjektet gikk ut på å lage en trelags klientapplikasjon skrevet i Java og JavaFX/FXML, der data skulle kunne tas i mot utenifra over en standard nettverksprotokoll.
 Vi har fulgt den smidige utviklingsmetoden *Scrum*, som du kan lese mer om [her](http://www.mountaingoatsoftware.com/agile/scrum).
-Applikasjonen er utviklet i henhold til krav spesifisert av emnet TDT4140 på NTNU. Utviklingen har fulgt kodekonvensjonene og retningslinjene for bruk av GitLab som finnes [her](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01/wikis/Home/Kodekonvensjoner%20og%20retningslinjer%20i%20gitlab).
+Alle kravene til prosjektet som spesifisert av emnet finner du her [her](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01/wikis/Home/Prosjektkrav).
+I tillegg har utviklingen fulgt kodekonvensjonene og retningslinjene for bruk av GitLab som finnes [her](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01/wikis/Home/Kodekonvensjoner%20og%20retningslinjer%20i%20gitlab).
 
+Vi har valgt å lage en applikasjon der en personlig trener kan følge opp sine klienter. PT-en kan navigere mellom klientene og se informasjon om utholdenhetsøkter, styrkeøkter, kosthold og treningsprogrammer. Under er en liten demo som viser applikasjonen mens den kjører.
 ## Hvordan bruke applikasjonen
 
 Disse instruksjonene gir deg en kopi av prosjektet på din lokale maskin, som du kan bruke til utvikling og/eller testing. Se [her](#start) for fremgangsmåte for å kjøre prosjektet, etter installering.
@@ -56,6 +57,7 @@ tdt4140-gr1801
 	│   	└── src
 	│   	     ├── main
 	│   	     │    ├── java.tdt4140.gr1801.app.core
+	│   	     │    ├── java.tdt4140.gr1801.app.core.pdfcreator
 	│   	     │    └── resources.tdt4140.gr1801.app.core
 	│   	     └── test
 	│   	          ├── java.tdt4140.gr1801.app.core
@@ -87,9 +89,7 @@ Her er en oversikt over hva som skal til for å få applikasjonen til å kjøre 
 
 1. Koble til NTNUs nettverk med *Cisco AnyConnect*, dersom du allerede ikke er på Eduroam.
 
-2. Kjør `WebServer.java` i `/tdt4140.gr1801.web.server/src/main/java/tdt4140/gr1801/web/server`
-
-3. Kjør `FxApp.java` i `/tdt4140.gr1801.app.ui/src/main/java/tdt4140/gr1801/app/ui`
+2. Kjør `FxApp.java` i `/tdt4140.gr1801.app.ui/src/main/java/tdt4140/gr1801/app/ui`
 
 
 
