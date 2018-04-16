@@ -3,6 +3,8 @@ package tdt4140.gr1801.app.core;
 import java.util.Arrays;
 import java.util.List;
 
+
+// Class with information and methods about/for a Client's Dayprogram
 public class DayProgram implements Comparable<DayProgram>{
 	
 	
@@ -29,6 +31,7 @@ public class DayProgram implements Comparable<DayProgram>{
 	}
 
 
+	// Getters:
 	public String getWeekday() {
 		return weekday;
 	}

@@ -1,5 +1,7 @@
 package tdt4140.gr1801.app.core;
 
+
+// Class with methods and fields for Endurances
 public class Endurance extends Training implements Comparable<Endurance>{
 
 
@@ -9,6 +11,7 @@ public class Endurance extends Training implements Comparable<Endurance>{
 	private int maxPulse;
 	private int avgPulse;
 
+	// Constructors with checks on input
 	public Endurance(String date, int duration, double distance, int caloriesBurned, int maxPulse, int avgPulse) {
 		super(date, duration);
 		if (distance < 0) {
@@ -25,6 +28,7 @@ public class Endurance extends Training implements Comparable<Endurance>{
 		
 	}
 	
+	//Getters: 
 	public double getDistance() {
 		return distance;
 	}
