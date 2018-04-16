@@ -20,15 +20,18 @@ import javax.ws.rs.core.Response;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONObject;
 
+//This is one of our API's endpoint "/client", which specifies some GET and POST-requests
 
 @Path("/client")
 public class Client_Resources {
 	
-	// hente informasjon om en klient med klient ID = ?
+	
+	// GET-request for getting information about a specific client
     @GET
     @Path("/{param}")
     @Produces("application/json")
     public String getClient(@PathParam("param") String clientID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+    		// Getting PreparedStatement from QueryFactory
     		PreparedStatement stmt = QueryFactory.getClient(Integer.parseInt(clientID));
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
@@ -36,23 +39,26 @@ public class Client_Resources {
 	}
     
     
-    //Kan hentes paa /all/PT_ID
+	// GET-request for getting information on all clients of an PT
     @GET
     @Path("/all/{pt}")
     @Produces("application/json")
     public String getClients(@PathParam("pt") String PT_ID) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-    			PreparedStatement stmt = QueryFactory.getAllClients(PT_ID);
-        		ResultSet rs = stmt.executeQuery();
-        		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
-        		return json;
+		// Getting PreparedStatement from QueryFactory
+    		PreparedStatement stmt = QueryFactory.getAllClients(PT_ID);
+        	ResultSet rs = stmt.executeQuery();
+        	String json = RSJSONConverter.ResultSetToJSON(rs).toString();
+        	return json;
 	}
     
     
     
+	// GET-request for all weigth- and fat-data about a specific client
     @GET
     @Path("/weightfat/{clientid}")
     @Produces("application/json")
     public String getWeigthFatFromClient(@PathParam("clientid") String ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
+		// Getting PreparedStatement from QueryFactory
     		PreparedStatement stmt = QueryFactory.getWeigthFatFromClient(ClientID);
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
@@ -60,10 +66,13 @@ public class Client_Resources {
     	
     }
    
+    
+	// GET-request for getting all progressionpictures of a client
     @GET
     @Path("/pics/{clientid}")
     @Produces
     public String getClientProgressionPictures(@PathParam("clientid") String ClientID) throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		// Getting PreparedStatement from QueryFactory
     		PreparedStatement stmt = QueryFactory.getClientProgressionPictures(ClientID);
     		ResultSet rs = stmt.executeQuery();
     		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
@@ -71,6 +80,8 @@ public class Client_Resources {
     		
     }
     
+    
+	// POST-request for removing a client from the database along with all connected data
     @POST
     @Path("/remove")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -79,6 +90,8 @@ public class Client_Resources {
 		String username = json.getString("PT_ID");
 		String password = json.getString("Passwrd");
 		int clientID = json.getInt("ClientID");
+		
+		// Getting PreparedStatement from QueryFactory
 		PreparedStatement stmt = QueryFactory.getPTforClient(clientID);
 		ResultSet res = stmt.executeQuery();
 		String pt_id = null;
@@ -99,32 +112,16 @@ public class Client_Resources {
 					statements.get(i).execute();
 					System.out.println("Deleting " + beingDeleted.get(i));
 				}
+				//If everything went ok a "201 CREATED" response will be sent with a corresponding message
 				return Response.status(201).entity(username + " with data was deleted in database if all input were correct").build(); 
     		} else {
-    			return Response.status(201).entity("Wrong username or password. Please try again.").build(); 
-			}
+    			//If the input was wrong a "400 BAD REQUEST" response will be sent
+    			return Response.status(400).entity("Wrong username or password. Please try again.").build(); 
+    			}
 		} else {
-			return Response.status(201).entity("This client does not belong to "+username).build(); 
+			//If the input was wrong a "400 BAD REQUEST" response will be sent
+			return Response.status(400).entity("This client does not belong to "+username).build(); 
 		}
     }
     
-    public static void main(String[] args) throws NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, ClientProtocolException, IOException, NoSuchAlgorithmException {
-    		//Skjekker at jeg faar riktig info om client med clientID = 1
-    		// Henrik har testet dette, funker
-    		JSONObject json = new JSONObject();
-    		json.put("PT_ID", "axeloh");
-    		json.put("Passwrd", "axelerkul321");
-    		json.put("ClientID", 11);
-    		
-    		System.out.println(Client_Resources.deleteClient(json.toString()));
-    	
-    		String clientInfo = GetURL.getRequest("/client/1");
-    		System.out.println(clientInfo);
-    		
-    		
-    		String allClients = GetURL.getRequest("/all/henrhoi");
-    		System.out.println(allClients);
-    }
-    
-
 }

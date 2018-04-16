@@ -8,8 +8,6 @@ import java.util.Set;
 
 import org.apache.http.client.ClientProtocolException;
 
-import com.sun.prism.paint.Color;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -23,17 +21,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.effect.BoxBlur;
-import javafx.scene.effect.Effect;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -268,8 +258,8 @@ public class MainViewController implements Controller{
 			style1.remove("error");
 		}if(style2.contains("error")) {
 			style2.remove("error");
-		}if(style2.contains("error")) {
-			style2.remove("error");
+		}if(style3.contains("error")) {
+			style3.remove("error");
 		}
 		
 		if (LoginModule.checkLogin(this.pt.getUsername(), oldPassword)) {

@@ -1,1 +1,1 @@
-# Resources for the tests of the core Java code 
+# Resources for the tests of the webserver Java code 

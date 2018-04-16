@@ -2,28 +2,18 @@ package tdt4140.gr1801.app.core.pdfcreator;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-
 import org.junit.After;
 import org.junit.Before;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import junit.framework.TestCase;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.DayProgram;
