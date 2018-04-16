@@ -21,9 +21,7 @@ import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
 
-
-
-
+//This class controls the new user window, and makes sure things are correctly entered to all the fields.
 
 public class NewUserController implements Controller{
 	
@@ -46,40 +44,40 @@ public class NewUserController implements Controller{
 	}
 	
 	//Action on createUserButton
-		@FXML
-		public void createUser() {
+	@FXML
+	public void createUser() {
 			
 			
 			
-			//Check fields
-			ArrayList<TextField> fields = new ArrayList<TextField>(Arrays.asList(usernameField,firstNameField, lastNameField,passwordField, phoneNumberField, emailField));
-			fields.stream().forEach(f -> check(f));
-			checkBirthday();
+		//Check fields
+		ArrayList<TextField> fields = new ArrayList<TextField>(Arrays.asList(usernameField,firstNameField, lastNameField,passwordField, phoneNumberField, emailField));
+		fields.stream().forEach(f -> check(f));
+		checkBirthday();
 			
-			Pane pane = (Pane)usernameField.getParent();
-			List<Node> errors = pane.getChildren().stream().filter(f -> f.getStyleClass().contains("error")).collect(Collectors.toList());
+		Pane pane = (Pane)usernameField.getParent();
+		List<Node> errors = pane.getChildren().stream().filter(f -> f.getStyleClass().contains("error")).collect(Collectors.toList());
+		
 			
-			
-			if(errors.size() == 0) {
-				//Add new PT to database
-				try {
-					//First and lastname should just be Name
-					PersonalTrainer pt = new PersonalTrainer(usernameField.getText(),firstNameField.getText(),
-							lastNameField.getText(),emailField.getText(),phoneNumberField.getText(),
-							getDateString(birthdayField.getValue()));
-					pt.createPT(passwordField.getText());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-				Stage stage = (Stage)usernameField.getScene().getWindow();
-				LoginController controller = new LoginController();
-	    			URL path = getClass().getResource("FxLogin.fxml");
-	    			SceneLoader.setScene(stage, path, controller);
-	    			System.out.println("New User added");
+		if(errors.size() == 0) {
+			//Add new PT to database
+			try {
+				//First and lastname should just be Name
+				PersonalTrainer pt = new PersonalTrainer(usernameField.getText(),firstNameField.getText(),
+						lastNameField.getText(),emailField.getText(),phoneNumberField.getText(),
+						getDateString(birthdayField.getValue()));
+				pt.createPT(passwordField.getText());
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
+				
+			Stage stage = (Stage)usernameField.getScene().getWindow();
+			LoginController controller = new LoginController();
+	    		URL path = getClass().getResource("FxLogin.fxml");
+	    		SceneLoader.setScene(stage, path, controller);
+	    		System.out.println("New User added");
+	    	}
 			
-		}
+	}
 	
 		
 	public void backToLogin() {
@@ -131,6 +129,4 @@ public class NewUserController implements Controller{
 		day = day.length() == 1 ? "0" + day : day;
 		return  year + month + day +  "-1400"; 
 	}	
-	
-	
 }

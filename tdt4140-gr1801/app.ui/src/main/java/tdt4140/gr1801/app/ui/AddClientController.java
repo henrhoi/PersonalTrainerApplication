@@ -18,6 +18,8 @@ import javafx.stage.Stage;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 
+
+//This class controls the window for creating a new client to the PT.
 public class AddClientController implements Controller {
 	
 	@FXML
@@ -57,7 +59,6 @@ public class AddClientController implements Controller {
 		// Adding new client to database
 		if (errors.size() == 0) {
 			addClientToDatabase();
-			System.out.println("Success");
 			
 		}
 		else {
@@ -65,6 +66,7 @@ public class AddClientController implements Controller {
 		}
 		
 	}
+	
 	
 	private void addClientToDatabase() {
 		try {
@@ -81,16 +83,15 @@ public class AddClientController implements Controller {
 	}
 	
 	
-	// NB: Doesn't get back to the same mainview as before
+	// NB: Does not go back to same mainview
 	@FXML
 	public void backToMainview() {
 		Stage stage = (Stage)first_name_field.getScene().getWindow();
 		URL path = getClass().getResource("FxMainView.fxml");
 		SceneLoader.setScene(stage, path, mainviewController);
-		mainviewController.updateInfo();
-		System.out.println("Back to mainview.");
-		
+		mainviewController.updateInfo();		
 	}
+	
 	
 	@FXML
 	public void logOff() {
@@ -99,6 +100,7 @@ public class AddClientController implements Controller {
 		URL path = getClass().getResource("FxLogin.fxml");
 		SceneLoader.setScene(stage, path, controller);
 	}
+	
 	
 	private void check(TextField field) {
 		boolean bool;
@@ -117,12 +119,7 @@ public class AddClientController implements Controller {
 		}
 		else if(style.contains("error") && bool) {
 			style.remove("error");
-		}
-		
+		}		
 	}
 	
-	
-	
-	
-
 }
