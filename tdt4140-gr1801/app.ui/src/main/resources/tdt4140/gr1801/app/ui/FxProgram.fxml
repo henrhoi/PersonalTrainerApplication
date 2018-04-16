@@ -1,64 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" styleClass="programPane" stylesheets="@stylesheets/MainViewStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="@stylesheets/MainViewStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="listview" prefHeight="600.0" prefWidth="115.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" />
-      <SplitPane dividerPositions="0.5059920106524634" layoutX="156.0" layoutY="28.0" prefHeight="385.0" prefWidth="752.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="434.0" prefWidth="368.0" styleClass="programPane" stylesheets="@stylesheets/MainViewStyle.css">
+      <ListView fx:id="listview" maxWidth="115.0" minWidth="115.0" styleClass="mylistview" stylesheets="@stylesheets/MainViewStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox layoutX="115.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="400.0" prefWidth="361.0" HBox.hgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tableview" layoutX="5.0" layoutY="49.0" prefHeight="281.0" prefWidth="362.0" styleClass="mylistview">
-                    <columns>
-                      <TableColumn fx:id="colName" prefWidth="90.09634399414062" text="Name" />
-                      <TableColumn fx:id="colWeight" prefWidth="96.90365600585938" text="Weight (kg)" />
-                        <TableColumn fx:id="colSets" prefWidth="64.0" text="Sets" />
-                        <TableColumn fx:id="colReps" prefWidth="110.40003967285156" text="Repetitions" />
-                    </columns>
-                     <stylesheets>
-                        <URL value="@stylesheets/MainViewStyle.css" />
-                        <URL value="@stylesheets/StrengthViewStyle.css" />
-                     </stylesheets>
-                  </TableView>
-                  <Label layoutX="115.0" layoutY="9.0" styleClass="programLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Strength Exercise">
+                  <Label alignment="CENTER" prefHeight="23.0" prefWidth="361.0" styleClass="programLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Strength Exercise">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </Label>
+                 <TableView fx:id="tableview" prefWidth="669.0" stylesheets="@stylesheets/StrengthViewStyle.css" VBox.vgrow="ALWAYS">
+              		<columns>
+                		<TableColumn fx:id="colName" prefWidth="172.41842651367188" text="Name" />
+                  		<TableColumn fx:id="colWeight" prefWidth="102.58161926269531" text="Weight (kg)" />
+                		<TableColumn fx:id="colSets" prefWidth="142.36224365234375" text="Sets" />
+                  		<TableColumn fx:id="colReps" prefWidth="136.63775634765625" text="Repetitions" />
+              		</columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
                </children>
-            </AnchorPane>
-          <AnchorPane fx:id="endurance_pane" minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="372.0" styleClass="programPane" stylesheets="@stylesheets/MainViewStyle.css">
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <TextField fx:id="distance_field" editable="false" layoutX="236.0" layoutY="85.0" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
-                  <TextField fx:id="duration_field" layoutX="236.0" layoutY="182.0" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
-                  <TextField fx:id="speed_field" layoutX="236.0" layoutY="278.0" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
-                  <Text fill="#eeecec" layoutX="245.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance" />
-                  <Text fill="#eeecec" layoutX="245.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
-                  <Text fill="#eeecec" layoutX="221.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avgerage speed" />
-                  <TextArea fx:id="description_field" layoutX="36.0" layoutY="92.0" prefHeight="214.0" prefWidth="146.0" styleClass="text-area" stylesheets="@stylesheets/MainViewStyle.css" />
-                  <Text fill="#eeecec" layoutX="72.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-                  <Label layoutX="111.0" layoutY="9.0" styleClass="programLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Endurance Exercise">
+                  <Label alignment="CENTER" prefHeight="23.0" prefWidth="370.0" styleClass="programLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Endurance Exercise">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
                   </Label>
+                  <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                     <children>
+                        <AnchorPane prefWidth="319.0">
+                           <children>
+                              <TextField fx:id="distance_field" editable="false" layoutX="250.0" layoutY="28.568359375" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <TextField fx:id="duration_field" layoutX="250.0" layoutY="125.568359375" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <TextField fx:id="speed_field" layoutX="250.0" layoutY="221.568359375" prefHeight="42.0" prefWidth="70.0" styleClass="programField" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <Text fill="#eeecec" layoutX="258.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Distance" />
+                              <Text fill="#eeecec" layoutX="260.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Duration" />
+                              <Text fill="#eeecec" layoutX="235.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Avgerage speed" />
+                              <TextArea fx:id="description_field" layoutX="25.0" layoutY="50.568359375" prefHeight="214.0" prefWidth="146.0" styleClass="text-area" stylesheets="@stylesheets/MainViewStyle.css" />
+                              <Text fill="#eeecec" layoutX="58.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
+                              <Button fx:id="exportButton" layoutX="100.0" layoutY="300.0" mnemonicParsing="false" onAction="#exportPdf" text="Export to PDF" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </HBox>
                </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-      <Button fx:id="exportButton" layoutX="532.0" layoutY="517.0" mnemonicParsing="false" onAction="#exportPdf" text="Export to PDF" />
+            </VBox>
+         </children>
+      </HBox>
    </children>
-</Pane>
+</AnchorPane>
