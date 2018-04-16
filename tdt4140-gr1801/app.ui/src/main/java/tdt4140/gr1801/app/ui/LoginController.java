@@ -11,9 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import tdt4140.gr1801.web.server.LoginModule;
 
@@ -31,8 +29,6 @@ public class LoginController implements Controller{
 	@FXML
 	Pane pane;
 	
-	@FXML
-	StackPane stack;
 	
 	//Action on enter from passwordField and loginButton
 	@FXML
@@ -52,6 +48,7 @@ public class LoginController implements Controller{
 			controller.updateInfo();
 		}
 		else {
+			//Login failed, make textfields red, and show error message.
 			loginInfo.setVisible(true);
 			ObservableList<String> userstyle = usernameField.getStyleClass();
 			ObservableList<String> passwordstyle = passwordField.getStyleClass();
@@ -71,10 +68,6 @@ public class LoginController implements Controller{
 		Stage stage = (Stage)this.usernameField.getScene().getWindow();
 		URL path = getClass().getResource("FxNewUser.fxml");
 		SceneLoader.setScene(stage, path, controller);
-		
 	}
 	
-	
-	
-
 }
