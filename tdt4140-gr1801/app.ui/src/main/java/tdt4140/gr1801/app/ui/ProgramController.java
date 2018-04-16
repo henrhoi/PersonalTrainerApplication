@@ -37,6 +37,7 @@ import javafx.scene.control.Button;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
 import tdt4140.gr1801.app.core.Client;
 import tdt4140.gr1801.app.core.PersonalTrainer;
 import tdt4140.gr1801.app.core.pdfcreator.PdfCreator;
@@ -230,9 +231,13 @@ public class ProgramController implements TabController {
 	@FXML 
 	public void editStrength() {
 		tableview.setEditable(true);
+		System.out.println("Before colname");
 		colName.setCellFactory(TextFieldTableCell.forTableColumn());
+		System.out.println("Before colweight");
 		colWeight.setCellFactory(TextFieldTableCell.forTableColumn());
+		System.out.println("Before colsets");
 		colSets.setCellFactory(TextFieldTableCell.forTableColumn());
+		System.out.println("Before colreps");
 		colReps.setCellFactory(TextFieldTableCell.forTableColumn());
 		updateProgram_button.setDisable(false);
 	}
