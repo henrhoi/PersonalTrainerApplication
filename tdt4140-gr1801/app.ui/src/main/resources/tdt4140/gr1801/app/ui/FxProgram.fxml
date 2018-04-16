@@ -58,7 +58,7 @@
             </AnchorPane>
         </items>
       </SplitPane>
-      <Button fx:id="exportButton" layoutX="825.0" layoutY="522.0" mnemonicParsing="false" onAction="#exportPdf" text="Export to PDF" />
+      <Button fx:id="exportButton" layoutX="643.0" layoutY="522.0" mnemonicParsing="false" onAction="#exportPdf" text="Export to PDF" />
       <Button fx:id="updateProgram_button" layoutX="528.0" layoutY="516.0" mnemonicParsing="false" onAction="#updateProgram" prefHeight="36.0" prefWidth="97.0" text="Update" />
    </children>
 </Pane>

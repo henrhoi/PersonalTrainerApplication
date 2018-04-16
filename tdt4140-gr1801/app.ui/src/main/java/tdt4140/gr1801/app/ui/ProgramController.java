@@ -304,7 +304,7 @@ public class ProgramController implements TabController {
 	
 	@FXML
 	public void clearAllStrength() {
-		tableview.getItems().clear();
+		tableview.setItems(null);
 	}
 	
 	
