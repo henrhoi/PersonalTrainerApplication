@@ -21,6 +21,7 @@ public class Client {
 	private String name;
 	private int id;
 	private int height;
+	private int maxPulse;
 	private PersonalTrainer pt;
 	private HashMap<String,Double> weights; // (date, measured in float (kg))
 	private HashMap<String,Double> fats; // (date, fat measured in float [0,1])
@@ -31,10 +32,11 @@ public class Client {
 	private List<DayProgram> program; // daily program for client
     
     
-	public Client(int id, String name, int height, PersonalTrainer pt) {
+	public Client(int id, String name, int height, PersonalTrainer pt, int maxPulse) {
     		this.id = id;
     		this.name = name;
     		this.height = height;
+    		this.maxPulse = maxPulse;
     		this.pt = pt;
     		pt.addClient(this);
 
@@ -46,6 +48,21 @@ public class Client {
     		this.enduranceTraining = new ArrayList<Endurance>();
     		this.program = new ArrayList<DayProgram>();
 	}
+	
+	public Client(int id, String name, int height, PersonalTrainer pt) {
+		this.id = id;
+		this.name = name;
+		this.height = height;
+		this.pt = pt;
+		pt.addClient(this);
+
+    
+		this.weights = new HashMap<String,Double>();
+		this.fats = new HashMap<String,Double>();
+		this.nutritions = new ArrayList<Nutrition>();
+		this.strengthTraining = new ArrayList<Strength>();
+		this.enduranceTraining = new ArrayList<Endurance>();
+}
     
     // Getters
     public int getId() {
@@ -58,6 +75,10 @@ public class Client {
     
     public int getHeight() {
     		return height;
+    }
+    
+    public int getMaxPulse() {
+    	return this.maxPulse;
     }
     
     public String getPersonalTrainer() {
@@ -172,6 +193,10 @@ public class Client {
 	public static boolean checkHeight(int height) {
 		return height < 272 && height > 130;
 	}
+	
+	public static boolean checkmaxPulse(int maxPulse) {
+		return maxPulse < 500 && maxPulse > 100;
+	}
     
     // function that adds client to client tab in the database
     public void createClient() throws IOException {
@@ -179,6 +204,7 @@ public class Client {
 		json.put("Navn", this.name);
 		json.put("Height", this.height);
 		json.put("PT_ID", this.pt.getUsername());
+		json.put("MaxPulse", this.getMaxPulse());
 		System.out.println(json);
 		String respons = GetURL.postRequest("/signup/client", json);
 		System.out.println(respons);
@@ -278,7 +304,9 @@ public class Client {
     			int duration = object.getInt("Duration");
     			double distance = object.getDouble("Distance");
     			int calories = object.getInt("CaloriesBurned");
-    			Endurance e = new Endurance(date, duration, distance, calories);
+    			int maxPulse = object.getInt("MaxPulse");
+    			int avgPulse = object.getInt("AvgPulse");
+    			Endurance e = new Endurance(date, duration, distance, calories, maxPulse, avgPulse);
     			this.enduranceTraining.add(e);
     			
     		}
@@ -351,6 +379,6 @@ public class Client {
     }
    
     public String toString() {
-    	return name;
+    		return name;
     }
 }

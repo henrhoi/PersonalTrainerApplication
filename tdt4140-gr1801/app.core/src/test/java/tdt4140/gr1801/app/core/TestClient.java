@@ -90,8 +90,8 @@ public class TestClient extends TestCase{
 	}
 
 	public void testGetEnduranceList() {
-		Endurance e1 = new Endurance("20180101-1400",4,0.5,4);
-		Endurance e2 = new Endurance("20180101-1500",2,0.5,4);
+		Endurance e1 = new Endurance("20180101-1400",4,0.5,4,5,6);
+		Endurance e2 = new Endurance("20180101-1500",2,0.5,4,5,6);
 		List<Endurance> testList = new ArrayList<Endurance>();
 		testList.add(e1);
 		testList.add(e2);
@@ -190,7 +190,7 @@ public class TestClient extends TestCase{
 	}
  
 	public void testAddEnduranceTraining() {
-		Endurance test = new Endurance("20180101-1400",5,10,300);
+		Endurance test = new Endurance("20180101-1400",5,10,300,5,6);
 		client.addEnduranceTraining(test);
 		assertEquals(client.getEnduranceList().contains(test),true);
 	}

@@ -189,10 +189,11 @@ public class PersonalTrainer {
 			String navn = object.getString("Navn");
 			int id = object.getInt("ClientID");
 			int height = object.getInt("Height");
+			int maxPulse = object.getInt("MaxPulse");
 			
 			//La til kommentar som fjerner error om at client aldri blir brukt
 			@SuppressWarnings("unused")
-			Client client = new Client(id, navn, height, this);
+			Client client = new Client(id, navn, height, this, maxPulse);
 		}
 	}
 	

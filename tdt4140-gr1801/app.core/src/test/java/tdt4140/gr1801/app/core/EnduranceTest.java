@@ -10,7 +10,7 @@ public class EnduranceTest extends TestCase{
 	Endurance endurance;
 	
 	protected void setUp() {
-		endurance = new Endurance("20180227-xxxx", 90, 12, 685);
+		endurance = new Endurance("20180227-xxxx", 90, 12, 685, 200, 188);
 	}
 	
 	public void testGetDistance() {
@@ -27,7 +27,7 @@ public class EnduranceTest extends TestCase{
 	
 	public void testNegativeDistance() {
 		try {
-			new Endurance("20180227-xxxx", 10, -12, 685);
+			new Endurance("20180227-xxxx", 10, -12, 685, 195, 178);
 			fail(); // Not supposed to get here
 		}
 		catch (IllegalArgumentException iae) {
@@ -40,7 +40,7 @@ public class EnduranceTest extends TestCase{
 	
 	public void testNegativeCaloriesBurned() {
 		try {
-			new Endurance("20180227-xxxx", 10, 12, -500);
+			new Endurance("20180227-xxxx", 10, 12, -500, 190, 180);
 
 			fail(); // Not supposed to get here
 		}
