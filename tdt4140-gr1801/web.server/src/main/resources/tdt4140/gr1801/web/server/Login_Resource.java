@@ -31,7 +31,6 @@ public class Login_Resource {
 			return Response.status(200).entity(jsonarray.toString()).build();
 		} 
 		JSONObject json = jsonarray.getJSONObject(0);
-		System.out.println(json);
 		
 		//If everything went ok a 200 OK response will be sent with the JSON-file
 		return Response.status(200).entity(json.toString()).build();
