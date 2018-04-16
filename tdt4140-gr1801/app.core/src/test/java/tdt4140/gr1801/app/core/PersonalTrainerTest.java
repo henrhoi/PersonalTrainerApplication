@@ -1,5 +1,10 @@
 package tdt4140.gr1801.app.core;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
+import org.apache.http.client.ClientProtocolException;
+
 import junit.framework.TestCase;
 
 public class PersonalTrainerTest extends TestCase{
@@ -26,12 +31,22 @@ public class PersonalTrainerTest extends TestCase{
 		pt.setPhoneNumber("90943559");
 		assertEquals(pt.getPhoneNumber(),"90943559");
 	}
+	public void testCheckPhoneNumber() {
+		assertTrue(PersonalTrainer.checkPhoneNumber("90943559"));
+	}
+	
+	public void testRemoveClient() {
+		Client clientTest1 = new Client(81,"Ingalf Randolf",190,pt);
+		pt.removeClient(clientTest1);
+		assertFalse(pt.getClientList().contains(clientTest1));
+	}
+	
 	
 	public void testGetBirthday() {
 		assertEquals(pt.getBirthday(),null);
 	}
 	
-	public void testConstructor() {
+	public void testConstructor() throws ClientProtocolException, IOException {
 		PersonalTrainer testPT = new PersonalTrainer("vilde", "Vilde", "Arntzen", "vildera@stud.ntnu.no", "90943558", "19970517-1400");
 		assertEquals(testPT.getBirthday(),"19970517-1400");
 		assertEquals(testPT.getUsername(),"vilde");
@@ -66,11 +81,24 @@ public class PersonalTrainerTest extends TestCase{
 	}
 	
 	public void testGetClient() {
+		pt.addClient(c1);
+		assertEquals(pt.getClient(c1),c1);
 		try {
+			pt1.addClient(c3);
 			pt1.getClient(c3);
 		} catch (IllegalArgumentException IAE) {
 			System.err.println(IAE);
 		}
+	}
+	
+	public void testGetClientList() {
+		ArrayList<Client> testClientList = new ArrayList<Client>();
+		PersonalTrainer testPT = new PersonalTrainer("vilde", "Vilde", "Arntzen", "vildera@stud.ntnu.no", "90943558", "19970517-1400");
+		testPT.addClient(c1);
+		testPT.addClient(c2);
+		testClientList.add(c1);
+		testClientList.add(c2);
+		assertEquals(testPT.getClientList(),testClientList);
 	}
 	
 	public void testAddClient() {
