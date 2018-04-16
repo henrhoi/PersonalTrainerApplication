@@ -5,6 +5,10 @@ Alle kravene til prosjektet som spesifisert av emnet finner du her [her](https:/
 I tillegg har utviklingen fulgt kodekonvensjonene og retningslinjene for bruk av GitLab som finnes [her](https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01/wikis/Home/Kodekonvensjoner%20og%20retningslinjer%20i%20gitlab).
 
 Vi har valgt å lage en applikasjon der en personlig trener kan følge opp sine klienter. PT-en kan navigere mellom klientene og se informasjon om utholdenhetsøkter, styrkeøkter, kosthold og treningsprogrammer. Under er en liten demo som viser applikasjonen mens den kjører.
+
+[gif](https://imgur.com/GCzBI1P)
+
+
 ## Hvordan bruke applikasjonen
 
 Disse instruksjonene gir deg en kopi av prosjektet på din lokale maskin, som du kan bruke til utvikling og/eller testing. Se [her](#start) for fremgangsmåte for å kjøre prosjektet, etter installering.
