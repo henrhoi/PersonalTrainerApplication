@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -13,17 +14,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@stylesheets/ChartsStyle.css" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="@stylesheets/ChartsStyle.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane fx:id="ClientInfoTab" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab fx:id="InfoTab" text="Client Info">
+          <Tab fx:id="InfoTab" text="Info">
             <content>
               <AnchorPane fx:id="infoTab" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <VBox layoutX="69.0" layoutY="86.0" prefHeight="593.0" prefWidth="536.0" spacing="20.0" AnchorPane.bottomAnchor="303.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutX="31.0" layoutY="35.0" prefHeight="593.0" prefWidth="536.0" spacing="20.0" AnchorPane.bottomAnchor="268.0" AnchorPane.topAnchor="35.0">
                            <children>
-                              <Label fx:id="idLabel" text="ClientID: ">
+                              <Label fx:id="idLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="ClientID: ">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
@@ -31,27 +32,32 @@
                                     <Insets top="60.0" />
                                  </padding>
                               </Label>
-                              <Label fx:id="nameLabel" text="Name: ">
+                              <Label fx:id="nameLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Name: ">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="heightLabel" text="Height: ">
+                              <Label fx:id="heightLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Height: ">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="strengthLabel" text="No. of Strengths:">
+                              <Label fx:id="maxPulseLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="Max pulse:">
+                     			<font>
+                       			 	<Font size="32.0" />
+                    			 </font>
+                 			 </Label>
+                              <Label fx:id="strengthLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="No. of Strengths:">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="enduranceLabel" text="No. of Endurances:">
+                              <Label fx:id="enduranceLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="No. of Endurances:">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="nutritionLabel" text="No. of Nutritions:">
+                              <Label fx:id="nutritionLabel" styleClass="overviewLabels" stylesheets="@stylesheets/MainViewStyle.css" text="No. of Nutritions:">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
@@ -80,33 +86,40 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="896.0" prefWidth="1311.0">
                      <children>
-                        <HBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox layoutY="50.0" prefHeight="846.0" prefWidth="116.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1195.0" AnchorPane.topAnchor="50.0">
                            <children>
-                              <ListView fx:id="pictureDates" maxWidth="200.0" minWidth="200.0" prefHeight="517.0" prefWidth="180.0" HBox.hgrow="ALWAYS" />
-                              <VBox>
-                                 <children>
-                                    <HBox alignment="CENTER" maxHeight="50.0" minHeight="50.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                       <children>
-                                          <Label prefHeight="17.0" prefWidth="49.0" text="Before" />
-                                          <Label fx:id="beforeDateLabel" text="Label" />
-                                       </children>
-                                    </HBox>
-                                    <ImageView fx:id="beforeImage" fitHeight="500.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
-                                 </children>
-                              </VBox>
-                              <VBox>
-                                 <children>
-                                    <HBox alignment="CENTER" maxHeight="50.0" minHeight="50.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                       <children>
-                                          <Label text="After" />
-                                          <Label fx:id="afterDateLabel" text="Label" />
-                                       </children>
-                                    </HBox>
-                                    <ImageView fx:id="afterImage" fitHeight="500.0" fitWidth="350.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
-                                 </children>
-                              </VBox>
+                              <ListView fx:id="pictureDates" maxWidth="200.0" minWidth="115.0" prefHeight="836.0" prefWidth="115.0" HBox.hgrow="ALWAYS" />
                            </children>
                         </HBox>
+                        <VBox layoutX="116.0" prefHeight="896.0" prefWidth="418.0">
+                           <children>
+                              <HBox alignment="CENTER" maxHeight="50.0" minHeight="50.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Label prefHeight="23.0" prefWidth="62.0" styleClass="oLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Before," />
+                                    <Label fx:id="beforeDateLabel" styleClass="oLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Label" />
+                                 </children>
+                              </HBox>
+                              <ImageView fx:id="beforeImage" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="538.0" layoutY="-1.0" prefHeight="897.0" prefWidth="418.0">
+                           <children>
+                              <HBox alignment="CENTER" maxHeight="50.0" minHeight="50.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Label styleClass="oLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Now," />
+                                    <Label fx:id="afterDateLabel" styleClass="oLabel" stylesheets="@stylesheets/MainViewStyle.css" text="Label" />
+                                 </children>
+                              </HBox>
+                              <ImageView fx:id="afterImage" fitHeight="500.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
             </content>

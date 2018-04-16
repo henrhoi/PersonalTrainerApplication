@@ -6,8 +6,10 @@ public class Endurance extends Training implements Comparable<Endurance>{
 	private double distance; // In km
 	private double averageSpeed; // In km/h
 	private int caloriesBurned;
+	private int maxPulse;
+	private int avgPulse;
 
-	public Endurance(String date, int duration, double distance, int caloriesBurned) {
+	public Endurance(String date, int duration, double distance, int caloriesBurned, int maxPulse, int avgPulse) {
 		super(date, duration);
 		if (distance < 0) {
 			throw new IllegalArgumentException("Distance cannot be negative");
@@ -16,10 +18,11 @@ public class Endurance extends Training implements Comparable<Endurance>{
 			throw new IllegalArgumentException("Calories burned cannot be negative");
 		}
 		this.distance = distance;
-		this.averageSpeed = distance/((double)(duration)/60);
+		this.averageSpeed = (double)Math.round(distance/((double)(duration)/60) * 10d) / 10d;
 		this.caloriesBurned = caloriesBurned;
+		this.maxPulse = maxPulse;
+		this.avgPulse = avgPulse;
 		
-		// Could be cool with heartbeat-measurements
 	}
 	
 	public double getDistance() {
@@ -32,6 +35,14 @@ public class Endurance extends Training implements Comparable<Endurance>{
 	
 	public int getCaloriesBurned() {
 		return caloriesBurned;
+	}
+	
+	public int getMaxPulse() {
+		return maxPulse;
+	}
+	
+	public int getAvgPulse() {
+		return avgPulse;
 	}
 
 	@Override

@@ -33,6 +33,7 @@ public class Signup_Resources {
         
         PreparedStatement stmt = QueryFactory.insertPT(PT_ID, Passwrd, Salt, Navn, Email, Birthday, Phonenr);
         stmt.execute();
+        
         return Response.status(201).entity(Navn + " added to PT-table in database if all input were correct").build(); 
     }
     
@@ -48,8 +49,9 @@ public class Signup_Resources {
         String Navn = json.getString("Navn");
         int Height = json.getInt("Height");
         String PT_ID = json.getString("PT_ID");
+        int MaxPulse = json.getInt("MaxPulse");
 
-        PreparedStatement stmt = QueryFactory.insertClient(Navn, Height, PT_ID);
+        PreparedStatement stmt = QueryFactory.insertClient(Navn, Height, PT_ID, MaxPulse);
         stmt.execute();
         return Response.status(201).entity("Navn" + " added to Klient-table in database if all input were correct").build(); 
     }
@@ -58,5 +60,3 @@ public class Signup_Resources {
 
 
 }
-
-
