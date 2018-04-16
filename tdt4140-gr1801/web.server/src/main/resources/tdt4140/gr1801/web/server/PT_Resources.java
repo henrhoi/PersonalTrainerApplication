@@ -20,21 +20,26 @@ import javax.ws.rs.core.Response;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONObject;
 
+
+//This is one of our API's endpoint "/pt", which specifies some GET and POST-requests
+
 @Path("/pt")
 public class PT_Resources {
 
-	// Get-funksjon for aa faa informasjonen om en PT
+	// GET-function for getting all information about a PT, discarding login-information
     @GET
     @Path("/{param}")
     @Produces("application/json")
     public String getPT(@PathParam("param") String username) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
-		PreparedStatement stmt = QueryFactory.getPT(username);	// Henter et statement fra QueryFactoryen
-		ResultSet rs = stmt.executeQuery();	// Utfoerer spoerringen
-		String json = RSJSONConverter.ResultSetToJSON(rs).toString();	// Konverterer resultat til JSON
+		// Getting PreparedStatement from QueryFactory
+    		PreparedStatement stmt = QueryFactory.getPT(username);
+		ResultSet rs = stmt.executeQuery();	// Executing query
+		String json = RSJSONConverter.ResultSetToJSON(rs).toString();	// Converting result to JSON-format
 		return json;
     }
     
     
+    // Defines POST-request for the changing password of a specific PT
     @POST
     @Path("/changepassword")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -44,22 +49,12 @@ public class PT_Resources {
 	    String Passwrd = json.getString("Passwrd");
 	    String Salt = json.getString("Salt");
 	
+		// Getting PreparedStatement from QueryFactory
 	    PreparedStatement stmt = QueryFactory.changePassword(PT_ID, Passwrd, Salt);
 	    stmt.execute();
+	    
+	  //If everything went ok a "201 CREATED" response will be sent with a corresponding message
 	    return Response.status(201).entity("Password for "+ PT_ID +" is changed in the database, if all input were correct").build(); 
 	}
-    
-	
- 
-   
-    public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, ClientProtocolException, IOException {
-    		//finner info om pt med pt_id = "henrhoi"
-    		String pt_info = GetURL.getRequest("/pt/henrhoi");
-    		System.out.println(pt_info);
-
-	}
-
 
 }
-
-// JSON respons

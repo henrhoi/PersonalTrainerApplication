@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 //This Class was made only for making a static method to set scenes.
 public class SceneLoader {
 	
+	//Static method for setting scene
 	public static void setScene(Stage stage, URL path, Controller controller) {
 		Parent root;
 		try {
@@ -24,9 +25,8 @@ public class SceneLoader {
 	        stage.setMinWidth(400);
 	        stage.centerOnScreen();
 	        stage.show();
-	        System.out.println("Success");
 		} catch (IOException e) {
-			System.out.println("En feil skjedde naar du provde aapne fxmlfilen.");
+			// Something happened when opening the FXML-file
 			e.printStackTrace();
 		}
 	}

@@ -22,7 +22,6 @@ import tdt4140.gr1801.app.core.PersonalTrainer;
 
 
 //This class controls the new user window, and makes sure things are correctly entered to all the fields.
-
 public class NewUserController implements Controller{
 	
 	@FXML 

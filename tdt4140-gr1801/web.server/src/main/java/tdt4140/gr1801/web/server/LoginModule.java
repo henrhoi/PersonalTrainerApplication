@@ -8,52 +8,52 @@ import java.security.SecureRandom;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONObject;
 
-
+// Module with methods used for logging in and password handling.
 public class LoginModule {
+
 	
-	// Metode som krysssjekker innputtet passord med passord i database:
+	// Method that cross-checks input password with password stored in database
+	// Returnes a boolean value whether or not the input passord is correct
 	public static boolean checkLogin(String username, String password) throws NoSuchAlgorithmException, ClientProtocolException, IOException {
 		String shaHashedPasswrd;
-		// for naa for enkelhetsskyld, slik at det skal vaere enklere for en utenforstaaende og kjoere funksjonen.
 		
-		// Legger til salt, som burde ha vaert hemmelig. 
+		// Getting the users login-information, personal salt and sha-hashed password, with a GET-request
 		String content = GetURL.getRequest("/login/"+username);
 		
-		// No PT with that username
+		// Checking whether the username was in the database or not. The json-file should be emtpy, "[]" if the user does not exists
 		if (content.equals("[]")) {return false;}
+		
+		// Retreiving the salt and password from the json-file 
 		JSONObject json = new JSONObject(content);
 		String salt = json.getString("Salt");
 		String passwrd = json.getString("Passwrd");
 		
-		// Hasher passordet
+		// Hashing input password
 		shaHashedPasswrd = hashSha256(password, salt);
 		
-		
-
-
-		//System.out.println(content);
-		
-	    // Returnerer om passordet som proeves aa logge inn med stemmer med passordet i databasen. 
+	    // Returning whether or not the password corresponds with the password in the database
 		return passwrd.equals(shaHashedPasswrd);
 		
 	}
 	
+	// Method that hashes the input strings, with SHA256
 	public static String hashSha256(String string, String salt) {
 		try{
-			// Definerer et salt. Burde ha vaert en envirement variabel (setenv), men lar den ligge i koden
-			// for naa for enkelhetsskyld, slik at det skal vaere enklere for en utenforstaaende og kjoere funksjonen.
-			// Legger til salt, som burde ha vaert hemmelig. 
 			string += salt;
+			
+			//Hashing the composition of input strings
 	        MessageDigest digest = MessageDigest.getInstance("SHA-256");
 	        byte[] hash = digest.digest(string.getBytes("UTF-8"));
 	        StringBuffer hexString = new StringBuffer();
 
+	        	//Converting the hex string to a string consisting of ASCII-characters
 	        for (int i = 0; i < hash.length; i++) {
 	            String hex = Integer.toHexString(0xff & hash[i]);
 	            if(hex.length() == 1) hexString.append('0');
 	            hexString.append(hex);
 	        }
-
+	        
+	        // Returning SHA256-hashed string 
 	        return hexString.toString();
 	        
 	    } catch(Exception ex){
@@ -61,7 +61,8 @@ public class LoginModule {
 	    }
 	}
 	
-	// Brukes i PersonalTrainer.java, for oppsetting av ny PT.
+	// Static method that generates a random salt
+	// It is used in PersonalTrainer.java when creating a new PT
 	public static String generateSalt() {
         SecureRandom random = new SecureRandom();
         byte bytes[] = new byte[20];
@@ -69,17 +70,4 @@ public class LoginModule {
         return org.apache.commons.codec.binary.Base64.encodeBase64String(bytes);
     }
 	
-	
-	
-	// Main som tester om passordet til PT-brukeren 'henrhoi' er 'puerbest' 
-	public static void main(String[] args) throws NoSuchAlgorithmException, ClientProtocolException, IOException {
-		//System.out.println(LoginModule.generateSalt());
-		//String passord = "fortnite123";
-		//String salt = "mLTYw6QIg7AeCw4vA2uN+Fxcm3g=";
-		//System.out.println(LoginModule.hashSha256(passord, salt));
-		boolean test = checkLogin("henrhoi","puerbest");
-		System.out.println(test);
-	}
-
-
 }

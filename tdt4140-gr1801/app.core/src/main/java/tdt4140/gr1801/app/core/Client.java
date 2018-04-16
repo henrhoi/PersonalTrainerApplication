@@ -208,29 +208,6 @@ public class Client {
 		String respons = GetURL.postRequest("/signup/client", json);
     }
     
-    // function that adds client's weekly program to program-tab in the database
-    public void createWeeklyProgram(DayProgram dp) throws IOException {
-    	JSONObject json = new JSONObject();
-		json.put("ClientID",this.id);
-		json.put("Day", dp.getWeekday());
-		json.put("Duration", dp.getDuration());
-		json.put("Distance", dp.getDistance());
-		json.put("Speed", dp.getAvgSpeed());
-		json.put("Description", dp.getDescription());
-		String exercises = "";
-		for (Exercise e : dp.getExercises()) {
-			exercises += e.getName() + ",";
-			exercises += e.getWeight() + ",";
-			for (int rep : e.getRepsPerSet()) {
-				exercises += rep + "-";
-			}
-			exercises = exercises.substring(0, exercises.length()-1);
-			exercises += "#";
-		}
-		exercises = exercises.substring(0, exercises.length()-1);
-		json.put("Exercises", exercises);
-		String respons = GetURL.postRequest("/weeklyprogram/client", json);
-    }
     
     // the next get-functions are functions to collect data from the database and into the application 
     // collects all nutrition data for a client 
@@ -289,34 +266,6 @@ public class Client {
 			dayprogram = new DayProgram(day, duration, distance, speed,
 					description, exercises);
 			program.add(dayprogram);
-			
-//			if (object.getString("Exercises").length() < 4) {
-//				// row is endurance
-//				int duration = object.getInt("Duration");
-//				double distance = object.getDouble("Distance");
-//				double speed = object.getDouble("Speed");
-//				String description = object.getString("Description");
-//				dayprogram = new DayProgram(day, duration, distance, speed, 
-//						description, null);
-//			}
-//			else {
-//				// Row is strength
-//				List<Exercise> exercises = new ArrayList<>();
-//				// Iterate over the string to get the different exercises
-//				List<String> stringExercises = new ArrayList<String>(Arrays.asList(object.getString("Exercises").split("#")));
-//				for (String ex : stringExercises) {
-//					String[] info = ex.split(",");
-//					String name = info[0];
-//					double weight = Double.parseDouble(info[1]);
-//					List<Integer> repsList = Arrays.asList(info[2].split("-"))
-//			    			.stream().map(r -> Integer.parseInt(r)).collect(Collectors.toList());
-//					Exercise e = new Exercise(name, weight, repsList);
-//					exercises.add(e);
-//				}
-//				dayprogram = new DayProgram(day, null, null, null,
-//						null, exercises);
-//			}
-//			program.add(dayprogram);
 		}
     }
     

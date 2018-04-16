@@ -14,15 +14,18 @@ import javax.ws.rs.Produces;
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 
+//This is one of our API's endpoint "/training", which specifies some GET-requests for endurance- and training-data
 
 @Path("/training")
 public class Training_Resources {
 	
-	// ikke testet 
+	
+	// GET-request for getting all Endurance-data about a specific client
 	@GET
 	@Path("/endurance/{clientid}")
 	@Produces("application/json")
 	public String getAlleEndurance(@PathParam("clientid") String clientid) throws JSONException, SQLException, NumberFormatException, InstantiationException, IllegalAccessException, ClassNotFoundException {
+		// Getting PreparedStatement from QueryFactory
 		PreparedStatement stmt = QueryFactory.getAllEndurance(Integer.parseInt(clientid));
 		ResultSet rs = stmt.executeQuery();
 		String json = RSJSONConverter.ResultSetToJSON(rs).toString();
@@ -30,34 +33,29 @@ public class Training_Resources {
 	}
 	
 
-	
+	// GET-request for getting all Strength-data about a specific client
 	@GET
 	@Path("/strength/{ClientID}") 
 	@Produces("application/json")
 	public String getStrengthTranings(@PathParam("ClientID") String ClientID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		System.out.println("Getting StrengthTranings for Client with ID: " + ClientID);
+		// Getting PreparedStatement from QueryFactory
 		PreparedStatement stmt  = QueryFactory.getStrengthTraningsFromClient(ClientID);
 		ResultSet rs = stmt.executeQuery();
 		String json  = RSJSONConverter.ResultSetToJSON(rs).toString();
 		return json;
 	}
 	
+	
+	// GET-request for getting all Exercise-data about a specific Strength-object
 	@GET
 	@Path("/exercise/{StrengthID}") 
 	@Produces("application/json")
 	public String getExercises(@PathParam("StrengthID") String StrengthID) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
-		System.out.println("Getting Exercises for Strength with ID: " + StrengthID);
+		// Getting PreparedStatement from QueryFactory
 		PreparedStatement stmt  = QueryFactory.getExercisesFromStrengthTraining(StrengthID);
 		ResultSet rs = stmt.executeQuery();
 		String json  = RSJSONConverter.ResultSetToJSON(rs).toString();
 		return json;
-	}
-	
-	public static void main(String[] args) throws ClientProtocolException, IOException {
-		String trainingInfo = GetURL.getRequest("/exercise/1");
-		System.out.println(trainingInfo);
-		
-		
 	}
 	
 }

@@ -8,6 +8,8 @@ import tdt4140.gr1801.web.server.WebServer;
 
 public class FxApp extends Application {
 
+	
+	// Method for opening FxLogin
     @Override
     public void start(Stage stage) throws Exception {
     		LoginController controller = new LoginController();
@@ -39,5 +41,6 @@ public class FxApp extends Application {
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
+
     }
 }
