@@ -15,9 +15,9 @@ public final class DBConnection {
 		// If the static Connection is null, we create a new Connection, if not we return the Connection above. 
 		if (conn == null) {
 			// Password and username is in the code, could be changed to startargs or enviromental variabels when handling sensitive data or untrusted users
-			String url = "jdbc:mysql://mysql.stud.ntnu.no/henrhoi_PersonalTrainerDB?autoReconnect=true&useSSL=false";
-			String user = "henrhoi_PersonalTrainerDB";
-			String pass = "MyNewPass";
+			String user = "ASK FOR PERMISSION";
+			String url = "jdbc:mysql://mysql.stud.ntnu.no/"+user+"?autoReconnect=true&useSSL=false";
+			String pass = "ASK FOR PERMISSION";
 			
 			Properties p = new Properties();
 			p.put("user", user);
