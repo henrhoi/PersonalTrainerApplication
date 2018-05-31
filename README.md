@@ -21,10 +21,12 @@ Disse instruksjonene gir deg en kopi av prosjektet på din lokale maskin, som du
 For å installere systemet, kjør følgende kommando:
 
 ```
-$ git clone https://gitlab.stud.iie.ntnu.no/tdt4140-2018/01.git
+$ git clone https://github.com/henrhoi/Programvareutvikling-TDT4140.git
 ```
 
 #### Få tilgang til database:
+
+For å få brukernavn og passord til databasen er det bare å høre med en av utviklerne.
 
 Applikasjonen har SQL-database på NTNU-servere, og for å ha tilgang på denne må man enten være tilkoblet nettverket Eduroam eller bruke et VPN-program som tillater å koble til NTNUs nettverk hjemmefra.
 Vi har brukt VPN-programvaren som tilbys av NTNU [her](https://software.ntnu.no/ntnu/vpn), kalt *Cisco AnyConnect*. Følg installasjonsbeskrivelsen som står på nedlastingssiden.
