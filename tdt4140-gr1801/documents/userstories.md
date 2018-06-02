@@ -1,6 +1,6 @@
 ## Brukerhistorier
 
-**ID - Beskrivelse:
+**ID - Beskrivelse:**
 
 **1** -  Som PT vil jeg kunne opprette en egen PT-profil med unikt brukernavn og passord, slik at jeg får en personlig konto/bruker 
 	
